@@ -32,7 +32,7 @@ public class PageMoveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command=request.getParameter("command");
-		Member_BoardDao dao=new Member_BoardDao();
+		Member_BoardDao dao =new Member_BoardDao();
 		System.out.println("move 서블릿 도착command="+command);
 		
 		//1.메인 페이지 이동

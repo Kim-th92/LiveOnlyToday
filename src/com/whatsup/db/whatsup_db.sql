@@ -28,6 +28,10 @@ CREATE SEQUENCE SONG_SEQ;
 CREATE SEQUENCE FREE_SEQ;
 CREATE SEQUENCE COMMENT_SEQ;
 
+select * from member_board;
+
+insert into MEMBER_BOARD values(member_seq.nextval,'admin1234','admin1234','관리자','관리자'
+,'ADMIN','admin1234@gmail.com','1990-12-07','010-1234-5678','서울시 강동구','ALL','N',sysdate);
 CREATE TABLE MEMBER_BOARD(
 	MEMBER_SEQ NUMBER NOT NULL,
 	ID VARCHAR2(20) NOT NULL,
