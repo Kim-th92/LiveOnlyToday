@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="com/whatsup/db/db.properties"></properties>
+	
+	<typeAliases>
+		<typeAlias type="com.whatsup.dto.Member_BoardDto" alias="member_boardDto"/>
+		<typeAlias type="com.whatsup.dto.Qna_BoardDto" alias="qna_boardDto"/>
+		<typeAlias type="com.whatsup.dto.Stream_BoardDto" alias="stream_boardDto"/>
+		<typeAlias type="com.whatsup.dto.File_UploadDto" alias="file_uploadDto"/>
+		<typeAlias type="com.whatsup.dto.Chat_BoardDto" alias="chat_boardDto"/>
+		<typeAlias type="com.whatsup.dto.Dance_BoardDto" alias="dance_boardDto"/>
+		<typeAlias type="com.whatsup.dto.Song_BoardDto" alias="song_boardDto"/>
+		<typeAlias type="com.whatsup.dto.Free_BoardDto" alias="free_boardDto"/>
+		<typeAlias type="com.whatsup.dto.Comment_TableDto" alias="comment_tableDto"/>
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com.whatsup/db/mybatis-mapper.xml" />
+	</mappers>
+</configuration>

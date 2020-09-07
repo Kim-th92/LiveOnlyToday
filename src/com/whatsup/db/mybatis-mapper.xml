@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member_boardmapper">
+
+	<resultMap type="member_boardDto" id="member_boardResultMap">
+		<result property="member_seq" column="" />
+		<result property="id" column="ID" />
+		<result property="pw" column="PW" />
+		<result property="name" column="NAME" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="grade" column="GRADE" />
+		<result property="email" column="EMAIL" />
+		<result property="birthday" column="BIRTHDAY" />
+		<result property="phone" column="PHONE" />
+		<result property="addr" column="ADDR" />
+		<result property="membership" column="MEMBERSHIP" />
+		<result property="delflag" column="DELFLAG" />
+		<result property="regdate" column="REGDATE" />
+	</resultMap>
+
+	<select id="" resultType="">
+
+	</select>
+</mapper>
