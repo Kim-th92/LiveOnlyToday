@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.whatsup.dao.Memver_BoardDao;
-import com.whatsup.dto.Memver_BoarDto;
+import com.whatsup.dao.Member_BoardDao;
+import com.whatsup.dto.Member_BoarDto;
 
 
 @WebServlet("/move.do")
@@ -32,7 +32,7 @@ public class PageMoveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command=request.getParameter("command");
-		BoardDao dao=new BoardDao();
+		Member_BoardDao dao=new Member_BoardDao();
 		System.out.println("move 서블릿 도착command="+command);
 		
 		//1.메인 페이지 이동
@@ -73,7 +73,7 @@ public class PageMoveServlet extends HttpServlet {
 			
 		//5.자유 게시판
 		}else if(command.equals("freeboard")) {
-			List<BoardDto> list=dao.freeList();
+			List<Member_BoardDto> list= null;//dao.freeList();
 			request.setAttribute("list", list);
 			dispatch("board.jsp	", request, response);
 		
