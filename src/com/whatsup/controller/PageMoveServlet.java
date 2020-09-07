@@ -1,4 +1,4 @@
-package com.project.controller;
+package com.whatsup.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,12 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.whatsup.dao.BoardDao;
-import com.whatsup.dao.BoardDto;
+import com.whatsup.dao.Memver_BoardDao;
+import com.whatsup.dto.Memver_BoarDto;
 
-/**
- * Servlet implementation class PageMoveServlet
- */
+
 @WebServlet("/move.do")
 public class PageMoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,106 +33,106 @@ public class PageMoveServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String command=request.getParameter("command");
 		BoardDao dao=new BoardDao();
-		System.out.println("move ¼­ºí¸´ µµÂø command="+command);
+		System.out.println("move ì„œë¸”ë¦¿ ë„ì°©command="+command);
 		
-		//1.¸ŞÀÎ ÆäÀÌÁö ÀÌµ¿
+		//1.ë©”ì¸ í˜ì´ì§€ ì´ë™
 		if(command.equals("main")) {
 			response.sendRedirect("index.jsp");
 		
 		
-		//2.È¸»ç¼Ò°³ ÆäÀÌÁö	
+		//2.íšŒì‚¬ì†Œê°œ í˜ì´ì§€
 		}else if(command.equals("mainintroduce")) {
 			response.sendRedirect("introduce.jsp");
 			
 			
-		//2-1.È¸»ç¼Ò°³-¿À´Ã¸¸»ìÁ¶ ÅÇ
+		//2-1.íšŒì‚¬ì†Œê°œ - ì˜¤ëŠ˜ë§Œ ì‚´ì¡° íƒ­
 		}else if(command.equals("")) {
 			
-		//3.³ë·¡ ÆäÀÌÁö
+		//3.ë…¸ë˜ í˜ì´ì§€
 		}else if(command.equals("mainmusic")) {
 			response.sendRedirect("music.jsp");
 			
-		//3-1.³ë·¡ ½ºÆ®¸®¹Ö ÆäÀÌÁö
+		//3-1.ë…¸ë˜ ìŠ¤íŠ¸ë¦¬ë° í˜ì´ì§€
 		}else if(command.equals("")) {
 			
-		//3-2.³ë·¡ È¥ÀÚ ½ºÆ®¸®¹Ö ÆäÀÌÁö
+		//3-2.ë…¸ë˜ í˜¼ì ë…¸ë˜ë¶€ë¥´ê¸° í˜ì´ì§€
 		}else if(command.equals("")) {
 			
 		
-		//4.Ãã ÆäÀÌÁö
+		//4.ì¶¤ í˜ì´ì§€
 		}else if(command.equals("maindance")) {
 			response.sendRedirect("dance.jsp");
 			
-		//4-1.Ãã ¼±ÅÃ ÆäÀÌÁö
+		//4-1. ì¶¤ ì„ íƒ í˜ì´ì§€
 		}else if(command.equals("")) {
 			
 			
 			
-		//4-2.Ãã ºĞ¼® ÆäÀÌÁö
+		//4-2.ì¶¤ ë¶„ì„ í˜ì´ì§€
 		}else if(command.equals("")) {
 			
-		//5.ÀÚÀ¯ °Ô½ÃÆÇ
+		//5.ììœ  ê²Œì‹œíŒ
 		}else if(command.equals("freeboard")) {
 			List<BoardDto> list=dao.freeList();
 			request.setAttribute("list", list);
 			dispatch("board.jsp	", request, response);
 		
 			
-		//5-1.³ë·¡ °Ô½ÃÆÇ
+		//5-1.ë…¸ë˜ ê²Œì‹œíŒ
 		}else if(command.equals("")) {
 			
-		//5-2.Ãã °Ô½ÃÆÇ
+		//5-2.ì¶¤ ê²Œì‹œíŒ
 		}else if(command.equals("")) {
 			
-		//5-3.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(ÀÚÀ¯°Ô½ÃÆÇ)
+		//5-3.ê²Œì‹œíŒ ê¸€ ìƒì„± í˜ì´ì§€(ììœ ê²Œì‹œíŒ)
 		}else if(command.equals("")) {
 			
 			
-		//5-4.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(³ë·¡)
+		//5-4.ê²Œì‹œíŒ ê¸€ ìƒì„± í˜ì´ì§€(ë…¸ë˜)
 		}else if(command.equals("")) {
 			
-		//5-5.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(Ãã)
+		//5-5.ê²Œì‹œíŒ ê¸€ ìƒì„± í˜ì´ì§€
 		}else if(command.equals("")) {
-		//6.°í°´¼¾ÅÍ  °Ô½ÃÆÇ
+		//6.ê³ ê°ì„¼í„° ê²Œì‹œíŒ
 		}else if(command.equals("servicesenter")) {
 			response.sendRedirect("servicesenter.jsp");
 			
 			
-		//6-1.°í°´¼¾ÅÍ ÀÛ¼º ÆäÀÌÁö	
+		//6-1.ê³ ê°ì„¼í„° ì‘ì„± í˜ì´ì§€
 		}else if(command.equals("")) {
 			
 			
-		//7.·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿
+		//7.ë¡œê·¸ì¸ í˜ì´ì§€ ì´ë™
 		}else if (command.equals("loginpage")) {
 		response.sendRedirect("loginpage.jsp");
 			
-		//8. È¸¿ø°¡ÀÔ ÆäÀÌÁö
+		//8. íšŒì›ê°€ì… í˜ì´ì§€
 		}else if (command.equals("registerpage")) {
 		response.sendRedirect("registerpage.jsp");
 			
 			
-		//9.°áÁ¦ ÆäÀÌÁö(°áÁ¦Á¾·ù ¼±ÅÃ)
+		//9.ê²°ì œ í˜ì´ì§€ (ê²°ì œì¢…ë¥˜ ì„ íƒ)
 		}else if (command.equals("")) {
 			
 			
-		//9-1.°áÁ¦ ÆäÀÌÁö(°áÁ¦¹æ¹ı ¼±ÅÃ)
+		//9-1.ê²°ì œ í˜ì´ì§€(ê²°ì œ ë°©ë²• ì„ íƒ)
 		}else if(command.equals("")) {
 		
-		//10.Ã¤ÆÃ ÆäÀÌÁö
+		//10.ì±„íŒ… í˜ì´ì§€
 		}else if(command.equals("")) {
 			
 		
-		//10-1.Ã¤ÆÃ ÀÔÀå
+		//10-1.ì±„íŒ… ì…ì¥
 		}else if(command.equals("")) {
 		
-		//11.Áöµµ ÆäÀÌÁö
+		//11.ì§€ë„ í˜ì´ì§€
 		}else if(command.equals("")) {
 			
-		//12.¸¶ÀÌÆäÀÌÁö
+		//12.ë§ˆì´í˜ì´ì§€
 		}else if(command.equals("")) {
 			
 			
-		//13.°ü¸®ÀÚ ÆäÀÌÁö
+		//13.ê´€ë¦¬ì í˜ì´ì§€
 		}else if(command.equals("")) {
 			
 			
