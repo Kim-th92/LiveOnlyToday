@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.whatsup.dao.Member_BoardDao;
-import com.whatsup.dto.Member_BoarDto;
+import com.whatsup.dto.Member_BoardDto;
 
 
 @WebServlet("/move.do")
