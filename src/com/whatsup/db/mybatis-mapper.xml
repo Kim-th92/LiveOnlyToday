@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="member_boardmapper">
+<mapper namespace="Member_Boardmapper">
 
-	<resultMap type="member_boardDto" id="member_boardResultMap">
-		<result property="member_seq" column="" />
+	<resultMap type="member_BoardDto" id="Member_BoardResultMap">
+		<result property="member_seq" column="MEMBER_SEQ" />
 		<result property="id" column="ID" />
 		<result property="pw" column="PW" />
 		<result property="name" column="NAME" />
@@ -20,7 +20,15 @@
 		<result property="regdate" column="REGDATE" />
 	</resultMap>
 
-	<select id="" resultType="">
-
+	<select id="selectList" resultType="Member_BoardResultMap">
+	 SELECT MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,REGDATE FROM MEMBER_BOARD 
+	 ORDER BY MEMBER_SEQ DESC
+	</select>
+	<insert id="insert" parameterType="Member_BoardDto">
+		INSERT INTO MEMBER_BOARD VALUES(MEMBER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{nickname},'USER',#{email},
+		#{birthday},#{phone},#{addr},'NOPAY','N',sysdate)
+	</insert>
+	<select id="selectId" resultType="Member_BoardDto" parameterType="String">
+		SELECT ID FROM MEMBER_BOARD WHERE ID = #{id}
 	</select>
 </mapper>

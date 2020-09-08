@@ -13,7 +13,7 @@ private SqlSessionFactory sqlSessionFactory;
 	
 	public SqlSessionFactory getSqlSessionFactory() {
 		
-		String resource = "com/my/db/mybatis-config.xml";
+		String resource = "com/whatsup/db/mybatis-config.xml";
 		
 		try {
 			InputStream inputStream = Resources.getResourceAsStream(resource);

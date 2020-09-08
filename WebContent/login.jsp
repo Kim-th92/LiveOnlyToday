@@ -6,8 +6,8 @@
 <html>
 <head>
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -25,8 +25,8 @@ input {width : 270px; height :40px;}
 
 <h1>로그인</h1>
 <div id="input">
-<form action="#" method="post">
-	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+<form action="MemberServlet.do" method="post">
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
     <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -67,7 +67,7 @@ input {width : 270px; height :40px;}
 		</tr>
 		<tr>
 			
-			<td colspan="2"> <a href="#">id pw 찾기</a> | <a href="#">회원가입</a></td>
+			<td colspan="2"> <a href="#">id pw 찾기</a> | <a href="register.jsp">회원가입</a></td>
 		</tr>
 		
 	

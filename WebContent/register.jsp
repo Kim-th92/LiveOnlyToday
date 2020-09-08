@@ -25,47 +25,69 @@ $(function(){
 
     });
 });
+function idChk(){
+	var doc = document.getElementsByName("id")[0];
+	if(doc.value==null||doc.value.trim()=="" ){
+		alert("아이디를 먼저 입력해 주세요!!");
+	} else{
+		open("MemberServlet.do?command=idchk&myid="+doc.value,"","width=200,height=200");
+	}
+}
+
+//id 중복 체크 완료 했는지 여부 확인
+function idChkConfirm(){
+	var chk = document.getElementsByName("id")[0].title;
+	if(chk=="n"){
+		alert("아이디 중복체크를 먼저 해주세요.");
+		document.getElementsByName("id")[0].focus();
+	}
+}
 </script>
 <body>
 <h1>회원가입</h1>
-<form action="#" method="post">
+<form action="MemberServlet.do" method="post">
+<input type="hidden" name ="command" value="registeres"/>
  <table>
  	<tr>
  		<th>아 이 디</th>
- 		<td><input type="text" name ="id"/><button onclick="" class="idkchk"> 중복확인</button></td>
+ 		<td><input type="text" name ="id"  required="required" title="n" /><button onclick="idChk();" class="idkchk"> 중복확인</button></td>
  	</tr>
  	<tr>
  		<th>비밀 번호</th>
- 		<td><input type="password"  id="userPw" name ="pw"/></td>
+ 		<td><input type="password"  id="userPw" name ="pw"  required="required" /></td>
  	</tr>
  	<tr>
  		<th>비밀 번호 확인</th>
- 		<td><input type="password" id="userPwChk"/><font id="chkNotice" size="2"></font></td>
+ 		<td><input type="password" id="userPwChk"  required="required" /><font id="chkNotice" size="2"></font></td>
  		
  		
+ 	</tr>
+ 	<tr>
+ 		<th>닉네임</th>
+ 		<td><input type="text" name ="nickname"  required="required" /><button onclick="nickChk();" class="nickChk"> 중복확인</button></td>
  	</tr>
  	<tr>
  		<th>이름</th>
- 		<td><input type="text" name="name"/></td>
+ 		<td><input type="text" name="name"  required="required" /></td>
  	</tr>
  	<tr>
  		<th>전화번호</th>
- 		<td><input type="text" name="phone"/></td>
+ 		<td><input type="text" name="phone"  required="required" /></td>
  	</tr>
  	<tr>
  		<th>이메일</th>
- 		<td><input type ="email" name="email"/></td>
+ 		<td><input type ="email" name="email"  required="required" /></td>
  	</tr>
  	<tr>
  		<th>주소</th>
- 		<td><textarea name ="addr"></textarea></td>
+ 		<td><textarea name ="addr"  required="required" ></textarea></td>
  	</tr>
  	<tr>
  		<th>생년월일</th>
- 		<td><input type="date" name ="birthday"/></td>
+ 		<td><input type="date" name ="birthday"  required="required" /></td>
  	</tr>
  	<tr>
- 		<td colspan="2"> <input type="submit" value="회원가"/></td>
+ 		<td colspan="2"> <input type="submit" value="회원가입"/></td>
  	</tr>
  
  </table>
