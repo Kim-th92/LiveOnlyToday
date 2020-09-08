@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.whatsup.dao.BoardDao;
+import com.whatsup.dao.BoardDto;
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dto.Member_BoardDto;
 
@@ -32,107 +34,103 @@ public class PageMoveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command=request.getParameter("command");
-		Member_BoardDao dao =new Member_BoardDao();
-		System.out.println("move ì„œë¸”ë¦¿ ë„ì°©command="+command);
+		System.out.println("move ¼­ºí¸´ µµÂø command="+command);
 		
-		//1.ë©”ì¸ í˜ì´ì§€ ì´ë™
+		//1.¸ŞÀÎ ÆäÀÌÁö ÀÌµ¿
 		if(command.equals("main")) {
 			response.sendRedirect("index.jsp");
 		
 		
-		//2.íšŒì‚¬ì†Œê°œ í˜ì´ì§€
+		//2.È¸»ç¼Ò°³ ÆäÀÌÁö	
 		}else if(command.equals("mainintroduce")) {
 			response.sendRedirect("introduce.jsp");
 			
 			
-		//2-1.íšŒì‚¬ì†Œê°œ - ì˜¤ëŠ˜ë§Œ ì‚´ì¡° íƒ­
+		//2-1.È¸»ç¼Ò°³-¿À´Ã¸¸»ìÁ¶ ÅÇ
 		}else if(command.equals("")) {
 			
-		//3.ë…¸ë˜ í˜ì´ì§€
+		//3.³ë·¡ ÆäÀÌÁö
 		}else if(command.equals("mainmusic")) {
 			response.sendRedirect("music.jsp");
 			
-		//3-1.ë…¸ë˜ ìŠ¤íŠ¸ë¦¬ë° í˜ì´ì§€
+		//3-1.³ë·¡ ½ºÆ®¸®¹Ö ÆäÀÌÁö
 		}else if(command.equals("")) {
 			
-		//3-2.ë…¸ë˜ í˜¼ì ë…¸ë˜ë¶€ë¥´ê¸° í˜ì´ì§€
+		//3-2.³ë·¡ È¥ÀÚ ½ºÆ®¸®¹Ö ÆäÀÌÁö
 		}else if(command.equals("")) {
 			
 		
-		//4.ì¶¤ í˜ì´ì§€
+		//4.Ãã ÆäÀÌÁö
 		}else if(command.equals("maindance")) {
 			response.sendRedirect("dance.jsp");
 			
-		//4-1. ì¶¤ ì„ íƒ í˜ì´ì§€
+		//4-1.Ãã ¼±ÅÃ ÆäÀÌÁö
 		}else if(command.equals("")) {
 			
 			
 			
-		//4-2.ì¶¤ ë¶„ì„ í˜ì´ì§€
+		//4-2.Ãã ºĞ¼® ÆäÀÌÁö
 		}else if(command.equals("")) {
 			
-		//5.ììœ  ê²Œì‹œíŒ
+		//5.ÀÚÀ¯ °Ô½ÃÆÇ
 		}else if(command.equals("freeboard")) {
-			List<Member_BoardDto> list= null;//dao.freeList();
-			request.setAttribute("list", list);
-			dispatch("board.jsp	", request, response);
 		
 			
-		//5-1.ë…¸ë˜ ê²Œì‹œíŒ
+		//5-1.³ë·¡ °Ô½ÃÆÇ
 		}else if(command.equals("")) {
 			
-		//5-2.ì¶¤ ê²Œì‹œíŒ
+		//5-2.Ãã °Ô½ÃÆÇ
 		}else if(command.equals("")) {
 			
-		//5-3.ê²Œì‹œíŒ ê¸€ ìƒì„± í˜ì´ì§€(ììœ ê²Œì‹œíŒ)
+		//5-3.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(ÀÚÀ¯°Ô½ÃÆÇ)
 		}else if(command.equals("")) {
 			
 			
-		//5-4.ê²Œì‹œíŒ ê¸€ ìƒì„± í˜ì´ì§€(ë…¸ë˜)
+		//5-4.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(³ë·¡)
 		}else if(command.equals("")) {
 			
-		//5-5.ê²Œì‹œíŒ ê¸€ ìƒì„± í˜ì´ì§€
+		//5-5.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(Ãã)
 		}else if(command.equals("")) {
-		//6.ê³ ê°ì„¼í„° ê²Œì‹œíŒ
+		//6.°í°´¼¾ÅÍ  °Ô½ÃÆÇ
 		}else if(command.equals("servicesenter")) {
 			response.sendRedirect("servicesenter.jsp");
 			
 			
-		//6-1.ê³ ê°ì„¼í„° ì‘ì„± í˜ì´ì§€
+		//6-1.°í°´¼¾ÅÍ ÀÛ¼º ÆäÀÌÁö	
 		}else if(command.equals("")) {
 			
 			
-		//7.ë¡œê·¸ì¸ í˜ì´ì§€ ì´ë™
+		//7.·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿
 		}else if (command.equals("loginpage")) {
 		response.sendRedirect("loginpage.jsp");
 			
-		//8. íšŒì›ê°€ì… í˜ì´ì§€
+		//8. È¸¿ø°¡ÀÔ ÆäÀÌÁö
 		}else if (command.equals("registerpage")) {
 		response.sendRedirect("registerpage.jsp");
 			
 			
-		//9.ê²°ì œ í˜ì´ì§€ (ê²°ì œì¢…ë¥˜ ì„ íƒ)
+		//9.°áÁ¦ ÆäÀÌÁö(°áÁ¦Á¾·ù ¼±ÅÃ)
 		}else if (command.equals("")) {
 			
 			
-		//9-1.ê²°ì œ í˜ì´ì§€(ê²°ì œ ë°©ë²• ì„ íƒ)
+		//9-1.°áÁ¦ ÆäÀÌÁö(°áÁ¦¹æ¹ı ¼±ÅÃ)
 		}else if(command.equals("")) {
 		
-		//10.ì±„íŒ… í˜ì´ì§€
+		//10.Ã¤ÆÃ ÆäÀÌÁö
 		}else if(command.equals("")) {
 			
 		
-		//10-1.ì±„íŒ… ì…ì¥
+		//10-1.Ã¤ÆÃ ÀÔÀå
 		}else if(command.equals("")) {
 		
-		//11.ì§€ë„ í˜ì´ì§€
+		//11.Áöµµ ÆäÀÌÁö
 		}else if(command.equals("")) {
 			
-		//12.ë§ˆì´í˜ì´ì§€
+		//12.¸¶ÀÌÆäÀÌÁö
 		}else if(command.equals("")) {
 			
 			
-		//13.ê´€ë¦¬ì í˜ì´ì§€
+		//13.°ü¸®ÀÚ ÆäÀÌÁö
 		}else if(command.equals("")) {
 			
 			
