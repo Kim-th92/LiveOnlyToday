@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member_Boardmapper">
+	<resultMap type="Free_BoardDto" id="Member_BoardResultMap">
+		<result property="free_no" column="FREE_NO" />
+		<result property="free_title" column="FREE_TITLE" />
+		<result property="free_content" column="FREE_CONTENT" />
+		<result property="free_regdate" column="FREE_REGDATE" />
+		<result property="free_cnt" column="FREE_CNT" />
+		<result property="member_seq" column="MEMBER_SEQ" />
+	</resultMap>
+	<select id="selectList" resultMap="Free_BoardDto">
+		SELECT FREE.FREE_NO,,FREE.FREE_TITLE,MEMBER.NICKNAME,FREE.FREE_REGDATE,FREE_CNT FROM FREE_BOARD FREE INNER JOIN MEMBER_BOARD MEMBER ON FREE.MEMBER_SEQ=MEMBER.MEMBER_SEQ
+	</select>
+	<select id="selectOne" resultMap="Free_BoardDto">
+		SELECT FREE.FREE_NO,,FREE.FREE_TITLE,MEMBER.NICKNAME,FREE.FREE_REGDATE,FREE_CNT FROM FREE_BOARD FREE INNER JOIN MEMBER_BOARD MEMBER ON FREE.MEMBER_SEQ=MEMBER.MEMBER_SEQ WHERE MEMBER_SEQ=#{member_seq}
+	</select>
+	<insert id="insert" parameterType="Free_BoardDto">
+		INSERT INTO FREE_BOARD VALUES(FREE_SEQ.NEXTVAL,#{free_title},#{free_content},SYSDATE,0,#{member_seq})
+	</insert>
+	<update id="update" parameterType="Free_BoardDto">
+		UPDATE FREE_BOARD SET FREE_TITLE=#{free_title},FREE_CONTENT=#{free_content} WHERE FREE_NO=#{free_no}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM FREE_BOARD WHERE FREE_NO=#{free_no}
+	</delete>
+</mapper>
