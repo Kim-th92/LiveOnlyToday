@@ -10,6 +10,7 @@
 		<typeAlias type="com.whatsup.dto.Member_BoardDto" alias="member_BoardDto"/>
 		<typeAlias type="com.whatsup.dto.Free_BoardDto" alias="free_boardDto"/>
 		
+
 	</typeAliases>
 
 	<environments default="development">
