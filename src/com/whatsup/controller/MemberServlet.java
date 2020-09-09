@@ -15,6 +15,7 @@ import org.apache.catalina.Session;
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dto.Member_BoardDto;
 
+
 @WebServlet("/member.do")
 public class MemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
