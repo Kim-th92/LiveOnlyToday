@@ -12,17 +12,24 @@ public class Free_BoardDao extends SqlMapConfig {
 	
 	public List<Free_BoardDto> selectList(){
 		SqlSession session=null;
-		
-
 		List<Free_BoardDto> list=new ArrayList<Free_BoardDto>();
-		//¿©±â
 		session=getSqlSessionFactory().openSession();
-
 		list=session.selectList(namespace+"selectList");
-
 		session.close();
-
 		return list;
 		
+	}
+	public int insert(Free_BoardDto dto) {
+		SqlSession session=null;
+		
+		int res=0;
+		session=getSqlSessionFactory().openSession();
+		
+		res=session.insert(namespace+"insert",dto);
+		session.commit();
+		session.close();
+		
+		
+		return res;
 	}
 }

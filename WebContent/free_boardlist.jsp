@@ -12,7 +12,7 @@
 <%
 	Free_BoardDao dao = new Free_BoardDao();
 	List<Free_BoardDto> list = dao.selectList();
-	
+	String nickname=(String)session.getAttribute("nickname");
 %>
 </head>
 <body>
@@ -59,7 +59,7 @@
 %>
 		<tr>
 			<td colspan="5" align="right">
-				<input type="button" value="글작성" onclick="" />
+				<input type="button" value="글작성" onclick="location.href='move.do?command=freeinsertpage&'" />
 			</td>
 		</tr>
 	</table>

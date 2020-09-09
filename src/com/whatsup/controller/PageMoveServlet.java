@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dto.Member_BoardDto;
@@ -32,103 +34,107 @@ public class PageMoveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command=request.getParameter("command");
-		System.out.println("move ¼­ºí¸´ µµÂø command="+command);
-		
-		//1.¸ŞÀÎ ÆäÀÌÁö ÀÌµ¿
+		System.out.println("move í˜ì´ì§€ ë„ì°© command="+command);
+		HttpSession session=request.getSession();
+		//1.ë©”ì¸í˜ì´ì§€
 		if(command.equals("main")) {
 			response.sendRedirect("index.jsp");
 		
 		
-		//2.È¸»ç¼Ò°³ ÆäÀÌÁö	
+		//2.íšŒì‚¬ì†Œê°œ
 		}else if(command.equals("mainintroduce")) {
 			response.sendRedirect("introduce.jsp");
 			
 			
-		//2-1.È¸»ç¼Ò°³-¿À´Ã¸¸»ìÁ¶ ÅÇ
+		//2-1.íšŒì‚¬ì†Œê°œ -ì¸ì›ì†Œê°œ
 		}else if(command.equals("")) {
 			
-		//3.³ë·¡ ÆäÀÌÁö
+		//3.ë…¸ë˜ í˜ì´ì§€
 		}else if(command.equals("mainmusic")) {
 			response.sendRedirect("music.jsp");
 			
-		//3-1.³ë·¡ ½ºÆ®¸®¹Ö ÆäÀÌÁö
+		//3-1.
 		}else if(command.equals("")) {
 			
-		//3-2.³ë·¡ È¥ÀÚ ½ºÆ®¸®¹Ö ÆäÀÌÁö
+		//3-2.
 		}else if(command.equals("")) {
 			
 		
-		//4.Ãã ÆäÀÌÁö
+		//4.ëŒ„ìŠ¤í˜ì´ì§€
 		}else if(command.equals("maindance")) {
 			response.sendRedirect("dance.jsp");
 			
-		//4-1.Ãã ¼±ÅÃ ÆäÀÌÁö
+		//4-1.
 		}else if(command.equals("")) {
 			
 			
 			
-		//4-2.Ãã ºĞ¼® ÆäÀÌÁö
+		//4-2.
 		}else if(command.equals("")) {
 			
-		//5.ÀÚÀ¯ °Ô½ÃÆÇ
+		//5.ììœ ê²Œì‹œíŒ
 		}else if(command.equals("freeboard")) {
 			response.sendRedirect("free_boardlist.jsp");
 			
-		//5-1.³ë·¡ °Ô½ÃÆÇ
+		//5-1.ê²Œì‹œíŒ ê¸€ ì‘ì„±í˜ì´ì§€
+		}else if(command.equals("freeinsertpage")) {
+		if(session.getAttribute("nickname")==null) {
+			jsResponse("ë¨¼ì € ë¡œê·¸ì¸ì„ í•´ ì£¼ì„¸ìš”", "move.do?command=freeboard", response);
+		}else {
+			response.sendRedirect("free_insertpage.jsp");
+		}
+		//5-2.ê²Œì‹œíŒ ê¸€ ìì„¸íˆ ë³´ê¸° í˜ì´ì§€
 		}else if(command.equals("")) {
 			
-		//5-2.Ãã °Ô½ÃÆÇ
-		}else if(command.equals("")) {
-			
-		//5-3.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(ÀÚÀ¯°Ô½ÃÆÇ)
+		//5-3.
 		}else if(command.equals("")) {
 			
 			
-		//5-4.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(³ë·¡)
+		//5-4.
 		}else if(command.equals("")) {
 			
-		//5-5.°Ô½ÃÆÇ ±Û »ı¼º ÆäÀÌÁö(Ãã)
+		//5-5.
 		}else if(command.equals("")) {
-		//6.°í°´¼¾ÅÍ  °Ô½ÃÆÇ
+		//6.ê³ ê°ì„¼í„°
 		}else if(command.equals("servicesenter")) {
 			response.sendRedirect("servicesenter.jsp");
 			
 			
-		//6-1.°í°´¼¾ÅÍ ÀÛ¼º ÆäÀÌÁö	
+		//6-1.ê³ ê°ì„¼í„° ê¸€ ì‘ì„±
 		}else if(command.equals("")) {
 			
 			
-		//7.·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿
+		//7.ë¡œê·¸ì¸ í˜ì´ì§€
 		}else if (command.equals("loginpage")) {
 		response.sendRedirect("loginpage.jsp");
 			
-		//8. È¸¿ø°¡ÀÔ ÆäÀÌÁö
+		//8.íšŒì›ê°€ì… í˜ì´ì§€
 		}else if (command.equals("registerpage")) {
 		response.sendRedirect("registerpage.jsp");
 			
 			
-		//9.°áÁ¦ ÆäÀÌÁö(°áÁ¦Á¾·ù ¼±ÅÃ)
+		//9.ì±„íŒ…ê²Œì‹œíŒ
 		}else if (command.equals("")) {
 			
 			
-		//9-1.°áÁ¦ ÆäÀÌÁö(°áÁ¦¹æ¹ı ¼±ÅÃ)
+		//9-1.ì±„íŒ… ì…ë ¥
 		}else if(command.equals("")) {
 		
-		//10.Ã¤ÆÃ ÆäÀÌÁö
+		//10.ê²°ì œ
 		}else if(command.equals("")) {
 			
 		
-		//10-1.Ã¤ÆÃ ÀÔÀå
+		//10-1.ê²°ì œ ì¢…ë¥˜ ì„ íƒ
 		}else if(command.equals("")) {
 		
-		//11.Áöµµ ÆäÀÌÁö
+		//11.ì§€ë„
 		}else if(command.equals("")) {
 			
-		//12.¸¶ÀÌÆäÀÌÁö
+		//12.ë§ˆì´í˜ì´ì§€
 		}else if(command.equals("")) {
 			
 			
-		//13.°ü¸®ÀÚ ÆäÀÌÁö
+		//13ê´€ë¦¬ìí˜ì´ì§€
 		}else if(command.equals("")) {
 			
 			

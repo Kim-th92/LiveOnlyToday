@@ -25,6 +25,5 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/whatsup/db/Free_Board-mapper.xml"/>
-		<mapper resource="com/whatsup/db/mybatis-mapper.xml" />
 	</mappers>
 </configuration>
