@@ -33,7 +33,7 @@ public class PageMoveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command=request.getParameter("command");
-		System.out.println("move ���� ���� command="+command);
+		System.out.println("move  command="+command);
 		
 		//1.���� ������ �̵�
 		if(command.equals("main")) {
