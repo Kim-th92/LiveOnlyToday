@@ -1,7 +1,12 @@
 package com.whatsup.dao;
 
 import org.apache.ibatis.session.SqlSession;
+
 import com.whatsup.dto.Member_BoardDto;
+
+
+
+
 
 public class Member_BoardDao extends SqlMapConfig {
 	private String namespace= "Member_Boardmapper.";

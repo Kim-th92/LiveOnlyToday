@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> maggie
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dto.Member_BoardDto;
 
@@ -32,103 +36,103 @@ public class PageMoveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command=request.getParameter("command");
-		System.out.println("move ¼­ºí¸´ µµÂø command="+command);
+		System.out.println("move ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ command="+command);
 		
-		//1.¸ÞÀÎ ÆäÀÌÁö ÀÌµ¿
+		//1.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 		if(command.equals("main")) {
 			response.sendRedirect("index.jsp");
 		
 		
-		//2.È¸»ç¼Ò°³ ÆäÀÌÁö	
+		//2.È¸ï¿½ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
 		}else if(command.equals("mainintroduce")) {
 			response.sendRedirect("introduce.jsp");
 			
 			
-		//2-1.È¸»ç¼Ò°³-¿À´Ã¸¸»ìÁ¶ ÅÇ
+		//2-1.È¸ï¿½ï¿½Ò°ï¿½-ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		}else if(command.equals("")) {
 			
-		//3.³ë·¡ ÆäÀÌÁö
+		//3.ï¿½ë·¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("mainmusic")) {
 			response.sendRedirect("music.jsp");
 			
-		//3-1.³ë·¡ ½ºÆ®¸®¹Ö ÆäÀÌÁö
+		//3-1.ï¿½ë·¡ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
-		//3-2.³ë·¡ È¥ÀÚ ½ºÆ®¸®¹Ö ÆäÀÌÁö
+		//3-2.ï¿½ë·¡ È¥ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
 		
-		//4.Ãã ÆäÀÌÁö
+		//4.ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("maindance")) {
 			response.sendRedirect("dance.jsp");
 			
-		//4-1.Ãã ¼±ÅÃ ÆäÀÌÁö
+		//4-1.ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
 			
 			
-		//4-2.Ãã ºÐ¼® ÆäÀÌÁö
+		//4-2.ï¿½ï¿½ ï¿½Ð¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
-		//5.ÀÚÀ¯ °Ô½ÃÆÇ
+		//5.ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½
 		}else if(command.equals("freeboard")) {
 			response.sendRedirect("free_boardlist.jsp");
 			
-		//5-1.³ë·¡ °Ô½ÃÆÇ
+		//5-1.ï¿½ë·¡ ï¿½Ô½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
-		//5-2.Ãã °Ô½ÃÆÇ
+		//5-2.ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
-		//5-3.°Ô½ÃÆÇ ±Û »ý¼º ÆäÀÌÁö(ÀÚÀ¯°Ô½ÃÆÇ)
+		//5-3.ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½)
 		}else if(command.equals("")) {
 			
 			
-		//5-4.°Ô½ÃÆÇ ±Û »ý¼º ÆäÀÌÁö(³ë·¡)
+		//5-4.ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ë·¡)
 		}else if(command.equals("")) {
 			
-		//5-5.°Ô½ÃÆÇ ±Û »ý¼º ÆäÀÌÁö(Ãã)
+		//5-5.ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½)
 		}else if(command.equals("")) {
-		//6.°í°´¼¾ÅÍ  °Ô½ÃÆÇ
+		//6.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½Ô½ï¿½ï¿½ï¿½
 		}else if(command.equals("servicesenter")) {
 			response.sendRedirect("servicesenter.jsp");
 			
 			
-		//6-1.°í°´¼¾ÅÍ ÀÛ¼º ÆäÀÌÁö	
+		//6-1.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
 		}else if(command.equals("")) {
 			
 			
-		//7.·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿
+		//7.ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 		}else if (command.equals("loginpage")) {
 		response.sendRedirect("loginpage.jsp");
 			
-		//8. È¸¿ø°¡ÀÔ ÆäÀÌÁö
+		//8. È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if (command.equals("registerpage")) {
 		response.sendRedirect("registerpage.jsp");
 			
 			
-		//9.°áÁ¦ ÆäÀÌÁö(°áÁ¦Á¾·ù ¼±ÅÃ)
+		//9.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 		}else if (command.equals("")) {
 			
 			
-		//9-1.°áÁ¦ ÆäÀÌÁö(°áÁ¦¹æ¹ý ¼±ÅÃ)
+		//9-1.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 		}else if(command.equals("")) {
 		
-		//10.Ã¤ÆÃ ÆäÀÌÁö
+		//10.Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
 		
-		//10-1.Ã¤ÆÃ ÀÔÀå
+		//10-1.Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 		
-		//11.Áöµµ ÆäÀÌÁö
+		//11.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
-		//12.¸¶ÀÌÆäÀÌÁö
+		//12.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
 			
-		//13.°ü¸®ÀÚ ÆäÀÌÁö
+		//13.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}else if(command.equals("")) {
 			
 			
