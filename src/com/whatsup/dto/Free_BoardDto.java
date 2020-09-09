@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class Free_BoardDto {
 	private int free_no;
+	private String nickname;
 	private String free_title;
 	private String free_content;
 	private Timestamp free_regdate;
@@ -12,27 +13,34 @@ public class Free_BoardDto {
 	
 	
 	
+	
 	public Free_BoardDto() {
-		
+	
+	}
+	public Free_BoardDto(String nickname, String free_title, String free_content) {
+		this.nickname = nickname;
+		this.free_title = free_title;
+		this.free_content = free_content;
 	}
 	
 	
+
+
 	public Free_BoardDto(String free_title, String free_content) {
-		super();
 		this.free_title = free_title;
 		this.free_content = free_content;
 	}
-
-
-	public Free_BoardDto(int free_no, String free_title, String free_content, Timestamp free_regdate, int free_cnt,
-			int member_seq) {
-		this.free_no = free_no;
-		this.free_title = free_title;
-		this.free_content = free_content;
-		this.free_regdate = free_regdate;
-		this.free_cnt = free_cnt;
-		this.member_seq = member_seq;
+	public String getNickname() {
+		return nickname;
 	}
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+
+	
 	public int getFree_no() {
 		return free_no;
 	}

@@ -69,9 +69,9 @@ footer{}
 					<li><a href="#">ON-AIR </a></li>
 				</ul></li>
 			<li><a href="#">춤</a></li>
-			<li><a href="#">게시판</a>
+			<li><a href="move.do?command=freeboard">게시판</a>
 				<ul>
-					<li><a href="#">자유 게시판</a></li>
+					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
 					<li><a href="#"> 춤</a></li>
 					<li><a href="#"> 노래</a></li>
 					<li><a href="#">채팅</a></li>

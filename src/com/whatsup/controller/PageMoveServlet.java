@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.whatsup.dao.BoardDao;
-import com.whatsup.dao.BoardDto;
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dto.Member_BoardDto;
 
@@ -74,7 +72,7 @@ public class PageMoveServlet extends HttpServlet {
 			
 		//5.자유 게시판
 		}else if(command.equals("freeboard")) {
-		
+			response.sendRedirect("free_boardlist.jsp");
 			
 		//5-1.노래 게시판
 		}else if(command.equals("")) {
