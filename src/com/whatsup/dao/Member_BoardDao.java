@@ -18,10 +18,22 @@ public class Member_BoardDao extends SqlMapConfig {
 		return res;
 	}
 	//로그인
-
+	public Member_BoardDto login(String id,String pw) {
+		SqlSession session = null;
+		Member_BoardDto dto = null;
+		Member_BoardDto duo = new Member_BoardDto();
+		duo.setId(id);
+		duo.setPw(pw);
+		session =getSqlSessionFactory().openSession();
+		dto  = session.selectOne(namespace+"login",duo);
+		session.close();
+		
+		
+		return dto;
+	}
 	
 	
-	//아이디 중복확인(닉네임도)	
+	//아이디 중복확인	
 	
 	public Member_BoardDto check (String myid) {
 		SqlSession session =null;
@@ -29,6 +41,7 @@ public class Member_BoardDao extends SqlMapConfig {
 		session= getSqlSessionFactory().openSession();
 		dto = session.selectOne(namespace +"selectId", myid);
 		session.close();
+		
 		return dto;
 	}
 	

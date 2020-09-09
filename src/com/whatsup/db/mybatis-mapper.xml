@@ -20,15 +20,16 @@
 		<result property="regdate" column="REGDATE" />
 	</resultMap>
 
-	<select id="selectList" resultType="Member_BoardResultMap">
-	 SELECT MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,REGDATE FROM MEMBER_BOARD 
-	 ORDER BY MEMBER_SEQ DESC
-	</select>
 	<insert id="insert" parameterType="Member_BoardDto">
 		INSERT INTO MEMBER_BOARD VALUES(MEMBER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{nickname},'USER',#{email},
-		#{birthday},#{phone},#{addr},'NOPAY','N',sysdate)
+		#{birthday},#{phone},#{addr},'NOPAY','N',SYSDATE)
 	</insert>
 	<select id="selectId" resultType="Member_BoardDto" parameterType="String">
 		SELECT ID FROM MEMBER_BOARD WHERE ID = #{id}
+	</select>
+	
+	<select id="login" resultType="Member_BoardDto" parameterType ="String">
+		SELECT MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD
+		WHERE ID=#{id} AND PW=#{pw} AND DELFLAG='N' 
 	</select>
 </mapper>

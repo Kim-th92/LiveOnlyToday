@@ -25,7 +25,8 @@ input {width : 270px; height :40px;}
 
 <h1>로그인</h1>
 <div id="input">
-<form action="MemberServlet.do" method="post">
+<form action="member.do" method="post">
+	<input type="hidden" name="command" value="login"/>
 	<div class="g-signin2" data-onsuccess="onSignIn"></div>
     <script>
       function onSignIn(googleUser) {
@@ -67,7 +68,7 @@ input {width : 270px; height :40px;}
 		</tr>
 		<tr>
 			
-			<td colspan="2"> <a href="#">id pw 찾기</a> | <a href="register.jsp">회원가입</a></td>
+			<td colspan="2"> <a href="findidpw.jsp">id pw 찾기</a> | <a href="register.jsp">회원가입</a></td>
 		</tr>
 		
 	
