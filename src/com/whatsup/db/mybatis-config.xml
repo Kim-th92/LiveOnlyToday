@@ -8,14 +8,6 @@
 	
 	<typeAliases>
 		<typeAlias type="com.whatsup.dto.Member_BoardDto" alias="member_BoardDto"/>
-	<!--   <typeAlias type="com.whatsup.dto.Qna_BoardDto" alias="qna_boardDto"/>
-		<typeAlias type="com.whatsup.dto.Stream_BoardDto" alias="stream_boardDto"/>
-		<typeAlias type="com.whatsup.dto.File_UploadDto" alias="file_uploadDto"/>
-		<typeAlias type="com.whatsup.dto.Chat_BoardDto" alias="chat_boardDto"/>
-		<typeAlias type="com.whatsup.dto.Dance_BoardDto" alias="dance_boardDto"/>
-		<typeAlias type="com.whatsup.dto.Song_BoardDto" alias="song_boardDto"/>
-		<typeAlias type="com.whatsup.dto.Free_BoardDto" alias="free_boardDto"/>
-		<typeAlias type="com.whatsup.dto.Comment_TableDto" alias="comment_tableDto"/>-->
 	</typeAliases>
 
 	<environments default="development">

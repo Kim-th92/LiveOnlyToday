@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+      <% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +27,21 @@ $(function(){
 
     });
 });
+
+function nickChk(){
+	var doc = document.getElementsByName("nickname")[0];
+	if(doc.value==null||doc.value.trim()=="" ){
+		alert("닉네임을 먼저 입력해주세!!");
+	} else{
+		open("member.do?command=nickchk&nick="+doc.value,"","width=200,height=200");
+	}
+}
 function idChk(){
 	var doc = document.getElementsByName("id")[0];
 	if(doc.value==null||doc.value.trim()=="" ){
 		alert("아이디를 먼저 입력해 주세요!!");
 	} else{
-		open("MemberServlet.do?command=idchk&myid="+doc.value,"","width=200,height=200");
+		open("member.do?command=idchk&myid="+doc.value,"","width=200,height=200");
 	}
 }
 
@@ -45,7 +56,7 @@ function idChkConfirm(){
 </script>
 <body>
 <h1>회원가입</h1>
-<form action="MemberServlet.do" method="post">
+<form action="member.do" method="post">
 <input type="hidden" name ="command" value="registeres"/>
  <table>
  	<tr>

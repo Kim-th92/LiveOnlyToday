@@ -11,6 +11,7 @@
 onload=function(){
 	var id = opener.document.getElementsByName("id")[0].value;
 	document.getElementsByName("id")[0].value= id;
+	
 }
 	function idConfirm(bool){
 		if(bool==="true"){
@@ -33,7 +34,7 @@ onload=function(){
 			<td><input type="text" name="id" readonly="readonly"/></td>
 		</tr>	
 		<tr>
-			<td><%=notUsed.equals("true")?"아이디 생성가능":"중복된 아이디 존재"%></td>
+			<td><%=notUsed.equals("true")?"생성가능":"중복된 유저 존재 "%></td>
 		</tr>
 		<tr>
 			<td>
