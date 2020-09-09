@@ -8,11 +8,8 @@
 	
 	<typeAliases>
 		<typeAlias type="com.whatsup.dto.Member_BoardDto" alias="member_BoardDto"/>
-<<<<<<< HEAD
 		<typeAlias type="com.whatsup.dto.Free_BoardDto" alias="free_boardDto"/>
-		
-=======
->>>>>>> maggie
+
 	</typeAliases>
 
 	<environments default="development">
