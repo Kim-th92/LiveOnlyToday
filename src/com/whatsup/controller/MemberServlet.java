@@ -89,7 +89,7 @@ public class MemberServlet extends HttpServlet {
 		 		session.setAttribute("login",dto);//login 이란 이름으로 dto를  담을것임
 		 		
 		 		//setMaxInactiveInterval() : default 30분 , 음수 일때 무제한 
-		 		session.setMaxInactiveInterval(10*60);
+		 		session.setMaxInactiveInterval(-1);
 		 		response.sendRedirect("index.jsp");
 			}else {
 				String err = "ID 또는 비밀 번호가 일치하지 않습니다.";

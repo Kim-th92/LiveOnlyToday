@@ -8,35 +8,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%
-	Free_BoardDto dto=(Free_BoardDto)request.getAttribute("dto");
-	Member_BoardDto mdto=(Member_BoardDto)session.getAttribute("login");
+	Free_BoardDto free_dto=(Free_BoardDto)request.getAttribute("dto");
+	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
 %>
 </head>
 <body>
+<%@ include file="./format/header.jsp" %>
 	<table border="1">
 		<tr>
 			<th>이름</th>
-			<td><input type="text" name="myname" value="<%=dto.getNickname() %>" readonly="readonly" /></td>
+			<td><input type="text" name="myname" value="<%=free_dto.getNickname() %>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<th>제목</th>
-			<td><input type="text" name="mytitle" value="<%=dto.getFree_title()%>" readonly="readonly" /></td>
+			<td><input type="text" name="mytitle" value="<%=free_dto.getFree_title()%>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<th>조회수</th>
-			<td><input type="text" name="mytitle" value="<%=dto.getFree_cnt()%>" readonly="readonly" /></td>
+			<td><input type="text" name="mytitle" value="<%=free_dto.getFree_cnt()%>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea rows="10" cols="60" name="mycontent" readonly="readonly"><%=dto.getFree_content() %></textarea></td>
+			<td><textarea rows="10" cols="60" name="mycontent" readonly="readonly"><%=free_dto.getFree_content() %></textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
 			<%
-				if(dto.getNickname().equals(mdto.getNickname())){
+				if(dto.getNickname().equals(member_dto.getNickname())){
 			%>		
-				<input type="button" value="수정" onclick="location.href='move.do?command=updatepage&free_no=<%=dto.getFree_no()%>'"/>
-				<input type="button" value="삭제" onclick="location.href='move.do?command=delete&free_no=<%=dto.getFree_no()%>'"/>
+				<input type="button" value="수정" onclick="location.href='move.do?command=updatepage&free_no=<%=free_dto.getFree_no()%>'"/>
+				<input type="button" value="삭제" onclick="location.href='move.do?command=delete&free_no=<%=free_dto.getFree_no()%>'"/>
 			<%		
 				}
 			%>
@@ -45,5 +46,6 @@
 			</td>
 		</tr>
 	</table>
+<%@ include file="./format/footer.jsp" %>
 </body>
 </html>

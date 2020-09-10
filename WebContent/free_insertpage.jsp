@@ -8,16 +8,17 @@
 <title>Insert title here</title>
 </head>
 <%
-	Member_BoardDto dto=(Member_BoardDto)session.getAttribute("login");
+	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
 %>
 <body>
+<%@ include file="./format/header.jsp" %>
 	<form action="board.do" method="post">
 		<input type="hidden" name="command" value="free_insert"/>
-		<input type="hidden" name="member_seq" value="<%=dto.getMember_seq()%>"/>
+		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>"/>
 		<table border="1">
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="nickname" value="<%=dto.getNickname() %>" readonly="readonly" /></td>
+				<td><input type="text" name="nickname" value="<%=member_dto.getNickname() %>" readonly="readonly" /></td>
 			</tr>
 			<tr>
 				<th>제목</th>
@@ -35,5 +36,6 @@
 			</tr>
 		</table>
 	</form>
+<%@ include file="./format/footer.jsp" %>
 </body>
 </html>
