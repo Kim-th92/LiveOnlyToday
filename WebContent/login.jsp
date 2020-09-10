@@ -73,11 +73,11 @@ input {width : 270px; height :40px;}
    		<%
    			String error = request.getParameter("err");
    			if(error==null){
-   				error ="";
-   			}else if(error.equals("err")){
+ 
+   			}else{
    			%>
-   		var errorMsg = document.queryselctor('.err');
-   		errorMsg.innerHTML  = <%=error%>;
+   		document.querySelctor('.err').errorMsg.textContent  = <%=error%>;
+   		
    		
    		<%
    			}
