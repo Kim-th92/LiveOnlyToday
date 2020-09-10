@@ -17,8 +17,8 @@ public class Free_BoardDto {
 	public Free_BoardDto() {
 	
 	}
-	public Free_BoardDto(String nickname, String free_title, String free_content) {
-		this.nickname = nickname;
+	public Free_BoardDto(int member_seq, String free_title, String free_content) {
+		this.member_seq = member_seq;
 		this.free_title = free_title;
 		this.free_content = free_content;
 	}
