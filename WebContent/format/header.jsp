@@ -20,7 +20,7 @@ a{text-decoration: none; color:black;}
 header{ background-color:#fdde60; margin :0;}
 header>div{	display : inline-block;  }
 section {padding : 50px;}
-.navigation { margine:0; padding:0;list-style: none;font-size: 20pt;padding-left: 200px; transform:translate(50px,-25px);}
+.navigation { margine:0; padding:0;list-style: none;font-size: 20pt;padding-left: 200px; transform:translate(50px,-25px);position : absolute;}
 .navigation li{float : left;list-style: none;width : 150px;height:40px;text-align: center; }
 .navigation li>ul>li {display : none;}
 .navigation li>a:hover{color:white;}

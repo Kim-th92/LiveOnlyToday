@@ -31,9 +31,20 @@ $(function(){
 function nickChk(){
 	var doc = document.getElementsByName("nickname")[0];
 	if(doc.value==null||doc.value.trim()=="" ){
-		alert("닉네임을 먼저 입력해주세!!");
+		alert("닉네임을 먼저 입력해주세요!!");
 	} else{
-		open("member.do?command=nickchk&nick="+doc.value,"","width=200,height=200");
+		onload=function(){
+			
+		}
+			function idConfirm(bool){
+				if(bool==="true"){
+					opener.document.getElementsByName("id")[0].title ="y";
+					opener.document.getElementsByName("pw")[0].focus();
+				}else{
+					opener.document.getElementsByName("id")[0].focus();
+				}
+				self.close();
+			}
 	}
 }
 function idChk(){
@@ -75,7 +86,7 @@ function idChkConfirm(){
  	</tr>
  	<tr>
  		<th>닉네임</th>
- 		<td><input type="text" name ="nickname"  required="required" /><button onclick="nickChk();" class="nickChk"> 중복확인</button></td>
+ 		<td><input type="text" name ="nickname"  required="required" /><button onclick="nickChk();" class="nickChk"> 중복확인</button><p class="nick"></p></td>
  	</tr>
  	<tr>
  		<th>이름</th>
