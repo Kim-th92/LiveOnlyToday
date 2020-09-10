@@ -95,7 +95,30 @@ function idChkConfirm(){
  	</tr>
  	<tr>
  		<th>생년월일</th>
- 		<td><input type="date" name ="birthday"  required="required" /></td>
+ 		<td>
+			<select name="birthyear" required> 
+				<%for(int i = 2020 ; i>=1900 ; i--){
+				%>
+				<option value="<%=i%>"><%=i%>년</option>
+				<% }	%>
+							
+			</select> 		
+			<select name="birthmonth" required> 
+				<%for(int i = 1	 ; i<=12 ; i++){
+				%>
+				<option value="<%=i%>"><%=i%>월</option>
+				<% }	%>
+							
+			</select> 	
+			<select name="birthdate" required> 
+				<%for(int i = 1 ; i<=31 ; i++){
+				%>
+				<option value="<%=i%>"><%=i%>일</option>
+				<% }	%>
+							
+			</select> 	
+
+ 		</td>
  	</tr>
  	<tr>
  		<td colspan="2"> <input type="submit" value="회원가입"/></td>

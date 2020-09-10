@@ -9,10 +9,7 @@
 	<typeAliases>
 		<typeAlias type="com.whatsup.dto.Member_BoardDto" alias="member_BoardDto"/>
 		<typeAlias type="com.whatsup.dto.Free_BoardDto" alias="free_boardDto"/>
-<<<<<<< HEAD
-=======
-		
->>>>>>> 833d90a4503ad6a4c9c464b696f30cfa861f61f9
+
 
 	</typeAliases>
 

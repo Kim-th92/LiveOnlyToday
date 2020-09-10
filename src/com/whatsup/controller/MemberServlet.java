@@ -53,7 +53,10 @@ public class MemberServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String phone = request.getParameter("phone");
 			String addr = request.getParameter("addr");
-			String birthday = request.getParameter("birthday");
+			String birthyear = request.getParameter("birthyear");
+			String birthmonth = request.getParameter("birthmonth");
+			String birthdate = request.getParameter("birthdate");
+			String birthday = birthyear+"-"+birthmonth+"-"+birthdate;
 			String email = request.getParameter("email");
 			
 			Member_BoardDto dto = new Member_BoardDto();
