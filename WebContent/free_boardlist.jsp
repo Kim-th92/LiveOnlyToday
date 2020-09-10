@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.whatsup.dao.Member_BoardDao"%>
 <%@page import="com.whatsup.dto.Free_BoardDto"%>
 <%@page import="java.util.List"%>
@@ -12,6 +15,11 @@
 <%
 	Free_BoardDao dao = new Free_BoardDao();
 	List<Free_BoardDto> list = dao.selectList();
+	SimpleDateFormat ymd = new SimpleDateFormat("MM.dd");
+	SimpleDateFormat hms = new SimpleDateFormat("HH:mm");
+	Timestamp ts = new Timestamp(new Date().getTime());
+	
+
 	
 %>
 </head>
@@ -28,7 +36,7 @@
 			<th>이름</th>
 			<th>제목</th>
 			<th>날짜</th>
-			<th>조회</th>
+			<th>조회수</th>
 		</tr>
 <%
 	if(list.size()==0){
@@ -50,8 +58,13 @@
 		<tr>
 			<td><%=list.get(i).getFree_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="#"><%=list.get(i).getFree_title() %></a></td>
-			<td><%=list.get(i).getFree_regdate() %></td>
+			<td><a href="move.do?command=selectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
+			<td><a><%=hms.format(list.get(i).getFree_regdate()) %></a></td>
+			<td align="center"><a><%=list.get(i).getFree_cnt() %></a></td>
+<% 				
+
+
+%>
 		</tr>
 <%
 		}
@@ -59,7 +72,7 @@
 %>
 		<tr>
 			<td colspan="5" align="right">
-				<input type="button" value="글작성" onclick="" />
+				<input type="button" value="글작성" onclick="location.href='move.do?command=freeinsertpage'" />
 			</td>
 		</tr>
 	</table>

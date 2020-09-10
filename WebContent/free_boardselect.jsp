@@ -1,3 +1,4 @@
+<%@page import="com.whatsup.dto.Member_BoardDto"%>
 <%@page import="com.whatsup.dto.Free_BoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,6 +9,7 @@
 <title>Insert title here</title>
 <%
 	Free_BoardDto dto=(Free_BoardDto)request.getAttribute("dto");
+	Member_BoardDto mdto=(Member_BoardDto)session.getAttribute("login");
 %>
 </head>
 <body>
@@ -30,8 +32,15 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<input type="button" value="수정" onclick="location.href=''"/>
-				<input type="button" value="삭제" onclick="location.href=''"/>
+			<%
+				if(dto.getNickname().equals(mdto.getNickname())){
+			%>		
+				<input type="button" value="수정" onclick="location.href='move.do?command=updatepage&free_no=<%=dto.getFree_no()%>'"/>
+				<input type="button" value="삭제" onclick="location.href='move.do?command=delete&free_no=<%=dto.getFree_no()%>'"/>
+			<%		
+				}
+			%>
+				
 				<input type="button" value="목록" onclick="location.href='move.do?command=freeboard'"/>
 			</td>
 		</tr>
