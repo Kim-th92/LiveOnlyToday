@@ -96,7 +96,7 @@ footer{}
 	 		}else{
 	 	%>		
 	 	<div id="login">
-	 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a> </p>
+	 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a> <button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button></p>
 	 	</div>
 	 	<% 		
 	 		}
