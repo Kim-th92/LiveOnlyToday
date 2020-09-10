@@ -20,21 +20,13 @@ a{text-decoration: none; color:black;}
 header{ background-color:#fdde60; margin :0;}
 header>div{	display : inline-block;  }
 section {padding : 50px;}
-.navigation { margine:0; padding:0;list-style: none;font-size: 20pt;padding-left: 200px; transform:translate(50px,-25px);position : absolute;}
-.navigation li{float : left;list-style: none;width : 150px;height:40px;text-align: center; }
-.navigation li>ul>li {display : none;}
-.navigation li>a:hover{color:white;}
-.navigation li:hover .navigation li>ul>li {display :block;}
+ul { margine:0; padding:0;list-style: none;font-size: 20pt; transform:translate(50px,-40px);}
+ul li{float : left; line-height:40px; list-style: none;width : 150px;height:40px;text-align:left; }
+ul li ul li {display:none;}
+ul li>a:hover{color:darkgray; border-bottom: 1px solid black;}
+
+ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 #login {float :right ;padding :40px 80px 0px 20px;}
-#dance {
-	margin:0;
-	padding:0;
-	width: 600px;
-	height: 600px;
-}
-#img{float:right;margin:0;
-	padding:0;
-}
 
 </style>
 </head>
@@ -47,7 +39,7 @@ section {padding : 50px;}
 		</div>
 
 		<div id="nav-bar">
-		<ul class="navigation">
+		<ul >
 			<li><a href="#">회사소개</a>
 				<ul>
 				
@@ -86,7 +78,7 @@ section {padding : 50px;}
 	 		}else{
 	 	%>		
 	 	<div id="login">
-	 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a> </p>
+	 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a><button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button> </p>
 	 	</div>
 	 	<% 		
 	 		}
