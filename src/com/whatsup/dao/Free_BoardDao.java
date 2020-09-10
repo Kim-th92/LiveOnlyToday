@@ -19,6 +19,15 @@ public class Free_BoardDao extends SqlMapConfig {
 		return list;
 		
 	}
+	public Free_BoardDto selectOne(int free_no) {
+		SqlSession session=null;
+		
+		Free_BoardDto dto=null;
+		session=getSqlSessionFactory().openSession(true);
+		dto=session.selectOne(namespace+"selectOne",free_no);
+		session.close();
+		return dto;
+	}
 	public int insert(Free_BoardDto dto) {
 		SqlSession session=null;
 		

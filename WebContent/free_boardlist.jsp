@@ -50,7 +50,7 @@
 		<tr>
 			<td><%=list.get(i).getFree_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="#"><%=list.get(i).getFree_title() %></a></td>
+			<td><a href="move.do?command=selectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>
 			<td><%=list.get(i).getFree_regdate() %></td>
 		</tr>
 <%

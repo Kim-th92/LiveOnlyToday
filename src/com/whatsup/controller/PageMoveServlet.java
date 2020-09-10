@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.Member_BoardDao;
+import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 
 
@@ -36,6 +38,7 @@ public class PageMoveServlet extends HttpServlet {
 		String command=request.getParameter("command");
 		System.out.println("move 페이지 도착 command="+command);
 		HttpSession session=request.getSession();
+		Free_BoardDao dao=new Free_BoardDao();
 		//1.메인페이지
 		if(command.equals("main")) {
 			response.sendRedirect("index.jsp");
@@ -84,8 +87,11 @@ public class PageMoveServlet extends HttpServlet {
 			response.sendRedirect("free_insertpage.jsp");
 		}
 		//5-2.게시판 글 자세히 보기 페이지
-		}else if(command.equals("")) {
-			
+		}else if(command.equals("selectpage")) {
+			int free_no=Integer.parseInt(request.getParameter("free_no"));
+			Free_BoardDto dto=dao.selectOne(free_no);
+			request.setAttribute("dto", dto);
+			dispatch("free_boardselect.jsp", request, response);
 		//5-3.
 		}else if(command.equals("")) {
 			
