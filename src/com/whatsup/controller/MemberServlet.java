@@ -99,7 +99,7 @@ public class MemberServlet extends HttpServlet {
 >>>>>>> 36e10441689a810233ff95183bfc4c040f446dc5
 				String err = "ID 또는 비밀 번호가 일치하지 않습니다.";
 				request.setAttribute("err", err);
-				response.sendRedirect("login.jsp");
+				dispatch("login.jsp",request,response);
 		 		
 			} else if(dto.getId() != null){
 				
