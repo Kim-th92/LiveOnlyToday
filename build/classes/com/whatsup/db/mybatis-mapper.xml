@@ -32,4 +32,16 @@
 		SELECT MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD
 		WHERE ID=#{id} AND PW=#{pw} AND DELFLAG='N' 
 	</select>
+	
+	<select id="findid" parameterType="Member_BoardDto" resultType="Member_BoardDto">
+		SELECT MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD
+		WHERE NAME=#{name} AND EMAIL=#{email} 
+	</select>
+	<select id="findpw" parameterType="Member_BoardDto" resultType="Member_BoardDto">
+		SELECT MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD
+		WHERE NAME=#{name} AND ID=#{id} AND EMAIL=#{email} 
+	</select>
+	<update id="updatePw" parameterType="String" >
+		UPDATE MEMBER_BOARD SET PW =#{pw} WHERE NAME=#{name} AND ID=#{id} AND EMAIL=#{email} 
+	</update>
 </mapper>

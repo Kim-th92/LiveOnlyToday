@@ -31,7 +31,7 @@ CREATE SEQUENCE COMMENT_SEQ;
 
 
 select * from member_board;
-
+select pw from member_board where name = '최서원' and email = 'tlwj321@naver.com';
 CREATE TABLE LOGIN_API(
 	MEMBER_SEQ NUMBER NOT NULL,
 	ID VARCHAR2(30) NOT NULL,

@@ -1,6 +1,7 @@
 package com.whatsup.controller;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -98,6 +99,42 @@ public class MemberServlet extends HttpServlet {
 		}else if("logout".equals(command)) {
 			session.invalidate();	
 			response.sendRedirect("index.jsp");
+		}else if("findid".equals(command)) {
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			
+			Member_BoardDto dto = dao.findId(name, email);
+			if(dto == null||dto.getId() == null){
+				String err = "입력하 정보로 조회된 ID가 없습니다.";
+				request.setAttribute("err", err);
+				dispatch("findidpw.jsp", request, response);
+		 		
+			} else if(dto.getId() != null){
+				String msg = name + " 님의 ID는 "+ dto.getId() +" 입니다.";
+				request.setAttribute("msg", msg);
+				dispatch("findidpw.jsp", request, response);
+		
+			} 
+		}else if("findpw".equals(command)) {
+			String name = request.getParameter("name");
+			String id = request.getParameter("id");
+			String email = request.getParameter("email");
+			
+			String uuid = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 10);
+			
+			Member_BoardDto dto = dao.findPw(name, id, email, uuid);
+			
+			if(dto == null||dto.getPw() == null){
+				String errpw = "입력하신 정보로 조회된 데이터가 없습니다.";
+				request.setAttribute("errpw", errpw);
+				dispatch("findidpw.jsp", request, response);
+		 		
+			} else if(dto.getPw() != null){
+				String msgpw = id + " 님의  임시비밀번호는  "+ dto.getPw() +" 입니다.";
+				request.setAttribute("msgpw", msgpw);
+				dispatch("findidpw.jsp", request, response);
+		
+			} 
 		}
 		
 	}

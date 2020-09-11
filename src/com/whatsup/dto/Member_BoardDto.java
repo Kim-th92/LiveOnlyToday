@@ -16,6 +16,12 @@ public class Member_BoardDto {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Member_BoardDto [member_seq=" + member_seq + ", id=" + id + ", pw=" + pw + ", name=" + name
+				+ ", nickname=" + nickname + ", grade=" + grade + ", email=" + email + ", birthday=" + birthday
+				+ ", phone=" + phone + ", addr=" + addr + ", membership=" + membership + ", delflag=" + delflag + "]";
+	}
 	public Member_BoardDto() {
 	}
 	public Member_BoardDto(int member_seq, String id, String pw, String name, String nickname, String grade,

@@ -22,6 +22,7 @@ public class Member_BoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
 	//로그인
 	public Member_BoardDto login(String id,String pw) {
 		SqlSession session = null;
@@ -49,7 +50,50 @@ public class Member_BoardDao extends SqlMapConfig {
 		
 		return dto;
 	}
-	
+	//id 찾기
+	public Member_BoardDto findId(String name,String email) {
+		SqlSession session =null;
+		Member_BoardDto dto  = null;
+		session= getSqlSessionFactory().openSession();
+		Member_BoardDto duo = new Member_BoardDto();
+		duo.setName(name);
+		duo.setEmail(email);
+		dto = session.selectOne(namespace +"findid", duo);
+		System.out.println(dto);
+		session.close();
+		
+		return dto;
+	}
+	//pw찾기
+	public Member_BoardDto findPw(String name,String id ,String email,String uuid) {
+		SqlSession session =null;
+		Member_BoardDto dto  = null;
+		int res = 0;
+		session= getSqlSessionFactory().openSession();
+		
+		Member_BoardDto duo = new Member_BoardDto();
+		
+		duo.setName(name);
+		duo.setId(id);
+		duo.setEmail(email);
+		
+		dto = session.selectOne(namespace +"findpw", duo);
+		if(dto !=null) {
+			duo.setPw(uuid);
+			res = session.update(namespace+"updatePw", duo);
+			System.out.println(duo.getPw());
+			
+			if(res>0) {
+				dto = session.selectOne(namespace +"findpw", duo);
+				System.out.println(dto.getPw());
+			}
+		}else {
+			dto =null;
+		}
+		session.close();
+		
+		return dto;
+	}
 	
 	
 }
