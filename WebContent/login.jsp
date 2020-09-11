@@ -71,20 +71,17 @@ input {width : 270px; height :40px;}
     </script> 
    	<script type="text/javascript">
    		<%
-   			String error = request.getParameter("err");
+   			String error = (String)request.getAttribute("err");
    			if(error==null){
- 
+ 					error = "";
    			}else{
    			%>
-   		document.querySelctor('.err').errorMsg.textContent  = <%=error%>;
-   		
-   		
+		var errMsg = document.querySelctor('.err');
+   		errMsg.innerHTML  = <%=error%>;
    		<%
    			}
    		%>
-   		
-   		
-   	</script>
+  	</script>
 		<input type="hidden" name="command" value="login"/>
 	<table >
 		<tr>
