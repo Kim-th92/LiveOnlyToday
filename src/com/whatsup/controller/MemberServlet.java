@@ -32,6 +32,7 @@ public class MemberServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String command = request.getParameter("command");
+		HttpSession session = request.getSession();
 		
 		if("idchk".equals(command)){
 			String myid = request.getParameter("myid");
@@ -77,19 +78,26 @@ public class MemberServlet extends HttpServlet {
 			}
 		}else if("login".equals(command)) {
 			String id = request.getParameter("id");
-			String pw=request.getParameter("pw");
-			HttpSession session = request.getSession();
+			String pw = request.getParameter("pw");
+			
 			
 			Member_BoardDto dto = dao.login(id, pw);
-			if(dto.getId() != null){
-		 		//3.  세션에 넣어야 로그인이 유지되니까...
-		 		//session : 만료될 때 까지 프로젝트 전체에서 사용
-		 		session.setAttribute("login",dto);//login 이란 이름으로 dto를  담을것임
+			
+			if(dto == null || dto.getId()==null){
+				String err = "ID 또는 비밀 번호가 일치하지 않습니다.";
+				request.setAttribute("err", err);
+				dispatch("login.jsp",request,response);
 		 		
-		 		//setMaxInactiveInterval() : default 30분 , 음수 일때 무제한 
-		 		session.setMaxInactiveInterval(10*60);
+			} else if(dto.getId() != null){
+				
+			
+		 		session.setAttribute("login",dto);
+		 		session.setMaxInactiveInterval(-1);
 		 		response.sendRedirect("index.jsp");
-			}
+			} 
+		}else if("logout".equals(command)) {
+			session.invalidate();	
+			response.sendRedirect("index.jsp");
 		}
 		
 	}

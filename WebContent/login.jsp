@@ -26,32 +26,68 @@ input {width : 270px; height :40px;}
 <h1>로그인</h1>
 <div id="input">
 <form action="member.do" method="post">
-	<input type="hidden" name="command" value="login"/>
+	<a id="custom-login-btn" href="javascript:loginWithKakao()">
+  <img
+    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+    width="222"
+  />
+</a>
+<p id="token-result"></p>
+<script type="text/javascript">
+  function loginWithKakao() {
+    Kakao.Auth.authorize({
+      redirectUri: 'http://localhost:8787oauth.jsp'
+    })
+  }
+  // 아래는 데모를 위한 UI 코드입니다.
+  getToken()
+  function getToken() {
+    const token = getCookie('authorize-access-token')
+    if(token) {
+      Kakao.Auth.setAccessToken(token)
+      document.getElementById('token-result').innerText = 'login success. token: ' + Kakao.Auth.getAccessToken()
+    }
+  }
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+</script>
+	
 	<div class="g-signin2" data-onsuccess="onSignIn"></div>
     <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
+        var id = profile.getId(); // Don't send this directly to your server!
+        var fullName = profile.getName();
+        var email =  profile.getEmail();
 
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       }
     </script> 
-		
+   	<script type="text/javascript">
+   		<%
+   			String error = (String)request.getAttribute("err");
+   			if(error==null){
+ 					error = "";
+   			}else{
+   			%>
+		var errMsg = document.querySelctor('.err');
+   		errMsg.innerHTML  = <%=error%>;
+   		<%
+   			}
+   		%>
+  	</script>
+		<input type="hidden" name="command" value="login"/>
 	<table >
 		<tr>
 			<td colspan="2"><a href=""><img class="login" src="resources/naver.png"/></a> </td>
 		</tr>
-			<tr>
-			<td colspan="2"><a href=""><img class="login" src="resources/kakao.png"/></a> </td>
-		</tr>
+			
 			
 			
 		<tr>
@@ -62,10 +98,17 @@ input {width : 270px; height :40px;}
 		<tr>
 			<th>PW</th>
 			<td> <input type="password" name="pw"></td>
+			
 		</tr>
 			<tr>
 			<td colspan="2"><button type="submit" class="loginbtn" >로그인</button></td>
 		</tr>
+		
+		<tr>
+			
+			<td colspan="2"> <p class="err"></p></td>
+		</tr>
+		
 		<tr>
 			
 			<td colspan="2"> <a href="findidpw.jsp">id pw 찾기</a> | <a href="register.jsp">회원가입</a></td>
