@@ -123,11 +123,11 @@ public class PageMoveServlet extends HttpServlet {
 			
 		//7.로그인 페이지
 		}else if (command.equals("loginpage")) {
-		response.sendRedirect("loginpage.jsp");
+		response.sendRedirect("login.jsp");
 			
 		//8. 회원가입 페이지
 		}else if (command.equals("registerpage")) {
-		response.sendRedirect("registerpage.jsp");
+		response.sendRedirect("register.jsp");
 			
 			
 		//9.채팅게시판
