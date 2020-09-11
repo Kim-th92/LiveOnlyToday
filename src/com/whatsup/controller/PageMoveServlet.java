@@ -112,7 +112,7 @@ public class PageMoveServlet extends HttpServlet {
          int free_no=Integer.parseInt(request.getParameter("free_no"));
          request.setAttribute("free_no", free_no);
          dispatch("board.do?command=free_delete", request, response);
-         /*
+         
       //5-6댄스게시판
       }else if(command.equals("freeboard")) {
          response.sendRedirect("free_boardlist.jsp");
@@ -151,7 +151,7 @@ public class PageMoveServlet extends HttpServlet {
          int free_no=Integer.parseInt(request.getParameter("free_no"));
          request.setAttribute("free_no", free_no);
          dispatch("board.do?command=free_delete", request, response);
-*/
+
       //6.고객센터
       }else if(command.equals("servicesenter")) {
          response.sendRedirect("servicesenter.jsp");
