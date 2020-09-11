@@ -24,7 +24,7 @@
 		</tr>
 		
 		<tr>
-			<td colspan = "2"> <button type="submit">ID 찾기</button> </td>
+			<td colspan = "2"> <button type="submit" class="findidbtn">ID 찾기</button> </td>
 		</tr>
 	</table>
 	

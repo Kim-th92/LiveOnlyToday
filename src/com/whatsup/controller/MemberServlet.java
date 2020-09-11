@@ -86,7 +86,7 @@ public class MemberServlet extends HttpServlet {
 			if(dto == null || dto.getId()==null){
 				String err = "ID 또는 비밀 번호가 일치하지 않습니다.";
 				request.setAttribute("err", err);
-				dispatch("login.jsp",request,response);
+				dispatch("login.jsp", request, response);
 		 		
 			} else if(dto.getId() != null){
 				

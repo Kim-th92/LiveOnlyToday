@@ -33,8 +33,8 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 <body>
 	<header>
 		<div id="logo">
-			<a href="../index.jsp"> <img id="logo" alt="로고"
-				src="../resources/logo.png">
+			<a href="./index.jsp"> <img id="logo" alt="로고"
+				src="./resources/logo.png">
 			</a>
 		</div>
 

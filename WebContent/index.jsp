@@ -22,11 +22,12 @@ body {
 }
 header>div{	display : inline-block; }
 section {padding : 50px;}
-.navigation { margine:0; padding:0;list-style: none;font-size: 20pt;padding-left: 200px;}
-.navigation li{float : left;list-style: none;width : 150px;height:40px;text-align: center; }
-.navigation li>ul>li {display : none;}
-.navigation li>a:hover{color:white;}
-.navigation li>a:hover .navigation li>ul>li{display :block;}
+ul { margine:0; padding:0;list-style: none;font-size: 20pt; transform:translate(50px,-40px);}
+ul li{float : left; line-height:40px; list-style: none;width : 150px;height:40px;text-align:left; }
+ul li ul li {display:none;}
+ul li>a:hover{color:darkgray; border-bottom: 1px solid black;}
+
+ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 #login {float :right ;padding :40px 80px 0px 20px;}
 #dance {
 	margin:0;
@@ -57,7 +58,7 @@ footer{}
 		</div>
 
 		<div id="nav-bar">
-		<ul class="navigation">
+		<ul>
 			<li><a href="#">회사소개</a>
 				<ul>
 				
@@ -118,8 +119,6 @@ footer{}
 		</div>
 	</section>
 
-	<footer>
-		<div></div>
-	</footer>
+<%@include file="./format/footer.jsp" %> 
 </body>
 </html>
