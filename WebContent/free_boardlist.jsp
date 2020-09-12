@@ -15,12 +15,16 @@
 <%
 	Free_BoardDao dao = new Free_BoardDao();
 	List<Free_BoardDto> list = dao.selectList();
+<<<<<<< HEAD
 	SimpleDateFormat ymd = new SimpleDateFormat("MM.dd");
 	SimpleDateFormat hms = new SimpleDateFormat("HH:mm");
 	Timestamp ts = new Timestamp(new Date().getTime());
 	
 
 	
+=======
+	String nickname=(String)session.getAttribute("nickname");
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 %>
 </head>
 <body>
@@ -58,6 +62,7 @@
 		<tr>
 			<td><%=list.get(i).getFree_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
+<<<<<<< HEAD
 			<td><a href="move.do?command=selectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
 			<td><a><%=hms.format(list.get(i).getFree_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getFree_cnt() %></a></td>
@@ -65,6 +70,10 @@
 
 
 %>
+=======
+			<td><a href="move.do?command=selectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>
+			<td><%=list.get(i).getFree_regdate() %></td>
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 		</tr>
 <%
 		}
@@ -72,7 +81,11 @@
 %>
 		<tr>
 			<td colspan="5" align="right">
+<<<<<<< HEAD
 				<input type="button" value="글작성" onclick="location.href='move.do?command=freeinsertpage'" />
+=======
+				<input type="button" value="글작성" onclick="location.href='move.do?command=freeinsertpage&'" />
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 			</td>
 		</tr>
 	</table>

@@ -5,30 +5,30 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.whatsup.dto.Free_BoardDto;
+import com.whatsup.dto.Song_BoardDto;
 
-public class Free_BoardDao extends SqlMapConfig {
-	private String namespace="Free_Boardmapper.";
+public class Song_BoardDao extends SqlMapConfig{
+private String namespace="Song_Boardmapper.";
 	
-	public List<Free_BoardDto> selectList(){
+	public List<Song_BoardDto> selectList(){
 		SqlSession session=null;
-		List<Free_BoardDto> list=new ArrayList<Free_BoardDto>();
+		List<Song_BoardDto> list=new ArrayList<Song_BoardDto>();
 		session=getSqlSessionFactory().openSession();
 		list=session.selectList(namespace+"selectList");
 		session.close();
 		return list;
 		
 	}
-	public Free_BoardDto selectOne(int free_no) {
+	public Song_BoardDto selectOne(int song_no) {
 		SqlSession session=null;
 		
-		Free_BoardDto dto=null;
+		Song_BoardDto dto=null;
 		session=getSqlSessionFactory().openSession(true);
-		dto=session.selectOne(namespace+"selectOne",free_no);
+		dto=session.selectOne(namespace+"selectOne",song_no);
 		session.close();
 		return dto;
 	}
-	public int insert(Free_BoardDto dto) {
+	public int insert(Song_BoardDto dto) {
 		SqlSession session=null;
 		
 		int res=0;
@@ -41,8 +41,7 @@ public class Free_BoardDao extends SqlMapConfig {
 		
 		return res;
 	}
-<<<<<<< HEAD
-	public int update(Free_BoardDto dto) {
+	public int update(Song_BoardDto dto) {
 		SqlSession session=null;
 		
 		int res=0;
@@ -56,30 +55,28 @@ public class Free_BoardDao extends SqlMapConfig {
 		
 	}
 	
-	public int delete(int free_no) {
+	public int delete(int song_no) {
 		SqlSession session=null;
 		
 		int res=0;
 		session=getSqlSessionFactory().openSession();
-		res=session.delete(namespace+"delete",free_no);
+		res=session.delete(namespace+"delete",song_no);
 		session.commit();
 		session.close();
 		
 		
 		return res;
 	}
-	public int freeview(int free_no) {
+	public int songview(int song_no) {
 		SqlSession session=null;
 		
 		int res=0;
 		session=getSqlSessionFactory().openSession();
-		System.out.println("dao freeno="+free_no);
-		res=session.update(namespace+"view",free_no);
+		System.out.println("dao songno="+song_no);
+		res=session.update(namespace+"view",song_no);
 		session.commit();
 		session.close();
 		
 		return res;
 	}
-=======
->>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 }
