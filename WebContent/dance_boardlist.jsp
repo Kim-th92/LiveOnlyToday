@@ -1,10 +1,9 @@
 <%@page import="java.util.Date"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Timestamp"%>
-<%@page import="com.whatsup.dao.Member_BoardDao"%>
-<%@page import="com.whatsup.dto.Free_BoardDto"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.whatsup.dto.Dance_BoardDto"%>
 <%@page import="java.util.List"%>
-<%@page import="com.whatsup.dao.Free_BoardDao"%>
+<%@page import="com.whatsup.dao.Dance_BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,8 +12,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%
-	Free_BoardDao dao = new Free_BoardDao();
-	List<Free_BoardDto> list = dao.selectList();
+	Dance_BoardDao dao = new Dance_BoardDao();
+	List<Dance_BoardDto> list = dao.selectList();
 	SimpleDateFormat ymd = new SimpleDateFormat("MM.dd");
 	SimpleDateFormat hms = new SimpleDateFormat("HH:mm");
 	Timestamp ts = new Timestamp(new Date().getTime());
@@ -55,11 +54,11 @@
 		for (int i = 0; i < list.size(); i++) {		
 %>
 		<tr>
-			<td><%=list.get(i).getFree_no() %></td>
+			<td><%=list.get(i).getDance_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
-			<td><a><%=hms.format(list.get(i).getFree_regdate()) %></a></td>
-			<td align="center"><a><%=list.get(i).getFree_cnt() %></a></td>
+			<td><a href="move.do?command=selectpage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>			
+			<td><a><%=hms.format(list.get(i).getDance_regdate()) %></a></td>
+			<td align="center"><a><%=list.get(i).getDance_cnt() %></a></td>
 <% 				
 
 
@@ -71,7 +70,7 @@
 %>
 		<tr>
 			<td colspan="5" align="right">
-				<input type="button" value="글작성" onclick="location.href='move.do?command=freeinsertpage'" />
+				<input type="button" value="글작성" onclick="location.href='move.do?command=danceinsertpage'" />
 			</td>
 		</tr>
 	</table>
