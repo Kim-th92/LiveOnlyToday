@@ -17,7 +17,6 @@ private SqlSessionFactory sqlSessionFactory;
 
 		try {
 			InputStream inputStream = Resources.getResourceAsStream(resource);
-			//¿©±â
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 			inputStream.close();

@@ -17,7 +17,13 @@ import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 import com.whatsup.dto.Song_BoardDto;
 
+<<<<<<< HEAD
 
+=======
+/**
+ * Servlet implementation class BoardServlet
+ */
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 @WebServlet("/board.do")
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,10 +45,15 @@ public class BoardServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String command = request.getParameter("command");
+<<<<<<< HEAD
 		Free_BoardDao free_dao=new Free_BoardDao();
 		Song_BoardDao song_dao=new Song_BoardDao();
 		Dance_BoardDao dance_dao=new Dance_BoardDao();
 		//자유게시판 추가
+=======
+<<<<<<< HEAD
+		Free_BoardDao dao=new Free_BoardDao();
+>>>>>>> f7dbca7083e7073c89b726d649132910d7a76534
 		if(command.equals("free_insert")){
 			
 			int member_seq=Integer.parseInt(request.getParameter("member_seq"));
@@ -50,6 +61,16 @@ public class BoardServlet extends HttpServlet {
 			String free_content=request.getParameter("free_content");
 			
 			Free_BoardDto dto=new Free_BoardDto(member_seq, free_title, free_content);
+=======
+		
+		if(command.equals("free_insert")){
+			Free_BoardDao dao=new Free_BoardDao();
+			String nickname=request.getParameter("nickname");
+			String free_title=request.getParameter("free_title");
+			String free_content=request.getParameter("free_content");
+			
+			Free_BoardDto dto=new Free_BoardDto(nickname, free_title, free_content);
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 			
 			int res=free_dao.insert(dto);
 			if(res>0) {
@@ -57,7 +78,11 @@ public class BoardServlet extends HttpServlet {
 			}else {
 				jsResponse("작성 실패", "move.do?command=freeinsertpage", response);
 			}
+<<<<<<< HEAD
 		
+=======
+<<<<<<< HEAD
+>>>>>>> f7dbca7083e7073c89b726d649132910d7a76534
 		}else if(command.equals("free_update")) {
 			Free_BoardDto dto=(Free_BoardDto)request.getAttribute("dto");
 			
@@ -146,6 +171,15 @@ public class BoardServlet extends HttpServlet {
 		
 		
 	}
+=======
+		}
+		
+	}
+	private void dispatch(String path, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatch = request.getRequestDispatcher(path);
+		dispatch.forward(request, response);
+	}
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
 		String result = "<script> alert(\"" + msg + "\"); location.href=\""+url+"\"; </script> ";
