@@ -81,18 +81,19 @@ public class Member_BoardDao extends SqlMapConfig {
 		if(dto !=null) {
 			duo.setPw(uuid);
 			res = session.update(namespace+"updatePw", duo);
-			System.out.println(duo.getPw());
+			session.commit();
 			
 			if(res>0) {
-				dto = session.selectOne(namespace +"findpw", duo);
-				System.out.println(dto.getPw());
+			return	dto = session.selectOne(namespace +"findpw", duo);
+			
 			}
 		}else {
-			dto =null;
+		return dto =null;
 		}
 		session.close();
-		
 		return dto;
+		
+	
 	}
 	
 	
