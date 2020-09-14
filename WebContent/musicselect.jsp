@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 <%@page import="java.util.List"%>
 <%@page import="com.whatsup.dto.MusicListDto"%>
+=======
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <%
 	List<MusicListDto> musiclist=(List<MusicListDto>)request.getAttribute("musiclist");
 %>
@@ -198,5 +202,18 @@
 	}
 	
 </script>
+=======
+
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<div>
+		<video src="">
+			
+		</video>
+	</div>
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
 </body>
 </html>

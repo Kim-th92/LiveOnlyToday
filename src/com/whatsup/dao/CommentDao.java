@@ -45,6 +45,13 @@ public class CommentDao extends SqlMapConfig {
 		
 		int res=0;
 		session=getSqlSessionFactory().openSession();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		System.out.println("dao는 정상적으로 도착");
+>>>>>>> f7dbca7083e7073c89b726d649132910d7a76534
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
 		res=session.insert(namespace+"free_comment_insert",dto);
 		session.commit();
 		session.close();
