@@ -9,11 +9,18 @@ public class Song_BoardDto {
 	private Timestamp song_regdate;
 	private int song_cnt;
 	private int member_seq;
+	private String nickname;
 	
 	public Song_BoardDto() {
 		
 	}
 	
+	public Song_BoardDto(int member_seq,String song_title, String song_content) {
+		this.song_title = song_title;
+		this.song_content = song_content;
+		this.member_seq = member_seq;
+	}
+
 	public Song_BoardDto(int song_no, String song_title, String song_content, Timestamp song_regdate, int song_cnt,
 			int member_seq) {
 		this.song_no = song_no;
@@ -63,4 +70,13 @@ public class Song_BoardDto {
 	public void setMember_seq(int member_seq) {
 		this.member_seq = member_seq;
 	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
 }

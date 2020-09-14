@@ -13,7 +13,6 @@
 %>
 </head>
 <body>
-<%@ include file="./format/header.jsp" %>
 	<table border="1">
 		<tr>
 			<th>이름</th>
@@ -34,7 +33,7 @@
 		<tr>
 			<td colspan="2" align="right">
 			<%
-				if(dto.getNickname().equals(member_dto.getNickname())){
+				if(free_dto.getMember_seq()==member_dto.getMember_seq()){
 			%>		
 				<input type="button" value="수정" onclick="location.href='move.do?command=updatepage&free_no=<%=free_dto.getFree_no()%>'"/>
 				<input type="button" value="삭제" onclick="location.href='move.do?command=delete&free_no=<%=free_dto.getFree_no()%>'"/>
@@ -46,6 +45,5 @@
 			</td>
 		</tr>
 	</table>
-<%@ include file="./format/footer.jsp" %>
 </body>
 </html>
