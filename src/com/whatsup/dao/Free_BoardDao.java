@@ -41,6 +41,7 @@ public class Free_BoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+<<<<<<< HEAD
 	public int update(Free_BoardDto dto) {
 		SqlSession session=null;
 		
@@ -79,4 +80,6 @@ public class Free_BoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+=======
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 }

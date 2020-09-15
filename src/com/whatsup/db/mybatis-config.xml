@@ -13,7 +13,15 @@
 		<typeAlias type="com.whatsup.dto.Dance_BoardDto" alias="dance_boardDto"/>
 		<typeAlias type="com.whatsup.dto.CommentDto" alias="commentDto"/>
 		<typeAlias type="com.whatsup.dto.ChatingListDto" alias="chatinglistDto"/>
+<<<<<<< HEAD
 		<typeAlias type="com.whatsup.dto.MusicListDto" alias="musiclistDto"/>
+=======
+<<<<<<< HEAD
+		<typeAlias type="com.whatsup.dto.MusicListDto" alias="musiclistDto"/>
+=======
+
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 	</typeAliases>
 
 	<environments default="development">
@@ -29,11 +37,27 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/whatsup/db/Free_Board-mapper.xml"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 		<mapper resource="com/whatsup/db/Song_Board-mapper.xml"/>
 		<mapper resource="com/whatsup/db/Dance_Board-mapper.xml"/>
 		<mapper resource="com/whatsup/db/mybatis-mapper.xml" />
 		<mapper resource="com/whatsup/db/ChatingList-mapper.xml" />
 		<mapper resource="com/whatsup/db/Comment-mapper.xml" />
+<<<<<<< HEAD
 		<mapper resource="com/whatsup/db/MusicList-mapper.xml" />
+=======
+<<<<<<< HEAD
+		<mapper resource="com/whatsup/db/MusicList-mapper.xml" />
+=======
+=======
+>>>>>>> f7dbca7083e7073c89b726d649132910d7a76534
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 	</mappers>
 </configuration>

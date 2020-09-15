@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <%@page import="java.util.List"%>
 <%@page import="com.whatsup.dto.MusicListDto"%>
+=======
+<<<<<<< HEAD
+<%@page import="java.util.List"%>
+<%@page import="com.whatsup.dto.MusicListDto"%>
+=======
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,10 +15,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <%
 	List<MusicListDto> musiclist=(List<MusicListDto>)request.getAttribute("musiclist");
 %>
 
+=======
+<<<<<<< HEAD
+<%
+	List<MusicListDto> musiclist=(List<MusicListDto>)request.getAttribute("musiclist");
+%>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+   	
+	$(function(){
+		$(".musicname").click(function(){
+			document.body.style.background = "gray";
+			document.getElementById("musicview").style.display = "block";
+			var subtitleview=$("#subtitleview");
+			var musicname=$(this).text();
+			$("#music").attr("src","resources/audio/"+musicname+".mp3");
+			$("#subtitle").attr("src","resources/vtt/"+musicname+".vtt");
+			$("audio")[0].textTracks[0].oncuechange=function(){
+				var currentCue=this.activeCues[0].text;
+				$("#subtitleview").html(currentCue);
+			};
+		});
+	});
+
+	function closeWin() {
+		
+		document.getElementById("musicview").style.display = "none";
+		document.body.style.background = "white";
+		music.pause();
+		$("#subtitleview").html("");
+	}
+</script>
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 <style type="text/css">
 	#musicview {
 		border: 1px solid black;
@@ -63,11 +104,16 @@
 	%>
 		<tr>
 			<td colspan="3">
+<<<<<<< HEAD
 				<input type="button" onclick="location.href='move.do?command=musicinsert'" value="노래생성">
+=======
+				<input type="button" onclick="location.href='move.do?command=musicinsert'">
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 			</td>
 		</tr>
 	</table>
 	<div id="musicview">
+<<<<<<< HEAD
 		<audio controls="controls" id="player">
 			<track src="" kind="attribute" srclang="kr" label="기본한국어" default id="subtitle"/>
 		</audio>
@@ -79,15 +125,25 @@
 		<button id="speedx1">정상</button>
 		<button id="speedx2">2배속</button>
 		<button id="speedx3">3배속</button>
+=======
+		<audio controls="controls" id="music">
+			<track src="" kind="attribute" srclang="kr" label="기본한국어" default id="subtitle"/>
+		</audio>
+		<p id="subtitleview"></p><br/>
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 		<input type=checkbox id="chk-hear-mic"><label for="chk-hear-mic">마이크 소리 듣기</label>
     	<button id="record">녹음</button>
     	<button id="stop">정지</button>
     	<div id="sound-clips"></div>
+<<<<<<< HEAD
     	
+=======
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 		<button onclick="closeWin()">노래 종료</button>
 	</div>
 	
 <%@ include file="./format/footer.jsp" %>
+<<<<<<< HEAD
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	
@@ -98,6 +154,9 @@
 	  startTime: 0,
 	  endTime: 0
 	}
+=======
+<script>
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 	var record = document.getElementById("record");
 	var stop = document.getElementById("stop");
 	var soundClips = document.getElementById("sound-clips");
@@ -106,6 +165,7 @@
 	var audioCtx = new(window.AudioContext || window.webkitAudioContext)();// 오디오 컨텍스트 정의
 
 	var analyser = audioCtx.createAnalyser();
+<<<<<<< HEAD
 	
 	$(function(){
 		//노래 이름 클릭 후 노래 실행
@@ -186,16 +246,26 @@
   		player.playbackRate=3.0;
 	});
   	function makeSound(stream) {
+=======
+
+	function makeSound(stream) {
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
     	var source = audioCtx.createMediaStreamSource(stream);
 
     	source.connect(analyser);
     	analyser.connect(audioCtx.destination);
 
 	}
+<<<<<<< HEAD
 	
 	
 	//녹음
 	if (navigator.mediaDevices) {
+=======
+
+	if (navigator.mediaDevices) {
+    	console.log("getUserMedia supported.")
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 
     	var varraints = {audio: true};
     	let chunks = [];
@@ -267,7 +337,25 @@
             console.log(err);
         })
 	}
+<<<<<<< HEAD
 </script>
 
+=======
+	
+</script>
+=======
+
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<div>
+		<video src="">
+			
+		</video>
+	</div>
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 </body>
 </html>

@@ -10,9 +10,12 @@
 <%
 	Dance_BoardDto dance_dto=(Dance_BoardDto)request.getAttribute("dto");
 	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
+<<<<<<< HEAD
 	if(member_dto==null){
 		member_dto=new Member_BoardDto();
 	}
+=======
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 %>
 </head>
 <body>

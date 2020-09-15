@@ -10,16 +10,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+<<<<<<< HEAD
+=======
+import javax.websocket.Session;
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.Member_BoardDao;
+<<<<<<< HEAD
 import com.whatsup.dao.MusicListDao;
+=======
+<<<<<<< HEAD
+import com.whatsup.dao.MusicListDao;
+=======
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 import com.whatsup.dao.Song_BoardDao;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
+<<<<<<< HEAD
 import com.whatsup.dto.MusicListDto;
+=======
+<<<<<<< HEAD
+import com.whatsup.dto.MusicListDto;
+=======
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
 import com.whatsup.dto.Song_BoardDto;
 
 
@@ -37,6 +55,7 @@ public class PageMoveServlet extends HttpServlet {
    }
 
 
+<<<<<<< HEAD
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=UTF-8");
@@ -46,7 +65,15 @@ public class PageMoveServlet extends HttpServlet {
       Free_BoardDao free_dao=new Free_BoardDao();
       Dance_BoardDao dance_dao=new Dance_BoardDao();
       Song_BoardDao song_dao=new Song_BoardDao();
+<<<<<<< HEAD
       MusicListDao music_dao=new MusicListDao();
+=======
+<<<<<<< HEAD
+      MusicListDao music_dao=new MusicListDao();
+=======
+      
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -62,9 +89,22 @@ public class PageMoveServlet extends HttpServlet {
          
          //3.노래 페이지
       }else if(command.equals("musicselect")) {
+<<<<<<< HEAD
     	 List<MusicListDto> musiclist=music_dao.selectMusicList();
     	 request.setAttribute("musiclist", musiclist);
          dispatch("musicselect.jsp", request, response);
+=======
+<<<<<<< HEAD
+    	 List<MusicListDto> musiclist=music_dao.selectMusicList();
+    	 request.setAttribute("musiclist", musiclist);
+         dispatch("musicselect.jsp", request, response);
+=======
+         response.sendRedirect("musicselect.jsp");
+         
+         //3-1.
+      }else if(command.equals("")) {
+>>>>>>> 517e2356f4db51400aa28cd54d16cc5a4778984e
+>>>>>>> f9c3d5897b594b87a3addc2c3f677305c87ea495
          
          //3-1.노래 추가
       }else if(command.equals("musicinsert")) {
@@ -274,5 +314,138 @@ public class PageMoveServlet extends HttpServlet {
       response.getWriter().append(result);
    }
 
+=======
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		String command=request.getParameter("command");
+		System.out.println("move 페이지 도착 command="+command);
+		HttpSession session=request.getSession();
+		Free_BoardDao dao=new Free_BoardDao();
+		//1.메인페이지
+		if(command.equals("main")) {
+			response.sendRedirect("index.jsp");
+		
+		
+		//2.회사소개
+		}else if(command.equals("mainintroduce")) {
+			response.sendRedirect("introduce.jsp");
+			
+			
+		//2-1.회사소개 -인원소개
+		}else if(command.equals("")) {
+			
+		//3.노래 페이지
+		}else if(command.equals("mainmusic")) {
+			response.sendRedirect("music.jsp");
+			
+		//3-1.
+		}else if(command.equals("")) {
+			
+		//3-2.
+		}else if(command.equals("")) {
+			
+		
+		//4.댄스페이지
+		}else if(command.equals("maindance")) {
+			response.sendRedirect("dance.jsp");
+			
+		//4-1.
+		}else if(command.equals("")) {
+			
+			
+			
+		//4-2.
+		}else if(command.equals("")) {
+			
+		//5.자유게시판
+		}else if(command.equals("freeboard")) {
+			response.sendRedirect("free_boardlist.jsp");
+			
+		//5-1.게시판 글 작성페이지
+		}else if(command.equals("freeinsertpage")) {
+		if(session.getAttribute("nickname")==null) {
+			jsResponse("먼저 로그인을 해 주세요", "move.do?command=freeboard", response);
+		}else {
+			response.sendRedirect("free_insertpage.jsp");
+		}
+		//5-2.게시판 글 자세히 보기 페이지
+		}else if(command.equals("selectpage")) {
+			int free_no=Integer.parseInt(request.getParameter("free_no"));
+			Free_BoardDto dto=dao.selectOne(free_no);
+			request.setAttribute("dto", dto);
+			dispatch("free_boardselect.jsp", request, response);
+		//5-3.
+		}else if(command.equals("")) {
+			
+			
+		//5-4.
+		}else if(command.equals("")) {
+			
+		//5-5.
+		}else if(command.equals("")) {
+		//6.고객센터
+		}else if(command.equals("servicesenter")) {
+			response.sendRedirect("servicesenter.jsp");
+			
+			
+		//6-1.고객센터 글 작성
+		}else if(command.equals("")) {
+			
+			
+		//7.로그인 페이지
+		}else if (command.equals("loginpage")) {
+		response.sendRedirect("loginpage.jsp");
+			
+		//8.회원가입 페이지
+		}else if (command.equals("registerpage")) {
+		response.sendRedirect("registerpage.jsp");
+			
+			
+		//9.채팅게시판
+		}else if (command.equals("")) {
+			
+			
+		//9-1.채팅 입력
+		}else if(command.equals("")) {
+		
+		//10.결제
+		}else if(command.equals("")) {
+			
+		
+		//10-1.결제 종류 선택
+		}else if(command.equals("")) {
+		
+		//11.지도
+		}else if(command.equals("")) {
+			
+		//12.마이페이지
+		}else if(command.equals("")) {
+			
+			
+		//13관리자페이지
+		}else if(command.equals("")) {
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	private void dispatch(String path, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatch = request.getRequestDispatcher(path);
+		dispatch.forward(request, response);
+	}
+	
+	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
+		String result = "<script> alert(\"" + msg + "\"); location.href=\""+url+"\"; </script> ";
+		response.getWriter().append(result);
+	}
+>>>>>>> e4b25ba7b7a2ccb6c739f2ad08c6860877aecb59
 
 }
