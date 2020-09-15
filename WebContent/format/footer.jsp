@@ -6,6 +6,8 @@
 <style type="text/css">
 
 footer{ height:80px; background-color: grey;}
+footer{z-index: 2;   position:fixed;   left: 0;   bottom: 0;   width: 100%; padding: 0;
+	}
 footer>div{display:inline-block;}</style>
 </head>
 <body>

@@ -71,8 +71,8 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 	 	
 	 	%>
 	 	<div id="login">
-			<button class= "login" onclick="location.href='../login.jsp'"> 로그인 </button>
-			<button class= "login" onclick="location.href='../register.jsp'"> 회원가입 </button>
+			<button class= "login" onclick="location.href='./login.jsp'"> 로그인 </button>
+			<button class= "login" onclick="location.href='./register.jsp'"> 회원가입 </button>
 		</div>
 	 	<%		
 	 		}else{

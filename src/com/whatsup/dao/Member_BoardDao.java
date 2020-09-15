@@ -22,6 +22,18 @@ public class Member_BoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+	//snslogin enroll
+	public int snslogin(Member_BoardDto dto) {
+		SqlSession session =null;
+		int res = 0;
+		//세션
+		session = getSqlSessionFactory().openSession(true);
+		res = session.insert(namespace + "snslogin",dto);
+		session.close();
+				
+		return res;
+	}
+	
 	
 	//로그인
 	public Member_BoardDto login(String id,String pw) {
@@ -95,6 +107,6 @@ public class Member_BoardDao extends SqlMapConfig {
 		
 	
 	}
-	
+
 	
 }
