@@ -39,6 +39,10 @@
 				<input type="button" value="수정" onclick="location.href='move.do?command=updatepage&free_no=<%=free_dto.getFree_no()%>'"/>
 				<input type="button" value="삭제" onclick="location.href='move.do?command=delete&free_no=<%=free_dto.getFree_no()%>'"/>
 			<%		
+				}else{
+			%>
+				<input type="hidden"/>
+			<%		
 				}
 			%>
 				
