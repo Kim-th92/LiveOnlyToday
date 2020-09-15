@@ -8,6 +8,9 @@
 </head>
 <body>
 <%@include file="./format/header.jsp"%>
+<h1>춤 게시판 작성</h1>
+
 <%@include file="./format/footer.jsp"%>
+
 </body>
 </html>

@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@include file="./format/header.jsp"%>
-
+<h1>춤게시판</h1>
 
 
 
