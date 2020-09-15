@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Chatinglistmapper">
+	<select id="selectList" resultType="chatingListDto">
+		SELECT CHATING_NO,CHATING_NAME,CHATING_CREATOR FROM CHATINGLIST_TABLE ORDER BY CHATING_NO DESC;
+	</select>
+	<insert id="insert" parameterType="chatingListDto">
+		INSERT INTO CHATINGLIST_TABLE VALUES(CHATINGLIST_SEQ.NEXTVAL,#{chating_name},#{chating_creator});
+	</insert>
+	<delete id="delete" parameterType="int">
+		DELETE FROM CHATINGLIST_TABLE WHERE CHATING_NO=#{chating_no}
+	</delete>
+</mapper>

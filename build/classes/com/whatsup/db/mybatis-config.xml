@@ -9,8 +9,11 @@
 	<typeAliases>
 		<typeAlias type="com.whatsup.dto.Member_BoardDto" alias="member_BoardDto"/>
 		<typeAlias type="com.whatsup.dto.Free_BoardDto" alias="free_boardDto"/>
-
-
+		<typeAlias type="com.whatsup.dto.Song_BoardDto" alias="song_boardDto"/>
+		<typeAlias type="com.whatsup.dto.Dance_BoardDto" alias="dance_boardDto"/>
+		<typeAlias type="com.whatsup.dto.CommentDto" alias="commentDto"/>
+		<typeAlias type="com.whatsup.dto.ChatingListDto" alias="chatinglistDto"/>
+		<typeAlias type="com.whatsup.dto.MusicListDto" alias="musiclistDto"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -26,6 +29,11 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/whatsup/db/Free_Board-mapper.xml"/>
+		<mapper resource="com/whatsup/db/Song_Board-mapper.xml"/>
+		<mapper resource="com/whatsup/db/Dance_Board-mapper.xml"/>
 		<mapper resource="com/whatsup/db/mybatis-mapper.xml" />
+		<mapper resource="com/whatsup/db/ChatingList-mapper.xml" />
+		<mapper resource="com/whatsup/db/Comment-mapper.xml" />
+		<mapper resource="com/whatsup/db/MusicList-mapper.xml" />
 	</mappers>
 </configuration>
