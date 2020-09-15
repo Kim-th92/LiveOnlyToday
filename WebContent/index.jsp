@@ -44,7 +44,7 @@ color: black;
 	text-decoration: none;
 }
 .login {padding :20px ;margin-left:30px; background-color : black; color:white; font-weight : bold;border-radius: 20px;}
-.login:hover{background-color: grey;}
+.login:hover{background-color: grey;box-shadow:3px 3px 2px 1px rgba(0, 0, 255, .2);}
 footer{}
 
 </style>
