@@ -31,9 +31,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.whatsup.dao.Member_BoardDao;
-
-import com.whatsup.dto.Member_BoardDto;
+import com.google.api.client.auth.openidconnect.IdTokenVerifier;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.whatsup.dto.Member_BoardDto;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -163,17 +163,38 @@ public class MemberServlet extends HttpServlet {
 		}else if("googlelogin".equals(command)) {
 
 	        try {
-	            String idToken = req.getParameter("id_token");
-	            GoogleIdToken.Payload payLoad = IdTokenVerifierAndParser.getPayload(idToken);
+	            String idToken = request.getParameter("id_token");
+	            GoogleIdToken.Payload payLoad = getPayload(idToken);
 	            String name = (String) payLoad.get("name");
+	            String id = payLoad.getSubject();
 	            String email = payLoad.getEmail();
-	            System.out.println("User name: " + name);
-	            System.out.println("User email: " + email);
+	            String nickname = (String)payLoad.get("given_name");
+	         
+	            if(dao.check(id) != null) {
+		        	Member_BoardDto dto = new Member_BoardDto();
+		        	
+		        	dto  =  dao.check(id);
+		        	session.setAttribute("login",dto);
+			 		session.setMaxInactiveInterval(-1);
+			 		response.sendRedirect("index.jsp");
+			 		
+		        }else {
+		        	 Member_BoardDto dto = new Member_BoardDto();
+		        	 
+				        dto.setId(id);
+				        dto.setEmail(email);
+				        dto.setName(name);
+				        dto.setNickname(nickname);
+				        dto.setAddr("google");
+		        	int snsres = dao.snslogin(dto);
+			        
+			        if(snsres>0){
+			        	System.out.println("db등록완료");
+			        	response.sendRedirect("login.jsp");
+			        }
+			        
+		        }
 
-	            HttpSession session = req.getSession(true);
-	            session.setAttribute("userName", name);
-	            req.getServletContext()
-	               .getRequestDispatcher("/welcome-page.jsp").forward(req, resp);
 
 	        } catch (Exception e) {
 	            throw new RuntimeException(e);
@@ -261,7 +282,7 @@ public class MemberServlet extends HttpServlet {
 				        dto.setEmail(email);
 				        dto.setName(name);
 				        dto.setNickname(nickName);
-				        
+				        dto.setAddr("naver");
 		        	int snsres = dao.snslogin(dto);
 			        
 			        if(snsres>0){
@@ -279,7 +300,7 @@ public class MemberServlet extends HttpServlet {
 		
 	}
 		
-	    private static final String GOOGLE_CLIENT_ID = " --- use your google client id here --";
+	    private static final String GOOGLE_CLIENT_ID = 	"910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com";
 
 	    public static GoogleIdToken.Payload getPayload (String tokenString) throws Exception {
 

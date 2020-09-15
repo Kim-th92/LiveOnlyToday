@@ -28,7 +28,7 @@ ul li ul li {display:none;}
 ul li>a:hover{color:darkgray; border-bottom: 1px solid black;}
 
 ul li:hover ul li {display :block;transform:translate(-50px,35px);}
-#login {float :right ;padding :40px 80px 0px 20px;}
+#login {float :right ;padding :40px 80px 0px 20px; }
 #dance {
 	margin:0;
 	padding:0;
@@ -43,7 +43,8 @@ a {
 color: black;
 	text-decoration: none;
 }
-.login {padding :20px ;margin-left:30px; background-color : black; color:white; font-weight : bold;}
+.login {padding :20px ;margin-left:30px; background-color : black; color:white; font-weight : bold;border-radius: 20px;}
+.login:hover{background-color: grey;}
 footer{}
 
 </style>
@@ -95,11 +96,22 @@ footer{}
 		</div>
 	 	<%		
 	 		}else{
-	 	%>		
-	 	<div id="login">
-	 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a> <button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button></p>
-	 	</div>
-	 	<% 		
+	 		if(dto.getAddr()=="google"){
+	 			%>	
+	 		 	<div id="login">
+	 		 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a> <button class="login" onclick="signOut()'">로그아웃</button></p>
+	 		 	</div>
+	 		 	<% 	
+	 		}else{
+	 			
+	 			%>	
+	 		 	<div id="login">
+	 		 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a> <button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button></p>
+	 		 	</div>
+	 		 	<% 	
+	 		}
+	 	
+	 		
 	 		}
 		%>
 		
@@ -118,7 +130,14 @@ footer{}
 			<img id="dance" alt="춤그림" src="resources/dance.png">
 		</div>
 	</section>
-
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
 <%@include file="./format/footer.jsp" %> 
 </body>
 </html>

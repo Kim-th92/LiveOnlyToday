@@ -8,19 +8,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com">
-  <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id"
-     content="
-910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com">
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<meta name="google-signin-scope" content="profile">
+<meta name="google-signin-client_id" content="910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+
    
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 <style>
 .login { width : 300px ; height : 60px;}
 input {width : 270px; height :40px;}
@@ -51,8 +49,7 @@ b {font-size: 20pt;color:red;}
 <h1>로그인</h1>
 <div id="input">
 <form action="member.do" method="post">
-	 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
- 	<a href="<%=apiURL%>"><img height="50" src="resources/naver.png"/></a>
+	
 		<input type="hidden" name="command" value="login"/>
 	<table >
 	
@@ -74,45 +71,63 @@ b {font-size: 20pt;color:red;}
 		
 		<tr>
 			<td colspan="2"><button type="submit" class="loginbtn" >로그인</button></td>
+			
+		</tr>
+		<tr>
+		<td colspan="2"><div id="my-signin2"></div></td>
+ 			
+		</tr>
+		<tr>
+		
+ 			<td colspan="2"><a href="<%=apiURL%>"><img height="50" width="300" src="resources/naver.png"/></a></td>
 		</tr>
 		
 		
 		<tr>
 			
-			<td colspan="2"> <a href="findidpw.jsp">id pw 찾기</a> | <a href="register.jsp">회원가입</a></td>
+			<td colspan="2" style="text-align:center;"> <a href="findidpw.jsp">id pw 찾기</a> | <a href="register.jsp">회원가입</a></td>
 		</tr>
 		
 	</table>
 </form>
 </div>
-	
-	 <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
+<script>
+function onSuccess(googleUser) {
 
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        
-        var xhr = new XMLHttpRequest();
+
+var id_token = googleUser.getAuthResponse().id_token;
+    
+    var xhr = new XMLHttpRequest();
+
+    var redirectUrl = 'member.do?command=googlelogin';
+
+    //using jquery to post data dynamically
+    var form = $('<form action="' + redirectUrl + '" method="post">' +
+                     '<input type="hidden" name="id_token" value="' +
+                      googleUser.getAuthResponse().id_token + '" />'+
+                                                           '</form>');
+    $('body').append(form);
+    form.submit();
+  }
+  function onFailure(error) {
+    console.log(error);
+  }
   
-        var redirectUrl = 'member.do/command=googlelogin';
-
-        //using jquery to post data dynamically
-        var form = $('<form action="' + redirectUrl + '" method="post">' +
-                         '<input type="text" name="id_token" value="' +
-                          googleUser.getAuthResponse().id_token + '" />' +
-                                                               '</form>');
-        $('body').append(form);
-        form.submit();
-     }
-    </script>
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 300,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  
+  </script>
+	
+	
 	  <script type="text/javascript">
    		<%
    			String error = (String)request.getAttribute("err");

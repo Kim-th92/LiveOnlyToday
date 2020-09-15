@@ -46,6 +46,6 @@
 		UPDATE MEMBER_BOARD SET PW =#{pw} WHERE NAME=#{name} AND ID=#{id} AND EMAIL=#{email} 
 	</update>
 	<insert id="snslogin" parameterType="Member_BoardDto">
-		INSERT INTO MEMBER_BOARD VALUES(MEMBER_SEQ.NEXTVAL,#{id},NULL,#{name},#{nickname},'USER',#{email},NULL,NULL,NULL,'NOPAY','N',SYSDATE)
+		INSERT INTO MEMBER_BOARD VALUES(MEMBER_SEQ.NEXTVAL,#{id},NULL,#{name},#{nickname},'USER',#{email},NULL,NULL,#{addr},'NOPAY','N',SYSDATE)
 	</insert>
 </mapper>
