@@ -71,7 +71,7 @@ footer{}
 					<li><a href="#">혼자 부르기 </a></li>
 					<li><a href="#">ON-AIR </a></li>
 				</ul></li>
-			<li><a href="#">춤</a></li>
+			<li><a href="dancemain.jsp">춤</a></li>
 			<li><a href="move.do?command=freeboard">게시판</a>
 				<ul>
 					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
@@ -91,29 +91,29 @@ footer{}
 	 	
 	 	%>
 	 	<div id="login">
-			<button class= "login" onclick="location.href='login.jsp'"> 로그인 </button>
-			<button class= "login" onclick="location.href='register.jsp'"> 회원가입 </button>
+			<button class= "login" onclick="location.href='./login.jsp'"> 로그인 </button>
+			<button class= "login" onclick="location.href='./register.jsp'"> 회원가입 </button>
 		</div>
 	 	<%		
 	 		}else{
-	 		if(dto.getAddr()=="google"){
-	 			%>	
-	 		 	<div id="login">
-	 		 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a> <button class="login" onclick="signOut()'">로그아웃</button></p>
-	 		 	</div>
-	 		 	<% 	
+	 	%>		
+	 	<div id="login">
+	 		<span><%=dto.getNickname() %>님 반갑습니다. 
+	 		<%if(dto.getGrade()=="USER") {
+	 		%>
+	 		<a href="mypage.jsp">마이페이지</a>
+	 		<% 
 	 		}else{
-	 			
-	 			%>	
-	 		 	<div id="login">
-	 		 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a> <button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button></p>
-	 		 	</div>
-	 		 	<% 	
-	 		}
-	 	
-	 		
+	 		%>	
+	 		<a href="admin.jsp">관리자페이지</a>
+	 		<% 	
+	 		}%>
+	 		<button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button> </span>
+	 	</div>
+	 	<% 		
 	 		}
 		%>
+		
 		
 
 	</header>
