@@ -99,7 +99,7 @@ footer{}
 	 	%>		
 	 	<div id="login">
 	 		<span><%=dto.getNickname() %>님 반갑습니다. 
-	 		<%if(dto.getGrade()=="USER") {
+	 		<%if(dto.getGrade().equals("USER")) {
 	 		%>
 	 		<a href="mypage.jsp">마이페이지</a>
 	 		<% 
@@ -130,6 +130,16 @@ footer{}
 			<img id="dance" alt="춤그림" src="resources/dance.png">
 		</div>
 	</section>
+	<%
+		String success= (String)request.getAttribute("successs");
+		if(success!=null){
+	%>
+		<script type="text/javascript"> 
+		alert('<%=success%>');
+		</script>
+	<% 		
+		}
+	%>
 <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();

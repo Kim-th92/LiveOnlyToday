@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -173,7 +174,7 @@ public class MemberServlet extends HttpServlet {
 	            if(dao.check(id) != null) {
 		        	Member_BoardDto dto = new Member_BoardDto();
 		        	
-		        	dto  =  dao.check(id);
+		        	dto  =  dao.sns(id);
 		        	session.setAttribute("login",dto);
 			 		session.setMaxInactiveInterval(-1);
 			 		response.sendRedirect("index.jsp");
@@ -268,7 +269,7 @@ public class MemberServlet extends HttpServlet {
 		        if(dao.check(naverId) != null) {
 		        	Member_BoardDto dto = new Member_BoardDto();
 		        	
-		        	dto  =  dao.check(naverId);
+		        	dto  =  dao.sns(naverId);
 		        	response.sendRedirect("index.jsp");
 		        	
 		        	session.setAttribute("login",dto);
@@ -296,6 +297,24 @@ public class MemberServlet extends HttpServlet {
 		    } catch (Exception e) {
 		      System.out.println(e);
 		    }
+		}else if("deletemember".equals(command)) {
+			int memberseq = Integer.parseInt(request.getParameter("seq"));
+			
+			int res = dao.deleteMember(memberseq);
+			
+			if(res>0) {
+				String success = "회원 탈퇴 성공! 다음에 또만나용~";
+				System.out.println(success);
+				session.invalidate();
+				request.setAttribute("success",success);
+				dispatch("index.jsp",request,response);
+				
+			}else {
+				String err = "회원탈퇴 실패 다시 시도해 주세ㅇㅅㅇ";
+				request.setAttribute("err",err);
+				dispatch("mypage.jsp", request, response);
+			}
+		
 		}
 		
 	}

@@ -33,6 +33,16 @@ public class Member_BoardDao extends SqlMapConfig {
 				
 		return res;
 	}
+	//SNS로그인
+	public Member_BoardDto sns(String id) {
+		SqlSession session = null;
+		
+		Member_BoardDto dto = null;
+		session =getSqlSessionFactory().openSession();
+		dto =session.selectOne(namespace+"sns", id);
+		session.close();
+		return dto;
+	}
 	
 	
 	//로그인
@@ -107,6 +117,19 @@ public class Member_BoardDao extends SqlMapConfig {
 		
 	
 	}
+	//회원 탈퇴
+	public int deleteMember(int member_seq) {
+		SqlSession session =null;
+		int res = 0;
+		//세션
+		session = getSqlSessionFactory().openSession(true);
+		res = session.update(namespace + "deletemember",member_seq);
+		session.close();
+				
+		return res;
+		
+	}
+	
 
 	
 }

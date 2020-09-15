@@ -95,11 +95,9 @@ b {font-size: 20pt;color:red;}
 function onSuccess(googleUser) {
 
 
-var id_token = googleUser.getAuthResponse().id_token;
+	var id_token = googleUser.getAuthResponse().id_token;
     
-    var xhr = new XMLHttpRequest();
-
-    var redirectUrl = 'member.do?command=googlelogin';
+	var redirectUrl = 'member.do?command=googlelogin';
 
     //using jquery to post data dynamically
     var form = $('<form action="' + redirectUrl + '" method="post">' +

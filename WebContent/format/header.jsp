@@ -82,7 +82,7 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 	 	%>		
 	 	<div id="login">
 	 		<span><%=dto.getNickname() %>님 반갑습니다. 
-	 		<%if(dto.getGrade()=="USER") {
+	 		<%if(dto.getGrade().equals("USER")) {
 	 		%>
 	 		<a href="mypage.jsp">마이페이지</a>
 	 		<% 
