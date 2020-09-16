@@ -20,10 +20,12 @@ import com.oreilly.servlet.MultipartRequest;
 import com.sun.org.apache.bcel.internal.classfile.Field;
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
+import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.Song_BoardDao;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
+import com.whatsup.dto.QNA_BoardDto;
 import com.whatsup.dto.Song_BoardDto;
 
 
@@ -52,6 +54,7 @@ public class BoardServlet extends HttpServlet {
 		Free_BoardDao free_dao=new Free_BoardDao();
 		Song_BoardDao song_dao=new Song_BoardDao();
 		Dance_BoardDao dance_dao=new Dance_BoardDao();
+		QNA_BoardDao qna_dao=new QNA_BoardDao();
 		//자유게시판 추가
 		if(command.equals("free_insert")){
 			
@@ -153,8 +156,41 @@ public class BoardServlet extends HttpServlet {
 				jsResponse("삭제 실패", "move.do?command=selectpage&dance_no="+dance_no, response);
 			}
 		}else if(command.equals("musicinsert")) {
+		
+		// 문의 게시판	
+		}else if(command.equals("qna_insert")){
 			
-		}
+			int member_seq=Integer.parseInt(request.getParameter("member_seq"));
+			String qna_title=request.getParameter("qna_title");
+			String qna_content=request.getParameter("qna_content");
+			
+			QNA_BoardDto dto=new QNA_BoardDto(member_seq, qna_title, qna_content);
+			
+			int res=qna_dao.insert(dto);
+			if(res>0) {
+				jsResponse("작성 성공", "move.do?command=qnaboard", response);
+			}else {
+				jsResponse("작성 실패", "move.do?command=qnainsertpage", response);
+			}
+		
+		}else if(command.equals("qna_update")) {
+			QNA_BoardDto dto=(QNA_BoardDto)request.getAttribute("dto");
+			
+			int res=qna_dao.update(dto);
+			if(res>0) {
+				jsResponse("수정 성공", "move.do?command=selectpage&qna_no="+dto.getQna_no(), response);
+			}else {
+				jsResponse("수정 실패", "move.do?command=updatepage&qna_no="+dto.getQna_no(), response);
+			}
+		}else if(command.equals("qna_delete")) {
+			int qna_no=Integer.parseInt(request.getParameter("qna_no"));
+			int res=qna_dao.delete(qna_no);
+			if(res>0) {
+				jsResponse("삭제 성공", "move.do?command=qnaboard", response);
+			}else {
+				jsResponse("삭제 실패", "move.do?command=selectpage&qna_no="+qna_no, response);
+			}
+
 	}
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {

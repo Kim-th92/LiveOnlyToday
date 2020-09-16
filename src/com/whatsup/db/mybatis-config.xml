@@ -9,17 +9,12 @@
 	<typeAliases>
 		<typeAlias type="com.whatsup.dto.Member_BoardDto" alias="member_BoardDto"/>
 		<typeAlias type="com.whatsup.dto.Free_BoardDto" alias="free_boardDto"/>
-<<<<<<< HEAD
 		<typeAlias type="com.whatsup.dto.Song_BoardDto" alias="song_boardDto"/>
 		<typeAlias type="com.whatsup.dto.Dance_BoardDto" alias="dance_boardDto"/>
 		<typeAlias type="com.whatsup.dto.CommentDto" alias="commentDto"/>
 		<typeAlias type="com.whatsup.dto.ChatingListDto" alias="chatinglistDto"/>
 		<typeAlias type="com.whatsup.dto.MusicListDto" alias="musiclistDto"/>
-=======
-
-
-
->>>>>>> 0395d01c365a0c5c78bc681d585c0182ea047822
+		<typeAlias type="com.whatsup.dto.QNA_BoardDto" alias="qna_boardDto"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -41,5 +36,6 @@
 		<mapper resource="com/whatsup/db/ChatingList-mapper.xml" />
 		<mapper resource="com/whatsup/db/Comment-mapper.xml" />
 		<mapper resource="com/whatsup/db/MusicList-mapper.xml" />
+		<mapper resource="com/whatsup/db/QNA_Board-mapper.xml"/>
 	</mappers>
 </configuration>
