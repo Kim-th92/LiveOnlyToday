@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QNA_Boardmapper">
+	<select id="selectList" resultType="qna_BoardDto">
+		SELECT QNA.QNA_NO,QNA.QNA_TITLE,MEMBER.NICKNAME,QNA.QNA_REGDATE,QNA_ANSWER FROM QNA_BOARD QNA INNER JOIN MEMBER_BOARD MEMBER ON QNA.MEMBER_SEQ=MEMBER.MEMBER_SEQ
+	</select>
+	<select id="selectOne" resultType="qna_BoardDto" parameterType="int">
+		SELECT QNA.QNA_NO ,QNA.QNA_TITLE,QNA.QNA_CONTENT,MEMBER.NICKNAME,QNA.QNA_REGDATE,QNA_ANSWER FROM QNA_BOARD QNA INNER JOIN MEMBER_BOARD MEMBER ON QNA.MEMBER_SEQ=MEMBER.MEMBER_SEQ WHERE QNA_NO=#{qna_no}
+	</select>
+	<insert id="insert" parameterType="qna_BoardDto">
+		INSERT INTO QNA_BOARD VALUES(QNA_SEQ.NEXTVAL,#{qna_title},#{qna_content},SYSDATE,0,#{member_seq})
+	</insert>
+	<update id="update" parameterType="qna_BoardDto">
+		UPDATE QNA_BOARD SET QNA_TITLE=#{qna_title},QNA_CONTENT=#{qna_content} WHERE QNA_NO=#{qna_no}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM QNA_BOARD WHERE QNA_NO=#{qna_no}
+	</delete>
+	<update id="view" parameterType="int">
+		UPDATE QNA_BOARD SET QNA_ANSWER=QNA_ANSWER+1 WHERE QNA_NO=#{qna_no}
+	</update>
+</mapper>

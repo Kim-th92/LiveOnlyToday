@@ -71,13 +71,12 @@ footer{}
 					<li><a href="#">혼자 부르기 </a></li>
 					<li><a href="#">ON-AIR </a></li>
 				</ul></li>
-<<<<<<< HEAD
+
 			<li><a href="#">춤</a></li>
 			<li><a href="move.do?command=mainboardpage">게시판</a>
-=======
+
 			<li><a href="dancemain.jsp">춤</a></li>
 			<li><a href="move.do?command=freeboard">게시판</a>
->>>>>>> 0395d01c365a0c5c78bc681d585c0182ea047822
 				<ul>
 					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
 					<li><a href="#"> 춤</a></li>
@@ -87,7 +86,7 @@ footer{}
 			<li><a href="#">고객센터</a>
 				<ul>
 					<li><a href="#">자주묻는 질문</a></li>
-					<li><a href="#">문의게시판</a></li>
+					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
 				</ul></li>
 		</ul>
 		</div>
@@ -118,8 +117,6 @@ footer{}
 	 	<% 		
 	 		}
 		%>
-		
-		
 
 	</header>
 	<section>
