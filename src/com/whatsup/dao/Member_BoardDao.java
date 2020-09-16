@@ -22,6 +22,28 @@ public class Member_BoardDao extends SqlMapConfig {
 		
 		return res;
 	}
+	//snslogin enroll
+	public int snslogin(Member_BoardDto dto) {
+		SqlSession session =null;
+		int res = 0;
+		//세션
+		session = getSqlSessionFactory().openSession(true);
+		res = session.insert(namespace + "snslogin",dto);
+		session.close();
+				
+		return res;
+	}
+	//SNS로그인
+	public Member_BoardDto sns(String id) {
+		SqlSession session = null;
+		
+		Member_BoardDto dto = null;
+		session =getSqlSessionFactory().openSession();
+		dto =session.selectOne(namespace+"sns", id);
+		session.close();
+		return dto;
+	}
+	
 	
 	//로그인
 	public Member_BoardDto login(String id,String pw) {
@@ -81,19 +103,33 @@ public class Member_BoardDao extends SqlMapConfig {
 		if(dto !=null) {
 			duo.setPw(uuid);
 			res = session.update(namespace+"updatePw", duo);
-			System.out.println(duo.getPw());
+			session.commit();
 			
 			if(res>0) {
-				dto = session.selectOne(namespace +"findpw", duo);
-				System.out.println(dto.getPw());
+			return	dto = session.selectOne(namespace +"findpw", duo);
+			
 			}
 		}else {
-			dto =null;
+		return dto =null;
 		}
 		session.close();
-		
 		return dto;
+		
+	
+	}
+	//회원 탈퇴
+	public int deleteMember(int member_seq) {
+		SqlSession session =null;
+		int res = 0;
+		//세션
+		session = getSqlSessionFactory().openSession(true);
+		res = session.update(namespace + "deletemember",member_seq);
+		session.close();
+				
+		return res;
+		
 	}
 	
+
 	
 }

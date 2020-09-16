@@ -37,6 +37,7 @@ public class PageMoveServlet extends HttpServlet {
    }
 
 
+
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=UTF-8");
@@ -103,8 +104,13 @@ public class PageMoveServlet extends HttpServlet {
       //5-2.자유게시판 글 자세히 보기 페이지
       }else if(command.equals("selectpage")) {
          int free_no=Integer.parseInt(request.getParameter("free_no"));
+<<<<<<< HEAD
          int res=free_dao.freeview(free_no);
          Free_BoardDto dto=free_dao.selectOne(free_no);
+=======
+         //int res=dao.freeview(free_no);
+         Free_BoardDto dto=dao.selectOne(free_no);
+>>>>>>> 0395d01c365a0c5c78bc681d585c0182ea047822
          request.setAttribute("dto", dto);
          dispatch("free_boardselect.jsp", request, response);   
       //5-3.자유게시판 수정페이지 이동
@@ -274,5 +280,8 @@ public class PageMoveServlet extends HttpServlet {
       response.getWriter().append(result);
    }
 
+
+
+			
 
 }

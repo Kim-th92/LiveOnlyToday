@@ -16,6 +16,9 @@ body{padding:0;margin:0;}
 	padding: 20px 0px 0px 20px;
 	margin : 0;
 }
+.login {padding :20px ;margin-left:30px; background-color : black; color:white; font-weight : bold;border-radius: 20px;}
+.login:hover{background-color: grey;box-shadow:3px 3px 2px 1px rgba(0, 0, 255, .2);}
+p{paddin:0;}
 a{text-decoration: none; color:black;}
 header{ background-color:#fdde60; margin :0;}
 header>div{	display : inline-block;  }
@@ -51,8 +54,13 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 					<li><a href="#">혼자 부르기 </a></li>
 					<li><a href="#">ON-AIR </a></li>
 				</ul></li>
+<<<<<<< HEAD
 			<li><a href="#">춤</a></li>
 			<li><a href="move.do?command=mainboardpage">게시판</a>
+=======
+			<li><a href="./dancemain.jsp">춤</a></li>
+			<li><a href="#">게시판</a>
+>>>>>>> 0395d01c365a0c5c78bc681d585c0182ea047822
 				<ul>
 					<li><a href="#">자유 게시판</a></li>
 					<li><a href="#"> 춤</a></li>
@@ -71,14 +79,24 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 	 	
 	 	%>
 	 	<div id="login">
-			<button class= "login" onclick="location.href='../login.jsp'"> 로그인 </button>
-			<button class= "login" onclick="location.href='../register.jsp'"> 회원가입 </button>
+			<button class= "login" onclick="location.href='./login.jsp'"> 로그인 </button>
+			<button class= "login" onclick="location.href='./register.jsp'"> 회원가입 </button>
 		</div>
 	 	<%		
 	 		}else{
 	 	%>		
 	 	<div id="login">
-	 		<p><%=dto.getNickname() %>님 반갑습니다. <a href="#">마이페이지</a><button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button> </p>
+	 		<span><%=dto.getNickname() %>님 반갑습니다. 
+	 		<%if(dto.getGrade().equals("USER")) {
+	 		%>
+	 		<a href="mypage.jsp">마이페이지</a>
+	 		<% 
+	 		}else{
+	 		%>	
+	 		<a href="admin.jsp">관리자페이지</a>
+	 		<% 	
+	 		}%>
+	 		<button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button> </span>
 	 	</div>
 	 	<% 		
 	 		}

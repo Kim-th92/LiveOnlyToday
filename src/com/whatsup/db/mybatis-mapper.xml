@@ -19,13 +19,17 @@
 		<result property="delflag" column="DELFLAG" />
 		<result property="regdate" column="REGDATE" />
 	</resultMap>
+	
 
 	<insert id="insert" parameterType="Member_BoardDto">
 		INSERT INTO MEMBER_BOARD VALUES(MEMBER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{nickname},'USER',#{email},
 		#{birthday},#{phone},#{addr},'NOPAY','N',SYSDATE)
 	</insert>
 	<select id="selectId" resultType="Member_BoardDto" parameterType="String">
-		SELECT ID FROM MEMBER_BOARD WHERE ID = #{id}
+		SELECT  MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD WHERE ID = #{id} 
+	</select>
+	<select id="sns" resultType="Member_BoardDto" parameterType="String">
+		SELECT  MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD WHERE ID = #{id} AND DELFLAG='N'
 	</select>
 	
 	<select id="login" resultType="Member_BoardDto" parameterType ="String">
@@ -43,5 +47,11 @@
 	</select>
 	<update id="updatePw" parameterType="String" >
 		UPDATE MEMBER_BOARD SET PW =#{pw} WHERE NAME=#{name} AND ID=#{id} AND EMAIL=#{email} 
+	</update>
+	<insert id="snslogin" parameterType="Member_BoardDto">
+		INSERT INTO MEMBER_BOARD VALUES(MEMBER_SEQ.NEXTVAL,#{id},NULL,#{name},#{nickname},'USER',#{email},NULL,NULL,#{addr},'NOPAY','N',SYSDATE)
+	</insert>
+	<update id="deletemember" parameterType ="int">
+	    UPDATE MEMBER_BOARD SET DELFLAG='Y' WHERE MEMBER_SEQ=#{member_seq}
 	</update>
 </mapper>
