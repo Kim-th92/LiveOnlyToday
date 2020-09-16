@@ -83,7 +83,7 @@ footer{}
 					<li><a href="#"> 노래</a></li>
 					<li><a href="#">채팅</a></li>
 				</ul></li>
-			<li><a href="#">고객센터</a>
+			<li><a href="move.do?command=qnaboard">고객센터</a>
 				<ul>
 					<li><a href="#">자주묻는 질문</a></li>
 					<li><a href="move.do?command=qnaboard">문의게시판</a></li>

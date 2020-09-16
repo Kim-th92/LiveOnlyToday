@@ -217,7 +217,7 @@ public class PageMoveServlet extends HttpServlet {
 
          //6.문의게시판 보기
       }else if(command.equals("qnaboard")) {
-    	  response.sendRedirect("qna_boaradlist.jsp");
+    	  response.sendRedirect("qna_boardlist.jsp");
 
 
     	  // 6-1. 문의게시판 글쓰기

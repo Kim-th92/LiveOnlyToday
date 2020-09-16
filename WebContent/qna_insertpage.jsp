@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="취소" onclick="location.href='move.do?command=main'" />
+					<input type="button" value="취소" onclick="location.href='move.do?command=mainboard'" />
 					<input type="submit" value="작성" />
 				</td>
 			</tr>
