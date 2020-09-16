@@ -65,13 +65,13 @@ footer{}
 					<li><a href="#">회사소개</a></li>
 					<li><a href="#">오늘만 살조</a></li>
 				</ul></li>
-			<li><a href="#">노래</a>
+			<li><a href="move.do?command=musicselect">노래</a>
 				<ul>
 					<li><a href="#">혼자 부르기 </a></li>
 					<li><a href="#">ON-AIR </a></li>
 				</ul></li>
 			<li><a href="#">춤</a></li>
-			<li><a href="move.do?command=freeboard">게시판</a>
+			<li><a href="move.do?command=mainboardpage">게시판</a>
 				<ul>
 					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
 					<li><a href="#"> 춤</a></li>
@@ -110,7 +110,7 @@ footer{}
 			<h1>인싸가 되고 싶은 사람들 모여</h1>
 		</div>
 		<div id="shortcut-btn">
-			<button class= "shortcut" onclick=""> 노래부르러 가기 </button>
+			<button class= "shortcut" onclick="location.href='move.do?command=musicselect'"> 노래부르러 가기 </button>
 			<button class= "shortcut" onclick=""> 춤 추러 가기</button>
 		</div>
 		

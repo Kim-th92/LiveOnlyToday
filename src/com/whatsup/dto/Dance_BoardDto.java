@@ -9,9 +9,14 @@ public class Dance_BoardDto {
 	private Timestamp dance_regdate;
 	private int dance_cnt;
 	private int member_seq;
+	private String nickname;
 	
 	
-	
+	public Dance_BoardDto(int member_seq,String dance_title, String dance_content) {
+		this.dance_title = dance_title;
+		this.dance_content = dance_content;
+		this.member_seq = member_seq;
+	}
 	public Dance_BoardDto(String dance_title, String dance_content) {
 		this.dance_title = dance_title;
 		this.dance_content = dance_content;
@@ -62,6 +67,12 @@ public class Dance_BoardDto {
 	}
 	public void setMember_seq(int member_seq) {
 		this.member_seq = member_seq;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 }

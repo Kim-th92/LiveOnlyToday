@@ -12,7 +12,6 @@
 	Free_BoardDto free_dto=(Free_BoardDto)request.getAttribute("dto");
 %>
 <body>
-<%@ include file="./format/header.jsp" %>
 	<form action="move.do" method="post">
 		<input type="hidden" name="command" value="updateres">
 		<input type="hidden" name="free_no" value="<%=free_dto.getFree_no()%>" />
@@ -37,6 +36,5 @@
 			</tr>
 		</table>
 	</form>
-	<%@ include file="./format/footer.jsp" %>
 </body>
 </html>

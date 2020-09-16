@@ -11,7 +11,6 @@
 	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
 %>
 <body>
-<%@ include file="./format/header.jsp" %>
 	<form action="board.do" method="post">
 		<input type="hidden" name="command" value="free_insert"/>
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>"/>
@@ -36,6 +35,5 @@
 			</tr>
 		</table>
 	</form>
-<%@ include file="./format/footer.jsp" %>
 </body>
 </html>

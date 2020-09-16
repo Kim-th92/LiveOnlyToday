@@ -24,7 +24,6 @@
 %>
 </head>
 <body>
-<%@ include file="./format/header.jsp" %>
 
 	<table border="1">
 		<col width="50px" />
@@ -76,6 +75,5 @@
 			</td>
 		</tr>
 	</table>
-<%@ include file="./format/footer.jsp" %>
 </body>
 </html>
