@@ -8,6 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+ <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+</body>
+<meta name="google-signin-client_id" content="910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com">
+
 <style type="text/css">
 body {
 	background-color: #fdde60;
@@ -112,8 +118,19 @@ footer{}
 	 		%>	
 	 		<a href="admin.jsp">관리자페이지</a>
 	 		<% 	
-	 		}%>
+	 		}
+	 		if(dto.getAddr().equals("google")){
+	 		%>
+	 		<button class="login" onclick="signOut()">로그아웃</button> </span>
+	 		<%	
+	 		}else{
+	 		%>
 	 		<button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button> </span>
+	 		<% 	
+	 		}
+	 		%>
+	 		
+	 		
 	 	</div>
 	 	<% 		
 	 		}
@@ -147,11 +164,25 @@ footer{}
 	%>
 <script>
   function signOut() {
+	
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-      console.log('User signed out.');
+      $.ajax({
+    	 url: "member.do?command=logout",
+    	success : function(){
+    		console.log('logout successed');
+    		location.reload();
+    	},error:function(){
+    		alert("통신 실패....");
+    	}
+      });
     });
   }
+  function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
 </script>
 <%@include file="./format/footer.jsp" %> 
 </body>

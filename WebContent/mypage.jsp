@@ -11,7 +11,33 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <body>
 <%@include file="./format/header.jsp"%>
-<% Member_BoardDto memberdto = (Member_BoardDto)session.getAttribute("login"); %>
+<% Member_BoardDto memberdto = (Member_BoardDto)session.getAttribute("login"); 
+	if(memberdto ==null){
+%>
+
+	<script type="text/javascript">
+		alert("로그인을 먼저해주세용~");
+		
+	</script>
+<% 		
+		response.sendRedirect("index.jsp");
+	}
+	int seq=(memberdto!=null)?memberdto.getMember_seq():0;
+%>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("#btnDelete").click(function(){
+    	var res  = confirm("삭제하시겠습니까?");
+        if(res){
+            document.deleteform.action = "member.do?command=deletemember&seq=<%=seq%>";
+            document.deleteform.submit();
+        }
+    });
+});
+
+
+</script>
 <div id="section">
 		<h1> 마이페이지</h1>
 		
@@ -46,22 +72,12 @@
 	if(err!=null){
 %>
 
- <script type="text/javascript">alert('<%=err%>');</script>
+	 <script type="text/javascript">
+	 	alert('<%=err%>');
+	 </script>
 <% 		
 	}
 %>
-<script type="text/javascript">
 
-$(document).ready(function(){
-    $("#btnDelete").click(function(){
-        if(confirm("삭제하시겠습니까?")){
-            document.deleteform.action = "member.do?command=deletemember&seq=<%=memberdto.getMember_seq()%>";
-            document.deleteform.submit();
-        }
-    });
-});
-
-
-</script>
 </body>
 </html>

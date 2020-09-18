@@ -94,6 +94,7 @@ b {font-size: 20pt;color:red;}
 <script>
 function onSuccess(googleUser) {
 
+	
 
 	var id_token = googleUser.getAuthResponse().id_token;
     
