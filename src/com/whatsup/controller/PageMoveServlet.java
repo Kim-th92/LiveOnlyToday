@@ -15,11 +15,13 @@ import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dao.MusicListDao;
+import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.Song_BoardDao;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 import com.whatsup.dto.MusicListDto;
+import com.whatsup.dto.QNA_BoardDto;
 import com.whatsup.dto.Song_BoardDto;
 
 
@@ -48,6 +50,7 @@ public class PageMoveServlet extends HttpServlet {
       Dance_BoardDao dance_dao=new Dance_BoardDao();
       Song_BoardDao song_dao=new Song_BoardDao();
       MusicListDao music_dao=new MusicListDao();
+      QNA_BoardDao qna_dao=new QNA_BoardDao();
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -208,13 +211,44 @@ public class PageMoveServlet extends HttpServlet {
          request.setAttribute("song_no", song_no);
          dispatch("board.do?command=song_delete", request, response);
 
-      //6.고객센터
-      }else if(command.equals("servicesenter")) {
-         response.sendRedirect("servicesenter.jsp");
-         
-         
-      //6-1.고객센터 글 작성
-      }else if(command.equals("")) {
+     	//6.문의게시판 보기
+		}else if(command.equals("qnaboard")) {
+			response.sendRedirect("qna_boardlist.jsp");
+
+		// 6-1. 문의게시판 글쓰기
+		} else if (command.equals("qnainsertpage")) {
+			if (session.getAttribute("login") == null) {
+				jsResponse("먼저 로그인을 해 주세요", "move.do?command=qnaboard", response);
+			} else {
+				response.sendRedirect("qna_insertpage.jsp");
+			}
+		// 6-2.문의게시판 글 자세히 보기 페이지
+		} else if (command.equals("selectpage")) {
+			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
+			int res = qna_dao.qnaview(qna_no);
+			QNA_BoardDto dto = qna_dao.selectOne(qna_no);
+			request.setAttribute("dto", dto);
+			dispatch("qna_boardselect.jsp", request, response);
+		// 6-3.문의게시판 수정페이지 이동
+		} else if (command.equals("updatepage")) {
+			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
+			QNA_BoardDto dto = qna_dao.selectOne(qna_no);
+			request.setAttribute("dto", dto);
+			dispatch("qna_update.jsp", request, response);
+		// 6-4.문의게시판 수정
+		} else if (command.equals("updateres")) {
+			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
+			String qna_title = request.getParameter("qna_title");
+			String qna_content = request.getParameter("qna_content");
+			QNA_BoardDto dto = new QNA_BoardDto(qna_title, qna_content);
+			dto.setQna_no(qna_no);
+			request.setAttribute("dto", dto);
+			dispatch("qna.do?command=qna_update", request, response);
+		// 6-5..문의 게시판 삭제
+		} else if (command.equals("delete")) {
+			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
+			request.setAttribute("qna_no", qna_no);
+			dispatch("qna.do?command=qna_delete", request, response);
          
          
       //7.로그인 페이지

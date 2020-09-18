@@ -93,7 +93,7 @@ footer{}
 			<li><a href="#">고객센터</a>
 				<ul>
 					<li><a href="#">자주묻는 질문</a></li>
-					<li><a href="#">문의게시판</a></li>
+					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
 				</ul></li>
 		</ul>
 		</div>
