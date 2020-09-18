@@ -31,7 +31,8 @@ CREATE SEQUENCE COMMENT_SEQ;
 
 select * from member_board;
 select pw from member_board where name = '최서원' and email = 'tlwj321@naver.com';
-delete from member_board where pw is null;
+update member_board set pw =1234 where name='최서원'and email='tlwj321@naver.com'
+update MEMBER_BOARD set delflag='N' where pw is null and delflag ='Y';
 
 CREATE TABLE MEMBER_BOARD(
 	MEMBER_SEQ NUMBER NOT NULL,

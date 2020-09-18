@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com">
 <style>
 body{padding:0;margin:0;}
 #logo {
@@ -81,7 +83,7 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 	 		}else{
 	 	%>		
 	 	<div id="login">
-	 		<span><%=dto.getNickname() %>님 반갑습니다. 
+	 			<span><%=dto.getNickname() %>님 반갑습니다. 
 	 		<%if(dto.getGrade().equals("USER")) {
 	 		%>
 	 		<a href="mypage.jsp">마이페이지</a>
@@ -90,8 +92,17 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 	 		%>	
 	 		<a href="admin.jsp">관리자페이지</a>
 	 		<% 	
-	 		}%>
+	 		}
+	 		if(dto.getAddr().equals("google")){
+	 		%>
+	 		<button class="login" onclick="signOut()">로그아웃</button> </span>
+	 		<%	
+	 		}else{
+	 		%>
 	 		<button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button> </span>
+	 		<% 	
+	 		}
+	 		%>
 	 	</div>
 	 	<% 		
 	 		}
