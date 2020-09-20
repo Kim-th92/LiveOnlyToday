@@ -67,6 +67,11 @@
 			</td>
 		</tr>
 	</table>
+	<form action="move.do" method="post">
+		<input type="hidden" name="command" value="musicsearch"/>
+		<input type="text" name="music_name"/>
+		<input type="submit" value="검색">
+	</form>
 	<div id="musicview">
 		<audio controls="controls" id="player">
 			<track src="" kind="attribute" srclang="kr" label="기본한국어" default id="subtitle"/>
@@ -201,7 +206,7 @@
     	var varraints = {audio: true};
     	let chunks = [];
 
-    	navigator.mediaDevices.getUserMedia(varraints).then(function(stream) {
+    	navigator.mediaDevices.getUserMedia(varraints).then(function(stream) {	
 
             var mediaRecorder = new MediaRecorder(stream);
             

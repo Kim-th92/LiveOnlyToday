@@ -73,10 +73,12 @@ public class PageMoveServlet extends HttpServlet {
          //3-1.노래 추가
       }else if(command.equals("musicinsert")) {
          response.sendRedirect("musicinsert.jsp");
-      //3-2.
-      }else if(command.equals("")) {
-         
-      
+      //3-2.노래 검색
+      }else if(command.equals("musicsearch")) {
+    	  String music_name=request.getParameter("music_name");
+    	  List<MusicListDto> musiclist=music_dao.musicSerach(music_name);
+    	  request.setAttribute("musiclist", musiclist);
+    	  dispatch("musicselect.jsp", request, response);
       //4.댄스페이지
       }else if(command.equals("maindance")) {
          response.sendRedirect("dance.jsp");
@@ -304,14 +306,9 @@ public class PageMoveServlet extends HttpServlet {
       RequestDispatcher dispatch = request.getRequestDispatcher(path);
       dispatch.forward(request, response);
    }
-   
    private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
       String result = "<script> alert(\"" + msg + "\"); location.href=\""+url+"\"; </script> ";
       response.getWriter().append(result);
-   }
-
-
-
-			
+   }		
 
 }

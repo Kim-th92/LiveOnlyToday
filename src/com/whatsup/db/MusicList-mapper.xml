@@ -6,5 +6,8 @@
 	<select id="selectList" resultType="musiclistDto">
 		SELECT MUSIC_NO,MUSIC_NAME,MUSIC_ARTIST FROM MUSICLIST_TABLE ORDER BY MUSIC_NO DESC
 	</select>
+	<select id="musicsearch" resultType="musiclistDto" parameterType="String">
+		SELECT MUSIC_NO,MUSIC_NAME,MUSIC_ARTIST FROM MUSICLIST_TABLE WHERE MUSIC_NAME LIKE #{music_name} or MUSIC_ARTIST LIKE #{music_name} ORDER BY MUSIC_NO DESC
+	</select>
 
 </mapper>

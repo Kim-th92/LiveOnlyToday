@@ -82,7 +82,11 @@ footer{}
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 
 			<li><a href="dancemain.jsp">춤</a></li>
+<<<<<<< HEAD
+			<li><a href="move.do?command=mainboardpage">게시판</a>
+=======
 			<li><a href="move.do?command=freeboard">게시판</a>
+>>>>>>> bfdf2026c07ac74c610000cd268eacb2f393d362
 
 				<ul>
 					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
