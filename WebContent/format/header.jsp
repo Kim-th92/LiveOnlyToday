@@ -61,11 +61,8 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 
 			<li><a href="./dancemain.jsp">춤</a></li>
-<<<<<<< HEAD
+
 			<li><a href="move.do?command=mainboardpage">게시판</a>
-=======
-			<li><a href="#">게시판</a>
->>>>>>> bfdf2026c07ac74c610000cd268eacb2f393d362
 
 				<ul>
 					<li><a href="#">자유 게시판</a></li>
