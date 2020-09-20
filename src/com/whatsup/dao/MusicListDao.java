@@ -18,4 +18,12 @@ public class MusicListDao extends SqlMapConfig{
 		session.close();
 		return list;
 	}
+	public List<MusicListDto> musicSerach(String music_name){
+		SqlSession session=null;
+		List<MusicListDto> list=new ArrayList<MusicListDto>();
+		session=getSqlSessionFactory().openSession();
+		list=session.selectList(namespace+"musicsearch","%"+music_name+"%");
+		session.close();
+		return list;
+	}
 }

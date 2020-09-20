@@ -54,13 +54,13 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 					<li><a href="#">혼자 부르기 </a></li>
 					<li><a href="#">ON-AIR </a></li>
 				</ul></li>
-<<<<<<< HEAD
+
 			<li><a href="#">춤</a></li>
 			<li><a href="move.do?command=mainboardpage">게시판</a>
-=======
+
 			<li><a href="./dancemain.jsp">춤</a></li>
-			<li><a href="#">게시판</a>
->>>>>>> 0395d01c365a0c5c78bc681d585c0182ea047822
+			<li><a href="move.do?command=mainboardpage">게시판</a>
+
 				<ul>
 					<li><a href="#">자유 게시판</a></li>
 					<li><a href="#"> 춤</a></li>
