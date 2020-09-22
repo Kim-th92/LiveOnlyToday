@@ -34,12 +34,9 @@ import com.whatsup.dto.Song_BoardDto;
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+  
     public BoardServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -192,7 +189,7 @@ public class BoardServlet extends HttpServlet {
 						jsResponse("삭제 실패", "move.do?command=selectpage&qna_no="+qna_no, response);
 					}
 		
-		
+				}
 	}
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {

@@ -25,19 +25,12 @@ footer{z-index: 2;   position: absolute;  left: 0;   bottom: 0;   width: 100%; p
 <div class="section">
 <h1> 춤</h1>
 	<div class="card">
+		
 		<div class="dance-card">
 			<video src="" controls="controls" ></video>
-			<button onclick=""> 분석하러가기 </button>
+			<span> 이름  </span>
 		</div>
-		<div class="dance-card">
-			<video src="" controls="controls"></video>
-			<button onclick=""> 분석하러가기 </button>
-		</div>
-		<div class="dance-card">
-			<video src="" controls="controls"></video>
-			<button onclick=""> 분석하러가기 </button>
-		</div>
-		
+	
 		
 	</div>
 	<button onclick="location.href='danceupload.jsp'">동영상 업로드</button>
