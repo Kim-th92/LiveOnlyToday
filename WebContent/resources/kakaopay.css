@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+html {
+
+    border: 0;
+    padding: 0;
+    margin: 0;
+    
+}
+
+body {
+	border: 1px solid black;
+	box-sizing: border-box;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	left: 7px;
+	
+}
+
+p {
+	
+	background-color: #fdde60;
+	width: 298px;
+
+	bottom: 16px;
+	border: 0;
+	position: relative;
+	line-height: 150px;
+  	height: 150px;
+	
+}
+
+#payment{
+	
+
+	border: 0;
+}

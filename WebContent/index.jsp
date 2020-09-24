@@ -96,6 +96,11 @@ footer{}
 					<li><a href="#">자주묻는 질문</a></li>
 					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
 				</ul></li>
+				
+			  
+				<li><a href="KakaopayController?command=checklogin" onclick="openPopup()">결제하기</a></li>
+				
+					
 		</ul>
 		</div>
 		<% Member_BoardDto dto = (Member_BoardDto)session.getAttribute("login");
@@ -184,6 +189,16 @@ footer{}
         gapi.auth2.init();
       });
     }
+  
+  
+
+  		  
+  
+  
+
+  
+  
+  
 </script>
 <%@include file="./format/footer.jsp" %> 
 </body>
