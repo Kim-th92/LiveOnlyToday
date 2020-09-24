@@ -10,7 +10,7 @@
 		SELECT * FROM DANCE_ADMIN ORDER BY DANCEADMIN_SEQ DESC
 	</select>
 	<select id="selectOne" resultType="DanceAdminDto">
-		SELECT * FROM DANCE_ADMIN WEHRE DANCEADMIN_SEQ =#{danceadmin_seq}
+		SELECT * FROM DANCE_ADMIN WHERE DANCEADMIN_SEQ = #{danceadmin_seq}
 	</select>
 
 </mapper>
