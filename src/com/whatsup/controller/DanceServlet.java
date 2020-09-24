@@ -33,12 +33,14 @@ public class DanceServlet extends HttpServlet {
 	      // 춤 따라하기 업로드
 	      if("upload".equals(command)) {
 	    	  String title = request.getParameter("danceadmintitle");
-	    	  String src = request.getParameter("src");
+	    	  String src = request.getParameter("danceadminsrc");
 	    	  String content = request.getParameter("danceadmincontent");
+	    	  
+	    	  String realSrc =src.replace(src.substring(src.indexOf("."), src.indexOf("e")+2), "be.com/embed/");
 	    	  
 	    	  DanceAdminDto dto = new DanceAdminDto();
 	    	  dto.setDanceadmintitle(title);
-	    	  dto.setDanceadminsrc(src);
+	    	  dto.setDanceadminsrc(realSrc);
 	    	  dto.setDancecontent(content);
 	    	  
 	    	  int res = dao.insertVideo(dto);
@@ -57,7 +59,7 @@ public class DanceServlet extends HttpServlet {
 	      }
 	      // 춤 따라하기 디테일
 	      else if("selectOne".equals(command)) {
-	    	  int danceadmin_seq = Integer.parseInt(request.getParameter("danceadmin_seq"));
+	    	  int danceadmin_seq = Integer.parseInt(request.getParameter("seq"));
 	    	  DanceAdminDto dto = dao.selectOne(danceadmin_seq);
 	    	  request.setAttribute("dto",dto );
 	    	  dispatch("dancefollow_webcam.jsp",request,response);

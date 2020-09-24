@@ -18,12 +18,12 @@ public class DanceAdminDao extends SqlMapConfig {
 		int res=0;
 		session=getSqlSessionFactory().openSession();
 		
-		res=session.insert(namespace+"insert",dto);
+		res=session.insert(namespace+"insertSrc",dto);
 		session.commit();
 		session.close();
 		
 		
-		return  0;
+		return res;
 	}
 	//춤 따라추기 리스트
 	public List<DanceAdminDto> selectList(){
@@ -33,6 +33,7 @@ public class DanceAdminDao extends SqlMapConfig {
 		list=session.selectList(namespace+"selectList");
 		session.close();
 		
+
 		return list;
 	}
 	

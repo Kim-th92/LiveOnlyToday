@@ -22,15 +22,15 @@
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="free_title" /></td>
+				<td><input type="text" name="dance_title" /></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="free_content"></textarea></td>
+				<td><textarea rows="10" cols="60" name="dance_content"></textarea></td>
 			</tr>
 			<tr>
 				<th>파일 업로드</th>
-				<td><input type="file" name="file"/></td>
+				<td><input type="file" name="dacne_file"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

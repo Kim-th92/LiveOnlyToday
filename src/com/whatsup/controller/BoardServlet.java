@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sun.org.apache.bcel.internal.classfile.Field;
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
@@ -121,11 +123,39 @@ public class BoardServlet extends HttpServlet {
 			
 		//댄스게시판	
 		}else if(command.equals("dance_insert")){
+			String fileSavePath="dancevideoupload";
+			int uploadSizeLimit = 1000*1024*1024;
+			String encType ="UTF-8";
+			if(!ServletFileUpload.isMultipartContent(request)) {
+				response.sendRedirect("");
+			}
 			
-			int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-			String dance_title=request.getParameter("dance_title");
-			String dance_content=request.getParameter("dance_content");
+			ServletContext context = getServletContext();
 			
+			String uploadPath = context.getRealPath(fileSavePath);
+			System.out.println(uploadPath);
+			
+			MultipartRequest multi = new MultipartRequest(request,uploadPath,uploadSizeLimit,encType,new DefaultFileRenamePolicy());
+			String file = multi.getFilesystemName("dance_file");
+			
+			int member_seq;
+			String nickname;
+			String dance_title;
+			String dance_content;
+			
+			if(file == null) {
+				member_seq = Integer.parseInt(multi.getParameter("member_seq"));
+				nickname = multi.getParameter("nickname");
+				dance_title = multi.getParameter("dance_title");
+				dance_content= multi.getParameter("dance_content");
+			}else {
+				
+				member_seq = Integer.parseInt(multi.getParameter("member_seq"));
+				nickname = multi.getParameter("nickname");
+				dance_title = multi.getParameter("dance_title");
+				dance_content= multi.getParameter("dance_content");
+			}
+					
 			Dance_BoardDto dto=new Dance_BoardDto(member_seq, dance_title, dance_content);
 			
 			int res=dance_dao.insert(dto);

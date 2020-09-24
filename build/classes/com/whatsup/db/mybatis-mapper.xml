@@ -54,4 +54,6 @@
 	<update id="deletemember" parameterType ="int">
 	    UPDATE MEMBER_BOARD SET DELFLAG='Y' WHERE MEMBER_SEQ=#{member_seq}
 	</update>
+
+	
 </mapper>

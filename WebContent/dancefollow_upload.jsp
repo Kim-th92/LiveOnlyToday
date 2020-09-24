@@ -17,7 +17,7 @@
 			<table>
 				<tr>
 					<th> 제목</th>
-					<td><input type="text" name ="danceadmintitle"/></td>
+					<td><input type="text" name ="danceadmintitle" placeholder="제목-가수명 으로 입력해주세요"/></td>
 				</tr>
 			
 				<tr>
@@ -27,40 +27,22 @@
 				</tr>
 				<tr>
 					<th>영상 설명</th>
-					<td><textarea name ="danceadmicontent" ></textarea></td>
+					<td><textarea name ="danceadmincontent" ></textarea></td>
 					
 				</tr>
-				<tr>
-					<td colspan ="2"><button onclick="preview()">영상 확인</button></td>
-				</tr>
+				
 				<tr>
 					
 					<td colspan="2"><input type="submit" value="submit"/></td>
 				</tr>
 			</table>
 		</form>
-	<iframe id="preview" src="" ></iframe>	
 	</div>
 
 </div>
 
 <script type="text/javascript">
-var video = document.getElementById('preview');
 
-function preview(){
-	var src = document.getElementById('src');
-	var videosrc = src.value;
-	
-	
-	if(videosrc == null||videosrc.trim()==''){
-		window.alert("영상url을 입력해 주세요");
-	}else{
-	video.style.display='block';
-	video.src=videosrc;
-		
-		
-	}
-}
 </script>
 <%@ include file="./format/footer.jsp" %>
 
