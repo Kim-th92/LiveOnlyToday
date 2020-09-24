@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 </head>
 <%
 	QNA_BoardDto qna_dto=(QNA_BoardDto)request.getAttribute("dto");
@@ -26,7 +27,10 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="qna_content" ><%=qna_dto.getQna_content() %></textarea></td>
+				<td><textarea rows="10" cols="60" name="qna_content" id="qna_content"><%=qna_dto.getQna_content() %></textarea></td>
+				 <script>
+                     CKEDITOR.replace( 'qna_content' );
+                </script>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
