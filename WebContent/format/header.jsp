@@ -70,10 +70,10 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 
 				<ul>
-					<li><a href="#">자유 게시판</a></li>
-					<li><a href="#"> 춤</a></li>
-					<li><a href="#"> 노래</a></li>
-					<li><a href="#">채팅</a></li>
+					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
+					<li><a href="move.do?command=danceboard"> 춤</a></li>
+					<li><a href="move.do?command=songboard"> 노래</a></li>
+					<li><a href="move.do?command=chatingboard">채팅</a></li>
 				</ul></li>
 			<li><a href="#">고객센터</a>
 				<ul>

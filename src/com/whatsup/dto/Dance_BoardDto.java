@@ -10,8 +10,29 @@ public class Dance_BoardDto {
 	private int dance_cnt;
 	private int member_seq;
 	private String nickname;
+	private String dancefname;
+	private String dancerealfname;
+	private String dancerealpath;
 	
 	
+	public String getDancefname() {
+		return dancefname;
+	}
+	public void setDancefname(String dancefname) {
+		this.dancefname = dancefname;
+	}
+	public String getDancerealfname() {
+		return dancerealfname;
+	}
+	public void setDancerealfname(String dancerealfname) {
+		this.dancerealfname = dancerealfname;
+	}
+	public String getDancerealpath() {
+		return dancerealpath;
+	}
+	public void setDancerealpath(String dancerealpath) {
+		this.dancerealpath = dancerealpath;
+	}
 	public Dance_BoardDto(int member_seq,String dance_title, String dance_content) {
 		this.dance_title = dance_title;
 		this.dance_content = dance_content;
@@ -30,6 +51,29 @@ public class Dance_BoardDto {
 		this.dance_cnt = dance_cnt;
 		this.member_seq = member_seq;
 	}
+	public Dance_BoardDto(int dance_no, String dance_title, String dance_content, Timestamp dance_regdate,
+			int dance_cnt, int member_seq, String nickname, String dancefname, String dancerealfname,
+			String dancerealpath) {
+		super();
+		this.dance_no = dance_no;
+		this.dance_title = dance_title;
+		this.dance_content = dance_content;
+		this.dance_regdate = dance_regdate;
+		this.dance_cnt = dance_cnt;
+		this.member_seq = member_seq;
+		this.nickname = nickname;
+		this.dancefname = dancefname;
+		this.dancerealfname = dancerealfname;
+		this.dancerealpath = dancerealpath;
+	}
+	@Override
+	public String toString() {
+		return "Dance_BoardDto [dance_no=" + dance_no + ", dance_title=" + dance_title + ", dance_content="
+				+ dance_content + ", dance_regdate=" + dance_regdate + ", dance_cnt=" + dance_cnt + ", member_seq="
+				+ member_seq + ", nickname=" + nickname + ", dancefname=" + dancefname + ", dancerealfname="
+				+ dancerealfname + ", dancerealpath=" + dancerealpath + "]";
+	}
+	
 	public Dance_BoardDto() {
 	}
 	public int getDance_no() {
