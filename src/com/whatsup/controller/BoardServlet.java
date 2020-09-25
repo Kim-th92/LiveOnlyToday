@@ -20,13 +20,15 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sun.org.apache.bcel.internal.classfile.Field;
-import com.whatsup.dao.CommentDao;
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.Song_BoardDao;
+<<<<<<< HEAD
 import com.whatsup.dao.Stream_BoardDao;
 import com.whatsup.dto.CommentDto;
+=======
+>>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
@@ -58,8 +60,11 @@ public class BoardServlet extends HttpServlet {
 		Song_BoardDao song_dao=new Song_BoardDao();
 		Dance_BoardDao dance_dao=new Dance_BoardDao();
 		QNA_BoardDao qna_dao=new QNA_BoardDao(); 
+<<<<<<< HEAD
 		CommentDao comment_dao=new CommentDao();
 		Stream_BoardDao stream_dao=new Stream_BoardDao();
+=======
+>>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
 		//자유게시판 추가
 		if(command.equals("free_insert")){
 			
@@ -81,9 +86,9 @@ public class BoardServlet extends HttpServlet {
 			
 			int res=free_dao.update(dto);
 			if(res>0) {
-				jsResponse("수정 성공", "move.do?command=freeselectpage&free_no="+dto.getFree_no(), response);
+				jsResponse("수정 성공", "move.do?command=selectpage&free_no="+dto.getFree_no(), response);
 			}else {
-				jsResponse("수정 실패", "move.do?command=freeupdatepage&free_no="+dto.getFree_no(), response);
+				jsResponse("수정 실패", "move.do?command=updatepage&free_no="+dto.getFree_no(), response);
 			}
 		}else if(command.equals("free_delete")) {
 			int free_no=Integer.parseInt(request.getParameter("free_no"));
@@ -91,7 +96,7 @@ public class BoardServlet extends HttpServlet {
 			if(res>0) {
 				jsResponse("삭제 성공", "move.do?command=freeboard", response);
 			}else {
-				jsResponse("삭제 실패", "move.do?command=freeselectpage&free_no="+free_no, response);
+				jsResponse("삭제 실패", "move.do?command=selectpage&free_no="+free_no, response);
 			}
 		//노래 게시판
 		}else if(command.equals("song_insert")){
@@ -114,9 +119,9 @@ public class BoardServlet extends HttpServlet {
 			
 			int res=song_dao.update(dto);
 			if(res>0) {
-				jsResponse("수정 성공", "move.do?command=songselectpage&song_no="+dto.getSong_no(), response);
+				jsResponse("수정 성공", "move.do?command=selectpage&song_no="+dto.getSong_no(), response);
 			}else {
-				jsResponse("수정 실패", "move.do?command=songupdatepage&song_no="+dto.getSong_no(), response);
+				jsResponse("수정 실패", "move.do?command=updatepage&song_no="+dto.getSong_no(), response);
 			}
 		}else if(command.equals("song_delete")) {
 			int song_no=Integer.parseInt(request.getParameter("song_no"));
@@ -124,7 +129,7 @@ public class BoardServlet extends HttpServlet {
 			if(res>0) {
 				jsResponse("삭제 성공", "move.do?command=songboard", response);
 			}else {
-				jsResponse("삭제 실패", "move.do?command=songselectpage&song_no="+song_no, response);
+				jsResponse("삭제 실패", "move.do?command=selectpage&song_no="+song_no, response);
 			}
 			
 		//댄스게시판	
@@ -176,9 +181,9 @@ public class BoardServlet extends HttpServlet {
 			
 			int res=dance_dao.update(dto);
 			if(res>0) {
-				jsResponse("수정 성공", "move.do?command=danceselectpage&dance_no="+dto.getDance_no(), response);
+				jsResponse("수정 성공", "move.do?command=selectpage&dance_no="+dto.getDance_no(), response);
 			}else {
-				jsResponse("수정 실패", "move.do?command=danceupdatepage&dance_no="+dto.getDance_no(), response);
+				jsResponse("수정 실패", "move.do?command=updatepage&dance_no="+dto.getDance_no(), response);
 			}
 		}else if(command.equals("dance_delete")) {
 			int dance_no=Integer.parseInt(request.getParameter("dance_no"));
@@ -186,92 +191,47 @@ public class BoardServlet extends HttpServlet {
 			if(res>0) {
 				jsResponse("삭제 성공", "move.do?command=danceboard", response);
 			}else {
-				jsResponse("삭제 실패", "move.do?command=danceselectpage&dance_no="+dance_no, response);
+				jsResponse("삭제 실패", "move.do?command=selectpage&dance_no="+dance_no, response);
 			}
 		}else if(command.equals("musicinsert")) {
 	
 		
 		// 문의 게시판	
-		}else if(command.equals("qna_insert")){
+				}else if(command.equals("qna_insert")){
 					
-			int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-			String qna_title=request.getParameter("qna_title");
-			String qna_content=request.getParameter("qna_content");
-					
-			QNA_BoardDto dto=new QNA_BoardDto(member_seq, qna_title, qna_content);
-					
-			int res=qna_dao.insert(dto);
-			if(res>0) {
-				jsResponse("작성 성공", "move.do?command=qnaboard", response);
-			}else {
-				jsResponse("작성 실패", "move.do?command=qnainsertpage", response);
-			}
-				
-		}else if(command.equals("qna_update")) {
-			QNA_BoardDto dto=(QNA_BoardDto)request.getAttribute("dto");
-					
-			int res=qna_dao.update(dto);
-			if(res>0) {
-				jsResponse("수정 성공", "move.do?command=selectpage&qna_no="+dto.getQna_no(), response);
-			}else {
-				jsResponse("수정 실패", "move.do?command=updatepage&qna_no="+dto.getQna_no(), response);
-			}
-		}else if(command.equals("qna_delete")) {
-			int qna_no=Integer.parseInt(request.getParameter("qna_no"));
-			int res=qna_dao.delete(qna_no);
-			if(res>0) {
-				jsResponse("삭제 성공", "move.do?command=qnaboard", response);
-			}else {
-				jsResponse("삭제 실패", "move.do?command=selectpage&qna_no="+qna_no, response);
-			}
-		
-		}
-		//댓글 작성
-		else if(command.equals("freecommentinsert")) {
-			String comment_content=request.getParameter("comment_content");
-			int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-			int free_no=Integer.parseInt(request.getParameter("free_no"));
-			CommentDto comment_dto=new CommentDto();
-			comment_dto.setMember_seq(member_seq);
-			comment_dto.setComment_content(comment_content);
-			comment_dto.setFree_no(free_no);
-			int res=comment_dao.insertFree(comment_dto);
-			if(res>0) {
-				jsResponse("댓글 작성 성공", "move.do?command=freeselectpage&free_no="+free_no, response);
-			}else {
-				jsResponse("댓글 작성 실패", "move.do?command=freeselectpage&free_no="+free_no, response);
-			}
-					
-				}
-				else if(command.equals("dancecommentinsert")) {
-					String comment_content=request.getParameter("comment_content");
 					int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-					int dance_no=Integer.parseInt(request.getParameter("dance_no"));
-					CommentDto comment_dto=new CommentDto();
-					comment_dto.setMember_seq(member_seq);
-					comment_dto.setComment_content(comment_content);
-					comment_dto.setDance_no(dance_no);
-					int res=comment_dao.insertDance(comment_dto);
+					String qna_title=request.getParameter("qna_title");
+					String qna_content=request.getParameter("qna_content");
+					
+					QNA_BoardDto dto=new QNA_BoardDto(member_seq, qna_title, qna_content);
+					
+					int res=qna_dao.insert(dto);
 					if(res>0) {
-						jsResponse("댓글 작성 성공", "move.do?command=danceselectpage&dance_no="+dance_no, response);
+						jsResponse("작성 성공", "move.do?command=qnaboard", response);
 					}else {
-						jsResponse("댓글 작성 실패", "move.do?command=danceselectpage&dance_no="+dance_no, response);
+						jsResponse("작성 실패", "move.do?command=qnainsertpage", response);
 					}
+				
+				}else if(command.equals("qna_update")) {
+					QNA_BoardDto dto=(QNA_BoardDto)request.getAttribute("dto");
 					
-				}else if(command.equals("songcommentinsert")) {
-					String comment_content=request.getParameter("comment_content");
-					int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-					int song_no=Integer.parseInt(request.getParameter("song_no"));
-					CommentDto comment_dto=new CommentDto();
-					comment_dto.setMember_seq(member_seq);
-					comment_dto.setComment_content(comment_content);
-					comment_dto.setSong_no(song_no);
-					int res=comment_dao.insertSong(comment_dto);
-				if(res>0) {
-					jsResponse("댓글 작성 성공", "move.do?command=songselectpage&song_no="+song_no, response);
-				}else {
-					jsResponse("댓글 작성 실패", "move.do?command=songselectpage&song_no="+song_no, response);
+					int res=qna_dao.update(dto);
+					if(res>0) {
+						jsResponse("수정 성공", "move.do?command=selectpage&qna_no="+dto.getQna_no(), response);
+					}else {
+						jsResponse("수정 실패", "move.do?command=updatepage&qna_no="+dto.getQna_no(), response);
+					}
+				}else if(command.equals("qna_delete")) {
+					int qna_no=Integer.parseInt(request.getParameter("qna_no"));
+					int res=qna_dao.delete(qna_no);
+					if(res>0) {
+						jsResponse("삭제 성공", "move.do?command=qnaboard", response);
+					}else {
+						jsResponse("삭제 실패", "move.do?command=selectpage&qna_no="+qna_no, response);
+					}
+		
 				}
+<<<<<<< HEAD
 				//방송 생성
 			}else if(command.equals("streaminsert")) {
 				String stream_title=request.getParameter("stream_title");
@@ -287,6 +247,8 @@ public class BoardServlet extends HttpServlet {
 				}
 			}
 
+=======
+>>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
 	}
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {

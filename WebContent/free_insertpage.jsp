@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 </head>
 <%
 	Member_BoardDto member_dto = new Member_BoardDto();	
@@ -36,10 +35,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="free_content" id="free_content"></textarea></td>
-				 <script>
-                     CKEDITOR.replace( 'free_content' );
-                </script>
+				<td><textarea rows="10" cols="60" name="free_content"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

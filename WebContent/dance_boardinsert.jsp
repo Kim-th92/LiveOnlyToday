@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 </head>
 <body>
 <%@include file="./format/header.jsp"%>
@@ -27,10 +26,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="dance_content" id="dance_content"></textarea></td>
-				<script>
-                     CKEDITOR.replace( 'dance_content' );
-                </script>
+				<td><textarea rows="10" cols="60" name="dance_content"></textarea></td>
 			</tr>
 			<tr>
 				<th>파일 업로드</th>

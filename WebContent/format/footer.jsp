@@ -18,7 +18,7 @@ footer>div{display:inline-block;}</style>
 				src="./resources/logo.png" style="width:200px;height:40px;">
 			</a>
 		</div>
-		<div><a href = "#">노래방 찾으러가기</a></div>
+		<div><a href = "./map.jsp">노래방 찾으러가기</a></div>
 		
 		<div><h2>KH정보교육원 오늘만 살조</h2></div>
 	</footer>
