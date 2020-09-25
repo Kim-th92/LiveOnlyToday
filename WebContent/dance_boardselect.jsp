@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 <%
 	Dance_BoardDto dance_dto=(Dance_BoardDto)request.getAttribute("dto");
 	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
@@ -15,6 +16,7 @@
 	}
 %>
 </head>
+
 <body>
 	<table border="1">
 		<tr>
@@ -31,7 +33,34 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea rows="10" cols="60" name="mycontent" readonly="readonly"><%=dance_dto.getDance_content() %></textarea></td>
+			<td>
+			<%if(dance_dto.getDancerealpath()==null){
+				System.out.println(dance_dto);
+			}else{
+				int dot = dance_dto.getDancerealfname().lastIndexOf(".");
+				String extension = dance_dto.getDancerealfname().substring(dot);
+				if(extension.equals(".mov")||extension.equals(".mp4")||extension.equals(".webm")||extension.equals(".avi")||extension.equals(".wmv")||extension.equals(".mkv")
+						||extension.equals(".ts")||extension.equals(".tp")||extension.equals(".flv")||extension.equals(".3gp")||extension.equals(".mpg")||extension.equals(".asf")){
+			%>
+			
+				<video src="upload/<%=dance_dto.getDancerealfname()%>" controls="controls" loop="loop"></video>
+				
+			<%	
+				}else if(extension.equals(".jpg")||extension.equals(".png")||extension.equals(".bmp")||extension.equals(".jpeg")||extension.equals(".gif")||extension.equals(".tiff")||extension.equals(".psd")||
+				extension.equals(".tga")||extension.equals(".ai")||extension.equals(".svg")){
+				
+			%>
+				<img alt="이미지" src="upload/<%=dance_dto.getDancerealfname()%>">
+			<%		
+				}
+		
+			}
+			
+			%>
+			
+			<%=dance_dto.getDance_content() %>
+			
+					
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
@@ -48,5 +77,14 @@
 			</td>
 		</tr>
 	</table>
+
+	<form action="board.do" method="post">
+		<input type="hidden" name="command" value="dancecommentinsert"/>
+		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq() %>">
+		<input type="hidden" name="dance_no" value="<%=dance_dto.getDance_no() %>">
+		<input type="text" name="comment_content"/>
+		<input type="submit" value="댓글 작성" onclick="commentinsert()">
+	</form>
+
 </body>
 </html>

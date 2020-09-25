@@ -148,12 +148,22 @@ public class BoardServlet extends HttpServlet {
 			int member_seq;
 			String nickname;
 			String dance_title;
+
 			String dance_content;
 			
 			if(file == null) {
+
+			String dance_content = multi.getParameter("dance_content");
+			dance_content = dance_content.replaceAll("\n", "<br/>");
+			
+			int res;
+			Dance_BoardDto dto=new Dance_BoardDto();
+			if(file == null||file.trim()=="") {
+
 				member_seq = Integer.parseInt(multi.getParameter("member_seq"));
 				nickname = multi.getParameter("nickname");
 				dance_title = multi.getParameter("dance_title");
+
 				dance_content= multi.getParameter("dance_content");
 			}else {
 				
@@ -162,6 +172,64 @@ public class BoardServlet extends HttpServlet {
 				dance_title = multi.getParameter("dance_title");
 				dance_content= multi.getParameter("dance_content");
 			}
+
+				
+				dto =new Dance_BoardDto();
+				dto.setMember_seq(member_seq);
+				dto.setDance_title(dance_title);
+				dto.setDance_content(dance_content);
+				
+				res=dance_dao.insert(dto);
+				
+				if(res>0) {
+					jsResponse("작성 성공", "move.do?command=danceboard", response);
+				}else {
+					jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
+				}
+				
+			}else {
+				if(dance_dao.selectFile(file)==null) {
+					member_seq = Integer.parseInt(multi.getParameter("member_seq"));
+					dance_title = multi.getParameter("dance_title");
+					dto =new Dance_BoardDto();
+					
+					dto.setMember_seq(member_seq);
+					dto.setDance_content(dance_content);
+					dto.setDance_title(dance_title);
+					dto.setDancerealfname(file);
+					dto.setDancefname(file);
+					dto.setDancerealpath(uploadPath);
+					res=dance_dao.insertFile(dto);
+					
+					if(res>0) {
+						jsResponse("작성 성공", "move.do?command=danceboard", response);
+					}else {
+						jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
+					}
+				
+				}else {
+					member_seq = Integer.parseInt(multi.getParameter("member_seq"));
+					dance_title = multi.getParameter("dance_title");
+					String dancefname = file + Math.floor(Math.random()*10000000);
+					if(dance_dao.selectFile(dancefname)==null) {
+						dto =new Dance_BoardDto();
+						dto.setMember_seq(member_seq);
+						dto.setDance_content(dance_content);
+						dto.setDance_title(dance_title);
+						dto.setDancerealfname(file);
+						dto.setDancefname(dancefname);
+						dto.setDancerealpath(uploadPath);
+						res = dance_dao.insertFile(dto);
+						
+						if(res>0) {
+							jsResponse("작성 성공", "move.do?command=danceboard", response);
+						}else {
+							jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
+						}
+					}
+				}				
+				}
+
 					
 			Dance_BoardDto dto=new Dance_BoardDto(member_seq, dance_title, dance_content);
 			
