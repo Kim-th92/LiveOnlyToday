@@ -1,11 +1,7 @@
 package com.whatsup.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 
-import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 
 
@@ -133,25 +129,7 @@ public class Member_BoardDao extends SqlMapConfig {
 		return res;
 		
 	}
-	//관리자 - 회원목록보기
-	public List<Member_BoardDto> selectList(){
-		SqlSession session=null;
-		List<Member_BoardDto> list=new ArrayList<Member_BoardDto>();
-		session=getSqlSessionFactory().openSession();
-		list=session.selectList(namespace+"selectList");
-		session.close();
-		return list;
-		
-	}
-	public Member_BoardDto selectOne(int member_seq) {
-		SqlSession session=null;
-		
-		Member_BoardDto dto=null;
-		session=getSqlSessionFactory().openSession(true);
-		dto=session.selectOne(namespace+"selectOne",member_seq);
-		session.close();
-		return dto;
-	}
+	
 
 	
 }

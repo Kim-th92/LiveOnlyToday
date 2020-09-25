@@ -75,7 +75,7 @@ footer{}
 			<li><a href="move.do?command=musicselect">노래</a>
 				<ul>
 					<li><a href="#">혼자 부르기 </a></li>
-					<li><a href="move.do?command=streamingboard">ON-AIR </a></li>
+					<li><a href="#">ON-AIR </a></li>
 				</ul></li>
 
 			<li><a href="dancemain.jsp">춤</a></li>
@@ -83,7 +83,7 @@ footer{}
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 				<ul>
 					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
-					<li><a href="dance_boardlist.jsp"> 춤</a></li>
+					<li><a href="#"> 춤</a></li>
 					<li><a href="#"> 노래</a></li>
 					<li><a href="#">채팅</a></li>
 				</ul></li>
@@ -91,6 +91,7 @@ footer{}
 				<ul>
 					<li><a href="#">자주묻는 질문</a></li>
 					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
+					<li><a href="adminchat.jsp">1:1문의</a></li>
 				</ul></li>
 				
 			  
