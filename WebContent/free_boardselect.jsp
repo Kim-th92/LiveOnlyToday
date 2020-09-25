@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.whatsup.dto.CommentDto"%>
 <%@page import="java.util.List"%>
 <%@page import="com.whatsup.dto.Member_BoardDto"%>
@@ -13,10 +14,12 @@
 	Free_BoardDto free_dto=(Free_BoardDto)request.getAttribute("dto");
 	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
 	List<CommentDto> comment_list=(List<CommentDto>)request.getAttribute("comment_list");
+	SimpleDateFormat hms = new SimpleDateFormat("HH:mm");
 	if(member_dto==null){
 		member_dto=new Member_BoardDto();
 	}
 %>
+
 </head>
 <body>
 	<table border="1">
@@ -63,7 +66,7 @@
 		<tr>
 			<td><%=comment_list.get(i).getNickname() %></td>
 			<td><%=comment_list.get(i).getComment_content() %></td>
-			<td><%=comment_list.get(i).getComment_regdate() %></td>
+			<td><%=hms.format(comment_list.get(i).getComment_regdate()) %></td>
 		</tr>
 <%
 			if(comment_list.get(i).getMember_seq()==member_dto.getMember_seq()){
@@ -86,7 +89,7 @@
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq() %>">
 		<input type="hidden" name="free_no" value="<%=free_dto.getFree_no() %>">
 		<input type="text" name="comment_content"/>
-		<input type="submit" value="댓글 작성">
+		<input type="submit" value="댓글 작성" onclick="commentinsert()">
 	</form>
 </body>
 </html>
