@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 </head>
 <%
 	Free_BoardDto free_dto=(Free_BoardDto)request.getAttribute("dto");
@@ -26,7 +27,10 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="free_content" ><%=free_dto.getFree_content() %></textarea></td>
+				<td><textarea rows="10" cols="60" name="free_content" id="free_content" ><%=free_dto.getFree_content() %></textarea></td>
+			    <script>
+                     CKEDITOR.replace( 'free_content' );
+                </script>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

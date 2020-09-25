@@ -23,6 +23,7 @@
 %>
 </head>
 <body>
+<%@include file="./format/header.jsp"%>
 
 	<table border="1">
 		<col width="50px" />
@@ -56,7 +57,7 @@
 		<tr>
 			<td><%=list.get(i).getDance_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectpage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>			
+			<td><a href="move.do?command=danceselectpage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>			
 			<td><a><%=hms.format(list.get(i).getDance_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getDance_cnt() %></a></td>
 <% 				
@@ -74,5 +75,6 @@
 			</td>
 		</tr>
 	</table>
+	<%@include file="./format/footer.jsp"%>
 </body>
 </html>

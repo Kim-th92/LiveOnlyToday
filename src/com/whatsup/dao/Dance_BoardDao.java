@@ -79,4 +79,25 @@ private String namespace="Dance_Boardmapper.";
 		
 		return res;
 	}
+	
+	//같은이름의 파일이 있는지 확인하기 위한 메서드
+	public Dance_BoardDto selectFile(String filename) {
+		SqlSession session = null;
+		session=getSqlSessionFactory().openSession();
+		Dance_BoardDto dto = session.selectOne(namespace+"selectFile",filename);
+		session.close();
+		
+		return dto;
+	}
+	
+	//파일이 첨부한 글 업로드
+	public int insertFile(Dance_BoardDto dto) {
+		SqlSession session =null;
+		session = getSqlSessionFactory().openSession(true);
+		int res = session.insert(namespace+"insertFile", dto);
+		System.out.println(dto);
+		session.close();
+		
+		return res;
+	}
 }
