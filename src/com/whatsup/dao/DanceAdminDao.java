@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.whatsup.dto.DanceAdminDto;
-import com.whatsup.dto.Free_BoardDto;
+
 
 public class DanceAdminDao extends SqlMapConfig {
 

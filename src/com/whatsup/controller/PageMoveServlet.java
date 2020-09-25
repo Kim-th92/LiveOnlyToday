@@ -53,16 +53,9 @@ public class PageMoveServlet extends HttpServlet {
       Song_BoardDao song_dao=new Song_BoardDao();
       MusicListDao music_dao=new MusicListDao();
       QNA_BoardDao qna_dao=new QNA_BoardDao();
-<<<<<<< HEAD
-<<<<<<< HEAD
       Member_BoardDao dao=new Member_BoardDao();
-      
-=======
       CommentDao comment_dao=new CommentDao();
->>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
-=======
-      CommentDao comment_dao=new CommentDao();
->>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
+
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -158,7 +151,7 @@ public class PageMoveServlet extends HttpServlet {
          if(session.getAttribute("login")==null) {
             jsResponse("먼저 로그인을 해 주세요", "move.do?command=danceboard", response);
          }else {
-            response.sendRedirect("dance_insertpage.jsp");
+            response.sendRedirect("dance_boardinsert.jsp");
       }
       //5-8.댄스게시판 글 자세히 보기 페이지
       }else if(command.equals("danceselectpage")) {

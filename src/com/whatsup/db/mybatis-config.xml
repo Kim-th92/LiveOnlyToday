@@ -14,9 +14,8 @@
 		<typeAlias type="com.whatsup.dto.CommentDto" alias="commentDto"/>
 		<typeAlias type="com.whatsup.dto.ChatingListDto" alias="chatinglistDto"/>
 		<typeAlias type="com.whatsup.dto.MusicListDto" alias="musiclistDto"/>
-
 		<typeAlias type="com.whatsup.dto.QNA_BoardDto" alias="qna_boardDto" />
-
+		<typeAlias type="com.whatsup.dto.DanceAdminDto" alias="danceadminDto"/>
 
 
 	</typeAliases>

@@ -83,7 +83,7 @@ footer{}
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 				<ul>
 					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
-					<li><a href="#"> 춤</a></li>
+					<li><a href="dance_boardlist.jsp"> 춤</a></li>
 					<li><a href="#"> 노래</a></li>
 					<li><a href="#">채팅</a></li>
 				</ul></li>

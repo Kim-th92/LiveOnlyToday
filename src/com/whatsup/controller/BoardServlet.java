@@ -1,5 +1,6 @@
 package com.whatsup.controller;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -12,15 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import com.sun.org.apache.bcel.internal.classfile.Field;
 import com.whatsup.dao.CommentDao;
+
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.QNA_BoardDao;
@@ -52,12 +52,47 @@ public class BoardServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String command = request.getParameter("command");
+		
 		Free_BoardDao free_dao=new Free_BoardDao();
 		Song_BoardDao song_dao=new Song_BoardDao();
 		Dance_BoardDao dance_dao=new Dance_BoardDao();
 		QNA_BoardDao qna_dao=new QNA_BoardDao(); 
 		CommentDao comment_dao=new CommentDao();
+
+		
+
+		String fileSavePath="upload";
+		int uploadSizeLimit = 1000*1024*1024;
+		String encType ="UTF-8";
+		if(!ServletFileUpload.isMultipartContent(request)) {
+			response.sendRedirect("dance_boardinsert.jsp");
+		}
+		
+		ServletContext context = getServletContext();
+		
+		String uploadPath = context.getRealPath(fileSavePath);
+		System.out.println(uploadPath);
+		  File isDir = new File(uploadPath);
+
+		    
+
+		    if(!isDir.isDirectory()){
+
+		    	System.out.println("디렉토리가 없습니다. 디렉토리를 새로 생성합니다.");
+
+		    	isDir.mkdir();
+
+		    }
+
+		
+		MultipartRequest multi = new MultipartRequest(request,uploadPath,uploadSizeLimit,encType,new DefaultFileRenamePolicy());
+		if(command==null) {
+				command = multi.getParameter("command");
+				}
+		
+
 		//자유게시판 추가
+		
 		if(command.equals("free_insert")){
 			
 			int member_seq=Integer.parseInt(request.getParameter("member_seq"));
@@ -125,49 +160,81 @@ public class BoardServlet extends HttpServlet {
 			}
 			
 		//댄스게시판	
-		}else if(command.equals("dance_insert")){
-			String fileSavePath="dancevideoupload";
-			int uploadSizeLimit = 1000*1024*1024;
-			String encType ="UTF-8";
-			if(!ServletFileUpload.isMultipartContent(request)) {
-				response.sendRedirect("");
-			}
+		}else if("dance_insert".equals(command)){
 			
-			ServletContext context = getServletContext();
-			
-			String uploadPath = context.getRealPath(fileSavePath);
-			System.out.println(uploadPath);
-			
-			MultipartRequest multi = new MultipartRequest(request,uploadPath,uploadSizeLimit,encType,new DefaultFileRenamePolicy());
 			String file = multi.getFilesystemName("dance_file");
 			
 			int member_seq;
-			String nickname;
 			String dance_title;
 			String dance_content;
-			
-			if(file == null) {
+			int res;
+			Dance_BoardDto dto=new Dance_BoardDto();
+			if(file == null||file.trim()=="") {
 				member_seq = Integer.parseInt(multi.getParameter("member_seq"));
-				nickname = multi.getParameter("nickname");
 				dance_title = multi.getParameter("dance_title");
 				dance_content= multi.getParameter("dance_content");
-			}else {
+				dto =new Dance_BoardDto();
+				dto.setMember_seq(member_seq);
+				dto.setDance_title(dance_title);
+				dto.setDance_content(dance_content);
 				
-				member_seq = Integer.parseInt(multi.getParameter("member_seq"));
-				nickname = multi.getParameter("nickname");
-				dance_title = multi.getParameter("dance_title");
-				dance_content= multi.getParameter("dance_content");
-			}
-					
-			Dance_BoardDto dto=new Dance_BoardDto(member_seq, dance_title, dance_content);
-			
-			int res=dance_dao.insert(dto);
-			if(res>0) {
-				jsResponse("작성 성공", "move.do?command=danceboard", response);
+				res=dance_dao.insert(dto);
+				
+				if(res>0) {
+					jsResponse("작성 성공", "move.do?command=danceboard", response);
+				}else {
+					jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
+				}
+				
 			}else {
-				jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
-			}
+				if(dance_dao.selectFile(file)==null) {
+					member_seq = Integer.parseInt(multi.getParameter("member_seq"));
+					dance_title = multi.getParameter("dance_title");
+					dance_content= multi.getParameter("dance_content");
+					dto =new Dance_BoardDto();
+					
+					dto.setMember_seq(member_seq);
+					dto.setDance_content(dance_content);
+					dto.setDance_title(dance_title);
+					dto.setDancerealfname(file);
+					dto.setDancefname(file);
+					dto.setDancerealpath(uploadPath);
+					res=dance_dao.insertFile(dto);
+					
+					if(res>0) {
+						jsResponse("작성 성공", "move.do?command=danceboard", response);
+					}else {
+						jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
+					}
+				
+				}else {
+					member_seq = Integer.parseInt(multi.getParameter("member_seq"));
+					dance_title = multi.getParameter("dance_title");
+					dance_content= multi.getParameter("dance_content");
+					String dancefname = file + Math.floor(Math.random()*10000000);
+					if(dance_dao.selectFile(dancefname)==null) {
+						dto =new Dance_BoardDto();
+						dto.setMember_seq(member_seq);
+						dto.setDance_content(dance_content);
+						dto.setDance_title(dance_title);
+						dto.setDancerealfname(file);
+						dto.setDancefname(dancefname);
+						dto.setDancerealpath(uploadPath);
+						res = dance_dao.insertFile(dto);
+						
+						if(res>0) {
+							jsResponse("작성 성공", "move.do?command=danceboard", response);
+						}else {
+							jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
+						}
+					}
+				}				
+				}
+					
+			
 		
+		
+	
 		}else if(command.equals("dance_update")) {
 			Dance_BoardDto dto=(Dance_BoardDto)request.getAttribute("dto");
 			
