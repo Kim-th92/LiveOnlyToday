@@ -79,6 +79,7 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 				<ul>
 					<li><a href="#">자주묻는 질문</a></li>
 					<li><a href="#">문의게시판</a></li>
+					<li><a href="adminchat.jsp">1:1문의</a></li>
 				</ul></li>
 		</ul>
 		</div>

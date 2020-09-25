@@ -1,11 +1,7 @@
 package com.whatsup.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 
-import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 
 
@@ -133,6 +129,7 @@ public class Member_BoardDao extends SqlMapConfig {
 		return res;
 		
 	}
+<<<<<<< HEAD
 	//관리자 - 회원목록보기
 	public List<Member_BoardDto> selectList(){
 		SqlSession session=null;
@@ -152,6 +149,9 @@ public class Member_BoardDao extends SqlMapConfig {
 		session.close();
 		return dto;
 	}
+=======
+	
+>>>>>>> 0691dda227ee5bb94a401f2d543500f084d5b930
 
 	
 }

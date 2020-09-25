@@ -91,6 +91,7 @@ footer{}
 				<ul>
 					<li><a href="#">자주묻는 질문</a></li>
 					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
+					<li><a href="adminchat.jsp">1:1문의</a></li>
 				</ul></li>
 				
 			  
