@@ -18,6 +18,7 @@ import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dao.MusicListDao;
 import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.Song_BoardDao;
+import com.whatsup.dao.Stream_BoardDao;
 import com.whatsup.dto.CommentDto;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
@@ -25,6 +26,7 @@ import com.whatsup.dto.Member_BoardDto;
 import com.whatsup.dto.MusicListDto;
 import com.whatsup.dto.QNA_BoardDto;
 import com.whatsup.dto.Song_BoardDto;
+import com.whatsup.dto.Stream_BoardDto;
 
 
 @WebServlet("/move.do")
@@ -53,16 +55,10 @@ public class PageMoveServlet extends HttpServlet {
       Song_BoardDao song_dao=new Song_BoardDao();
       MusicListDao music_dao=new MusicListDao();
       QNA_BoardDao qna_dao=new QNA_BoardDao();
-<<<<<<< HEAD
-<<<<<<< HEAD
       Member_BoardDao dao=new Member_BoardDao();
-      
-=======
+      Stream_BoardDao stream_dao=new Stream_BoardDao();
       CommentDao comment_dao=new CommentDao();
->>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
-=======
-      CommentDao comment_dao=new CommentDao();
->>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
+
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -165,6 +161,8 @@ public class PageMoveServlet extends HttpServlet {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          int res=dance_dao.danceview(dance_no);
          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
+         List<CommentDto> comment_list=comment_dao.selectDanceList(dance_no);
+         request.setAttribute("comment_list", comment_list);
          request.setAttribute("dto", dto);
          dispatch("dance_boardselect.jsp", request, response);   
       //5-9.댄스게시판 수정페이지 이동
@@ -203,6 +201,8 @@ public class PageMoveServlet extends HttpServlet {
       }else if(command.equals("songselectpage")) {
          int song_no=Integer.parseInt(request.getParameter("song_no"));
          int res=song_dao.songview(song_no);
+         List<CommentDto> comment_list=comment_dao.selectSongList(song_no);
+         request.setAttribute("comment_list", comment_list);
          Song_BoardDto dto=song_dao.selectOne(song_no);
          request.setAttribute("dto", dto);
          dispatch("song_boardselect.jsp", request, response);   
@@ -318,10 +318,19 @@ public class PageMoveServlet extends HttpServlet {
     	//13-3.결제내역 확인  
           
          
-      //14.댓글 입력
-      }else if(command.equals("")) {
-         
+      //14.스트리밍
+      }else if(command.equals("streamboard")) {
+         List<Stream_BoardDto> stream_list=stream_dao.selectList();
+         request.setAttribute("stream_list", stream_list);
+    	 dispatch("streamboard.jsp", request, response);
+      }else if(command.equals("streaminsertpage")) {
+    	  response.sendRedirect("streaminsert.jsp");
+      }else if(command.equals("streampage")) {
+    	  int member_seq=Integer.parseInt(request.getParameter("member_seq"));
+    	  request.setAttribute("member_seq", member_seq);
+    	  dispatch("http://localhost:3000/?member_seq="+member_seq, request, response);
       }
+      
       
       
       

@@ -25,12 +25,14 @@ import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.Song_BoardDao;
+import com.whatsup.dao.Stream_BoardDao;
 import com.whatsup.dto.CommentDto;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 import com.whatsup.dto.QNA_BoardDto;
 import com.whatsup.dto.Song_BoardDto;
+import com.whatsup.dto.Stream_BoardDto;
 
 
 
@@ -57,6 +59,7 @@ public class BoardServlet extends HttpServlet {
 		Dance_BoardDao dance_dao=new Dance_BoardDao();
 		QNA_BoardDao qna_dao=new QNA_BoardDao(); 
 		CommentDao comment_dao=new CommentDao();
+		Stream_BoardDao stream_dao=new Stream_BoardDao();
 		//자유게시판 추가
 		if(command.equals("free_insert")){
 			
@@ -269,8 +272,21 @@ public class BoardServlet extends HttpServlet {
 				}else {
 					jsResponse("댓글 작성 실패", "move.do?command=songselectpage&song_no="+song_no, response);
 				}
-					
+				//방송 생성
+			}else if(command.equals("streaminsert")) {
+				String stream_title=request.getParameter("stream_title");
+				int member_seq=Integer.parseInt(request.getParameter("member_seq"));
+				Stream_BoardDto stream_dto=new Stream_BoardDto();
+				stream_dto.setMember_seq(member_seq);
+				stream_dto.setStream_title(stream_title);
+				int res=stream_dao.insert(stream_dto);
+				if(res>0) {
+					jsResponse("방송 생성 성공", "move.do?command=streamboard", response);
+				}else {
+					jsResponse("방송 생성 실패", "move.do?command=streaminsertpage", response);
+				}
 			}
+
 	}
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {

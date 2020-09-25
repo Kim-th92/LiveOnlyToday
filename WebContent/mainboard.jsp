@@ -32,7 +32,9 @@
 		var prop = "";
 		window.open(url, title, prop);
 	}
-	
+	window.onload=function(){
+		freeboard();
+	}
 	
 	
 </script>
