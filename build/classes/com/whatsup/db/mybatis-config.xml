@@ -40,6 +40,7 @@
 		<mapper resource="com/whatsup/db/Comment-mapper.xml" />
 		<mapper resource="com/whatsup/db/MusicList-mapper.xml" />
 		<mapper resource="com/whatsup/db/QNA_Board-mapper.xml" />
+		<mapper resource="com/whatsup/db/Danceadmin-mapper.xml"/>
 
 	</mappers>
 </configuration>

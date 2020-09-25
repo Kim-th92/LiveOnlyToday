@@ -166,13 +166,15 @@ public class BoardServlet extends HttpServlet {
 			
 			int member_seq;
 			String dance_title;
-			String dance_content;
+			String dance_content = multi.getParameter("dance_content");
+			dance_content = dance_content.replaceAll("\n", "<br/>");
+			
 			int res;
 			Dance_BoardDto dto=new Dance_BoardDto();
 			if(file == null||file.trim()=="") {
 				member_seq = Integer.parseInt(multi.getParameter("member_seq"));
 				dance_title = multi.getParameter("dance_title");
-				dance_content= multi.getParameter("dance_content");
+				
 				dto =new Dance_BoardDto();
 				dto.setMember_seq(member_seq);
 				dto.setDance_title(dance_title);
@@ -190,7 +192,6 @@ public class BoardServlet extends HttpServlet {
 				if(dance_dao.selectFile(file)==null) {
 					member_seq = Integer.parseInt(multi.getParameter("member_seq"));
 					dance_title = multi.getParameter("dance_title");
-					dance_content= multi.getParameter("dance_content");
 					dto =new Dance_BoardDto();
 					
 					dto.setMember_seq(member_seq);
@@ -210,7 +211,6 @@ public class BoardServlet extends HttpServlet {
 				}else {
 					member_seq = Integer.parseInt(multi.getParameter("member_seq"));
 					dance_title = multi.getParameter("dance_title");
-					dance_content= multi.getParameter("dance_content");
 					String dancefname = file + Math.floor(Math.random()*10000000);
 					if(dance_dao.selectFile(dancefname)==null) {
 						dto =new Dance_BoardDto();

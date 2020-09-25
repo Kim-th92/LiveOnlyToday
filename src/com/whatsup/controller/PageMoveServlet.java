@@ -158,6 +158,8 @@ public class PageMoveServlet extends HttpServlet {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          int res=dance_dao.danceview(dance_no);
          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
+         List<CommentDto> comment_list=comment_dao.selectFreeList(dance_no);
+         request.setAttribute("comment_list", comment_list);
          request.setAttribute("dto", dto);
          dispatch("dance_boardselect.jsp", request, response);   
       //5-9.댄스게시판 수정페이지 이동

@@ -92,6 +92,8 @@ downloadButton.addEventListener('click', () => {
   }, 20000);
 });
 
+
+
 function handleDataAvailable(event) {
   console.log('handleDataAvailable', event);
   if (event.data && event.data.size > 0) {
