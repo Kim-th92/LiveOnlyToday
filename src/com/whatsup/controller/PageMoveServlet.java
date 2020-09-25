@@ -54,8 +54,12 @@ public class PageMoveServlet extends HttpServlet {
       MusicListDao music_dao=new MusicListDao();
       QNA_BoardDao qna_dao=new QNA_BoardDao();
 <<<<<<< HEAD
+<<<<<<< HEAD
       Member_BoardDao dao=new Member_BoardDao();
       
+=======
+      CommentDao comment_dao=new CommentDao();
+>>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
 =======
       CommentDao comment_dao=new CommentDao();
 >>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
