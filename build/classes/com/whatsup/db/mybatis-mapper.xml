@@ -54,9 +54,6 @@
 	<update id="deletemember" parameterType ="int">
 	    UPDATE MEMBER_BOARD SET DELFLAG='Y' WHERE MEMBER_SEQ=#{member_seq}
 	</update>
-	<select id="adminview" resultType="Member_BoardDto" parameterType="String">
-		SELECT MEMBER_SEQ,ID,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP FROM MEMBER_BOARD 
-	</select>
 
 	
 </mapper>

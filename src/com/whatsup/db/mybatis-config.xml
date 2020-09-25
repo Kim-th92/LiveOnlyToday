@@ -15,14 +15,9 @@
 		<typeAlias type="com.whatsup.dto.ChatingListDto" alias="chatinglistDto"/>
 		<typeAlias type="com.whatsup.dto.MusicListDto" alias="musiclistDto"/>
 		<typeAlias type="com.whatsup.dto.QNA_BoardDto" alias="qna_boardDto" />
-<<<<<<< HEAD
 		<typeAlias type="com.whatsup.dto.Stream_BoardDto" alias="stream_boardDto"/>
-=======
-
 		<typeAlias type="com.whatsup.dto.File_Dto" alias="file_Dto"/>
 		<typeAlias type="com.whatsup.dto.DanceAdminDto" alias="danceadminDto"/>
-
->>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
 	</typeAliases>
 
 	<environments default="development">
@@ -46,12 +41,10 @@
 		<mapper resource="com/whatsup/db/Comment-mapper.xml" />
 		<mapper resource="com/whatsup/db/MusicList-mapper.xml" />
 		<mapper resource="com/whatsup/db/QNA_Board-mapper.xml" />
-<<<<<<< HEAD
 		<mapper resource="com/whatsup/db/Stream_Board-mapper.xml" />
 		
-=======
 		<mapper resource="com/whatsup/db/File-mapper.xml"/>
->>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
+
 
 	</mappers>
 </configuration>

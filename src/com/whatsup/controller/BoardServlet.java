@@ -20,15 +20,13 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sun.org.apache.bcel.internal.classfile.Field;
+import com.whatsup.dao.CommentDao;
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.Song_BoardDao;
-<<<<<<< HEAD
 import com.whatsup.dao.Stream_BoardDao;
 import com.whatsup.dto.CommentDto;
-=======
->>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
@@ -60,11 +58,9 @@ public class BoardServlet extends HttpServlet {
 		Song_BoardDao song_dao=new Song_BoardDao();
 		Dance_BoardDao dance_dao=new Dance_BoardDao();
 		QNA_BoardDao qna_dao=new QNA_BoardDao(); 
-<<<<<<< HEAD
 		CommentDao comment_dao=new CommentDao();
 		Stream_BoardDao stream_dao=new Stream_BoardDao();
-=======
->>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
+
 		//자유게시판 추가
 		if(command.equals("free_insert")){
 			
@@ -229,9 +225,7 @@ public class BoardServlet extends HttpServlet {
 					}else {
 						jsResponse("삭제 실패", "move.do?command=selectpage&qna_no="+qna_no, response);
 					}
-		
-				}
-<<<<<<< HEAD
+
 				//방송 생성
 			}else if(command.equals("streaminsert")) {
 				String stream_title=request.getParameter("stream_title");
@@ -247,8 +241,6 @@ public class BoardServlet extends HttpServlet {
 				}
 			}
 
-=======
->>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
 	}
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {

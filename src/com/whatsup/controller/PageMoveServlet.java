@@ -11,17 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.whatsup.dao.CommentDao;
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dao.MusicListDao;
 import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.Song_BoardDao;
-<<<<<<< HEAD
 import com.whatsup.dao.Stream_BoardDao;
 import com.whatsup.dto.CommentDto;
-=======
->>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
@@ -57,22 +55,11 @@ public class PageMoveServlet extends HttpServlet {
       Song_BoardDao song_dao=new Song_BoardDao();
       MusicListDao music_dao=new MusicListDao();
       QNA_BoardDao qna_dao=new QNA_BoardDao();
-<<<<<<< HEAD
+
       Member_BoardDao dao=new Member_BoardDao();
       Stream_BoardDao stream_dao=new Stream_BoardDao();
       CommentDao comment_dao=new CommentDao();
 
-=======
-<<<<<<< HEAD
-
-      Member_BoardDao dao=new Member_BoardDao();
-
-      CommentDao comment_dao=new CommentDao();
-
-
-=======
->>>>>>> 0691dda227ee5bb94a401f2d543500f084d5b930
->>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -315,7 +302,6 @@ public class PageMoveServlet extends HttpServlet {
          
          
       //13.관리자페이지
-<<<<<<< HEAD
       }else if(command.equals("admin")) {
     	  response.sendRedirect("admin.jsp");
       //13-1.회원목록보기
@@ -332,9 +318,9 @@ public class PageMoveServlet extends HttpServlet {
 			dispatch("qna_boardselect.jsp", request, response);
     	//13-3.결제내역 확인  
           
-=======
+
       }else if(command.equals("")) {
->>>>>>> 0691dda227ee5bb94a401f2d543500f084d5b930
+
          
       //14.스트리밍
       }else if(command.equals("streamboard")) {
