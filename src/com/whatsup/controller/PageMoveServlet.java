@@ -53,16 +53,12 @@ public class PageMoveServlet extends HttpServlet {
       Song_BoardDao song_dao=new Song_BoardDao();
       MusicListDao music_dao=new MusicListDao();
       QNA_BoardDao qna_dao=new QNA_BoardDao();
-<<<<<<< HEAD
-<<<<<<< HEAD
+
       Member_BoardDao dao=new Member_BoardDao();
-      
-=======
+
       CommentDao comment_dao=new CommentDao();
->>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
-=======
-      CommentDao comment_dao=new CommentDao();
->>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
+
+
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -260,12 +256,17 @@ public class PageMoveServlet extends HttpServlet {
 			dto.setQna_no(qna_no);
 			request.setAttribute("dto", dto);
 			dispatch("qna.do?command=qna_update", request, response);
-		// 6-5..문의 게시판 삭제
+		// 6-5.문의 게시판 삭제
 		} else if (command.equals("delete")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 			request.setAttribute("qna_no", qna_no);
 			dispatch("qna.do?command=qna_delete", request, response);
-         
+		// 6-6.문의 게시판 답변	
+		} else if (command.equals("qnaanswer")) {
+			if (session.getAttribute("sessionId").equals("admin1234")) {
+			} else {
+				response.sendRedirect("qna_answer.jsp");
+			}
          
       //7.로그인 페이지
       }else if (command.equals("loginpage")) {
@@ -302,10 +303,7 @@ public class PageMoveServlet extends HttpServlet {
     	  response.sendRedirect("admin.jsp");
       //13-1.회원목록보기
       }else if(command.equals("adminview")) {
-          int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-          Member_BoardDto dto=dao.selectOne(member_seq);
-          request.setAttribute("dto", dto);
-          dispatch("adminview.jsp", request, response);
+         response.sendRedirect("adminview.jsp");
       //13-2.문의게시판
       }else if(command.equals("qnaboard")) {
     	  response.sendRedirect("qna_boardlist.jsp");

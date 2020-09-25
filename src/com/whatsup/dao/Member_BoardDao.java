@@ -138,7 +138,7 @@ public class Member_BoardDao extends SqlMapConfig {
 		SqlSession session=null;
 		List<Member_BoardDto> list=new ArrayList<Member_BoardDto>();
 		session=getSqlSessionFactory().openSession();
-		list=session.selectList(namespace+"selectList");
+		list=session.selectList(namespace+"adminview");
 		session.close();
 		return list;
 		
