@@ -56,7 +56,7 @@
 		<tr>
 			<td><%=list.get(i).getSong_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectpage&song_no=<%=list.get(i).getSong_no() %>"><%=list.get(i).getSong_title() %></a></td>			
+			<td><a href="move.do?command=songselectpage&song_no=<%=list.get(i).getSong_no() %>"><%=list.get(i).getSong_title() %></a></td>			
 			<td><a><%=hms.format(list.get(i).getSong_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getSong_cnt() %></a></td>
 <% 				

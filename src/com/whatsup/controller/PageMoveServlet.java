@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.whatsup.dao.CommentDao;
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dao.MusicListDao;
 import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.Song_BoardDao;
+import com.whatsup.dto.CommentDto;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
@@ -51,8 +53,12 @@ public class PageMoveServlet extends HttpServlet {
       Song_BoardDao song_dao=new Song_BoardDao();
       MusicListDao music_dao=new MusicListDao();
       QNA_BoardDao qna_dao=new QNA_BoardDao();
+<<<<<<< HEAD
       Member_BoardDao dao=new Member_BoardDao();
       
+=======
+      CommentDao comment_dao=new CommentDao();
+>>>>>>> 372e5172b76f839d33d3578a48ee3816b6599873
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -109,21 +115,23 @@ public class PageMoveServlet extends HttpServlet {
             response.sendRedirect("free_insertpage.jsp");
       }
       //5-2.자유게시판 글 자세히 보기 페이지
-      }else if(command.equals("selectpage")) {
+      }else if(command.equals("freeselectpage")) {
          int free_no=Integer.parseInt(request.getParameter("free_no"));
          int res=free_dao.freeview(free_no);
          Free_BoardDto dto=free_dao.selectOne(free_no);
+         List<CommentDto> comment_list=comment_dao.selectFreeList(free_no);
+         request.setAttribute("comment_list", comment_list);
          //int res=dao.freeview(free_no);
          request.setAttribute("dto", dto);
          dispatch("free_boardselect.jsp", request, response);   
       //5-3.자유게시판 수정페이지 이동
-      }else if(command.equals("updatepage")) {
+      }else if(command.equals("freeupdatepage")) {
          int free_no=Integer.parseInt(request.getParameter("free_no"));
          Free_BoardDto dto=free_dao.selectOne(free_no);
          request.setAttribute("dto", dto);
          dispatch("free_update.jsp", request, response);
       //5-4.자유게시판 수정
-      }else if(command.equals("updateres")) {
+      }else if(command.equals("freeupdateres")) {
          int free_no=Integer.parseInt(request.getParameter("free_no"));
          String free_title=request.getParameter("free_title");
          String free_content=request.getParameter("free_content");
@@ -132,7 +140,7 @@ public class PageMoveServlet extends HttpServlet {
          request.setAttribute("dto", dto);
          dispatch("board.do?command=free_update", request, response);
       //5-5.자유 게시판 삭제
-      }else if(command.equals("delete")) {
+      }else if(command.equals("freedelete")) {
          int free_no=Integer.parseInt(request.getParameter("free_no"));
          request.setAttribute("free_no", free_no);
          dispatch("board.do?command=free_delete", request, response);
@@ -149,20 +157,20 @@ public class PageMoveServlet extends HttpServlet {
             response.sendRedirect("dance_insertpage.jsp");
       }
       //5-8.댄스게시판 글 자세히 보기 페이지
-      }else if(command.equals("selectpage")) {
+      }else if(command.equals("danceselectpage")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          int res=dance_dao.danceview(dance_no);
          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
          request.setAttribute("dto", dto);
          dispatch("dance_boardselect.jsp", request, response);   
       //5-9.댄스게시판 수정페이지 이동
-      }else if(command.equals("updatepage")) {
+      }else if(command.equals("danceupdatepage")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
          request.setAttribute("dto", dto);
          dispatch("dance_update.jsp", request, response);
       //5-10.댄스게시판 수정
-      }else if(command.equals("updateres")) {
+      }else if(command.equals("danceupdateres")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          String dance_title=request.getParameter("dance_title");
          String dance_content=request.getParameter("dance_content");
@@ -171,7 +179,7 @@ public class PageMoveServlet extends HttpServlet {
          request.setAttribute("dto", dto);
          dispatch("board.do?command=dance_update", request, response);
       //5-11.댄스 게시판 삭제
-      }else if(command.equals("delete")) {
+      }else if(command.equals("dancedelete")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          request.setAttribute("dance_no", dance_no);
          dispatch("board.do?command=dance_delete", request, response);
@@ -188,20 +196,20 @@ public class PageMoveServlet extends HttpServlet {
             response.sendRedirect("song_insertpage.jsp");
       }
       //5-14.노래게시판 글 자세히 보기 페이지
-      }else if(command.equals("selectpage")) {
+      }else if(command.equals("songselectpage")) {
          int song_no=Integer.parseInt(request.getParameter("song_no"));
          int res=song_dao.songview(song_no);
          Song_BoardDto dto=song_dao.selectOne(song_no);
          request.setAttribute("dto", dto);
          dispatch("song_boardselect.jsp", request, response);   
       //5-15.노래게시판 수정페이지 이동
-      }else if(command.equals("updatepage")) {
+      }else if(command.equals("songupdatepage")) {
          int song_no=Integer.parseInt(request.getParameter("song_no"));
          Song_BoardDto dto=song_dao.selectOne(song_no);
          request.setAttribute("dto", dto);
          dispatch("song_update.jsp", request, response);
       //5-16.노래게시판 수정
-      }else if(command.equals("updateres")) {
+      }else if(command.equals("songupdateres")) {
          int song_no=Integer.parseInt(request.getParameter("song_no"));
          String song_title=request.getParameter("song_title");
          String song_content=request.getParameter("song_content");
@@ -210,7 +218,7 @@ public class PageMoveServlet extends HttpServlet {
          request.setAttribute("dto", dto);
          dispatch("board.do?command=song_update", request, response);
       //5-17.노래게시판 삭제
-      }else if(command.equals("delete")) {
+      }else if(command.equals("songdelete")) {
          int song_no=Integer.parseInt(request.getParameter("song_no"));
          request.setAttribute("song_no", song_no);
          dispatch("board.do?command=song_delete", request, response);
