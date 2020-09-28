@@ -16,11 +16,16 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoad" async
 	defer></script>
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 </body>
 <meta name="google-signin-client_id"
 	content="910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com">
 
 <style type="text/css">
+ul ,section{
+font-family: 'Do Hyeon', sans-serif;
+}
 body {
 	background-color: #fdde60;
 }
@@ -37,8 +42,22 @@ header>div {
 }
 
 section {
-	padding: 50px;
+	padding:50px 0px 0px 40px;
+	height:600px;
 }
+section+div.col{
+ display: grid;
+  grid-template-columns:50% 50% ;
+  grid-gap: 10px;
+  grid-auto-rows: minmax(600px, auto);
+}
+#main,#shortcut-btn{transform:translate(200px,20px);}
+
+#img{
+float:right;
+transform:translate(-100px,-600px);
+}
+
 
 ul {
 	margine: 0;
@@ -82,17 +101,8 @@ ul li:hover ul li {
 	width: 600px;
 	height: 600px;
 }
-
-#img {
-	float: right;
-	margin: 0;
-	padding: 0;
-}
-
-#shortcut-btn, #main {
-	padding: 200px 100px 100px 50px;
-	display: inline-block;
-	border-radius: 10;
+p{
+	font-size: 30pt;
 }
 
 a {
@@ -107,13 +117,44 @@ a {
 	color: white;
 	font-weight: bold;
 	border-radius: 20px;
-}
+} 
+
+#main h1{  
+
+
+font-size:50pt;
+background: linear-gradient(to right, red,darkorange,green); 
+background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  
+  }
 
 .login:hover {
 	background-color: grey;
 	box-shadow: 3px 3px 2px 1px rgba(0, 0, 255, .2);
 }
+.shortcut{
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 20px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:15px;
+  font-family: 'Do Hyeon', sans-serif;
+}
 
+.shortcut:hover {opacity: 1}
 footer {
 	
 }
@@ -213,17 +254,20 @@ footer {
 
 	</header>
 	<section>
-		<div id="main">
-			<h1>인싸가 되고 싶은 사람들 모여</h1>
+		<div id="main" class="col">
+			<h1> 오늘만 사는 그대들을 <br/>위한 최적의 사이트❤︎︎</h1>
+			<p>방구석에서 노래방을 즐기고 싶은가?</p>
+			<p>방구석에서 춤을 추고 싶나요?!</p>
+			<p> 아래 버튼을 눌러주세요!</p>
 		</div>
-		<div id="shortcut-btn">
-			<button class="shortcut"
+		<div id="shortcut-btn" class="col">
+			<button class="shortcut left"
 				onclick="location.href='move.do?command=musicselect'">
 				노래부르러 가기</button>
-			<button class="shortcut" onclick="">춤 추러 가기</button>
+			<button class="shortcut right" onclick="dancemain.jsp">춤 추러 가기</button>
 		</div>
 
-		<div id="img">
+		<div id="img" class="col">
 			<img id="dance" alt="춤그림" src="resources/dance.png">
 		</div>
 	</section>

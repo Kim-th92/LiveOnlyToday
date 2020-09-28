@@ -16,7 +16,10 @@ response.setDateHeader("Expires", 0L); // Do not cache in proxy server
 <title>Insert title here</title>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="910896443172-llnq01i6rrc8hlgruf3sm3c40bqhvvp4.apps.googleusercontent.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
+ul{
+font-family: 'Black Han Sans', sans-serif;}
 body{padding:0;margin:0;}
 #logo {
 	width: 300px;
