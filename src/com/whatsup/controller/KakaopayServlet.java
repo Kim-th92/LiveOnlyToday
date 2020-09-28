@@ -76,6 +76,7 @@ public class KakaopayServlet extends HttpServlet {
 					
 			}	
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 		
 		
@@ -136,6 +137,8 @@ public class KakaopayServlet extends HttpServlet {
 			
 			}
 			
+=======
+>>>>>>> 7b2d79eb27d87d11e19f96fbfaad64ea217800cc
 =======
 >>>>>>> 7b2d79eb27d87d11e19f96fbfaad64ea217800cc
 		}
