@@ -335,18 +335,7 @@ public class PageMoveServlet extends HttpServlet {
     	  request.setAttribute("member_seq", member_seq);
     	  dispatch("http://localhost:3000/?member_seq="+member_seq, request, response);
       }
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+
    }
    private void dispatch(String path, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       RequestDispatcher dispatch = request.getRequestDispatcher(path);

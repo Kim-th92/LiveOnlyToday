@@ -72,6 +72,20 @@ public class MemberServlet extends HttpServlet {
 	 		}
 			response.sendRedirect("idchk.jsp?notUsed="+notUsed);
 			
+		}else if("nickchk".equals(command)) {
+			String nickname = request.getParameter("nickname");
+			Member_BoardDto dto =dao.check(nickname);
+			boolean notUsed = true;
+			if (dto==null) {
+				notUsed = true;
+			}else {
+				notUsed=false;
+			}JSONObject obj = new JSONObject();
+			obj.put("notUsed", notUsed);
+			
+			PrintWriter out = response.getWriter();
+			out.println(obj.toJSONString());
+			
 		}else if(command.equals("registeres")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");

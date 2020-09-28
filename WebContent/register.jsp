@@ -37,7 +37,7 @@ select{padding:7px; vertical-align:middle}
  	</tr>
  	<tr>
  		<th>닉네임</th>
- 		<td><input type="text" name ="nickname"  required="required" /><button onclick="nickChk();" class="nickChk"> 중복확인</button><p class="nick"></p></td>
+ 		<td><input type="text" name ="nickname"  required="required" title="n" /><button onclick="nickChk();" class="nickChk"> 중복확인</button><p class="nick"></p></td>
  	</tr>
  	<tr>
  		<th>이름</th>
@@ -130,21 +130,26 @@ $(function(){
 
 function nickChk(){
 	var doc = document.getElementsByName("nickname")[0];
+	var nickname = document.getElementById("nickname").val;
 	if(doc.value==null||doc.value.trim()=="" ){
 		alert("닉네임을 먼저 입력해주세요!!");
 	} else{
-		onload=function(){
-			
-		}
-			function idConfirm(bool){
-				if(bool==="true"){
-					opener.document.getElementsByName("id")[0].title ="y";
-					opener.document.getElementsByName("pw")[0].focus();
-				}else{
-					opener.document.getElementsByName("id")[0].focus();
-				}
-				self.close();
+		$.ajax({
+			url : "member.do?command=nickchk&nickname="+nickname,
+			dataType : "json",
+			success :function(msg){
+				if(msg.notUsed == "true"){
+					$("nick").html =doc +"사용가능한 닉네임 입니다."
+					document.getElementById("nickname")[0].title ="y";
+				}else {
+					$("nick").html =doc +"중복된 닉네임입니다. 다른 닉네임을 사용해주세요.";
+				},
+			}error: function(err){
+				console.log(err);
 			}
+		
+		});
+		
 	}
 }
 function idChk(){
@@ -165,6 +170,16 @@ function idChkConfirm(){
 	}
 
 }
+//닉넴 중복체
+function nickChkConfirm(){
+	var chk = document.getElementsByName("nickname")[0].title;
+	if(chk=="n"){
+		alert("닉네임 중복체크를 먼저 해주세요.");
+		document.getElementsByName("nickname")[0].focus();
+	}
+
+}
+
 $('#selectEmail').change(function(){ 
 	$('#selectEmail option:selected').each(function (){ 
 		if($(this).val()== '1'){ //직접입력일 경우 
