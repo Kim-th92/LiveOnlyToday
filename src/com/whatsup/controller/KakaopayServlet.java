@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.whatsup.dao.Member_BoardDao;
+import com.whatsup.dto.Member_BoardDto;
+
 
 @WebServlet("/KakaopayController")
 public class KakaopayServlet extends HttpServlet {
@@ -22,39 +25,115 @@ public class KakaopayServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		HttpSession session=request.getSession();
+		Member_BoardDao dao = new Member_BoardDao(); 
 
 		String command = request.getParameter("command");
 
 		if (command.equals("Kakaopay")) {
+			
 			String planA = request.getParameter("planA");
 			String planB = request.getParameter("planB");
 			
-			
+			//logincontroller.do?command=registform
 			if (planA != null) {
-				jsResponse("planA", "Kakaopaysong.jsp", response);
-			} else {
-				jsResponse("planB", "KakaopayAll.jsp", response);
+				response.sendRedirect("KakaopayController?command=kakaopaysong");
+			} else if(planB != null) {
+				response.sendRedirect("KakaopayController?command=kakaopayall");
 
-			} 
+			} else {
+				String result = "<script> alert('선택해 주세요'); location.href='Kakapay01.jsp';</script> ";
+			    response.getWriter().append(result);
+			    
+			}
 		}else if(command.equals("checklogin")) {
-			
-			if(session.getAttribute("login") ==null){
-				String result = "<script> alert('로그인을 먼저 해주세요!'); location.href='index.jsp'; </script> ";
+			Member_BoardDto dto = (Member_BoardDto)session.getAttribute("login");
+
+			if(dto ==null){
+				String result = "<script> alert('로그인을 먼저 해주세요!'); self.close(); location.href='index.jsp'; </script> ";
 			    response.getWriter().append(result);
 				
 			}else {
+				
+				
+				if( dto.getMembership().equals("ONE") || dto.getMembership().equals("ALL")) {
+					
+					request.setAttribute("test", dto);
+					dispatch("Kakapay01.jsp",request,response);
+					
+						
+				}else{
+					dispatch("Kakapay01.jsp",request,response);
+				}
+				/*
 			PrintWriter out = response.getWriter();
 		       out.println("<html><body>");
 		       out.println("<script type=\"text/javascript\">");
-		       out.println("setTimeout(function openPopup(){window.open(\"Kakapay01.jsp\", \"new\", \"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=470, height=470, left=0, top=0\" );\r\n" + 
+		       out.println("setTimeout(function openPopup(){(\"Kakapay01.jsp\", \"new\", \"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=470, height=470, left=0, top=0\" );\r\n" + 
 		       		"})");
 		       out.println("</script>");
 		       out.println("</body></html>");
+		       */
 					
 			}	
 		
 		
-		}else if() {
+		
+			
+		}else if("kakaopaysong".equals(command)) {
+			
+			
+			dispatch("Kakaopaysong.jsp",request,response);
+			
+			/*
+			if(res> 0) {
+				
+				dispatch("Kakaopaysong.jsp",request,response);
+				
+			}else {
+				System.out.println("결제 실패! 다시 시도해 주세요.");
+				dispatch("Kakapay01.jsp",request,response);
+				
+			}*/
+			
+		}else if("kakaopaysong01".equals(command)) {
+			int memberseq = Integer.parseInt(request.getParameter("member_seq"));
+			String membership = request.getParameter("membership");
+			Member_BoardDto dto = new Member_BoardDto(memberseq, membership);
+			int res = dao.updateKakaosong(memberseq);
+			
+			if(res> 0) {
+				String result = "<script> self.close(); location.href='index.jsp'; </script> ";
+			    response.getWriter().append(result);
+				
+			}else {
+				System.out.println("결제 실패! 다시 시도해 주세요.");
+				dispatch("Kakapay01.jsp",request,response);
+			
+			
+			}
+			
+		}else if("kakaopayall".equals(command)) {
+			
+			dispatch("KakaopayAll.jsp",request,response);
+			
+			
+		}else if("kakaopayall01".equals(command)) {
+			
+			int memberseq = Integer.parseInt(request.getParameter("member_seq"));
+			String membership = request.getParameter("membership");
+			Member_BoardDto dto = new Member_BoardDto(memberseq, membership);
+			int res = dao.updateKakaoall(memberseq);
+			
+			if(res> 0) {
+				String result = "<script> self.close(); location.href='index.jsp'; </script> ";
+			    response.getWriter().append(result);
+				
+			}else {
+				System.out.println("결제 실패! 다시 시도해 주세요.");
+				dispatch("Kakapay01.jsp",request,response);
+			
+			
+			}
 			
 		}
 

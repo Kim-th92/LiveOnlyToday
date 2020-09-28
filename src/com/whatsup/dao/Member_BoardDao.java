@@ -130,6 +130,32 @@ public class Member_BoardDao extends SqlMapConfig {
 		
 	}
 	
-
+	
+	public int updateKakaosong(int member_seq) {
+		SqlSession session =null;
+		int res = 0;
+		session= getSqlSessionFactory().openSession(true);
+		
+		res = session.update(namespace + "kakaopaysong01", member_seq);
+		session.close();
+		
+		
+		return res;
+	}
+	
+	
+	
+	public int updateKakaoall(int member_seq) {
+		SqlSession session =null;
+		int res = 0;
+		session= getSqlSessionFactory().openSession(true);
+		
+		res = session.update(namespace+ "kakaopayall01", member_seq);
+		session.close();
+		
+		
+		return res;
+	}
+	
 	
 }
