@@ -72,6 +72,7 @@ ul li ul li {
 	display: none;
 	
 }
+
 ul li>a:hover {
 	color: darkgray;
 	border-bottom: 1px solid black;
@@ -153,6 +154,7 @@ footer {
 
 		<div id="nav-bar">
 
+
 		<ul>
 			<li><a href="aboutus.jsp">회사소개</a>
 				<ul>
@@ -167,17 +169,9 @@ footer {
 					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
 				</ul>
 			</li>
-
 			<li><a href="dancemain.jsp">춤</a></li>
 
 			<li><a href="move.do?command=mainboardpage">게시판</a>
-<!-- 				<ul> -->
-<!-- 					<li><a href="move.do?command=freeboard&currentPage=1">자유 게시판</a></li> -->
-<!-- 					<li><a href="move.do?command=danceboard&currentPage=1"> 춤</a></li> -->
-<!-- 					<li><a href="move.do?command=songboard&currentPage=1"> 노래</a></li> -->
-<!-- 					<li><a href="move.do?command=chatingboard">채팅</a></li> -->
-<!-- 				</ul> -->
-			</li>
 			<li><a href="csmain.jsp">고객센터</a>
 				<ul>
 					<li><a href="move.do?command=qnaboard">문의게시판</a></li>

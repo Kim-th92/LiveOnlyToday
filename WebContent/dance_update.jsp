@@ -10,9 +10,11 @@
 <%
 	Dance_BoardDto dance_dto=(Dance_BoardDto)request.getAttribute("dto");
 %>
+<%@include file="./format/header.jsp"%>
+
 <body>
-	<form action="move.do" method="post">
-		<input type="hidden" name="command" value="updateres">
+	<form action="move.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="command" value="danceupdateres">
 		<input type="hidden" name="dance_no" value="<%=dance_dto.getDance_no()%>" />
 		<table border="1">
 			<tr>
@@ -24,8 +26,15 @@
 				<td><input type="text" name="dance_title" value="<%=dance_dto.getDance_title() %>"  /></td>
 			</tr>
 			<tr>
+				<th>파일 업로드</th>
+				<td><input type="file" name="dacne_file"/></td>
+			</tr>
+			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="dance_content" ><%=dance_dto.getDance_content() %></textarea></td>
+				<td><textarea rows="10" cols="60" name="dance_content" id="dance_content" ><%=dance_dto.getDance_content() %></textarea></td>
+				<script>
+                        CKEDITOR.replace( 'dance_content' );
+                </script>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
@@ -35,5 +44,6 @@
 			</tr>
 		</table>
 	</form>
+<%@include file="./format/footer.jsp"%>
 </body>
 </html>
