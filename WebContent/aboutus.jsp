@@ -8,5 +8,9 @@
 </head>
 <body>
 
+<%@include file="./format/header.jsp"%>
+
+
+<%@include file="./format/footer.jsp"%>
 </body>
 </html>

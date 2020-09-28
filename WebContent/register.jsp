@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-/*input,textarea,select{width:150px; padding:5px; border:1px solid #dedede} */
+select{width:150px; padding:5px; border:1px solid #dedede} 
 input:read-only{background-color:#dedede} /* read-only style */
 select{padding:7px; vertical-align:middle}
 th{text-align: left;}
@@ -29,7 +29,7 @@ body {
 form{
 	width : 800px;
 	background:  #f1f1f1;
-	height: 800px;
+	height: 750px;
 	padding :80px 40px;
 	border-radius: 10px;
 	position : absolute;
@@ -37,20 +37,60 @@ form{
 	left:50%;
 	top:50%;
 	transform :translate(-50%,-50%); 
+	line-height: 40px;
+	
 }
 
 form  h1{
 text-align : center;
 margin-bottom :30px;
 }
+input ,textarea{
+	  
+	font-size : 15px;
+	border:none;
+	outline:none;
+	background:none;
+	padding: 0 5px;
+  	height: 40px;
+}
 input[type="text"],input[type="password"],textarea{
-width : 90%;
-
+	width : 80%;
+  	border-bottom: 2px solid #adadad;
+}
+input:focus ,textarea:focus{
+  	border-bottom: 2px solid darkorange;
 }
 tr {
 	margin :30px 10px;
 }
+.regbtn{
+	
+  display: block;
+  width: 50%;
+  height: 50px;
+  border: none;
+  background: linear-gradient(120deg,green,yellow,red);
+  background-size: 200%;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: .5s;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+p{ color:darkorange; font-size: 9pt; font-weight: bold;}
 
+.regbtn:hover{
+  background-position: right;
+}
+.dbchk{
+	border :none; background-color: darkorange; color:white; padding:5px 17px; border-radius: 5px;
+}
+.dbchk:hover{
+ transition: .5s;
+ background-color: red;
+}
 
 </style>
 </head>
@@ -66,33 +106,33 @@ tr {
  	<col width="600px">
  	<tr>
  		<th>아 이 디</th>
- 		<td><input type="text" name ="id"  id ="id" required="required" title="n" /><button onclick="idChk();" class="idkchk"> 중복확인</button><p class="id"></p></td>
+ 		<td><input type="text" name ="id"  id ="id" required="required" title="n" placeholder="아이디를 입력해 주세요"/><button onclick="idChk();" class="idkchk dbchk"> 중복확인</button><p class="id"></p></td>
  	</tr>
  	<tr>
  		<th>비밀 번호</th>
- 		<td><input type="password"  id="userPw" name ="pw"  required="required" /></td>
+ 		<td><input type="password"  id="userPw" name ="pw"  required="required" placeholder="•••••••••"/></td>
  	</tr>
  	<tr>
  		<th>비밀 번호 확인</th>
- 		<td><input type="password" id="userPwChk"  required="required" /><font id="chkNotice" size="2"></font></td>
+ 		<td><input type="password" id="userPwChk"  required="required" placeholder="•••••••••"/><font id="chkNotice" size="2"></font></td>
  		
  		
  	</tr>
  	<tr>
  		<th>닉네임</th>
- 		<td><input type="text" id ="nickname"  name ="nickname"  required="required" title="n" /><button onclick="nickChk();" class="nickChk"> 중복확인</button><p class="nick"></p></td>
+ 		<td><input type="text" id ="nickname"  name ="nickname"  required="required" title="n" placeholder="닉네임"/><button onclick="nickChk();" class="nickChk dbchk"> 중복확인</button><p class="nick"></p></td>
  	</tr>
  	<tr>
  		<th>이름</th>
- 		<td><input type="text" name="name"  required="required" /></td>
+ 		<td><input type="text" name="name"  required="required" placeholder="이름"/></td>
  	</tr>
  	<tr>
  		<th>전화번호</th>
- 		<td><input type="text" name="phone"  required="required" /></td>
+ 		<td><input type="text" name="phone"  required="required" placeholder="010-0000-0000"/></td>
  	</tr>
  	<tr>
  		<th>이메일</th>
- 		<td><input name="email11" type="text" style="width:30%;"> @ 
+ 		<td><input name="email11" type="text" style="width:30%;" placeholder="이메일"> @ 
  		<input type="text" name="email2" id="str_email02" disabled value="naver.com" style="width:30%;"> 
  		<select name="selectEmail" id="selectEmail"> 
  			<option value="1">직접입력</option> 
@@ -115,7 +155,7 @@ tr {
  	</tr>
  	<tr>
  		<th>주소</th>
- 		<td><textarea  style="resize: none;" name ="addr"  required="required" ></textarea></td>
+ 		<td><textarea  style="resize: none;" name ="addr"  required="required" placeholder="OO시 OO구" ></textarea></td>
  	</tr>
  	<tr>
  		<th>생년월일</th>
@@ -144,8 +184,8 @@ tr {
 
  		</td>
  	</tr>
- 	<tr>
- 		<td colspan="2"> <input type="submit" value="회원가입"/></td>
+ 	<tr style="text-align:-webkit-center;">
+ 		<td colspan="2" > <input class = "regbtn" type="submit" value="회원가입"/></td>
  	</tr>
  
  </table>
@@ -161,10 +201,10 @@ $(function(){
     $('#userPwChk').keyup(function(){
 
         if($('#userPw').val() != $('#userPwChk').val()){
-          $('#chkNotice').html('비밀번호 일치하지 않음');
+          $('#chkNotice').html('비밀번호 불일치');
           $('#chkNotice').attr('color', '#f82a2aa3');
         } else{
-          $('#chkNotice').html('비밀번호 일치함');
+          $('#chkNotice').html('비밀번호 일치');
           $('#chkNotice').attr('color', '#199894b3');
         }
 
