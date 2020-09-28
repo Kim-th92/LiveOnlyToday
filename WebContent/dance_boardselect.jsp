@@ -73,7 +73,7 @@
 				}
 			%>
 				
-				<input type="button" value="목록" onclick="location.href='move.do?command=danceboard'"/>
+				<input type="button" value="목록" onclick="location.href='move.do?command=danceboard&currentPage=1'"/>
 			</td>
 		</tr>
 	</table>

@@ -75,7 +75,7 @@ public class BoardServlet extends HttpServlet {
 			
 			int res=free_dao.insert(dto);
 			if(res>0) {
-				jsResponse("작성 성공", "move.do?command=freeboard", response);
+				jsResponse("작성 성공", "move.do?command=freeboard&currentPage=1", response);
 			}else {
 				jsResponse("작성 실패", "move.do?command=freeinsertpage", response);
 			}
@@ -93,7 +93,7 @@ public class BoardServlet extends HttpServlet {
 			int free_no=Integer.parseInt(request.getParameter("free_no"));
 			int res=free_dao.delete(free_no);
 			if(res>0) {
-				jsResponse("삭제 성공", "move.do?command=freeboard", response);
+				jsResponse("삭제 성공", "move.do?command=freeboard&currentPage=1", response);
 			}else {
 				jsResponse("삭제 실패", "move.do?command=freeselectpage&free_no="+free_no, response);
 			}
@@ -108,7 +108,7 @@ public class BoardServlet extends HttpServlet {
 			
 			int res=song_dao.insert(dto);
 			if(res>0) {
-				jsResponse("작성 성공", "move.do?command=songboard", response);
+				jsResponse("작성 성공", "move.do?command=songboard&currentPage=1", response);
 			}else {
 				jsResponse("작성 실패", "move.do?command=songinsertpage", response);
 			}
@@ -126,7 +126,7 @@ public class BoardServlet extends HttpServlet {
 			int song_no=Integer.parseInt(request.getParameter("song_no"));
 			int res=song_dao.delete(song_no);
 			if(res>0) {
-				jsResponse("삭제 성공", "move.do?command=songboard", response);
+				jsResponse("삭제 성공", "move.do?command=songboard&currentPage=1", response);
 			}else {
 				jsResponse("삭제 실패", "move.do?command=songselectpage&song_no="+song_no, response);
 			}
@@ -179,7 +179,7 @@ public class BoardServlet extends HttpServlet {
 				res=dance_dao.insert(dto);
 				
 				if(res>0) {
-					jsResponse("작성 성공", "move.do?command=danceboard", response);
+					jsResponse("작성 성공", "move.do?command=danceboard&currentPage=1", response);
 				}else {
 					jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
 				}
@@ -200,7 +200,7 @@ public class BoardServlet extends HttpServlet {
 					res=dance_dao.insertFile(dto);
 					
 					if(res>0) {
-						jsResponse("작성 성공", "move.do?command=danceboard", response);
+						jsResponse("작성 성공", "move.do?command=danceboard&currentPage=1", response);
 					}else {
 						jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
 					}
@@ -221,7 +221,7 @@ public class BoardServlet extends HttpServlet {
 						res = dance_dao.insertFile(dto);
 						
 						if(res>0) {
-							jsResponse("작성 성공", "move.do?command=danceboard", response);
+							jsResponse("작성 성공", "move.do?command=danceboard&currentPage=1", response);
 						}else {
 							jsResponse("작성 실패", "move.do?command=danceinsertpage", response);
 						}
@@ -246,7 +246,7 @@ public class BoardServlet extends HttpServlet {
 			int dance_no=Integer.parseInt(request.getParameter("dance_no"));
 			int res=dance_dao.delete(dance_no);
 			if(res>0) {
-				jsResponse("삭제 성공", "move.do?command=danceboard", response);
+				jsResponse("삭제 성공", "move.do?command=danceboard&currentPage=1", response);
 			}else {
 				jsResponse("삭제 실패", "move.do?command=danceselectpage&dance_no="+dance_no, response);
 			}

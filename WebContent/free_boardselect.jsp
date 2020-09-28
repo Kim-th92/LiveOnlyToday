@@ -48,7 +48,7 @@
 				}
 			%>
 				
-				<input type="button" value="목록" onclick="location.href='move.do?command=freeboard'"/>
+				<input type="button" value="목록" onclick="location.href='move.do?command=freeboard&currentPage=1'"/>
 			</td>
 		</tr>
 	</table>

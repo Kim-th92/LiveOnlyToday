@@ -44,7 +44,7 @@
 				}
 			%>
 				
-				<input type="button" value="목록" onclick="location.href='move.do?command=songboard'"/>
+				<input type="button" value="목록" onclick="location.href='move.do?command=songboard&currentPage=1'"/>
 			</td>
 		</tr>
 	</table>

@@ -1,6 +1,7 @@
 package com.whatsup.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,12 +10,17 @@ import com.whatsup.dto.Free_BoardDto;
 
 public class Free_BoardDao extends SqlMapConfig {
 	private String namespace="Free_Boardmapper.";
-	
-	public List<Free_BoardDto> selectList(){
+
+	public List<Free_BoardDto> selectList(int startWrite,int endWrite){
 		SqlSession session=null;
 		List<Free_BoardDto> list=new ArrayList<Free_BoardDto>();
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("startWrite",startWrite);
+		params.put("endWrite",endWrite);
+		
 		session=getSqlSessionFactory().openSession();
-		list=session.selectList(namespace+"selectList");
+		list=session.selectList(namespace+"selectListPage",params);
 		session.close();
 		return list;
 		
@@ -78,5 +84,15 @@ public class Free_BoardDao extends SqlMapConfig {
 		session.close();
 		
 		return res;
+	}
+	
+	public int totalCount() {
+		SqlSession session = null;
+		int totalcount = 0;
+		
+		session = getSqlSessionFactory().openSession();
+		totalcount = session.selectOne(namespace+"totalcount");
+		
+		return totalcount;
 	}
 }

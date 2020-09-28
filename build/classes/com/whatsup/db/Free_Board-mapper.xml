@@ -21,4 +21,18 @@
 	<update id="view" parameterType="int">
 		UPDATE FREE_BOARD SET FREE_CNT=FREE_CNT+1 WHERE FREE_NO=#{free_no}
 	</update>
+	<select id="totalcount" resultType="int">
+		SELECT COUNT(FREE_NO) FROM FREE_BOARD
+	</select>
+	<select id="selectListPage" resultType="free_BoardDto" parameterType="hashmap">
+		<![CDATA[
+		SELECT FREE_NO, FREE_TITLE, NICKNAME, FREE_REGDATE, FREE_CNT 
+		FROM
+			(SELECT ROW_NUMBER() OVER(ORDER BY FREE_NO DESC) AS NUM, FREE_NO, FREE_TITLE, NICKNAME, FREE_REGDATE, FREE_CNT 
+			FROM FREE_BOARD FREE INNER JOIN MEMBER_BOARD MEMBER 
+			ON FREE.MEMBER_SEQ=MEMBER.MEMBER_SEQ)
+		WHERE NUM >= #{startWrite} AND NUM < #{endWrite}
+		ORDER BY NUM
+		]]>
+	</select>
 </mapper>

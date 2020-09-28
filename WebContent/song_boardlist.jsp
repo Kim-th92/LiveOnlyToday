@@ -1,3 +1,4 @@
+<%@page import="com.whatsup.util.PageNavigator"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -13,7 +14,16 @@
 <title>Insert title here</title>
 <%
 	Song_BoardDao dao = new Song_BoardDao();
-	List<Song_BoardDto> list = dao.selectList();
+
+	PageNavigator navi = (PageNavigator)request.getAttribute("navi");
+	int startPageGroup = (int)request.getAttribute("startPage");
+	int endPageGroup = (int)request.getAttribute("endPage");
+
+	int startWrite = (int)request.getAttribute("startWrite");
+	int endWrite = (int)request.getAttribute("endWrite");
+	int totalPageCount = (int)request.getAttribute("totalPageCount");
+
+	List<Song_BoardDto> list = dao.selectList(startWrite,endWrite);
 	SimpleDateFormat ymd = new SimpleDateFormat("MM.dd");
 	SimpleDateFormat hms = new SimpleDateFormat("HH:mm");
 	Timestamp ts = new Timestamp(new Date().getTime());
@@ -74,5 +84,28 @@
 			</td>
 		</tr>
 	</table>
+<%
+	if(list.size() != 0){
+%>		
+	<a href="move.do?command=songboard&currentPage=1">&lt;&lt;</a> &nbsp;
+	<a href="move.do?command=songboard&currentPage=<%=(endPageGroup > startPageGroup)? 1:endPageGroup - startPageGroup%>">&lt;</a> &nbsp;
+<%
+	}
+	int[] end = new int[endPageGroup]; 
+	for(int j = 0; j<end.length; j++){
+		end[j] = j+1;
+	}
+	for(int i = startPageGroup - 1; i < end.length; i++ ){
+%>
+	<a href=move.do?command=songboard&currentPage=<%=end[i]%>><%=end[i]%></a> &nbsp; 
+<%	
+	}
+	if(list.size() != 0){
+%>
+	<a href="move.do?command=songboard&currentPage=<%=startPageGroup + 5%>">&gt;</a> &nbsp;
+	<a href="move.do?command=songboard&currentPage=${totalPageCount}">&gt;&gt;</a>
+<%
+	}
+%>	
 </body>
 </html>

@@ -42,7 +42,7 @@ CREATE SEQUENCE COMMENT_SEQ;
 CREATE SEQUENCE MUSICLIST_SEQ;
 CREATE SEQUENCE CHATINGLIST_SEQ;
 
-
+SELECT COUNT(SONG_NO) FROM SONG_BOARD;
 select * from dance_admin;
 select pw from member_board where name = '최서원' and email = 'tlwj321@naver.com';
 update member_board set pw =1234 where name='최서원'and email='tlwj321@naver.com'

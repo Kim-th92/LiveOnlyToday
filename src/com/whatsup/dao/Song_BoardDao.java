@@ -1,6 +1,7 @@
 package com.whatsup.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,11 +11,16 @@ import com.whatsup.dto.Song_BoardDto;
 public class Song_BoardDao extends SqlMapConfig{
 private String namespace="Song_Boardmapper.";
 	
-	public List<Song_BoardDto> selectList(){
+	public List<Song_BoardDto> selectList(int startWrite,int endWrite){
 		SqlSession session=null;
 		List<Song_BoardDto> list=new ArrayList<Song_BoardDto>();
 		session=getSqlSessionFactory().openSession();
-		list=session.selectList(namespace+"selectList");
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("startWrite",startWrite);
+		params.put("endWrite",endWrite);
+		
+		list=session.selectList(namespace+"selectListPage",params);
 		session.close();
 		return list;
 		
@@ -78,5 +84,15 @@ private String namespace="Song_Boardmapper.";
 		session.close();
 		
 		return res;
+	}
+	
+	public int totalCount() {
+		SqlSession session = null;
+		int totalcount = 0;
+	
+		session = getSqlSessionFactory().openSession();
+		totalcount = session.selectOne(namespace+"totalcount");
+	
+		return totalcount;
 	}
 }
