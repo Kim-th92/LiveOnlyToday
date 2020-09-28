@@ -33,7 +33,7 @@ form{
 	padding :80px 40px;
 	border-radius: 10px;
 	position : absolute;
-	text-align:center;
+	
 	left:50%;
 	top:50%;
 	transform :translate(-50%,-50%); 
@@ -43,6 +43,14 @@ form  h1{
 text-align : center;
 margin-bottom :30px;
 }
+input[type="text"],input[type="password"],textarea{
+width : 90%;
+
+}
+tr {
+	margin :30px 10px;
+}
+
 
 </style>
 </head>
@@ -84,8 +92,8 @@ margin-bottom :30px;
  	</tr>
  	<tr>
  		<th>이메일</th>
- 		<td><input name="email11" type="text"> @ 
- 		<input type="text" name="email2" id="str_email02" disabled value="naver.com"> 
+ 		<td><input name="email11" type="text" style="width:30%;"> @ 
+ 		<input type="text" name="email2" id="str_email02" disabled value="naver.com" style="width:30%;"> 
  		<select name="selectEmail" id="selectEmail"> 
  			<option value="1">직접입력</option> 
  			<option value="naver.com" selected>naver.com</option> 
@@ -107,7 +115,7 @@ margin-bottom :30px;
  	</tr>
  	<tr>
  		<th>주소</th>
- 		<td><textarea name ="addr"  required="required" ></textarea></td>
+ 		<td><textarea  style="resize: none;" name ="addr"  required="required" ></textarea></td>
  	</tr>
  	<tr>
  		<th>생년월일</th>

@@ -78,7 +78,9 @@ ul li {
 
 ul li ul li {
 	display: none;
+	
 }
+
 
 ul li>a:hover {
 	color: darkgray;
@@ -86,7 +88,7 @@ ul li>a:hover {
 }
 
 ul li:hover ul li {
-	display: block;
+	display: inline;
 	transform: translate(-50px, 35px);
 }
 
@@ -172,19 +174,18 @@ footer {
 		<div id="nav-bar">
 
 		<ul>
-			<li><a href="#">회사소개</a>
+			<li><a href="aboutus.jsp">회사소개</a>
 				<ul>
 				
-					<li><a href="#">회사소개</a></li>
-					<li><a href="#">오늘만 살조</a></li>
+					<li><a href="aboutus.jsp">회사소개</a></li>
+					<li><a href="liveonlytoday.jsp">오늘만 살조</a></li>
 				</ul></li>
 			<li><a href="move.do?command=musicselect">노래</a>
 				<ul>
-					<li><a href="#">혼자 부르기 </a></li>
+					<li><a href="move.do?command=musicselect">혼자 부르기 </a></li>
 
 					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
 
-					<li><a href="#">ON-AIR </a></li>
 
 				</ul></li>
 
@@ -192,14 +193,13 @@ footer {
 
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 				<ul>
-					<li><a href="move.do?command=freeboard">자유 게시판</a></li>
-					<li><a href="#"> 춤</a></li>
-					<li><a href="#"> 노래</a></li>
-					<li><a href="#">채팅</a></li>
+					<li><a href="move.do?command=freeboard&currentPage=1">자유 게시판</a></li>
+					<li><a href="move.do?command=danceboard"> 춤</a></li>
+					<li><a href="move.do?command=songboard"> 노래</a></li>
+					<li><a href="move.do?command=chatingboard">채팅</a></li>
 				</ul></li>
-			<li><a href="#">고객센터</a>
+			<li><a href="csmain.jsp">고객센터</a>
 				<ul>
-					<li><a href="#">자주묻는 질문</a></li>
 					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
 					<li><a href="adminchat.jsp">1:1문의</a></li>
 				</ul></li>

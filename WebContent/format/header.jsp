@@ -37,9 +37,10 @@ section {padding : 50px;}
 ul { margine:0; padding:0;list-style: none;font-size: 20pt; transform:translate(50px,-40px);}
 ul li{float : left; line-height:40px; list-style: none;width : 150px;height:40px;text-align:left; }
 ul li ul li {display:none;}
-ul li>a:hover{color:darkgray; border-bottom: 1px solid black;}
+ul li>a:hover{color:darkgray; font-weight: bold;  }
 
-ul li:hover ul li {display :block;transform:translate(-50px,35px);}
+
+ul li:hover ul li {display:inline;transform:translate(-50px,35px);}
 #login {float :right ;padding :40px 80px 0px 20px;}
 
 </style>
@@ -54,17 +55,17 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 
 		<div id="nav-bar">
 		<ul >
-			<li><a href="#">회사소개</a>
+			<li><a href="aboutus.jsp">회사소개</a>
 				<ul>
 				
-					<li><a href="#">회사소개</a></li>
-					<li><a href="#">오늘만 살조</a></li>
+					<li><a href="aboutus.jsp">회사소개</a></li>
+					<li><a href="liveonlytoday.jsp">오늘만 살조</a></li>
 				</ul>	
 			</li>
-			<li><a href="#">노래</a>
+			<li><a href="move.do?command=musicselect">노래</a>
 				<ul>
-					<li><a href="#">혼자 부르기 </a></li>
-					<li><a href="#">ON-AIR </a></li>
+					<li><a href="move.do?command=musicselect">혼자 부르기 </a></li>
+					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
 				</ul>
 			</li>
 
@@ -73,15 +74,14 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 
 				<ul>
-					<li><a href="#">자유 게시판</a></li>
-					<li><a href="#"> 춤</a></li>
-					<li><a href="#"> 노래</a></li>
-					<li><a href="#">채팅</a></li>
+					<li><a href="move.do?command=freeboard&currentPage=1">자유 게시판</a></li>
+					<li><a href="move.do?command=danceboard"> 춤</a></li>
+					<li><a href="move.do?command=songboard"> 노래</a></li>
+					<li><a href="move.do?command=chatingboard">채팅</a></li>
 				</ul></li>
-			<li><a href="#">고객센터</a>
+			<li><a href="csmain.jsp">고객센터</a>
 				<ul>
-					<li><a href="#">자주묻는 질문</a></li>
-					<li><a href="#">문의게시판</a></li>
+					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
 					<li><a href="adminchat.jsp">1:1문의</a></li>
 				</ul></li>
 		</ul>
