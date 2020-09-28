@@ -8,22 +8,65 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-input,textarea,select{width:150px; padding:5px; border:1px solid #dedede} 
+/*input,textarea,select{width:150px; padding:5px; border:1px solid #dedede} */
 input:read-only{background-color:#dedede} /* read-only style */
 select{padding:7px; vertical-align:middle}
+th{text-align: left;}
+*{
+	margin : 0;
+	padding : 0;
+	text-decoration: none;
+	font-family: montserrat;
+	box-sizing :border-box;
+	
+}
+
+body {
+	min-height: 100vh;
+	background-image: linear-gradient(45deg,#e66465,yellow);
+}
+
+form{
+	width : 800px;
+	background:  #f1f1f1;
+	height: 800px;
+	padding :80px 40px;
+	border-radius: 10px;
+	position : absolute;
+	
+	left:50%;
+	top:50%;
+	transform :translate(-50%,-50%); 
+}
+
+form  h1{
+text-align : center;
+margin-bottom :30px;
+}
+input[type="text"],input[type="password"],textarea{
+width : 90%;
+
+}
+tr {
+	margin :30px 10px;
+}
+
 
 </style>
 </head>
 
 
 <body>
-<h1>회원가입</h1>
+
 <form action="member.do" method="post">
 <input type="hidden" name ="command" value="registeres"/>
+<h1>회원가입</h1>
  <table>
+ 	<col width="150px">
+ 	<col width="600px">
  	<tr>
  		<th>아 이 디</th>
- 		<td><input type="text" name ="id"  required="required" title="n" /><button onclick="idChk();" class="idkchk"> 중복확인</button></td>
+ 		<td><input type="text" name ="id"  id ="id" required="required" title="n" /><button onclick="idChk();" class="idkchk"> 중복확인</button><p class="id"></p></td>
  	</tr>
  	<tr>
  		<th>비밀 번호</th>
@@ -37,7 +80,7 @@ select{padding:7px; vertical-align:middle}
  	</tr>
  	<tr>
  		<th>닉네임</th>
- 		<td><input type="text" name ="nickname"  required="required" /><button onclick="nickChk();" class="nickChk"> 중복확인</button><p class="nick"></p></td>
+ 		<td><input type="text" id ="nickname"  name ="nickname"  required="required" title="n" /><button onclick="nickChk();" class="nickChk"> 중복확인</button><p class="nick"></p></td>
  	</tr>
  	<tr>
  		<th>이름</th>
@@ -49,8 +92,8 @@ select{padding:7px; vertical-align:middle}
  	</tr>
  	<tr>
  		<th>이메일</th>
- 		<td><input name="email11" type="text"> @ 
- 		<input type="text" name="email2" id="str_email02" disabled value="naver.com"> 
+ 		<td><input name="email11" type="text" style="width:30%;"> @ 
+ 		<input type="text" name="email2" id="str_email02" disabled value="naver.com" style="width:30%;"> 
  		<select name="selectEmail" id="selectEmail"> 
  			<option value="1">직접입력</option> 
  			<option value="naver.com" selected>naver.com</option> 
@@ -72,7 +115,7 @@ select{padding:7px; vertical-align:middle}
  	</tr>
  	<tr>
  		<th>주소</th>
- 		<td><textarea name ="addr"  required="required" ></textarea></td>
+ 		<td><textarea  style="resize: none;" name ="addr"  required="required" ></textarea></td>
  	</tr>
  	<tr>
  		<th>생년월일</th>
@@ -129,30 +172,57 @@ $(function(){
 });
 
 function nickChk(){
-	var doc = document.getElementsByName("nickname")[0];
+	var doc = document.getElementById("nickname");
+	var nickname = document.getElementById("nickname").value;
 	if(doc.value==null||doc.value.trim()=="" ){
 		alert("닉네임을 먼저 입력해주세요!!");
 	} else{
-		onload=function(){
-			
-		}
-			function idConfirm(bool){
-				if(bool==="true"){
-					opener.document.getElementsByName("id")[0].title ="y";
-					opener.document.getElementsByName("pw")[0].focus();
-				}else{
-					opener.document.getElementsByName("id")[0].focus();
+		$.ajax({
+			url : "member.do?command=nickchk&nickname="+nickname,
+			method:"get",
+			dataType : "json",
+			success :function(msg){
+				console.log(typeof(msg.notUsed));
+				if(msg.notUsed){
+					document.getElementsByClassName('nick')[0].textContent=nickname +"사용가능한 닉네임 입니다."
+					document.getElementById("nickname").title ="y";
+				}else {
+					$(".nick").html =nickname +"중복된 닉네임입니다. 다른 닉네임을 사용해주세요.";
 				}
-				self.close();
+			},error: function(err){
+				console.log(err);
 			}
+		
+		});
+		
 	}
 }
 function idChk(){
 	var doc = document.getElementsByName("id")[0];
+	var id = document.getElementsByName("id")[0].value;
 	if(doc.value==null||doc.value.trim()=="" ){
 		alert("아이디를 먼저 입력해 주세요!!");
 	} else{
-		open("member.do?command=idchk&myid="+doc.value,"","width=200,height=200");
+		$.ajax({
+			url : "member.do?command=idchk&myid="+id,
+			method:"get",
+			dataType : "json",
+			success :function(msg){
+				console.log(typeof(msg.notUsed));
+				if(msg.notUsed){
+					document.getElementsByClassName('id')[0].textContent= "사용가능한 아이디 입니다."
+					document.getElementById("id").title ="y";
+					document.getElementsByName("pw")[0].focus();
+				}else {
+					document.getElementsByClassName('id')[0].textContent='중복된 아이디 입니다';
+					document.getElementsByName("id")[0].focus();
+				}
+			},error: function(err){
+				console.log(err);
+			}
+		
+		});
+		
 	}
 }
 
@@ -165,6 +235,16 @@ function idChkConfirm(){
 	}
 
 }
+//닉넴 중복체
+function nickChkConfirm(){
+	var chk = document.getElementsByName("nickname")[0].title;
+	if(chk=="n"){
+		alert("닉네임 중복체크를 먼저 해주세요.");
+		document.getElementsByName("nickname")[0].focus();
+	}
+
+}
+
 $('#selectEmail').change(function(){ 
 	$('#selectEmail option:selected').each(function (){ 
 		if($(this).val()== '1'){ //직접입력일 경우 

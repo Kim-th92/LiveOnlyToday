@@ -1,4 +1,3 @@
-
 <%@page import="com.whatsup.dto.DanceAdminDto"%>
 <%@page import="com.whatsup.dao.DanceAdminDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -36,9 +35,7 @@ DanceAdminDto danceadmin_dto = (DanceAdminDto)request.getAttribute("dto");
 
 <%@include file="./format/header.jsp"%>
 
-<section>
 
-	<h1> <%=danceadmin_dto.getDanceadmintitle() %></h1>
 	<div id="container">
 
 		<iframe src="<%=danceadmin_dto.getDanceadminsrc() %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -65,7 +62,7 @@ DanceAdminDto danceadmin_dto = (DanceAdminDto)request.getAttribute("dto");
 
 
 	</div>
-</section>
+
 	<!-- include adapter for srcObject shim -->
 	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 	<script src="js/main.js" async></script>

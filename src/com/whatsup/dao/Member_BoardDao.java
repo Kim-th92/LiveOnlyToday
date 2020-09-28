@@ -183,5 +183,4 @@ public class Member_BoardDao extends SqlMapConfig {
 	}
 
 
-	
 }

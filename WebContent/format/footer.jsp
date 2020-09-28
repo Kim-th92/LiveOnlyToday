@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
      <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
-
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style type="text/css">
-
+footer{
+font-family: 'Black Han Sans', sans-serif;}
 footer{ height:80px; background-color: grey;}
 footer{z-index: 2;   position:fixed;   left: 0;   bottom: 0;   width: 100%; padding: 0;
 	}

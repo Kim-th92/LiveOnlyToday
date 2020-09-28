@@ -26,7 +26,7 @@
 		#{birthday},#{phone},#{addr},'NOPAY','N',SYSDATE)
 	</insert>
 	<select id="selectId" resultType="Member_BoardDto" parameterType="String">
-		SELECT  MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD WHERE ID = #{id} 
+		SELECT  MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD WHERE ID = #{id} OR NICKNAME= #{nickname}
 	</select>
 	<select id="sns" resultType="Member_BoardDto" parameterType="String">
 		SELECT  MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD WHERE ID = #{id} AND DELFLAG='N'
@@ -55,7 +55,7 @@
 	    UPDATE MEMBER_BOARD SET DELFLAG='Y' WHERE MEMBER_SEQ=#{member_seq}
 	</update>
 
-	
+
 	<update id="kakaopaysong01" parameterType="int">
 		UPDATE MEMBER_BOARD SET MEMBERSHIP='ONE' WHERE MEMBER_SEQ=#{member_seq} 	
 	</update>

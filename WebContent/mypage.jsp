@@ -42,15 +42,13 @@ $(document).ready(function(){
 		<h1> 마이페이지</h1>
 		
 		<div id = "modifyprofile">
-			<h1>마이 프로필<button onclick=""> 프로필 수정</button></h1>
+			<h1>마이 프로필<button onclick="profileupdate.jsp"> 프로필 수정</button></h1>
 			
 		</div>
 		<div id = "songlist">
 			<h1>내가 부른 노래 <button onclick=""> 노래 전체 보기</button></h1>
 		</div>
-		<div id = "dancelist">
-			<h1>내가 춘 춤<button onclick="">춤 전체 보기</button></h1>
-		</div>
+		 
 		<div id = "qna">
 			<h1>내가한 질문<button onclick=""> 내가한 질문 전체 보기</button></h1>
 		</div>

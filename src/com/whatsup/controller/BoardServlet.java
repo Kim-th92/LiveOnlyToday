@@ -61,35 +61,7 @@ public class BoardServlet extends HttpServlet {
 
 		
 
-		String fileSavePath="upload";
-		int uploadSizeLimit = 1000*1024*1024;
-		String encType ="UTF-8";
-		if(!ServletFileUpload.isMultipartContent(request)) {
-			response.sendRedirect("dance_boardinsert.jsp");
-		}
-		
-		ServletContext context = getServletContext();
-		
-		String uploadPath = context.getRealPath(fileSavePath);
-		System.out.println(uploadPath);
-		  File isDir = new File(uploadPath);
-
-		    
-
-		    if(!isDir.isDirectory()){
-
-		    	System.out.println("디렉토리가 없습니다. 디렉토리를 새로 생성합니다.");
-
-		    	isDir.mkdir();
-
-		    }
-
-		
-		MultipartRequest multi = new MultipartRequest(request,uploadPath,uploadSizeLimit,encType,new DefaultFileRenamePolicy());
-		if(command==null) {
-				command = multi.getParameter("command");
-				}
-		
+	
 
 		//자유게시판 추가
 		
@@ -161,6 +133,32 @@ public class BoardServlet extends HttpServlet {
 			
 		//댄스게시판	
 		}else if("dance_insert".equals(command)){
+			String fileSavePath="upload";
+			int uploadSizeLimit = 1000*1024*1024;
+			String encType ="UTF-8";
+			if(!ServletFileUpload.isMultipartContent(request)) {
+				response.sendRedirect("dance_boardinsert.jsp");
+			}
+			
+			ServletContext context = getServletContext();
+			
+			String uploadPath = context.getRealPath(fileSavePath);
+			System.out.println(uploadPath);
+			  File isDir = new File(uploadPath);
+
+			    
+
+			    if(!isDir.isDirectory()){
+
+			    	System.out.println("디렉토리가 없습니다. 디렉토리를 새로 생성합니다.");
+
+			    	isDir.mkdir();
+
+			    }
+
+			
+			MultipartRequest multi = new MultipartRequest(request,uploadPath,uploadSizeLimit,encType,new DefaultFileRenamePolicy());
+			
 			
 			String file = multi.getFilesystemName("dance_file");
 			

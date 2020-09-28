@@ -64,13 +64,35 @@ public class MemberServlet extends HttpServlet {
 			Member_BoardDto dto =  dao.check(myid);
 			boolean notUsed = true;
 			
-			if(dto == null){
-				
-	 			notUsed =true;
-	 		}else {
-	 			notUsed=false;
-	 		}
-			response.sendRedirect("idchk.jsp?notUsed="+notUsed);
+			if (dto==null) {
+				notUsed = true;
+			}else {
+				notUsed=false;
+			}
+			
+			JSONObject obj = new JSONObject();
+			obj.put("notUsed", notUsed);
+			
+			PrintWriter out = response.getWriter();
+			out.println(obj.toJSONString());
+			
+		}else if("nickchk".equals(command)) {
+			System.out.println("연결되긴 함");
+			String nickname = request.getParameter("nickname");
+			Member_BoardDto dto =dao.check(nickname);
+			boolean notUsed = true;
+			
+			if (dto==null) {
+				notUsed = true;
+			}else {
+				notUsed=false;
+			}
+			
+			JSONObject obj = new JSONObject();
+			obj.put("notUsed", notUsed);
+			
+			PrintWriter out = response.getWriter();
+			out.println(obj.toJSONString());
 			
 		}else if(command.equals("registeres")) {
 			String id = request.getParameter("id");
