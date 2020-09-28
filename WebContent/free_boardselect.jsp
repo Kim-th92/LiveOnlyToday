@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea rows="10" cols="60" name="mycontent" readonly="readonly"><%=free_dto.getFree_content() %></textarea></td>
+			<td><%=free_dto.getFree_content() %></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">

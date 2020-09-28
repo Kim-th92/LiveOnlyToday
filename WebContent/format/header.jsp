@@ -120,7 +120,28 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 	 		}
 		%>
 		
-
+	<script>
+  function signOut() {
+	
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      $.ajax({
+    	 url: "member.do?command=logout",
+    	success : function(){
+    		console.log('logout successed');
+    		location.reload();
+    	},error:function(){
+    		alert("통신 실패....");
+    	}
+      });
+    });
+  }
+  function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+  </script>
 	</header>
 </body>
 </html>

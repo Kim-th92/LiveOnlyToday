@@ -10,10 +10,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.side-nav-bar { width:15% ; position:fixed;top:0; height:100% ;background-color: grey; z-index: -1;}
-.section {width : 70%;}
+
+.side-nav-bar{ position:fixed;top:0; height:100% ;background-color: grey; }
+.section {}
 footer{z-index: 2;   position: absolute;  left: 0;   bottom: 0;   width: 100%; padding: 0;
 	color: white;background: blue;}
+body >div{
+	display:grid;
+	grid-template-columns : 15% 85%;
+}
+div.wrapper{
+	display : grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	}
 
 </style>
 </head>
@@ -29,13 +38,13 @@ List<DanceAdminDto> list = dao.selectList();
 <%@ include file="./format/header.jsp" %>
 
 <div class = "side-nav-bar">
-
+	
 
 </div>
 
 <div class="section">
 <h1> 춤</h1>
-	<div class="card">
+	<div class="wrapper">
 		
 <%
 	if(list.size()==0){

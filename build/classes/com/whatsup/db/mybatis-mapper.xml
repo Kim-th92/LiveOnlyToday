@@ -54,9 +54,7 @@
 	<update id="deletemember" parameterType ="int">
 	    UPDATE MEMBER_BOARD SET DELFLAG='Y' WHERE MEMBER_SEQ=#{member_seq}
 	</update>
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
+
 	<update id="kakaopaysong01" parameterType="int">
 		UPDATE MEMBER_BOARD SET MEMBERSHIP='ONE' WHERE MEMBER_SEQ=#{member_seq} 	
 	</update>
@@ -64,12 +62,5 @@
 	<update id="kakaopayall01" parameterType="int">
 		UPDATE MEMBER_BOARD SET MEMBERSHIP='ALL' WHERE MEMBER_SEQ=#{member_seq}
 	</update>
-	
-=======
-
->>>>>>> 7b2d79eb27d87d11e19f96fbfaad64ea217800cc
-=======
-
->>>>>>> 7b2d79eb27d87d11e19f96fbfaad64ea217800cc
-	
+		
 </mapper>

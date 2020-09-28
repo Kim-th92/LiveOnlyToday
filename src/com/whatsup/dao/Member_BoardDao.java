@@ -132,9 +132,7 @@ public class Member_BoardDao extends SqlMapConfig {
 		return res;
 		
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
+
 	
 	public int updateKakaosong(int member_seq) {
 		SqlSession session =null;
@@ -162,9 +160,6 @@ public class Member_BoardDao extends SqlMapConfig {
 		return res;
 	}
 	
-=======
-=======
->>>>>>> 7b2d79eb27d87d11e19f96fbfaad64ea217800cc
 
 	//관리자 - 회원목록보기
 	public List<Member_BoardDto> selectList(){
@@ -186,6 +181,6 @@ public class Member_BoardDao extends SqlMapConfig {
 		return dto;
 	}
 
->>>>>>> 7b2d79eb27d87d11e19f96fbfaad64ea217800cc
+
 	
 }

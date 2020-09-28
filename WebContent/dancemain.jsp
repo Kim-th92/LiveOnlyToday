@@ -23,7 +23,7 @@
 				<a href="dancefollow_list.jsp"><img src="resources/danceimg2.jpeg" alt= " 춤 게시판으로"/><span> 춤 따라 추러 가기!</span></a>
 			</div>
 			<div id="right">
-				<a href="danceboardlist.jsp"><img src="resources/danceimg2.jpeg" alt= " 춤 게시판으로"/><span> 춤 게시판으로 가기!</span></a>
+				<a href="dance_boardlist.jsp"><img src="resources/danceimg2.jpeg" alt= " 춤 게시판으로"/><span> 춤 게시판으로 가기!</span></a>
 			</div>
 		</div>
 	<%@include file="./format/footer.jsp"%>
