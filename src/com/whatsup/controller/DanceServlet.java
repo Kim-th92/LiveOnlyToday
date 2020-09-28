@@ -16,7 +16,7 @@ import com.whatsup.dto.DanceAdminDto;
 @WebServlet("/dance.do")
 public class DanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
 
     public DanceServlet() {
     }
