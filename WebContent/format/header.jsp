@@ -56,17 +56,16 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 				
 					<li><a href="#">회사소개</a></li>
 					<li><a href="#">오늘만 살조</a></li>
-				</ul></li>
+				</ul>	
+			</li>
 			<li><a href="#">노래</a>
 				<ul>
 					<li><a href="#">혼자 부르기 </a></li>
 					<li><a href="#">ON-AIR </a></li>
-				</ul></li>
+				</ul>
+			</li>
 
-			<li><a href="#">춤</a></li>
-			<li><a href="move.do?command=mainboardpage">게시판</a>
-
-			<li><a href="./dancemain.jsp">춤</a></li>
+			<li><a href="dancemain.jsp">춤</a></li>
 
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 
@@ -80,6 +79,7 @@ ul li:hover ul li {display :block;transform:translate(-50px,35px);}
 				<ul>
 					<li><a href="#">자주묻는 질문</a></li>
 					<li><a href="#">문의게시판</a></li>
+					<li><a href="adminchat.jsp">1:1문의</a></li>
 				</ul></li>
 		</ul>
 		</div>

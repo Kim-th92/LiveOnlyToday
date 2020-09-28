@@ -76,6 +76,7 @@
 		<tr>
 			<td colspan="5" align="right">
 				<input type="button" value="글작성" onclick="location.href='move.do?command=qnainsertpage'" />
+				<input type="button" value="답변달기" onclick="location.href='move.do?command=qnaonsertpage'" />
 			</td>
 		</tr>
 	</table>

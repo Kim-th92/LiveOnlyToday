@@ -5,6 +5,7 @@ public class DanceAdminDto {
 	private String danceadmintitle;
 	private String danceadminsrc;
 	private String dancecontent;
+	
 	public String getDancecontent() {
 		return dancecontent;
 	}

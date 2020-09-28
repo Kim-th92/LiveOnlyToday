@@ -40,6 +40,13 @@
 			<%		
 				}
 			%>
+			<%
+			    if(qna_dto.getNickname() == "관리자"){
+			%>
+			    <input type="button" value="답변하기" onclick="location.href='move.do?command=qnaanswer&qna_no<%=qna_dto.getQna_no()%>'"/>
+			<%
+			    }
+			%>
 				
 				<input type="button" value="목록" onclick="location.href='move.do?command=qnaboard'"/>
 			</td>
