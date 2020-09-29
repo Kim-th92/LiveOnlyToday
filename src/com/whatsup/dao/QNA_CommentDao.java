@@ -5,14 +5,15 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.whatsup.dto.CommentDto;
+
+import com.whatsup.dto.QNA_CommentDto;
 
 public class QNA_CommentDao extends SqlMapConfig {
 	private String namespace="QNACommentmapper.";
 	
-	public List<CommentDto> selectFreeList(int qna_no){
+	public List<QNA_CommentDto> selectFreeList(int qna_no){
 		SqlSession session=null;
-		List<CommentDto> list=new ArrayList<CommentDto>();
+		List<QNA_CommentDto> list=new ArrayList<QNA_CommentDto>();
 		session=getSqlSessionFactory().openSession();
 		list=session.selectList(namespace+"qna_comment",qna_no);
 		
@@ -20,12 +21,12 @@ public class QNA_CommentDao extends SqlMapConfig {
 		return list;
 	
 	}
-	public int insertQna(CommentDto dto) {
+	public int insertQna_Commnet(QNA_CommentDto qna_comment_dto) {
 		SqlSession session=null;
 		
 		int res=0;
 		session=getSqlSessionFactory().openSession();
-		res=session.insert(namespace+"qna_comment_insert",dto);
+		res=session.insert(namespace+"qna_comment_insert",qna_comment_dto);
 		session.commit();
 		session.close();
 		
@@ -34,12 +35,12 @@ public class QNA_CommentDao extends SqlMapConfig {
 	}
 	
 	
-	public int update(CommentDto dto) {
+	public int update(QNA_CommentDto qna_comment_dto) {
 		SqlSession session=null;
 		
 		int res=0;
 		session=getSqlSessionFactory().openSession();
-		res=session.update(namespace+"update",dto);
+		res=session.update(namespace+"update",qna_comment_dto);
 		session.commit();
 		session.close();
 		
@@ -48,16 +49,17 @@ public class QNA_CommentDao extends SqlMapConfig {
 		
 	}
 	
-	public int delete(int comment_no) {
+	public int delete(int qna_comment_no) {
 		SqlSession session=null;
 		
 		int res=0;
 		session=getSqlSessionFactory().openSession();
-		res=session.delete(namespace+"delete",comment_no);
+		res=session.delete(namespace+"delete",qna_comment_no);
 		session.commit();
 		session.close();
 		
 		
 		return res;
 	}
+	
 }
