@@ -14,10 +14,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-table {
-	line-height: 40px;
-}
-#bor{border-bottom: 2px solid red;}
 
 </style>
 <%
