@@ -35,7 +35,21 @@
 </script>
 
 <style type="text/css">
-	
+	a > img{
+		width: 50px; height: 50px;
+	}
+	#gallery{
+		width: 200px; height: 200px;
+	}
+	p {
+		width: 350px; height: 250px;
+	}
+	img{
+		vertical-align: middle;
+	}
+	a{
+		text-decoration: none;
+	}
 
 </style>
 </head>
@@ -52,13 +66,13 @@ if(member_dto == null){
 	<div id="gallerywrap">
 		<p>
 			<a onclick="return prevGallery();">
-				<img alt="이전 그림" src="resources/danceStudyImg/arrowleft.png"/>
+				<img alt="이전 그림" src="resources/danceStudyImg/arrowleft.png" width="50px" height="50px"/>
 			</a>
 			<a href="#">
 			<img alt="갤러리 그림" src="resources/danceStudyImg/img01.png" id="gallery"/>
 			</a>
 			<a onclick="return nextGallery();">
-				<img alt="다음 그림" src="resources/danceStudyImg/arrowright.png"/>
+				<img alt="다음 그림" src="resources/danceStudyImg/arrowright.png" width="50px" height="50px"/>
 			</a>
 		</p>
 	</div>
