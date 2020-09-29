@@ -11,15 +11,19 @@
 
 <style type="text/css">
 	#pageselect{
-		width: 100px;
+		width: 180px;
 		height: 800px;
 		float: left;
 	}
 	#maintag{
 		font-weight: bold;
 	}
-	p{
+	p{	
+		margin-left :20px;
 		border-bottom: 1px solid #bcbcbc;
+	}
+	p>a:hover {
+		color: darkorange;
 	}
 	#boardview{
 		widows: 1000px;
@@ -43,7 +47,7 @@
 	<div id="pageselect">
 		<nav>
 			
-			<p id="maintag">게시판 선택</p>
+			<p style ="font-size : 14pt;" id="maintag">게시판 선택</p>
 			<p><a id="free" onclick="freeboard()">자유게시판</a></p>
 			<p><a id="song" onclick="songboard()">노래게시판</a></p>
 			<p><a  id ="dance" onclick="danceboard()">춤 게시판</a></p>
