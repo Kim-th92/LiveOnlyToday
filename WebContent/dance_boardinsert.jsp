@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="dance_content"></textarea></td>
+				<td><textarea rows="10" cols="60" name="dance_content" id="dance_content"></textarea></td>
 				<script>
                      CKEDITOR.replace( 'dance_content' );
                 </script>

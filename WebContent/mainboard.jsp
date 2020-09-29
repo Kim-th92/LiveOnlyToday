@@ -29,6 +29,11 @@
 		width: 1000px;
 		height: 800px;	
 	}
+	table {
+	line-height: 40px;
+}
+	#bor{border-bottom: 2px solid red;}
+	
 </style>
 </head>
 <body>
@@ -48,7 +53,7 @@
 	</div>
 	<!-- 게시판 리스트 보여주는 영역 -->
 	<div id="boardview">
-		<iframe id="myframe" name="myframe"></iframe>
+		<iframe id="myframe" name="myframe" frameBorder="0" style="width:80%"></iframe>
 	</div>
 <!-- footer -->
 <%@ include file="./format/footer.jsp" %>
@@ -80,25 +85,25 @@ setTimeout(dance.click(),20000);
 }
 %>
 	function freeboard() {
-		var url = "move.do?command=freeboard";
+		var url = "move.do?command=freeboard&currentPage=1";
 		var title = "myframe";
 		var prop = "";
 		window.open(url, title, prop);
 	}
 	function songboard() {
-		var url = "move.do?command=songboard";
+		var url = "move.do?command=songboard&currentPage=1";
 		var title = "myframe";
 		var prop = "";
 		window.open(url, title, prop);
 	}
 	function danceboard() {
-		var url = "move.do?command=danceboard";
+		var url = "move.do?command=danceboard&currentPage=1";
 		var title = "myframe";
 		var prop = "";
 		window.open(url, title, prop);
 	}
 	function chatingboard() {
-		var url = "move.do?command=chatingboard";
+		var url = "move.do?command=chatingboard&currentPage=1";
 		var title = "myframe";
 		var prop = "";
 		window.open(url, title, prop);
