@@ -59,10 +59,6 @@ table.qna td {
 	Timestamp ts = new Timestamp(new Date().getTime());
 	
 	String nickname = (String)session.getAttribute("nickname");
-	
-
-
-
 %>
 </head>
 <body>
@@ -105,11 +101,6 @@ table.qna td {
 			<td><a href="move.do?command=selectpage&qna_no=<%=list.get(i).getQna_no() %>"><%=list.get(i).getQna_title() %></a></td>			
 			<td><a><%=hms.format(list.get(i).getQna_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getQna_answer() %></a></td>
-<% 				
-
-
-%>
-		    
 		</tr>
 <%
 		}
