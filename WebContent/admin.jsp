@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%
+	Member_BoardDto member_dto = (Member_BoardDto) session.getAttribute("login");
+if (member_dto == null) {
+	member_dto = new Member_BoardDto();
+}
+%>
 <style>
 body {
 	background-color: #fdde60;
@@ -92,72 +98,17 @@ h2, p {
 </head>
 
 <body>
-<%
-	Member_BoardDto member_dto = (Member_BoardDto) session.getAttribute("login");
-if (member_dto == null) {
-	member_dto = new Member_BoardDto();
-}
-%>
-<%@include file="./format/header.jsp"%>
-
-
-<!-- 관리자 채팅 -->
-<div class="template" style="display: none">
-	<form>
-		<!-- 메시지 텍스트 박스 -->
-		<input type="text" class="message"
-			onkeydown="if(event.keyCode === 13) return false;">
-		<!-- 전송 버튼 -->
-		<input value="Send" type="button" class="sendBtn">
-	</form>
-	<br/>
-	<!-- 서버와 메시지를 주고 받는 콘솔 텍스트 영역 -->
-	<textarea rows="10" cols="50" class="console" disabled="disabled"></textarea>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	// 서버의 admin의 서블릿으로 웹 소켓을 한다.
-	var webSocket = new WebSocket("ws://localhost:8787/semi_project03/admin");
-	// 운영자에서의 open, close, error는 의미가 없어서 형태만 선언
-	webSocket.onopen = function(message) {
-	};
-	webSocket.onclose = function(message) {
-	};
-	webSocket.onerror = function(message) {
-	};
-	// 서버로 부터 메시지가 오면
-	webSocket.onmessage = function(message) {
-		// 메시지의 구조는 JSON 형태로 만들었다.
-		let node = JSON.parse(message.data);
-		// 메시지의 status는 유저의 접속 형태이다.
-		// visit은 유저가 접속했을 때 알리는 메시지다.
-		if (node.status === "visit") {
-			// 위 템플릿 div를 취득한다.
-			let form = $(".template").html();
-			// div를 감싸고 속성 data-key에 unique키를 넣는다.
-			form = $("<div class='float-left'></div>").attr("data-key",
-					node.key).append(form);
-			// body에 추가한다.
-			$("body").append(form);
-			// message는 유저가 메시지를 보낼 때 알려주는 메시지이다.
-		} else if (node.status === "message") {
-			// key로 해당 div영역을 찾는다.
-			let $div = $("[data-key='" + node.key + "']");
-
 	<%@include file="./format/header.jsp"%>
 	<h1>관리자 페이지</h1>
 	<div id="adminview">
-
 		<h2>
 			가입자 조회<br />
 			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회</button>
 		</h2>
-
-		<p>오늘의 가입자 수는 ?</p>
-
 	</div>
-
 
 	<div id="qnaboard">
 		<h2>
@@ -170,20 +121,6 @@ if (member_dto == null) {
 	<div id="img">
 		<img id="dance" alt="춤그림" src="resources/dance.png">
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<!-- 관리자 채팅 -->
 	<div class="template" style="display: none">
