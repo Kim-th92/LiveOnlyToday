@@ -24,12 +24,14 @@ import com.whatsup.dao.CommentDao;
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.QNA_BoardDao;
+import com.whatsup.dao.QNA_CommentDao;
 import com.whatsup.dao.Song_BoardDao;
 import com.whatsup.dto.CommentDto;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 import com.whatsup.dto.QNA_BoardDto;
+import com.whatsup.dto.QNA_CommentDto;
 import com.whatsup.dto.Song_BoardDto;
 
 
@@ -58,6 +60,7 @@ public class BoardServlet extends HttpServlet {
 		Dance_BoardDao dance_dao=new Dance_BoardDao();
 		QNA_BoardDao qna_dao=new QNA_BoardDao(); 
 		CommentDao comment_dao=new CommentDao();
+		QNA_CommentDao qna_comment_dao = new QNA_CommentDao();
 
 		String fileSavePath="upload";
 		int uploadSizeLimit = 1000*1024*1024;
@@ -284,21 +287,21 @@ public class BoardServlet extends HttpServlet {
 			}else {
 				jsResponse("삭제 실패", "move.do?command=selectpage&qna_no="+qna_no, response);
 			}
-		}else if(command.equals("qnacommentinsert")) {
-			String comment_content=request.getParameter("qna_comment_content");
+
+        }else if(command.equals("qnacommentinsert")) {
+			String qna_comment_content=request.getParameter("qna_comment_content");
 			int member_seq=Integer.parseInt(request.getParameter("member_seq"));
 			int qna_no=Integer.parseInt(request.getParameter("qna_no"));
-			CommentDto comment_dto=new CommentDto();
-			comment_dto.setMember_seq(member_seq);
-			comment_dto.setComment_content(comment_content);
-			comment_dto.setQna_no(qna_no);
-			int res=comment_dao.insertSong(comment_dto);
+			QNA_CommentDto qna_comment_dto=new QNA_CommentDto();
+			qna_comment_dto.setMember_seq(member_seq);
+			qna_comment_dto.setQna_comment_content(qna_comment_content);
+			qna_comment_dto.setQna_no(qna_no);
+			int res=qna_comment_dao.insertQna_Commnet(qna_comment_dto);
 			if(res>0) {
 				jsResponse("댓글 작성 성공", "move.do?command=qnaselectpage&qna_no="+qna_no, response);
 			}else {
 			jsResponse("댓글 작성 실패", "move.do?command=qnaselectpage&qna_no="+qna_no, response);
 			}
-		
 		}
 		//댓글 작성
 		else if(command.equals("freecommentinsert")) {

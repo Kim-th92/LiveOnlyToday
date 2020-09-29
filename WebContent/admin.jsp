@@ -155,10 +155,6 @@ h2, p {
 			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회</button>
 		</h2>
 
-		<p>오늘의 가입자 수는 ?</p>
-
-	</div>
-
 
 	<div id="qnaboard">
 		<h2>
