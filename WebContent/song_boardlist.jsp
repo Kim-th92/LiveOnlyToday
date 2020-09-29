@@ -12,6 +12,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	body {
+		margin : 30px 50px;
+	}
+	h1{
+		margin : 30px 20px;
+	}
+	table {
+		margin-top : 30px;
+		
+		line-height: 30px;
+		width:100%;
+		
+	}
+	#bor{padding-bottom:20px;}
+	td:nth-child(1){text-align: center;}
+	td:nth-child(4){text-align : center;}
+	td:nth-child(3){ font-weight:bold;}
+	td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
+</style>
 <%
 	Song_BoardDao dao = new Song_BoardDao();
 
@@ -33,7 +53,8 @@
 %>
 </head>
 <body>
-
+	<h1> 노래게시판 </h1>
+	<hr>
 	<table>
 		<col width="100px" />
 		<col width="200px" />
@@ -79,8 +100,8 @@
 		}
 	}
 %>
-		<tr>
-			<td colspan="5" align="right">
+		<tr><td></td>
+			<td colspan="4" align="right">
 				<input type="button" value="글작성" onclick="location.href='move.do?command=songinsertpage'" />
 			</td>
 		</tr>
