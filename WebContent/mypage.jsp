@@ -84,16 +84,28 @@ h1 {
 #modifyprofile:hover{
 	border: 2px solid gray;
 	background-color: darkorange;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 #songlist:hover{
-	border: 2px solid darkorange;
+	border: 2px solid gray;
 	background-color: darkorange;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 #qna:hover{
-	border: 2px solid darkorange;
+	border: 2px solid gray;
 	background-color: darkorange;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 	
 }
 
