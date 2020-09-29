@@ -6,42 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-<<<<<<< HEAD
-<script type="text/javascript">
-	
-	function freeboard() {
-		var url = "move.do?command=freeboard&currentPage=1";
-		var title = "myframe";
-		var prop = "";
-		window.open(url, title, prop);
-	}
-	function songboard() {
-		var url = "move.do?command=songboard&currentPage=1";
-		var title = "myframe";
-		var prop = "";
-		window.open(url, title, prop);
-	}
-	function danceboard() {
-		var url = "move.do?command=danceboard&currentPage=1";
-		var title = "myframe";
-		var prop = "";
-		window.open(url, title, prop);
-	}
-	function chatingboard() {
-		var url = "move.do?command=chatingboard";
-		var title = "myframe";
-		var prop = "";
-		window.open(url, title, prop);
-	}
-	window.onload=function(){
-		freeboard();
-	}
-	
-	
-</script>
-=======
 
->>>>>>> maggie
+
+
 <style type="text/css">
 	#pageselect{
 		width: 100px;
