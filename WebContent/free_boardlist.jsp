@@ -12,6 +12,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+table {
+	line-height: 40px;
+}
+#bor{border-bottom: 2px solid red;}
+
+</style>
 <%
 	Free_BoardDao dao = new Free_BoardDao();
 	List<Free_BoardDto> list = dao.selectList();
@@ -22,15 +29,17 @@
 
 	
 %>
+
 </head>
 <body>
 
-	<table border="1">
-		<col width="50px" />
+	<table>
 		<col width="100px" />
-		<col width="300px" />
+		<col width="200px" />
+		<col width="500px" />
+		<col width="150px" />
 		<col width="100px" />
-		<tr>
+		<tr id="bor">
 			<th>번호</th>
 			<th>이름</th>
 			<th>제목</th>
