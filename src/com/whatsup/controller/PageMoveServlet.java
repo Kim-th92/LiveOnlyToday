@@ -230,7 +230,7 @@ public class PageMoveServlet extends HttpServlet {
          if(session.getAttribute("login")==null) {
             jsResponse("먼저 로그인을 해 주세요", "move.do?command=danceboard&currentPage=1", response);
          }else {
-            response.sendRedirect("dance_boardinsert.jsp");
+            response.sendRedirect("dance_insertpage.jsp");
       }
       //5-8.댄스게시판 글 자세히 보기 페이지
       }else if(command.equals("selectdancepage")) {

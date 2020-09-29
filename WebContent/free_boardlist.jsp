@@ -13,6 +13,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+table {
+	line-height: 40px;
+}
+#bor{border-bottom: 2px solid red;}
+
+</style>
 <%
 	Free_BoardDao dao = new Free_BoardDao();
 	
@@ -32,15 +39,17 @@
 
 	
 %>
+
 </head>
 <body>
 
-	<table border="1">
-		<col width="50px" />
+	<table>
 		<col width="100px" />
-		<col width="300px" />
+		<col width="200px" />
+		<col width="500px" />
+		<col width="150px" />
 		<col width="100px" />
-		<tr>
+		<tr id="bor">
 			<th>번호</th>
 			<th>이름</th>
 			<th>제목</th>
@@ -67,7 +76,7 @@
 		<tr>
 			<td><%=list.get(i).getFree_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
+			<td><a href="move.do?command=freeselectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
 			<td><a><%=hms.format(list.get(i).getFree_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getFree_cnt() %></a></td>
 <% 				

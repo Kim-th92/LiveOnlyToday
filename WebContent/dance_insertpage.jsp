@@ -1,3 +1,4 @@
+<%@page import="com.whatsup.dto.Member_BoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
 <script src="//cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
 </head>
 <body>
-<%@include file="./format/header.jsp"%>
+
 <%
 	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
 %>
@@ -46,7 +47,7 @@
 	</form>
 
 
-<%@include file="./format/footer.jsp"%>
+
 
 </body>
 </html>
