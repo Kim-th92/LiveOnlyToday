@@ -25,13 +25,16 @@ import com.whatsup.dto.Member_BoardDto;
 import com.whatsup.dto.MusicListDto;
 import com.whatsup.dto.QNA_BoardDto;
 import com.whatsup.dto.Song_BoardDto;
+import com.whatsup.util.PageNavigator;
 
 
 @WebServlet("/move.do")
 public class PageMoveServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
-       
-    public PageMoveServlet() {
+   int countPerPage = 5;
+   int pagePerGroup = 4;    
+    
+   public PageMoveServlet() {
 
     }
 
@@ -102,12 +105,50 @@ public class PageMoveServlet extends HttpServlet {
     	  response.sendRedirect("mainboard.jsp");
       //5.자유게시판
       }else if(command.equals("freeboard")) {
-         response.sendRedirect("free_boardlist.jsp");
+    	  int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+    	  PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, currentPage, free_dao.totalCount());
+    	 
+    	  if(currentPage < 1) {
+    		  currentPage = 1;
+    	  }
+    	  System.out.println("현재 페이지 currentPage : " + currentPage );
+    	  int currentGroup = (currentPage - 1) / pagePerGroup;
+    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
+    	  
+    	  int startPageGroup = currentGroup * pagePerGroup + 1;
+    	  if(startPageGroup < 1) {
+    		  startPageGroup = 1;
+    	  } 
+    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
+    	  
+    	  int endPageGroup = startPageGroup + pagePerGroup - 1;
+    	  int totalPageCount = (free_dao.totalCount() + countPerPage - 1) / countPerPage;
+    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
+    	  
+    	  if(endPageGroup >= totalPageCount) {
+    		  endPageGroup = totalPageCount;
+    	  } 
+    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
+    	  
+    	  int startWrite = (countPerPage*(currentPage-1)) + 1;
+    	  int endWrite = startWrite + countPerPage;
+    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
+    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
+    	  
+    	  request.setAttribute("navi", navi);
+    	  request.setAttribute("startPage", startPageGroup);
+    	  request.setAttribute("endPage", endPageGroup);
+    	  request.setAttribute("totalPageCount", totalPageCount);
+    	  
+    	  request.setAttribute("startWrite", startWrite);
+    	  request.setAttribute("endWrite", endWrite);
+    	  
+    	  dispatch("free_boardlist.jsp", request, response);
          
       //5-1.자유게시판 글 작성페이지
       }else if(command.equals("freeinsertpage")) {
          if(session.getAttribute("login")==null) {
-            jsResponse("먼저 로그인을 해 주세요", "move.do?command=freeboard", response);
+            jsResponse("먼저 로그인을 해 주세요", "move.do?command=freeboard&currentPage=1", response);
          }else {
             response.sendRedirect("free_insertpage.jsp");
       }
@@ -144,14 +185,52 @@ public class PageMoveServlet extends HttpServlet {
          
       //5-6댄스게시판
       }else if(command.equals("danceboard")) {
-         response.sendRedirect("dance_boardlist.jsp");
+    	  int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+    	  PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, currentPage, dance_dao.totalCount());
+    	 
+    	  if(currentPage < 1) {
+    		  currentPage = 1;
+    	  }
+    	  System.out.println("현재 페이지 currentPage : " + currentPage );
+    	  int currentGroup = (currentPage - 1) / pagePerGroup;
+    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
+    	  
+    	  int startPageGroup = currentGroup * pagePerGroup + 1;
+    	  if(startPageGroup < 1) {
+    		  startPageGroup = 1;
+    	  } 
+    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
+    	  
+    	  int endPageGroup = startPageGroup + pagePerGroup - 1;
+    	  int totalPageCount = (dance_dao.totalCount() + countPerPage - 1) / countPerPage;
+    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
+    	  
+    	  if(endPageGroup >= totalPageCount) {
+    		  endPageGroup = totalPageCount;
+    	  } 
+    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
+    	  
+    	  int startWrite = (countPerPage*(currentPage-1)) + 1;
+    	  int endWrite = startWrite + countPerPage;
+    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
+    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
+    	  
+    	  request.setAttribute("navi", navi);
+    	  request.setAttribute("startPage", startPageGroup);
+    	  request.setAttribute("endPage", endPageGroup);
+    	  request.setAttribute("totalPageCount", totalPageCount);
+    	  
+    	  request.setAttribute("startWrite", startWrite);
+    	  request.setAttribute("endWrite", endWrite);
+    	  
+    	  dispatch("dance_boardlist.jsp", request, response);
                   
       //5-7.댄스게시판 글 작성페이지
       }else if(command.equals("danceinsertpage")) {
          if(session.getAttribute("login")==null) {
-            jsResponse("먼저 로그인을 해 주세요", "move.do?command=danceboard", response);
+            jsResponse("먼저 로그인을 해 주세요", "move.do?command=danceboard&currentPage=1", response);
          }else {
-            response.sendRedirect("dance_boardinsert.jsp");
+            response.sendRedirect("dance_insertpage.jsp");
       }
       //5-8.댄스게시판 글 자세히 보기 페이지
       }else if(command.equals("selectdancepage")) {
@@ -183,12 +262,50 @@ public class PageMoveServlet extends HttpServlet {
       
        //5-12 노래게시판
       }else if(command.equals("songboard")) {
-         response.sendRedirect("song_boardlist.jsp");
+    	  int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+    	  PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, currentPage, song_dao.totalCount());
+    	 
+    	  if(currentPage < 1) {
+    		  currentPage = 1;
+    	  }
+    	  System.out.println("현재 페이지 currentPage : " + currentPage );
+    	  int currentGroup = (currentPage - 1) / pagePerGroup;
+    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
+    	  
+    	  int startPageGroup = currentGroup * pagePerGroup + 1;
+    	  if(startPageGroup < 1) {
+    		  startPageGroup = 1;
+    	  } 
+    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
+    	  
+    	  int endPageGroup = startPageGroup + pagePerGroup - 1;
+    	  int totalPageCount = (song_dao.totalCount() + countPerPage - 1) / countPerPage;
+    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
+    	  
+    	  if(endPageGroup >= totalPageCount) {
+    		  endPageGroup = totalPageCount;
+    	  } 
+    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
+    	  
+    	  int startWrite = (countPerPage*(currentPage-1)) + 1;
+    	  int endWrite = startWrite + countPerPage;
+    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
+    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
+    	  
+    	  request.setAttribute("navi", navi);
+    	  request.setAttribute("startPage", startPageGroup);
+    	  request.setAttribute("endPage", endPageGroup);
+    	  request.setAttribute("totalPageCount", totalPageCount);
+    	  
+    	  request.setAttribute("startWrite", startWrite);
+    	  request.setAttribute("endWrite", endWrite);
+    	  
+    	  dispatch("song_boardlist.jsp", request, response);
                   
       //5-13.노래게시판 글 작성페이지
       }else if(command.equals("songinsertpage")) {
          if(session.getAttribute("login")==null) {
-            jsResponse("먼저 로그인을 해 주세요", "move.do?command=songboard", response);
+            jsResponse("먼저 로그인을 해 주세요", "move.do?command=songboard&currentPage=1", response);
          }else {
             response.sendRedirect("song_insertpage.jsp");
       }

@@ -67,13 +67,13 @@
 			<%
 				if(dance_dto.getMember_seq()==member_dto.getMember_seq()){
 			%>		
-				<input type="button" value="수정" onclick="location.href='move.do?command=updatepage&dance_no=<%=dance_dto.getDance_no()%>'"/>
-				<input type="button" value="삭제" onclick="location.href='move.do?command=delete&dance_no=<%=dance_dto.getDance_no()%>'"/>
+				<input type="button" value="수정" onclick="location.href='move.do?command=danceupdatepage&dance_no=<%=dance_dto.getDance_no()%>'"/>
+				<input type="button" value="삭제" onclick="location.href='move.do?command=dancedelete&dance_no=<%=dance_dto.getDance_no()%>'"/>
 			<%		
 				}
 			%>
 				
-				<input type="button" value="목록" onclick="location.href='move.do?command=danceboard'"/>
+				<input type="button" value="목록" onclick="location.href='move.do?command=danceboard&currentPage=1'"/>
 			</td>
 		</tr>
 	</table>

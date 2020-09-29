@@ -27,4 +27,18 @@
 	<update id="view" parameterType="int">
 		UPDATE DANCE_BOARD SET DANCE_CNT=DANCE_CNT+1 WHERE DANCE_NO=#{dance_no}
 	</update>
+	<select id="totalcount" resultType="int">
+		SELECT COUNT(DANCE_NO) FROM DANCE_BOARD
+	</select>	
+	<select id="selectListPage" resultType="dance_BoardDto" parameterType="hashmap">
+		<![CDATA[
+		SELECT DANCE_NO, DANCE_TITLE, NICKNAME, DANCE_REGDATE, DANCE_CNT 
+		FROM
+			(SELECT ROW_NUMBER() OVER(ORDER BY DANCE_NO DESC) AS NUM, DANCE_NO, DANCE_TITLE, NICKNAME, DANCE_REGDATE, DANCE_CNT 
+			FROM DANCE_BOARD DANCE INNER JOIN MEMBER_BOARD MEMBER 
+			ON DANCE.MEMBER_SEQ=MEMBER.MEMBER_SEQ)
+		WHERE NUM >= #{startWrite} AND NUM < #{endWrite}
+		ORDER BY NUM
+		]]>
+	</select>
 </mapper>

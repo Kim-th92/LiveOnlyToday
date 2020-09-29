@@ -1,3 +1,4 @@
+<%@page import="com.whatsup.util.PageNavigator"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Timestamp"%>
@@ -12,9 +13,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+table {
+	line-height: 40px;
+}
+#bor{border-bottom: 2px solid red;}
+
+</style>
 <%
 	Free_BoardDao dao = new Free_BoardDao();
-	List<Free_BoardDto> list = dao.selectList();
+	
+	PageNavigator navi = (PageNavigator)request.getAttribute("navi");
+	int startPageGroup = (int)request.getAttribute("startPage");
+	int endPageGroup = (int)request.getAttribute("endPage");
+	
+	int startWrite = (int)request.getAttribute("startWrite");
+	int endWrite = (int)request.getAttribute("endWrite");
+	int totalPageCount = (int)request.getAttribute("totalPageCount");
+	
+	List<Free_BoardDto> list = dao.selectList(startWrite,endWrite);
 	SimpleDateFormat ymd = new SimpleDateFormat("MM.dd");
 	SimpleDateFormat hms = new SimpleDateFormat("HH:mm");
 	Timestamp ts = new Timestamp(new Date().getTime());
@@ -22,15 +39,17 @@
 
 	
 %>
+
 </head>
 <body>
 
-	<table border="1">
-		<col width="50px" />
+	<table>
 		<col width="100px" />
-		<col width="300px" />
+		<col width="200px" />
+		<col width="500px" />
+		<col width="150px" />
 		<col width="100px" />
-		<tr>
+		<tr id="bor">
 			<th>번호</th>
 			<th>이름</th>
 			<th>제목</th>
@@ -57,7 +76,7 @@
 		<tr>
 			<td><%=list.get(i).getFree_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
+			<td><a href="move.do?command=freeselectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
 			<td><a><%=hms.format(list.get(i).getFree_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getFree_cnt() %></a></td>
 <% 				
@@ -75,5 +94,29 @@
 			</td>
 		</tr>
 	</table>
+<%
+	if(list.size() != 0){
+%>	
+	<a href="move.do?command=freeboard&currentPage=1">&lt;&lt;</a> &nbsp;
+	<a href="move.do?command=freeboard&currentPage=<%=(endPageGroup > startPageGroup)? 1:endPageGroup - startPageGroup%>">&lt;</a> &nbsp;
+<%
+	}
+	int[] end = new int[endPageGroup]; 
+	for(int j = 0; j<end.length; j++){
+		end[j] = j+1;
+	}
+	for(int i = startPageGroup - 1; i < end.length; i++ ){
+%>
+	<a href=move.do?command=freeboard&currentPage=<%=end[i]%>><%=end[i]%></a> &nbsp; 
+<%	
+	}
+	if(list.size() != 0){
+%>
+	<a href="move.do?command=freeboard&currentPage=<%=startPageGroup + 5%>">&gt;</a> &nbsp;
+	<a href="move.do?command=freeboard&currentPage=${totalPageCount}">&gt;&gt;</a>
+<%
+	}
+%>	
+	
 </body>
 </html>

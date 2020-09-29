@@ -29,18 +29,15 @@ font-family: 'Do Hyeon', sans-serif;
 body {
 	background-color: #fdde60;
 }
-
 #logo {
 	width: 300px;
 	height: 70px;
 	padding: 20px 0px 0px 20px;
 	margin: 0;
 }
-
 header>div {
 	display: inline-block;
 }
-
 section {
 	padding:50px 0px 0px 40px;
 	height:600px;
@@ -52,13 +49,10 @@ section+div.col{
   grid-auto-rows: minmax(600px, auto);
 }
 #main,#shortcut-btn{transform:translate(200px,20px);}
-
 #img{
 float:right;
 transform:translate(-100px,-600px);
 }
-
-
 ul {
 	margine: 0;
 	padding: 0;
@@ -66,7 +60,6 @@ ul {
 	font-size: 20pt;
 	transform: translate(50px, -40px);
 }
-
 ul li {
 	float: left;
 	line-height: 40px;
@@ -75,28 +68,23 @@ ul li {
 	height: 40px;
 	text-align: left;
 }
-
 ul li ul li {
 	display: none;
 	
 }
 
-
 ul li>a:hover {
 	color: darkgray;
 	border-bottom: 1px solid black;
 }
-
 ul li:hover ul li {
 	display: inline;
 	transform: translate(-50px, 35px);
 }
-
 #login {
 	float: right;
 	padding: 40px 80px 0px 20px;
 }
-
 #dance {
 	margin: 0;
 	padding: 0;
@@ -106,12 +94,10 @@ ul li:hover ul li {
 p{
 	font-size: 30pt;
 }
-
 a {
 	color: black;
 	text-decoration: none;
 }
-
 .login {
 	padding: 20px;
 	margin-left: 30px;
@@ -120,10 +106,7 @@ a {
 	font-weight: bold;
 	border-radius: 20px;
 } 
-
 #main h1{  
-
-
 font-size:50pt;
 background: linear-gradient(to right, red,darkorange,green); 
 background-clip: text;
@@ -134,7 +117,6 @@ background-clip: text;
   display: inline-block;
   
   }
-
 .login:hover {
 	background-color: grey;
 	box-shadow: 3px 3px 2px 1px rgba(0, 0, 255, .2);
@@ -155,7 +137,6 @@ background-clip: text;
   border-radius:15px;
   font-family: 'Do Hyeon', sans-serif;
 }
-
 .shortcut:hover {opacity: 1}
 footer {
 	
@@ -177,79 +158,71 @@ footer {
 		<ul>
 			<li><a href="aboutus.jsp">회사소개</a>
 				<ul>
-				
 					<li><a href="aboutus.jsp">회사소개</a></li>
 					<li><a href="liveonlytoday.jsp">오늘만 살조</a></li>
-				</ul></li>
+				</ul>
+			</li>
 			<li><a href="move.do?command=musicselect">노래</a>
 				<ul>
 					<li><a href="move.do?command=musicselect">혼자 부르기 </a></li>
 
 					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
-
-
-				</ul></li>
-
+				</ul>
+			</li>
 			<li><a href="dancemain.jsp">춤</a></li>
 
 			<li><a href="move.do?command=mainboardpage">게시판</a>
-				<ul>
-					<li><a href="move.do?command=freeboard&currentPage=1">자유 게시판</a></li>
-					<li><a href="move.do?command=danceboard"> 춤</a></li>
-					<li><a href="move.do?command=songboard"> 노래</a></li>
-					<li><a href="move.do?command=chatingboard">채팅</a></li>
-				</ul></li>
 			<li><a href="csmain.jsp">고객센터</a>
 				<ul>
 					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
 					<li><a href="adminchat.jsp">1:1문의</a></li>
-				</ul></li>
-				
-			  
-				<li><a href="KakaopayController?command=checklogin" onclick="openPopup()">결제하기</a></li>
-				
-					
+				</ul>
+			</li>
+			<li><a href="KakaopayController?command=checklogin" onclick="openPopup()">결제하기</a></li>
 		</ul>
 
 		</div>
-		<%
+<%
 			Member_BoardDto dto = (Member_BoardDto) session.getAttribute("login");
 		if (dto == null) {
-		%>
+%>
 		<div id="login">
 			<button class="login" onclick="location.href='./login.jsp'">
 				로그인</button>
 			<button class="login" onclick="location.href='./register.jsp'">
 				회원가입</button>
 		</div>
-		<%
+<%
 			} else {
-		%>
+%>
 		<div id="login">
-			<span><%=dto.getNickname()%>님 반갑습니다. <%
-				if (dto.getGrade().equals("USER")) {
-			%> <a href="mypage.jsp">마이페이지</a> <%
- 	} else {
- %> <a href="admin.jsp">관리자페이지</a> <%
- 	}
- if (dto.getAddr().equals("google")) {
+			<span><%=dto.getNickname()%>님 반갑습니다.
+<%
+			if (dto.getGrade().equals("USER")) {
+%> 
+			<a href="mypage.jsp">마이페이지</a>
+<%
+ 			} else {
+ %> 
+ 			<a href="admin.jsp">관리자페이지</a>
+<%
+			}
+ 			if (dto.getAddr().equals("google")) {
  %>
 				<button class="login" onclick="signOut()">로그아웃</button> </span>
-			<%
-				} else {
-			%>
+<%
+			} else {
+%>
 			<button class="login"
 				onclick="location.href='member.do?command=logout'">로그아웃</button>
 			</span>
-			<%
-				}
-			%>
-
-
-		</div>
-		<%
+<%
 			}
-		%>
+%>
+		</div>
+<%
+		}
+%>
 
 
 
@@ -319,8 +292,6 @@ footer {
 		
 		
 	
-
-
   
 </script>
 	<%@include file="./format/footer.jsp"%>

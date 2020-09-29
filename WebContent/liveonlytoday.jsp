@@ -5,8 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
+<style type="text/css">
 
+</style>
+</head>
+<body style ="background-color:#fdde60;">
+<%@include file="./format/header.jsp"%>
+
+
+<%@include file="./format/footer.jsp"%>
 </body>
 </html>
