@@ -38,26 +38,120 @@ $(document).ready(function(){
 
 
 </script>
+
+<style>
+	
+body {
+	background-color: #fdde60;
+}
+
+h1 {
+	position: absolute;
+	left: 45%;
+}
+.layer{
+	position: relative;
+	top: 150px;
+	left: 15%;
+}
+
+
+#modifyprofile{
+	position: absolute;
+	left: 5%;
+
+}
+
+#songlist{
+	position: absolute;
+	left: 30%;
+}
+
+
+#qna{
+	position: absolute;
+	left: 50%;
+	
+}
+
+#picture {
+	width: auto;
+	height: auto;
+	max-width: 200px;
+	max-height: 200px;
+
+}
+#modifyprofile:hover{
+	border: 2px solid gray;
+	background-color: darkorange;
+}
+
+#songlist:hover{
+	border: 2px solid darkorange;
+	background-color: darkorange;
+}
+
+#qna:hover{
+	border: 2px solid darkorange;
+	background-color: darkorange;
+	
+}
+
+#delete{
+	
+	position: absolute;
+	top: 80%;
+	left: 95%;
+}
+
+#btnDelete{
+	
+	border: 1px solid black;
+	background-color: rgba(0,0,0,0);
+	color: black;
+	padding: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+#btnDelete:hover{
+	color: white;
+	background-color: gray;
+	
+}
+</style>
+
 <div id="section">
 		<h1> 마이페이지</h1>
 		
+		
+		<div class="layer">
+		
 		<div id = "modifyprofile">
-			<h1>마이 프로필<button onclick="profileupdate.jsp"> 프로필 수정</button></h1>
+			<a title="프로필 보기" href="profileupdate.jsp"><img id="picture" alt="" src="resources/img/profile.png"></a>
 			
 		</div>
 		<div id = "songlist">
-			<h1>내가 부른 노래 <button onclick=""> 노래 전체 보기</button></h1>
+			<a title="노래 전체 보기" href="#"> <img id="picture" alt="" src="resources/img/mic.png"></a>
 		</div>
 		 
 		<div id = "qna">
-			<h1>내가한 질문<button onclick=""> 내가한 질문 전체 보기</button></h1>
+			<a title="내가한 질문 전체 보기" href="#"><img  id="picture" alt="" src="resources/img/Q.png"> </a>
 		</div>
+		</div>
+		
+		
+		
 		<div id = "delete">
-			<h1>회원탈퇴</h1>
+			
 			<form name="deleteform" method="post">
 				<input type="button" value="회원탈퇴" id="btnDelete"/>
 			</form>
 		</div>
+		
+		
 </div>
 
 
