@@ -111,29 +111,22 @@ public class PageMoveServlet extends HttpServlet {
     	  if(currentPage < 1) {
     		  currentPage = 1;
     	  }
-    	  System.out.println("현재 페이지 currentPage : " + currentPage );
     	  int currentGroup = (currentPage - 1) / pagePerGroup;
-    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
     	  
     	  int startPageGroup = currentGroup * pagePerGroup + 1;
     	  if(startPageGroup < 1) {
     		  startPageGroup = 1;
     	  } 
-    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
     	  
     	  int endPageGroup = startPageGroup + pagePerGroup - 1;
     	  int totalPageCount = (free_dao.totalCount() + countPerPage - 1) / countPerPage;
-    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
     	  
     	  if(endPageGroup >= totalPageCount) {
     		  endPageGroup = totalPageCount;
     	  } 
-    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
     	  
     	  int startWrite = (countPerPage*(currentPage-1)) + 1;
     	  int endWrite = startWrite + countPerPage;
-    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
-    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
     	  
     	  request.setAttribute("navi", navi);
     	  request.setAttribute("startPage", startPageGroup);
@@ -191,29 +184,22 @@ public class PageMoveServlet extends HttpServlet {
     	  if(currentPage < 1) {
     		  currentPage = 1;
     	  }
-    	  System.out.println("현재 페이지 currentPage : " + currentPage );
     	  int currentGroup = (currentPage - 1) / pagePerGroup;
-    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
     	  
     	  int startPageGroup = currentGroup * pagePerGroup + 1;
     	  if(startPageGroup < 1) {
     		  startPageGroup = 1;
     	  } 
-    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
     	  
     	  int endPageGroup = startPageGroup + pagePerGroup - 1;
     	  int totalPageCount = (dance_dao.totalCount() + countPerPage - 1) / countPerPage;
-    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
     	  
     	  if(endPageGroup >= totalPageCount) {
     		  endPageGroup = totalPageCount;
     	  } 
-    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
     	  
     	  int startWrite = (countPerPage*(currentPage-1)) + 1;
     	  int endWrite = startWrite + countPerPage;
-    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
-    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
     	  
     	  request.setAttribute("navi", navi);
     	  request.setAttribute("startPage", startPageGroup);
@@ -268,29 +254,22 @@ public class PageMoveServlet extends HttpServlet {
     	  if(currentPage < 1) {
     		  currentPage = 1;
     	  }
-    	  System.out.println("현재 페이지 currentPage : " + currentPage );
     	  int currentGroup = (currentPage - 1) / pagePerGroup;
-    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
     	  
     	  int startPageGroup = currentGroup * pagePerGroup + 1;
     	  if(startPageGroup < 1) {
     		  startPageGroup = 1;
     	  } 
-    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
     	  
     	  int endPageGroup = startPageGroup + pagePerGroup - 1;
     	  int totalPageCount = (song_dao.totalCount() + countPerPage - 1) / countPerPage;
-    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
     	  
     	  if(endPageGroup >= totalPageCount) {
     		  endPageGroup = totalPageCount;
     	  } 
-    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
     	  
     	  int startWrite = (countPerPage*(currentPage-1)) + 1;
     	  int endWrite = startWrite + countPerPage;
-    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
-    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
     	  
     	  request.setAttribute("navi", navi);
     	  request.setAttribute("startPage", startPageGroup);

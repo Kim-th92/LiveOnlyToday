@@ -6,12 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%
-	Member_BoardDto member_dto = (Member_BoardDto) session.getAttribute("login");
-if (member_dto == null) {
-	member_dto = new Member_BoardDto();
-}
-%>
 <style>
 body {
 	background-color: #fdde60;
@@ -98,7 +92,12 @@ h2, p {
 </head>
 
 <body>
-
+<%
+	Member_BoardDto member_dto = (Member_BoardDto) session.getAttribute("login");
+if (member_dto == null) {
+	member_dto = new Member_BoardDto();
+}
+%>
 <%@include file="./format/header.jsp"%>
 
 
