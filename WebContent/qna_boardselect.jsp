@@ -43,18 +43,25 @@
 			<%		
 				}
 			%>
-			<%
-			   if (member_dto.getMember_seq() == 1) {
-			%>
-			    <input type="button" value="답변하기" onclick="location.href='move.do?command=qnaanswer&qna_no<%=qna_dto.getQna_no()%>'"/>
-			<%
-			    }
-			%>
-				
 				<input type="button" value="목록" onclick="location.href='move.do?command=qnaboard'"/>
 			</td>
-		</tr>
+		</tr>	
 	</table>
+	
+	<form action="board.do" method="post">
+		<input type="hidden" name="command" value="qnacommentinsert"/>
+		<input type="text" name="admin" value="관리자">
+		<input type="hidden" name="qna_no" value="<%=qna_dto.getQna_no() %>">
+		<input type="text" name="qna_comment_content"/>
+		<%
+			   if (member_dto.getMember_seq() == 1) {
+		%>
+		<input type="submit" value="댓글 작성" onclick="qnacommentinsert()">
+		<%
+			   }
+		%>
+	</form>
+	
 <%@ include file="./format/footer.jsp" %>	
 </body>
 </html>

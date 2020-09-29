@@ -145,7 +145,7 @@ if (member_dto == null) {
 			// key로 해당 div영역을 찾는다.
 			let $div = $("[data-key='" + node.key + "']");
 
-	<%@include file="./format/header.jsp"%>
+	
 	<h1>관리자 페이지</h1>
 	<div id="adminview">
 
@@ -153,10 +153,6 @@ if (member_dto == null) {
 			가입자 조회<br />
 			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회</button>
 		</h2>
-
-		<p>오늘의 가입자 수는 ?</p>
-
-	</div>
 
 
 	<div id="qnaboard">
