@@ -160,8 +160,6 @@ public class Member_BoardDao extends SqlMapConfig {
 		return res;
 	}
 	
-
-
 	//관리자 - 회원목록보기
 	public List<Member_BoardDto> selectList(){
 		SqlSession session=null;

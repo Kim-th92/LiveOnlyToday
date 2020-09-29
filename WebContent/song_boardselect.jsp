@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea rows="10" cols="60" name="mycontent" readonly="readonly"><%=song_dto.getSong_content() %></textarea></td>
+			<td><%=song_dto.getSong_content() %></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">

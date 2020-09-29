@@ -10,6 +10,7 @@ public class CommentDto {
 	private int dance_no;
 	private int free_no;
 	private int song_no;
+	private int qna_no;
 	private String nickname;
 	
 	public CommentDto() {
@@ -59,6 +60,12 @@ public class CommentDto {
 	}
 	public void setSong_no(int song_no) {
 		this.song_no = song_no;
+	}
+	public int getQna_no() {
+		return qna_no;
+	}
+	public void setQna_no(int qna_no) {
+		this.qna_no = qna_no;
 	}
 	public String getNickname() {
 		return nickname;

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
 </head>
 <%
 	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
@@ -27,6 +28,9 @@
 			<tr>
 				<th>내용</th>
 				<td><textarea rows="10" cols="60" name="qna_content"></textarea></td>
+				<script>
+                     CKEDITOR.replace( 'qna_content' );
+                </script>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

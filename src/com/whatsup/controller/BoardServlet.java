@@ -335,8 +335,22 @@ public class BoardServlet extends HttpServlet {
 					jsResponse("댓글 작성 실패", "move.do?command=songselectpage&song_no="+song_no, response);
 				}
 					
+			}else if(command.equals("qnacommentinsert")) {
+				String comment_content=request.getParameter("comment_content");
+				int member_seq=Integer.parseInt(request.getParameter("member_seq"));
+				int qna_no=Integer.parseInt(request.getParameter("qna_no"));
+				CommentDto comment_dto=new CommentDto();
+				comment_dto.setMember_seq(member_seq);
+				comment_dto.setComment_content(comment_content);
+				comment_dto.setQna_no(qna_no);
+				int res=comment_dao.insertSong(comment_dto);
+				if(res>0) {
+					jsResponse("댓글 작성 성공", "move.do?command=qnaselectpage&qna_no="+qna_no, response);
+				}else {
+				jsResponse("댓글 작성 실패", "move.do?command=qnaselectpage&qna_no="+qna_no, response);
+				}
 			}
-	}
+			}
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
 		String result = "<script> alert(\"" + msg + "\"); location.href=\""+url+"\"; </script> ";

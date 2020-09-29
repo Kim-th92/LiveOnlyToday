@@ -45,6 +45,10 @@
 		SELECT MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD
 		WHERE NAME=#{name} AND ID=#{id} AND EMAIL=#{email} 
 	</select>
+	<select id="adminview" resultType="Member_BoardDto" parameterType="String">
+		SELECT MEMBER_SEQ,ID,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP FROM MEMBER_BOARD 
+	</select>
+	
 	<update id="updatePw" parameterType="String" >
 		UPDATE MEMBER_BOARD SET PW =#{pw} WHERE NAME=#{name} AND ID=#{id} AND EMAIL=#{email} 
 	</update>

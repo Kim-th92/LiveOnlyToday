@@ -28,7 +28,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea rows="10" cols="60" name="mycontent" readonly="readonly"><%=qna_dto.getQna_content() %></textarea></td>
+			<td><%=qna_dto.getQna_content() %></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
@@ -41,7 +41,7 @@
 				}
 			%>
 			<%
-			    if(qna_dto.getNickname() == "관리자"){
+			   if (member_dto.getMember_seq() == 1) {
 			%>
 			    <input type="button" value="답변하기" onclick="location.href='move.do?command=qnaanswer&qna_no<%=qna_dto.getQna_no()%>'"/>
 			<%

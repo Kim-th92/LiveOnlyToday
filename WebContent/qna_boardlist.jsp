@@ -11,6 +11,44 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+table.qna {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    margin: 20px 10px;
+}
+table.qna thead {
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    background: #91c09e;
+}
+table.qna thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    font-color : black;
+    font-weight: bold;
+}
+table.qna tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #fcf1f4;
+}
+table.qna td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+
+</style>
 <%
 	QNA_BoardDao dao = new QNA_BoardDao();
 	List<QNA_BoardDto> list = dao.selectList();
@@ -28,11 +66,12 @@
 <body>
 <%@ include file="./format/header.jsp" %>
 
-	<table border="1">
+	<table class="qna" border="1">
 		<col width="50px" />
 		<col width="100px" />
 		<col width="300px" />
 		<col width="100px" />
+		<thead>
 		<tr>
 			<th>번호</th>
 			<th>이름</th>
@@ -40,6 +79,7 @@
 			<th>날짜</th>
 			<th>답변여부</th>
 		</tr>
+		</thead>
 <%
 	if(list.size()==0){
 %>
@@ -76,7 +116,6 @@
 		<tr>
 			<td colspan="5" align="right">
 				<input type="button" value="글작성" onclick="location.href='move.do?command=qnainsertpage'" />
-				<input type="button" value="답변달기" onclick="location.href='move.do?command=qnaonsertpage'" />
 			</td>
 		</tr>
 	</table>

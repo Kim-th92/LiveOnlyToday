@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
 </head>
 <body>
 <%@include file="./format/header.jsp"%>

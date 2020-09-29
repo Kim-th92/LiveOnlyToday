@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
 </head>
 <%
 	Member_BoardDto member_dto = new Member_BoardDto();	
