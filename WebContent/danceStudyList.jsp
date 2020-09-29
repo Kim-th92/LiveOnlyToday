@@ -1,0 +1,83 @@
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	var num = 1;
+	
+	function prevGallery(){
+		num--;
+		if(num < 1){
+			num = 2;
+		}
+		document.getElementById("gallery").src="resources/danceStudyImg/img0" + num + ".png";
+		
+		// 이벤트 전파 막기(jQuery에서 자세히 배움)
+		return false;
+	}
+	
+	function nextGallery(){
+		num++;
+		if(num > 2){
+			num = 1;
+		}
+		document.getElementById("gallery").src="resources/danceStudyImg/img0" + num + ".png";
+		
+		// 이벤트 전파 막기(jQuery에서 자세히 배움)
+		return false;
+
+	}
+</script>
+
+<style type="text/css">
+	
+
+</style>
+</head>
+<body>
+<%
+Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
+if(member_dto == null){
+	member_dto= new Member_BoardDto();
+}
+%>
+<%@ include file="./format/header.jsp" %>
+	<h1>동작을 따라해 봐</h1>
+	
+	<div id="gallerywrap">
+		<p>
+			<a onclick="return prevGallery();">
+				<img alt="이전 그림" src="resources/danceStudyImg/arrowleft.png"/>
+			</a>
+			<a href="#">
+			<img alt="갤러리 그림" src="resources/danceStudyImg/img01.png" id="gallery"/>
+			</a>
+			<a onclick="return nextGallery();">
+				<img alt="다음 그림" src="resources/danceStudyImg/arrowright.png"/>
+			</a>
+		</p>
+	</div>
+		
+
+<% 			
+		if(member_dto.getGrade() == null || member_dto == null){
+%>
+			<div>
+				<span><a href ="dancemain.jsp">돌아가기</a></span>
+			</div>
+<% 		
+			}
+%>
+		
+
+
+
+
+<%@ include file="./format/footer.jsp" %>	
+</body>
+</html>

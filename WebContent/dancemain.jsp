@@ -17,7 +17,7 @@
 	<%@include file="./format/header.jsp"%>
 		<div id= "container">
 			<div id="left" class="item">
-				<a href="#"><img src="resources/danceimg1.jpg" alt= " 춤 영상보러가기"/><span> 춤 배우러가기! </</span></a>
+				<a href="danceStudyList.jsp"><img src="resources/danceimg1.jpg" alt= " 춤 영상보러가기"/><span> 춤 배우러가기! </</span></a>
 			</div>
 			<div id="right" class="item">
 				<a href="dancefollow_list.jsp"><img src="resources/danceimg2.jpeg" alt= " 춤 게시판으로"/><span> 춤 따라 추러 가기!</span></a>

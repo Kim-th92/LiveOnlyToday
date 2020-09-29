@@ -23,7 +23,6 @@ public class Free_BoardDao extends SqlMapConfig {
 		list=session.selectList(namespace+"selectListPage",params);
 		session.close();
 		return list;
-		
 	}
 	public Free_BoardDto selectOne(int free_no) {
 		SqlSession session=null;
