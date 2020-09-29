@@ -77,7 +77,6 @@ public class MemberServlet extends HttpServlet {
 			out.println(obj.toJSONString());
 			
 		}else if("nickchk".equals(command)) {
-			System.out.println("연결되긴 함");
 			String nickname = request.getParameter("nickname");
 			Member_BoardDto dto =dao.check(nickname);
 			boolean notUsed = true;
@@ -93,6 +92,12 @@ public class MemberServlet extends HttpServlet {
 			
 			PrintWriter out = response.getWriter();
 			out.println(obj.toJSONString());
+			
+		}else if (command.equals("viewProfile")){
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			Member_BoardDto memberdto = dao.selectOne(seq);
+			request.setAttribute("memberdto", memberdto);
+			dispatch("viewprofile.jsp", request, response);
 			
 		}else if(command.equals("registeres")) {
 			String id = request.getParameter("id");
