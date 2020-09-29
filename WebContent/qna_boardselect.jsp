@@ -50,13 +50,14 @@
 	
 	<form action="board.do" method="post">
 		<input type="hidden" name="command" value="qnacommentinsert"/>
-		<input type="text" name="admin" value="관리자">
+		<input type="hidden" name="admin" value="ADMIN">
 		<input type="hidden" name="qna_no" value="<%=qna_dto.getQna_no() %>">
-		<input type="text" name="qna_comment_content"/>
+		
 		<%
 			   if (member_dto.getMember_seq() == 1) {
 		%>
-		<input type="submit" value="댓글 작성" onclick="qnacommentinsert()">
+		<input type="text" name="qna_comment_content"/>
+		<input type="submit" value="댓글 작성" onclick="qna_comment_insert()">
 		<%
 			   }
 		%>
