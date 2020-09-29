@@ -10,13 +10,16 @@
 <%
 	QNA_BoardDto qna_dto=(QNA_BoardDto)request.getAttribute("dto");
     Member_BoardDto member_dto = (Member_BoardDto)session.getAttribute("login");
+    if(member_dto==null){
+		member_dto=new Member_BoardDto();
+	}
 %>
 </head>
 <body>
 	<table border="1">
 		<tr>
 			<th>이름</th>
-			<td><input type="text" name="myname" value="<%=qna_dto.getNickname() %>" readonly="readonly" /></td>
+			<td><input type="text" name="myname" value="<%=qna_dto.getNickname()%>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<th>제목</th>

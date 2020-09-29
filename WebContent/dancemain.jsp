@@ -37,14 +37,15 @@ body{background-color: #fdde60; }
 </style>
 <body>
 	<%@include file="./format/header.jsp"%>
+
 		<div id= "wrapper">
 		
 			<div class="card">
-			  <a href=""><img src="resources/danceimg1.jpg" alt="Avatar" style="width:100%; height:400px;" ></a>
+			  <a href="danceStudyList.jsp"><img src="resources/danceimg1.jpg" alt="Avatar" style="width:100%; height:400px;" ></a>
 			  <div class="container">
 			   <h4><a href=""><b>춤 배우러가기!	</b></a></h4>
 			  </div>
-			</div>
+			 </div>
 			
 			<div class="card">
 			  <a href="dancefollow_list.jsp"><img src="resources/danceimg2.jpeg" alt="Avatar" style="width:100%;height:400px;" ></a>
