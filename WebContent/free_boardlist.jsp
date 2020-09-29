@@ -89,8 +89,9 @@
 				<input type="button" value="글작성" onclick="location.href='move.do?command=freeinsertpage'" />
 			</td>
 		</tr>
-	</table>
-<%
+		<tr>
+			<td colspan="5" align="center">
+			<%
 	if(list.size() != 0){
 %>	
 	<a href="move.do?command=freeboard&currentPage=1">&lt;&lt;</a> &nbsp;
@@ -114,5 +115,9 @@
 	}
 %>	
 	
+			</td>
+		</tr>
+	</table>
+
 </body>
 </html>

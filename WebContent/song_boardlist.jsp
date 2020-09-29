@@ -34,12 +34,13 @@
 </head>
 <body>
 
-	<table border="1">
-		<col width="50px" />
+	<table>
 		<col width="100px" />
-		<col width="300px" />
+		<col width="200px" />
+		<col width="500px" />
+		<col width="150px" />
 		<col width="100px" />
-		<tr>
+		<tr id="bor">
 			<th>번호</th>
 			<th>이름</th>
 			<th>제목</th>
@@ -83,8 +84,9 @@
 				<input type="button" value="글작성" onclick="location.href='move.do?command=songinsertpage'" />
 			</td>
 		</tr>
-	</table>
-<%
+			<tr>
+			<td colspan="5" align="center">
+				<%
 	if(list.size() != 0){
 %>		
 	<a href="move.do?command=songboard&currentPage=1">&lt;&lt;</a> &nbsp;
@@ -107,5 +109,9 @@
 <%
 	}
 %>	
+			</td>
+		</tr>
+	</table>
+
 </body>
 </html>
