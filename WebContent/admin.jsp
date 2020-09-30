@@ -104,10 +104,11 @@ h2, p {
 
 	<%@include file="./format/header.jsp"%>
 	<h1>관리자 페이지</h1>
+	
 	<div id="adminview">
 		<h2>
 			가입자 조회<br />
-			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회</button>
+			<button onclick="location.href='move.do?command=adminview&member_seq=1'" class="button01">회원 전체 조회 </button>
 		</h2>
 	</div>
 
