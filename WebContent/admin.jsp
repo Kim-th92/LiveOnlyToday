@@ -27,9 +27,8 @@ if (member_dto == null) {
 
 </script>
 	<h1>관리자 페이지</h1>
+	
 	<div id="adminview">
-	<div id="viewmember">
-
 		<h2>
 			가입자 조회<br />
 			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회</button>
@@ -49,7 +48,7 @@ if (member_dto == null) {
 	</div>
 
 
-	</div>
+
 
 
 

@@ -5,93 +5,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link href="css/admin.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <style type="text/css">
+
 body {
 	background-color: #fdde60;
-}
-
-#shortcut-btn {
-	transform: translate(200px, 20px);
-}
-
-.button01 {
-	background-color: red;
-	border: none;
-	color: white;
-	padding: 60px 80px;
-	text-align: center;
-	font-size: 20px;
-	margin: 4px 50px;
-	opacity: 0.6;
-	transition: 0.3s;
-	display: inline-block;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius: 15px;
-	font-family: 'Do Hyeon', sans-serif;
-}
-
-.button02 {
-	background-color: red;
-	border: none;
-	color: white;
-	padding: 60px 60px;
-	text-align: center;
-	font-size: 20px;
-	margin: 4px 50px;
-	opacity: 0.6;
-	transition: 0.3s;
-	display: inline-block;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius: 15px;
-	font-family: 'Do Hyeon', sans-serif;
-}
-
-.button01:hover {
-	opacity: 1
-}
-
-.button02:hover {
-	opacity: 1
-}
-
-#viewmember>button01 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
 }
 
 h1 {
 	position: absolute;
 	left: 45%;
 }
-
-h2, p {
-	text-align: center;
+.layer{
+	position: relative;
+	top: 150px;
+	left: 15%;
 }
 
-#viewmember {
-	position: absolute;
-	left: 30%;
-	top: 30%;
-}
 
-#qnaboard {
-	position: absolute;
-	left: 50%;
-	top: 30%;
-}
-
-#img {
-	float: right;
-	transform:translate(-50px,300px);
-}
 </style>
 <body>
 	<%@include file="./format/header.jsp"%>
 
+	<h1>고객센터</h1>
+	<div id="csmain">
+		<div id="qnaboard">
+		
+			<button onclick="location.href='move.do?command=qnaboard'" class="button01">문의게시판<i class="far fa-question-circle fa-10x"></i></button>			
+		
+		</div>
+		
+		<div id="adminchat">
+		
+				<button onclick="location.href='move.do?command=adminchat'" class="button02">1:1 관리자 문의<i class="far fa-comments fa-10x"></i></button>
+		
+		</div>
+	</div>
 
 
 	<%@include file="./format/footer.jsp"%>

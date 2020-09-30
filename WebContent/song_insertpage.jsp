@@ -13,7 +13,7 @@
 %>
 <body>
 	<form action="board.do" method="post">
-		<input type="hidden" name="command" value="song_insert"/>
+		<input type="hidden" name="command" value="song_insert" enctype="multipart/form-data"/>
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>"/>
 		<table border="1">
 			<tr>
@@ -30,6 +30,10 @@
 				<script>
                      CKEDITOR.replace( 'song_content' );
                 </script>
+			</tr>
+			<tr>
+				<th>파일 업로드</th>
+				<td><input type="file" name="song_file"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

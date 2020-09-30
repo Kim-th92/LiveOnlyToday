@@ -57,7 +57,7 @@
 			   if (member_dto.getMember_seq() == 1) {
 		%>
 		<input type="text" name="qna_comment_content"/>
-		<input type="submit" value="댓글 작성" onclick="qna_comment_insert()">
+		<input type="submit" value="댓글 작성" onclick="location.href='move.do?command=qnaboard">
 		<%
 			   }
 		%>
