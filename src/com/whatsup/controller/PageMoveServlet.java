@@ -391,9 +391,8 @@ public class PageMoveServlet extends HttpServlet {
     	  response.sendRedirect("admin.jsp");
       //13-1.회원목록보기
       }else if(command.equals("adminview")) {
-          int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-          Member_BoardDto dto=dao.selectOne(member_seq);
-          request.setAttribute("dto", dto);
+    	  List<Member_BoardDto> member_list=dao.selectList();
+          request.setAttribute("member_list", member_list);
           dispatch("adminview.jsp", request, response);
       //13-2.문의게시판
       }else if(command.equals("qnaboard")) {
