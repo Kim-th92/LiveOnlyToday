@@ -10,7 +10,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
 table.type06 {
     border-collapse: collapse;
     text-align: left;
@@ -79,7 +78,6 @@ table.type06 .even {
 		
 <%
 	}
-
 	else{
 		
 		for (int i = 0; i < list.size(); i++) {		
@@ -99,8 +97,6 @@ table.type06 .even {
 		
 			
 <% 				
-
-
 %>
 		</tr>
 <%
