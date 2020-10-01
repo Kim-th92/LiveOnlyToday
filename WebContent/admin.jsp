@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="css/admin.css" rel="stylesheet" type="text/css"/>
 <title>Insert title here</title>
 <%
 	Member_BoardDto member_dto = (Member_BoardDto) session.getAttribute("login");
@@ -12,89 +13,7 @@ if (member_dto == null) {
 	member_dto = new Member_BoardDto();
 }
 %>
-<style>
-body {
-	background-color: #fdde60;
-}
 
-#shortcut-btn {
-	transform: translate(200px, 20px);
-}
-
-.button01 {
-	background-color: red;
-	border: none;
-	color: white;
-	padding: 60px 80px;
-	text-align: center;
-	font-size: 20px;
-	margin: 4px 50px;
-	opacity: 0.6;
-	transition: 0.3s;
-	display: inline-block;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius: 15px;
-	font-family: 'Do Hyeon', sans-serif;
-}
-
-.button02 {
-	background-color: red;
-	border: none;
-	color: white;
-	padding: 60px 60px;
-	text-align: center;
-	font-size: 20px;
-	margin: 4px 50px;
-	opacity: 0.6;
-	transition: 0.3s;
-	display: inline-block;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius: 15px;
-	font-family: 'Do Hyeon', sans-serif;
-}
-
-.button01:hover {
-	opacity: 1
-}
-
-.button02:hover {
-	opacity: 1
-}
-
-#viewmember>button01 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-}
-
-h1 {
-	position: absolute;
-	left: 45%;
-}
-
-h2, p {
-	text-align: center;
-}
-
-#viewmember {
-	position: absolute;
-	left: 30%;
-	top: 30%;
-}
-
-#qnaboard {
-	position: absolute;
-	left: 50%;
-	top: 30%;
-}
-
-#img {
-	float: right;
-	transform:translate(-50px,300px);
-}
-</style>
 </head>
 
 <body>
@@ -102,12 +21,17 @@ h2, p {
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 
+
 	<%@include file="./format/header.jsp"%>
+	
+
+</script>
 	<h1>관리자 페이지</h1>
+	
 	<div id="adminview">
 		<h2>
 			가입자 조회<br />
-			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회</button>
+			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회 </button>
 		</h2>
 	</div>
 
@@ -122,6 +46,11 @@ h2, p {
 	<div id="img">
 		<img id="dance" alt="춤그림" src="resources/dance.png">
 	</div>
+
+
+
+
+
 
 	<!-- 관리자 채팅 -->
 	<div class="template" style="display: none">

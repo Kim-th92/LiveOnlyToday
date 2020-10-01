@@ -17,7 +17,7 @@
 
 table.qna {
     border-collapse: collapse;
-    text-align: left;
+    text-align: center;
     line-height: 1.5;
     border: 1px solid #ccc;
     margin: 20px 10px;
@@ -35,7 +35,7 @@ table.qna thead th {
     font-weight: bold;
 }
 table.qna tbody th {
-    width: 150px;
+    
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -43,7 +43,7 @@ table.qna tbody th {
     background: #fcf1f4;
 }
 table.qna td {
-    width: 350px;
+    
     padding: 10px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
@@ -59,10 +59,6 @@ table.qna td {
 	Timestamp ts = new Timestamp(new Date().getTime());
 	
 	String nickname = (String)session.getAttribute("nickname");
-	
-
-
-
 %>
 </head>
 <body>
@@ -99,22 +95,21 @@ table.qna td {
 		
 		for (int i = 0; i < list.size(); i++) {		
 %>
-		<tr>
-			<td><%=list.get(i).getQna_no() %></td>
-			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectpage&qna_no=<%=list.get(i).getQna_no() %>"><%=list.get(i).getQna_title() %></a></td>			
-			<td><a><%=hms.format(list.get(i).getQna_regdate()) %></a></td>
-			<td align="center"><a><%=list.get(i).getQna_answer() %></a></td>
-<% 				
-
-
-%>
-		    
-		</tr>
-<%
+		<tbody>
+			<tr>
+				<td><%=list.get(i).getQna_no()%></td>
+				<td><%=list.get(i).getNickname()%></td>
+				<td><a
+					href="move.do?command=selectpage&qna_no=<%=list.get(i).getQna_no()%>"><%=list.get(i).getQna_title()%></a></td>
+				<td><a><%=hms.format(list.get(i).getQna_regdate())%></a></td>
+				<td align="center"><a><%=list.get(i).getQna_answer()%></a></td>
+			</tr>
+		
+		<%
 		}
 	}
 %>
+	    </tbody>
 		<tr>
 			<td colspan="5" align="right">
 				<input type="button" value="글작성" onclick="location.href='move.do?command=qnainsertpage'" />
