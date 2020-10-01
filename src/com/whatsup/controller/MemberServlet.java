@@ -99,7 +99,22 @@ public class MemberServlet extends HttpServlet {
 			request.setAttribute("memberdto", memberdto);
 			dispatch("viewprofile.jsp", request, response);
 			
-		}else if(command.equals("registeres")) {
+		}else if(command.equals("profilelogin")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			Member_BoardDto loginDto = (Member_BoardDto)session.getAttribute("login");
+			Member_BoardDto dto = dao.login(id, pw);
+			
+			if(loginDto.getPw().equals(dto.getPw())) {
+				response.sendRedirect("profileupdate.jsp");
+			}else {
+				jsResponse("비밀번호가 일치하지 않습니다.", "profilelogin.jsp", response);
+			}
+		}			
+		else if(command.equals("registeres")) {
+			
+		
+		
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			String nickname = request.getParameter("nickname");
