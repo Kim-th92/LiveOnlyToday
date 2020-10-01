@@ -41,7 +41,7 @@ body{background-color: #fdde60; }
 		<div id= "wrapper">
 		
 			<div class="card">
-			  <a href="danceStudyList.jsp"><img src="resources/danceimg1.jpg" alt="Avatar" style="width:100%; height:400px;" ></a>
+			  <a href="danceStudyList.jsp"><img src="https://i.pinimg.com/originals/80/ec/4c/80ec4c146c56f5e5ee8b60c98ce77847.jpg" alt="Avatar" style="width:100%; height:400px;" ></a>
 			  <div class="container">
 			   <h4><a href=""><b>춤 배우러가기!	</b></a></h4>
 			  </div>
@@ -55,7 +55,7 @@ body{background-color: #fdde60; }
 			</div>
 			
 			<div class="card">
-			  	<a href="mainboard.jsp?board=danceboard"><img src="resources/danceimg2.jpeg" alt="Avatar" style="width:100%;height:400px;" ></a>
+			  	<a href="mainboard.jsp?board=danceboard"><img src="https://img.freepik.com/free-vector/people-cheering-dancing-youth-day_52683-40079.jpg?size=338&ext=jpg" alt="Avatar" style="width:100%;height:400px;" ></a>
 			  <div class="container">
 			    <h4><a href ="mainboard.jsp?board=danceboard"><b>춤 게시판으로 가기!</b></a></h4>
 			  </div>
