@@ -56,12 +56,18 @@ p{line-height: 40px;
   line-height: 20px;
   
 }
+
 #wrapper {
 	display: grid;
     grid-template-columns: 30% 30% 30%;
     grid-template-rows: 50% 50%;
     text-align: center;
     margin : 50px;
+    margin-left: 200px;
+   
+}
+h2,h1,p {
+font-family: 'Do Hyeon', sans-serif;
 }
 </style>
 </head>

@@ -142,7 +142,7 @@ h1 {
 		<div class="layer">
 		
 		<div id = "modifyprofile">
-			<a title="프로필 보기" href="profileupdate.jsp"><img id="picture" alt="" src="resources/img/profile.png"></a>
+			<a title="프로필 보기" href="veiwprofile.jsp"><img id="picture" alt="" src="resources/img/profile.png"></a>
 			
 		</div>
 		<div id = "songlist">
