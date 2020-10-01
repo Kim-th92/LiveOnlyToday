@@ -10,21 +10,88 @@
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
 
 </head>
+<style type="text/css">
 
+body {
+	background-color: #fdde60;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+h1 {
+	position: absolute;
+	left: 45%;
+}
+.csmain{
+    position: relative;
+	top: 150px;
+	left: 15%;
+}
+
+#cs {
+    position: absolute;
+	left: 5%;
+    }
+
+#adminchat {
+    position: absolute;
+	left: 40%;
+      
+}
+
+.button {
+  background-color: #fdde60; 
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+ 
+}
+
+.button1 {
+  border-radius: 12px;
+  color: black; 
+  font-family: 'Do Hyeon', sans-serif;
+ 
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button2 {
+  border-radius: 12px;
+  color: black; 
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+
+</style>
 <body>
 	<%@include file="./format/header.jsp"%>
 
 	<h1>고객센터</h1>
 	<div class="csmain">
-		<div class="cs">
+		<div id="cs">
 		
-			<button onclick="location.href='move.do?command=qnaboard'" class="button button1">문의게시판<i class="far fa-question-circle fa-5x"></i></button>			
+			<button onclick="location.href='move.do?command=qnaboard'" class="button button1">문의게시판<i class="far fa-question-circle fa-7x"></i></button>			
 		
 		</div>
 		
-		<div class="adminchat">
+		<div id="adminchat">
 		
-				<button onclick="location.href='move.do?command=adminchat'" class="button button2">1:1 관리자 문의<i class="far fa-comments fa-5x"></i></button>
+				<button onclick="location.href='move.do?command=adminchat'" class="button button2">1:1 관리자 문의<i class="far fa-comments fa-7x"></i></button>
 		
 		</div>
 	</div>

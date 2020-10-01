@@ -43,6 +43,7 @@ $(document).ready(function(){
 	
 body {
 	background-color: #fdde60;
+	font-family: 'Do Hyeon', sans-serif;
 }
 
 h1 {

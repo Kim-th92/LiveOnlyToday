@@ -5,10 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<title>Insert title here</title>
 <style type="text/css">
 
 body {
@@ -21,19 +19,19 @@ h1 {
 	left: 45%;
 }
 .csmain{
-    width: 90%;
-    margin: 10px auto;
+    position: relative;
+	top: 150px;
+	left: 15%;
 }
 
-.cs {
-    float: left;
-    width: 50%;
-    margin: 10px;
+#cs {
+    position: absolute;
+	left: 5%;
     }
 
-.adminchat {
-    float: right;
-    width: 50%;
+#adminchat {
+    position: absolute;
+	left: 40%;
       
 }
 
@@ -60,6 +58,7 @@ h1 {
 }
 
 .button1:hover {
+  background-color: #4CAF50;
   color: white;
 }
 
@@ -70,6 +69,7 @@ h1 {
 }
 
 .button2:hover {
+  background-color: #008CBA;
   color: white;
 }
 
@@ -88,38 +88,37 @@ if (member_dto == null) {
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-
-
 	<%@include file="./format/header.jsp"%>
 	
-
 </script>
 	<h1>관리자 페이지</h1>
-	<article>
+	
 	<div class=admin>
 		<div id="adminview">
 			<h2>
 
-				<button onclick="location.href='move.do?command=adminview'"
-					class="button button1"><br/>
-					회원 전체 조회<br/><i class="fas fa-address-book fa-7x"></i>
-				</button>
+					<img src="resources/img/userlist.png" alt="userlist" style="width:50%">
+					
+		
 			</h2>
 		</div>
 
 		<div id="qnaboard">
 			<h2>
 
-				<button onclick="location.href='move.do?command=qnaboard'"
-					class="button button2"><br/>
-					문의내역 전체 보기<br/><i class="far fa-question-circle fa-7x"></i>
-				</button>
+				
+					<img src="resources/img/qnalist.png" alt="qnalist" style="width:50%">
+					
+				
 			</h2>
 		</div>
 	</div>
-	</article>
+	
 
 
+	<div id="img">
+		<img id="dance" alt="춤그림" src="resources/dance.png">
+	</div>
 
 
 
