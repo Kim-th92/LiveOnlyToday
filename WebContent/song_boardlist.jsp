@@ -26,6 +26,23 @@
 		width:100%;
 		
 	}
+	input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+
+}
 	#bor{padding-bottom:20px;}
 	td:nth-child(1){text-align: center;}
 	td:nth-child(4){text-align : center;}

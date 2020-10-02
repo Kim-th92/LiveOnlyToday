@@ -11,6 +11,7 @@ table {width:80%;    line-height: 50px; margin : 50px 0px 50px 50px;}
 #content{    padding: 30px 20px 100px;
     background-color: #e9ecef;
    }
+ 
 
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">

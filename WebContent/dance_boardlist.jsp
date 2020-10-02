@@ -32,6 +32,24 @@
 	td:nth-child(4){text-align : center;}
 	td:nth-child(3){ font-weight:bold;}
 td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
+	input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+
+}
+
 </style>
 <%
 	Dance_BoardDao dao = new Dance_BoardDao();

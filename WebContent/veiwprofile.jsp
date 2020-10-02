@@ -62,7 +62,7 @@ table {
  	</tr>
  	<tr>
  		<th>이름</th>
- 		<td><%=(dto.getName().substring(0,4).equals("null"))?" ":dto.getName() %></td>
+ 		<td><%=(dto.getName()==null)?" ":dto.getName() %></td>
  	</tr>
  	<tr>
  		<th>전화번호</th>

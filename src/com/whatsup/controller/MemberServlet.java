@@ -218,6 +218,7 @@ public class MemberServlet extends HttpServlet {
 		        	
 		        	dto  =  dao.sns(id);
 		        	session.setAttribute("login",dto);
+		        	System.out.println(dto);
 			 		session.setMaxInactiveInterval(-1);
 			 		response.sendRedirect("index.jsp");
 			 		

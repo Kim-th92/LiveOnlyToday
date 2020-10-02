@@ -24,6 +24,7 @@
 	}
 	p>a:hover {
 		color: darkorange;
+		font-weight: bold;
 	}
 	#boardview{
 		widows: 1000px;
@@ -38,7 +39,6 @@
 	line-height: 40px;
 }
 	#bor{border-bottom: 2px solid red;}
-	
 </style>
 </head>
 <body style="    background-color: #fdde60;">
