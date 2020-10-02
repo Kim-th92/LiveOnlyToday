@@ -13,6 +13,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	body {
+		margin : 30px 50px;
+	}
+	h1{
+		margin : 30px 20px;
+	}
+	table {
+		margin-top : 30px;
+		
+		line-height: 30px;
+		width:100%;
+		
+	}
+	#bor{padding-bottom:20px;}
+	td:nth-child(1){text-align: center;}
+	td:nth-child(4){text-align : center;}
+	td:nth-child(3){ font-weight:bold;}
+	td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
+</style>
 <%
 	Free_BoardDao dao = new Free_BoardDao();
 	
@@ -32,15 +52,18 @@
 
 	
 %>
+
 </head>
 <body>
-
-	<table border="1">
-		<col width="50px" />
+	<h1> 자유게시판 </h1>
+	<hr>
+	<table>
 		<col width="100px" />
-		<col width="300px" />
+		<col width="200px" />
+		<col width="500px" />
+		<col width="150px" />
 		<col width="100px" />
-		<tr>
+		<tr id="bor" >
 			<th>번호</th>
 			<th>이름</th>
 			<th>제목</th>
@@ -67,7 +90,7 @@
 		<tr>
 			<td><%=list.get(i).getFree_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
+			<td><a href="move.do?command=freeselectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
 			<td><a><%=hms.format(list.get(i).getFree_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getFree_cnt() %></a></td>
 <% 				
@@ -80,12 +103,14 @@
 	}
 %>
 		<tr>
-			<td colspan="5" align="right">
+		<td></td>
+			<td colspan="4" align="right">
 				<input type="button" value="글작성" onclick="location.href='move.do?command=freeinsertpage'" />
 			</td>
 		</tr>
-	</table>
-<%
+		<tr>
+			<td colspan="5" align="center">
+			<%
 	if(list.size() != 0){
 %>	
 	<a href="move.do?command=freeboard&currentPage=1">&lt;&lt;</a> &nbsp;
@@ -109,5 +134,9 @@
 	}
 %>	
 	
+			</td>
+		</tr>
+	</table>
+
 </body>
 </html>

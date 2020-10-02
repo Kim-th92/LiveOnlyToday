@@ -18,6 +18,7 @@
 		<typeAlias type="com.whatsup.dto.Stream_BoardDto" alias="stream_boardDto"/>
 
 		<typeAlias type="com.whatsup.dto.DanceAdminDto" alias="danceadminDto"/>
+		<typeAlias type="com.whatsup.dto.QNA_CommentDto" alias="qna_commentDto"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -46,6 +47,7 @@
 		
 	
 		<mapper resource="com/whatsup/db/Danceadmin-mapper.xml"/>
+		<mapper resource="com/whatsup/db/QNA_Comment-mapper.xml"/>
 
 
 	</mappers>

@@ -17,6 +17,7 @@ import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.Member_BoardDao;
 import com.whatsup.dao.MusicListDao;
 import com.whatsup.dao.QNA_BoardDao;
+import com.whatsup.dao.QNA_CommentDao;
 import com.whatsup.dao.Song_BoardDao;
 import com.whatsup.dto.CommentDto;
 import com.whatsup.dto.Dance_BoardDto;
@@ -24,6 +25,7 @@ import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 import com.whatsup.dto.MusicListDto;
 import com.whatsup.dto.QNA_BoardDto;
+import com.whatsup.dto.QNA_CommentDto;
 import com.whatsup.dto.Song_BoardDto;
 import com.whatsup.util.PageNavigator;
 
@@ -58,6 +60,7 @@ public class PageMoveServlet extends HttpServlet {
       QNA_BoardDao qna_dao=new QNA_BoardDao();
       Member_BoardDao dao=new Member_BoardDao();
       CommentDao comment_dao=new CommentDao();
+      QNA_CommentDao qna_comment_dao = new QNA_CommentDao();
 
       //1.메인페이지
       if(command.equals("main")) {
@@ -111,29 +114,22 @@ public class PageMoveServlet extends HttpServlet {
     	  if(currentPage < 1) {
     		  currentPage = 1;
     	  }
-    	  System.out.println("현재 페이지 currentPage : " + currentPage );
     	  int currentGroup = (currentPage - 1) / pagePerGroup;
-    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
     	  
     	  int startPageGroup = currentGroup * pagePerGroup + 1;
     	  if(startPageGroup < 1) {
     		  startPageGroup = 1;
     	  } 
-    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
     	  
     	  int endPageGroup = startPageGroup + pagePerGroup - 1;
     	  int totalPageCount = (free_dao.totalCount() + countPerPage - 1) / countPerPage;
-    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
     	  
     	  if(endPageGroup >= totalPageCount) {
     		  endPageGroup = totalPageCount;
     	  } 
-    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
     	  
     	  int startWrite = (countPerPage*(currentPage-1)) + 1;
     	  int endWrite = startWrite + countPerPage;
-    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
-    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
     	  
     	  request.setAttribute("navi", navi);
     	  request.setAttribute("startPage", startPageGroup);
@@ -191,29 +187,22 @@ public class PageMoveServlet extends HttpServlet {
     	  if(currentPage < 1) {
     		  currentPage = 1;
     	  }
-    	  System.out.println("현재 페이지 currentPage : " + currentPage );
     	  int currentGroup = (currentPage - 1) / pagePerGroup;
-    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
     	  
     	  int startPageGroup = currentGroup * pagePerGroup + 1;
     	  if(startPageGroup < 1) {
     		  startPageGroup = 1;
     	  } 
-    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
     	  
     	  int endPageGroup = startPageGroup + pagePerGroup - 1;
     	  int totalPageCount = (dance_dao.totalCount() + countPerPage - 1) / countPerPage;
-    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
     	  
     	  if(endPageGroup >= totalPageCount) {
     		  endPageGroup = totalPageCount;
     	  } 
-    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
     	  
     	  int startWrite = (countPerPage*(currentPage-1)) + 1;
     	  int endWrite = startWrite + countPerPage;
-    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
-    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
     	  
     	  request.setAttribute("navi", navi);
     	  request.setAttribute("startPage", startPageGroup);
@@ -230,7 +219,7 @@ public class PageMoveServlet extends HttpServlet {
          if(session.getAttribute("login")==null) {
             jsResponse("먼저 로그인을 해 주세요", "move.do?command=danceboard&currentPage=1", response);
          }else {
-            response.sendRedirect("dance_boardinsert.jsp");
+            response.sendRedirect("dance_insertpage.jsp");
       }
       //5-8.댄스게시판 글 자세히 보기 페이지
       }else if(command.equals("selectdancepage")) {
@@ -268,29 +257,22 @@ public class PageMoveServlet extends HttpServlet {
     	  if(currentPage < 1) {
     		  currentPage = 1;
     	  }
-    	  System.out.println("현재 페이지 currentPage : " + currentPage );
     	  int currentGroup = (currentPage - 1) / pagePerGroup;
-    	  System.out.println("현재 그룹 currentGroup : " + currentGroup);
     	  
     	  int startPageGroup = currentGroup * pagePerGroup + 1;
     	  if(startPageGroup < 1) {
     		  startPageGroup = 1;
     	  } 
-    	  System.out.println("현재 그룹 첫 페이지 번호 startPageGroup : " + startPageGroup);
     	  
     	  int endPageGroup = startPageGroup + pagePerGroup - 1;
     	  int totalPageCount = (song_dao.totalCount() + countPerPage - 1) / countPerPage;
-    	  System.out.println("전체 페이지 수 totalPageCount : " + totalPageCount);
     	  
     	  if(endPageGroup >= totalPageCount) {
     		  endPageGroup = totalPageCount;
     	  } 
-    	  System.out.println("현재 그룹 마지막 페이지 번호 endPageGroup : " + endPageGroup);
     	  
     	  int startWrite = (countPerPage*(currentPage-1)) + 1;
     	  int endWrite = startWrite + countPerPage;
-    	  System.out.println("페이지 당 최근 글 RowNumber startWrite : " + startWrite);
-    	  System.out.println("페이지 당 마지막 글 RowNumber endWrite : " + endWrite);
     	  
     	  request.setAttribute("navi", navi);
     	  request.setAttribute("startPage", startPageGroup);
@@ -353,7 +335,8 @@ public class PageMoveServlet extends HttpServlet {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 			int res = qna_dao.qnaview(qna_no);
 			QNA_BoardDto dto = qna_dao.selectOne(qna_no);
-			request.setAttribute("dto", dto);
+			List<QNA_CommentDto> qna_comment_list=qna_comment_dao.selectFreeList(qna_no);
+	        request.setAttribute("qna_comment_list", qna_comment_list);
 			dispatch("qna_boardselect.jsp", request, response);
 		// 6-3.문의게시판 수정페이지 이동
 		} else if (command.equals("updatepage")) {
@@ -369,12 +352,28 @@ public class PageMoveServlet extends HttpServlet {
 			QNA_BoardDto dto = new QNA_BoardDto(qna_title, qna_content);
 			dto.setQna_no(qna_no);
 			request.setAttribute("dto", dto);
-			dispatch("qna.do?command=qna_update", request, response);
+			dispatch("board.do?command=qna_update", request, response);
 		// 6-5..문의 게시판 삭제
 		} else if (command.equals("delete")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 			request.setAttribute("qna_no", qna_no);
-			dispatch("qna.do?command=qna_delete", request, response);
+			dispatch("board.do?command=qna_delete", request, response);
+		// 6-6. 관리자 답변
+		}else if(command.equals("qna_comment")) {
+			int member_seq = Integer.parseInt(request.getParameter("member_seq"));
+			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
+			String qna_comment_content = request.getParameter("qna_comment_content");
+			QNA_CommentDto dto = new QNA_CommentDto();
+			dto.setMember_seq(member_seq);
+			dto.setQna_no(qna_no);
+			dto.setQna_comment_content(qna_comment_content);
+			request.setAttribute("dto", dto);
+			response.sendRedirect("qna_boardlist.jsp");
+		} else if (command.equals("qna_commemnt")) {
+			Member_BoardDto dto = (Member_BoardDto)session.getAttribute("login");
+			if (dto.getGrade().equals("ADMIN") && dto.getGrade()!=null) {
+				response.sendRedirect("qna_boardlist.jsp");
+			} 
          
          
       //7.로그인 페이지
@@ -412,9 +411,8 @@ public class PageMoveServlet extends HttpServlet {
     	  response.sendRedirect("admin.jsp");
       //13-1.회원목록보기
       }else if(command.equals("adminview")) {
-          int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-          Member_BoardDto dto=dao.selectOne(member_seq);
-          request.setAttribute("dto", dto);
+          List<Member_BoardDto> member_list=dao.selectList();
+          request.setAttribute("member_list", member_list);
           dispatch("adminview.jsp", request, response);
       //13-2.문의게시판
       }else if(command.equals("qnaboard")) {

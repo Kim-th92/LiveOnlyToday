@@ -6,57 +6,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	var num = 1;
+	
+	function prevGallery(){
+		num--;
+		if(num < 1){
+			num = 2;
+		}
+		document.getElementById("gallery").src="resources/danceStudyImg/img0" + num + ".png";
+		
+		// 이벤트 전파 막기(jQuery에서 자세히 배움)
+		return false;
+	}
+	
+	function nextGallery(){
+		num++;
+		if(num > 2){
+			num = 1;
+		}
+		document.getElementById("gallery").src="resources/danceStudyImg/img0" + num + ".png";
+		
+		// 이벤트 전파 막기(jQuery에서 자세히 배움)
+		return false;
+
+	}
+</script>
+
 <style type="text/css">
-	.container{
-		position: relative;
-		width: 100%;
-		overflow-x: hidden;
-	} 
-	
-	.slider-container{
-		position: absolute;
-		width: 100%;
+	a > img{
+		width: 50px; height: 50px;
 	}
-	
-	.slide{
-		position: absolute;
-		width: 100;
-		paddiong: 0 10%;
-		box-sizing:border-box;
-		top: 50%;
-		transform: translateY(-50%);
-		text-align: center;
-		overflow: hidden;
+	#gallery{
+		width: 200px; height: 200px;
 	}
-	.slider-container.animated{
-		-webkit-transition: left .3s ease-in;
-		transition: left .3s ease-in; 
+	p {
+		width: 350px; height: 250px;
 	}
-	#prev,#next{
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translateY(-50%);
-		z-index: 999;
-		display: inline-block;
-		hight: 5em;
-		width: 5em;
-		border-radius: 50%;
-		background-position: center center;
-		background-repeat: no-repeat;
-		-webkit-transition: all .3s ease-in;
-		transition: all .3 ease-in;
+	img{
+		vertical-align: middle;
 	}
-	
-	#prev.disabled, #next.disabled{display:none;}
-	#prev{background-image: url('arrow-left-out.svg'); margin-left:-480px;}
-	#prev:hover {background-image: url('arrow-left-over.svg');}
-	#next{
-		margin-left:380px; 
-		background-image: url('arrow-left-over.svg');
+	a{
+		text-decoration: none;
 	}
-	#next:hover{background-image: url('arrow-left-over.svg');}
-	 
 
 </style>
 </head>
@@ -70,13 +63,18 @@ if(member_dto == null){
 <%@ include file="./format/header.jsp" %>
 	<h1>동작을 따라해 봐</h1>
 	
-	<div class="container">
-		<ul class="slider-container" id="slider">
-			<li class="slide"></li>
-		</ul>
-		
-		<a href="#" id="prev"></a>
-		<a href="#" id="nect"></a>
+	<div id="gallerywrap">
+		<p>
+			<a onclick="return prevGallery();">
+				<img alt="이전 그림" src="resources/danceStudyImg/arrowleft.png" width="50px" height="50px"/>
+			</a>
+			<a href="#">
+			<img alt="갤러리 그림" src="resources/danceStudyImg/img01.png" id="gallery"/>
+			</a>
+			<a onclick="return nextGallery();">
+				<img alt="다음 그림" src="resources/danceStudyImg/arrowright.png" width="50px" height="50px"/>
+			</a>
+		</p>
 	</div>
 		
 
@@ -87,21 +85,9 @@ if(member_dto == null){
 				<span><a href ="dancemain.jsp">돌아가기</a></span>
 			</div>
 <% 		
-			}else if(member_dto.getGrade().equals("ADMIN")){
-%>
-			<div>
-				<button onclick="location.href='danceStudyUpload.jsp'">Teachable Machine 추가</button>
-			</div>
-<% 
 			}
 %>
 
-
-	</div>
-
-
-
-</div>
 
 
 <%@ include file="./format/footer.jsp" %>	

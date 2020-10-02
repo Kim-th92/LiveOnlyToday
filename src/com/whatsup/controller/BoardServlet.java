@@ -24,12 +24,14 @@ import com.whatsup.dao.CommentDao;
 import com.whatsup.dao.Dance_BoardDao;
 import com.whatsup.dao.Free_BoardDao;
 import com.whatsup.dao.QNA_BoardDao;
+import com.whatsup.dao.QNA_CommentDao;
 import com.whatsup.dao.Song_BoardDao;
 import com.whatsup.dto.CommentDto;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;
 import com.whatsup.dto.Member_BoardDto;
 import com.whatsup.dto.QNA_BoardDto;
+import com.whatsup.dto.QNA_CommentDto;
 import com.whatsup.dto.Song_BoardDto;
 
 
@@ -58,9 +60,37 @@ public class BoardServlet extends HttpServlet {
 		Dance_BoardDao dance_dao=new Dance_BoardDao();
 		QNA_BoardDao qna_dao=new QNA_BoardDao(); 
 		CommentDao comment_dao=new CommentDao();
+		QNA_CommentDao qna_comment_dao = new QNA_CommentDao();
 
+		String fileSavePath="upload";
+		int uploadSizeLimit = 1000*1024*1024;
+		String encType ="UTF-8";
+		if(!ServletFileUpload.isMultipartContent(request)) {
+			response.sendRedirect("dance_boardinsert.jsp");
+		}
 		
+		ServletContext context = getServletContext();
+		
+		String uploadPath = context.getRealPath(fileSavePath);
+		System.out.println(uploadPath);
+		  File isDir = new File(uploadPath);
 
+		    
+
+		    if(!isDir.isDirectory()){
+
+		    	System.out.println("디렉토리가 없습니다. 디렉토리를 새로 생성합니다.");
+
+		    	isDir.mkdir();
+
+		    }
+		
+		MultipartRequest multi = new MultipartRequest(request,uploadPath,uploadSizeLimit,encType,new DefaultFileRenamePolicy());
+		if (command==null) {
+			command = multi.getParameter("command");
+		}
+		
+		String file = multi.getFilesystemName("dance_file");
 	
 
 		//자유게시판 추가
@@ -132,36 +162,7 @@ public class BoardServlet extends HttpServlet {
 			}
 			
 		//댄스게시판	
-		}else if("dance_insert".equals(command)){
-			String fileSavePath="upload";
-			int uploadSizeLimit = 1000*1024*1024;
-			String encType ="UTF-8";
-			if(!ServletFileUpload.isMultipartContent(request)) {
-				response.sendRedirect("dance_boardinsert.jsp");
-			}
-			
-			ServletContext context = getServletContext();
-			
-			String uploadPath = context.getRealPath(fileSavePath);
-			System.out.println(uploadPath);
-			  File isDir = new File(uploadPath);
-
-			    
-
-			    if(!isDir.isDirectory()){
-
-			    	System.out.println("디렉토리가 없습니다. 디렉토리를 새로 생성합니다.");
-
-			    	isDir.mkdir();
-
-			    }
-
-			
-			MultipartRequest multi = new MultipartRequest(request,uploadPath,uploadSizeLimit,encType,new DefaultFileRenamePolicy());
-			
-			
-			String file = multi.getFilesystemName("dance_file");
-			
+		}else if("dance_insert".equals(command)){			
 			int member_seq;
 			String dance_title;
 			String dance_content;
@@ -286,7 +287,21 @@ public class BoardServlet extends HttpServlet {
 			}else {
 				jsResponse("삭제 실패", "move.do?command=selectpage&qna_no="+qna_no, response);
 			}
-		
+
+        }else if(command.equals("qnacommentinsert")) {
+			String qna_comment_content=request.getParameter("qna_comment_content");
+			int member_seq=Integer.parseInt(request.getParameter("member_seq"));
+			int qna_no=Integer.parseInt(request.getParameter("qna_no"));
+			QNA_CommentDto qna_comment_dto=new QNA_CommentDto();
+			qna_comment_dto.setMember_seq(member_seq);
+			qna_comment_dto.setQna_comment_content(qna_comment_content);
+			qna_comment_dto.setQna_no(qna_no);
+			int res=qna_comment_dao.insertQna_Commnet(qna_comment_dto);
+			if(res>0) {
+				jsResponse("댓글 작성 성공", "move.do?command=qnaselectpage&qna_no="+qna_no, response);
+			}else {
+			jsResponse("댓글 작성 실패", "move.do?command=qnaselectpage&qna_no="+qna_no, response);
+			}
 		}
 		//댓글 작성
 		else if(command.equals("freecommentinsert")) {
@@ -335,8 +350,8 @@ public class BoardServlet extends HttpServlet {
 					jsResponse("댓글 작성 실패", "move.do?command=songselectpage&song_no="+song_no, response);
 				}
 					
+				}
 			}
-	}
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
 		String result = "<script> alert(\"" + msg + "\"); location.href=\""+url+"\"; </script> ";

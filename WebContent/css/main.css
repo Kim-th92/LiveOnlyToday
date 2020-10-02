@@ -115,7 +115,7 @@ div#container {
 	text-align: center; margin : 0 auto 0 auto;
 	max-width: 90%;
 	padding: 1em 1.5em 1.3em 1.5em;
-	margin: 0 auto 0 auto;
+	margin: 80px auto 80px auto;
 }
 
 div#links {
@@ -240,7 +240,7 @@ textarea {
 }
 
 video, iframe {
-	background: grey;
+
 	margin: 0 0 20px 0; 
 	--width: 100%;
 	width: var(--width);

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QNACommentmapper">
+
+	<select id="qna_comment" resultType="qna_commentDto" parameterType="int">
+		SELECT QNA_COMMENT_NO,NICKNAME,QNA_COMMENT_CONTENT,QNA_COMMENT_REGDATE FROM QNA_COMMENT_TABLE INNER JOIN MEMBER_BOARD ON QNA_COMMENT_TABLE.MEMBER_SEQ=MEMBER_BOARD.MEMBER_SEQ 	WHERE QNA_NO=#{qna_no}
+	</select>
+	
+	<insert id="qna_comment_insert" parameterType="qna_commentDto">
+		INSERT INTO QNA_COMMENT_TABLE VALUES(QNA_COMMENT_SEQ.NEXTVAL,SYSDATE,#{qna_comment_content},#{member_seq},#{qna_no})
+	</insert>
+	<update id="update" parameterType="qna_commentDto">
+		UPDATE QNA_COMMENT_TABLE SET QNA_COMMENT_CONTENT=#{qna_comment_content} WHERE COMMENT_NO=#{qna_comment_no}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM QNA_COMMENT_TABLE WHERE QNA_COMMENT_NO=#{qna_comment_no}
+	</delete>
+
+</mapper>

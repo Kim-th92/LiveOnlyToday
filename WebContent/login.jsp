@@ -107,7 +107,7 @@ td.snsbtn {
 .logbtn:hover{
   background-position: right;
 }
-
+b{color:red;}
 
 </style>
 
@@ -131,7 +131,7 @@ td.snsbtn {
 
 
 <form action="member.do" method="post">
-	<img alt="로고" src="resources/logo.png" style="width:200px; height:40px;">
+	<a href="index.jsp"><img alt="로고" src="resources/logo.png" style="width:200px; height:40px;"></a>
 	<h1>로그인</h1>
 		<input type="hidden" name="command" value="login"/>
 	

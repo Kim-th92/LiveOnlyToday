@@ -43,7 +43,7 @@ List<DanceAdminDto> list = dao.selectList();
 </div>
 
 <div class="section">
-<h1> 춤</h1>
+	<h1> 춤</h1>
 	<div class="wrapper">
 		
 <%
