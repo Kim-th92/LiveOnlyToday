@@ -10,6 +10,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+body {
+    background-color: #e8df9c;
+}
 table.type06 {
     border-collapse: collapse;
     text-align: left;
