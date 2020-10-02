@@ -13,19 +13,22 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-
+body {
+    background-color: #fdde60;
+}
 
 table.qna {
     border-collapse: collapse;
     text-align: center;
     line-height: 1.5;
     border: 1px solid #ccc;
-    margin: 20px 10px;
+    margin-left: 300px;
+    margin-top:150px;
 }
 table.qna thead {
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
-    background: #91c09e;
+    background:  #79d279;
 }
 table.qna thead th {
     padding: 10px;
@@ -48,7 +51,23 @@ table.qna td {
     vertical-align: top;
     border-bottom: 1px solid #ccc;
 }
+input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
 
+}
 
 </style>
 <%
@@ -65,8 +84,8 @@ table.qna td {
 <%@ include file="./format/header.jsp" %>
 
 	<table class="qna" border="1">
-		<col width="50px" />
-		<col width="100px" />
+		<col width="80px" />
+		<col width="150px" />
 		<col width="300px" />
 		<col width="100px" />
 		<thead>

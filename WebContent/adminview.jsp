@@ -10,12 +10,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-body {
-    background-color: #e8df9c;
-}
+
 table.type06 {
     border-collapse: collapse;
-    text-align: left;
+    text-align: center;
     line-height: 1.5;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -26,6 +24,8 @@ table.type06 th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
+    background-color:#f75e50;
+    text-align: center;
 }
 table.type06 td {
     width: 350px;
@@ -53,7 +53,7 @@ table.type06 .even {
 		<col width="100px" />
 		<col width="50px" />
 		<col width="300px" />
-		<col width="50px" />
+		<col width="100px" />
 		<col width="70px" />
 		<col width="300px" />
 		<col width="100px" />
