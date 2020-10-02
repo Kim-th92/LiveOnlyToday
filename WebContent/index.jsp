@@ -236,7 +236,7 @@ background-clip: text;
 			<button class="shortcut left"
 				onclick="location.href='move.do?command=musicselect'">
 				노래부르러 가기</button>
-			<button class="shortcut right" onclick="dancemain.jsp">춤 추러 가기</button>
+			<button class="shortcut right" onclick="location.href='dancemain.jsp'">춤 추러 가기</button>
 		</div>
 
 		<div id="img" class="col">

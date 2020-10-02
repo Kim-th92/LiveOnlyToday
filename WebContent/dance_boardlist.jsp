@@ -10,6 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous">
+
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
@@ -129,8 +131,8 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	<%
 	if(list.size() != 0){
 %>	
-	<a href="move.do?command=danceboard&currentPage=1">&lt;&lt;</a> &nbsp;
-	<a href="move.do?command=danceboard&currentPage=<%=(endPageGroup > startPageGroup)? 1:endPageGroup - startPageGroup%>">&lt;</a> &nbsp;
+	<a href="move.do?command=danceboard&currentPage=1"><i class="fas fa-angle-double-left"></i></a> &nbsp;
+	<a href="move.do?command=danceboard&currentPage=<%=(endPageGroup > startPageGroup)? 1:endPageGroup - startPageGroup%>"><i class="fas fa-angle-left"></i></a> &nbsp;
 <%
 	}
 	int[] end = new int[endPageGroup]; 
@@ -144,8 +146,8 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	}
 	if(list.size() != 0){
 %>
-	<a href="move.do?command=danceboard&currentPage=<%=startPageGroup + 5%>">&gt;</a> &nbsp;
-	<a href="move.do?command=danceboard&currentPage=${totalPageCount}">&gt;&gt;</a>
+	<a href="move.do?command=danceboard&currentPage=<%=startPageGroup + 5%>"><i class="fas fa-angle-right"></i></a> &nbsp;
+	<a href="move.do?command=danceboard&currentPage=${totalPageCount}"><i class="fas fa-angle-double-right"></i></a>
 <%
 	}
 %>	

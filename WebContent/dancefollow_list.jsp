@@ -9,24 +9,71 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous">
 <style type="text/css">
 
 .side-nav-bar{ position:fixed;top:0; height:100% ;background-color: grey; }
 .section {}
-footer{z-index: 2;   position: absolute;  left: 0;   bottom: 0;   width: 100%; padding: 0;
-	color: white;background: blue;}
-body >div{
-	display:grid;
-	grid-template-columns : 15% 85%;
-}
+
+
 div.wrapper{
 	display : grid;
 	grid-template-columns: 25% 25% 25% 25%;
 	}
+#section {
+	padding :30px 40px;
+}
+button {
+	
+}
+
+h4>a:hover {
+	color:darkorange;
+}
+h4>a:hover i{
+	margin-left:30px;
+}
+.dance-card {
+	font-size:16pt;
+	margin :20px;
+	text-align: center;
+}
+ifram {
+	margin-top : 20px;
+}
+#section>h1 {
+	text-align: center;
+}
+#button{
+	text-align: right;
+}
+.btn{
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 18pt;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+  margin-right: 100px;
+	
+}
+.btn:hover{
+	background-color:red;
+}
+.btn:hover .btn>i{
+	margin-left: 3px;
+}
 
 </style>
 </head>
-<body>
+<body style ="background-color: #fdde60;">
 <%
 Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
 if(member_dto == null){
@@ -37,12 +84,9 @@ List<DanceAdminDto> list = dao.selectList();
 %>
 <%@ include file="./format/header.jsp" %>
 
-<div class = "side-nav-bar">
-	
 
-</div>
 
-<div class="section">
+<div id="section">
 	<h1> 춤</h1>
 	<div class="wrapper">
 		
@@ -58,31 +102,36 @@ List<DanceAdminDto> list = dao.selectList();
 %>
 		<div class="dance-card">
 			<iframe src="<%=list.get(i).getDanceadminsrc()%>" controls="controls" muted="muted"></iframe>
-			<h4> <a href="dance.do?command=selectOne&seq=<%=list.get(i).getDanceadmin_seq()%>"><%=list.get(i).getDanceadmintitle() %></a></h4>
+			<h4> <a href="dance.do?command=selectOne&seq=<%=list.get(i).getDanceadmin_seq()%>"><%=list.get(i).getDanceadmintitle() %><i class="fas fa-arrow-circle-right"></i></a></h4>
 			
 		</div>
+		
 <% 			
 		}
 	}
-
-		if(member_dto.getGrade()==null ||member_dto == null){
+%>
+	</div>
+<% 
+	if(member_dto.getGrade()==null ||member_dto == null){
 			
 %>
-			<div>
-				<span><a href ="dancemain.jsp">돌아가기</a></span>
+			<div id="button">
+				<button  class ="btn" onclick="dancemain.jsp"><span>돌아가기<i class="fas fa-arrow-right"></i></span></button>
+				
 			</div>
 <% 		
 			}else if(member_dto.getGrade().equals("ADMIN")){
 %>
-			<button onclick="location.href='dancefollow_upload.jsp'">동영상 업로드</button>
-			
+			<div id="button">
+			<button class="btn" onclick="location.href='dancefollow_upload.jsp'">동영상 업로드</button>
+			</div>
 <% 
 			}
 		
 %>
 
 
-	</div>
+	
 
 
 

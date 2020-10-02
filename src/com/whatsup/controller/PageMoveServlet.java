@@ -220,7 +220,14 @@ public class PageMoveServlet extends HttpServlet {
             jsResponse("먼저 로그인을 해 주세요", "move.do?command=danceboard&currentPage=1", response);
          }else {
             response.sendRedirect("dance_insertpage.jsp");
-      }
+         }
+      }else if(command.equals("dancefollowboard")) {
+    	  if(session.getAttribute("login")==null) {
+              jsResponse("먼저 로그인을 해 주세요", "move.do?command=danceboard&currentPage=1", response);
+           }else {
+              response.sendRedirect("mainboard.jsp?board=danceboard");
+           }
+      
       //5-8.댄스게시판 글 자세히 보기 페이지
       }else if(command.equals("selectdancepage")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));

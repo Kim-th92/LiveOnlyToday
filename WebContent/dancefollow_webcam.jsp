@@ -38,7 +38,7 @@ DanceAdminDto danceadmin_dto = (DanceAdminDto)request.getAttribute("dto");
 
 	<div id="container">
 
-		<iframe src="<%=danceadmin_dto.getDanceadminsrc() %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe src="<%=danceadmin_dto.getDanceadminsrc() %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen width="1280px" height="720px"></iframe>
 		<video id="gum" playsinline autoplay muted></video>
 	<!--<video id="recorded" playsinline loop></video>  -->	
 	
@@ -47,7 +47,7 @@ DanceAdminDto danceadmin_dto = (DanceAdminDto)request.getAttribute("dto");
 			<button class="grad" id="record" disabled>Start Recording</button>
 			<button class="grad" id="play" disabled>재생</button>
 			<button  class="grad" id="download" disabled>다운로드</button>
-			<button class="grad" id="upload" disabled >게시판에 올리기</button>
+			<button class="grad" id="upload" disabled onclick="location.href='move.do?command=dancefollowboard'">게시판에 올리기</button>
 		</div>
 
 		<div>

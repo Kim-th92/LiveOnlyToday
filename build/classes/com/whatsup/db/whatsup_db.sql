@@ -216,6 +216,7 @@ INSERT INTO STREAM_BOARD VALUES(STREAM_SEQ.NEXTVAL,'테스트 방송',3);
 
 SELECT * FROM MEMBER_BOARD;
 
+update member_board set delflag ='N' where member_seq =32;
 
 
 
