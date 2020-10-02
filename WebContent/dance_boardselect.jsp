@@ -7,7 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	table {width:80%;    line-height: 50px; margin : 50px 0px 50px 50px;}
+	body {margin-bottom: 100px;}
+</style>
 <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <%
 	Dance_BoardDto dance_dto=(Dance_BoardDto)request.getAttribute("dto");
 	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
@@ -18,18 +23,18 @@
 </head>
 
 <body>
-	<table border="1">
+	<table>
 		<tr>
 			<th>이름</th>
-			<td><input type="text" name="myname" value="<%=dance_dto.getNickname() %>" readonly="readonly" /></td>
+			<td><input type="text" name="myname"  class="form-control form-control-lg" value="<%=dance_dto.getNickname() %>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<th>제목</th>
-			<td><input type="text" name="mytitle" value="<%=dance_dto.getDance_title()%>" readonly="readonly" /></td>
+			<td><input type="text" name="mytitle" class="form-control form-control-lg" value="<%=dance_dto.getDance_title()%>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<th>조회수</th>
-			<td><input type="text" name="mytitle" value="<%=dance_dto.getDance_cnt()%>" readonly="readonly" /></td>
+			<td><input type="text" name="mytitle" class="form-control form-control-lg" value="<%=dance_dto.getDance_cnt()%>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<th>내용</th>
@@ -43,14 +48,15 @@
 						||extension.equals(".ts")||extension.equals(".tp")||extension.equals(".flv")||extension.equals(".3gp")||extension.equals(".mpg")||extension.equals(".asf")){
 			%>
 			
-				<video src="upload/<%=dance_dto.getDancerealfname()%>" controls="controls" loop="loop"></video>
+				<video src="upload/<%=dance_dto.getDancerealfname()%>" controls="controls" loop="loop" style="width:100%;"></video>
+				
 				
 			<%	
 				}else if(extension.equals(".jpg")||extension.equals(".png")||extension.equals(".bmp")||extension.equals(".jpeg")||extension.equals(".gif")||extension.equals(".tiff")||extension.equals(".psd")||
 				extension.equals(".tga")||extension.equals(".ai")||extension.equals(".svg")){
 				
 			%>
-				<img alt="이미지" src="upload/<%=dance_dto.getDancerealfname()%>">
+				<img alt="이미지" src="upload/<%=dance_dto.getDancerealfname()%>"  style="width:100%;">
 			<%		
 				}
 		

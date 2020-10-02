@@ -39,7 +39,7 @@ header>div {
 	display: inline-block;
 }
 section {
-	padding:50px 0px 0px 40px;
+	padding:50px 0px 0px 0px;
 	height:600px;
 }
 section+div.col{
@@ -138,9 +138,7 @@ background-clip: text;
   font-family: 'Do Hyeon', sans-serif;
 }
 .shortcut:hover {opacity: 1}
-footer {
-	
-}
+
 </style>
 </head>
 <body>

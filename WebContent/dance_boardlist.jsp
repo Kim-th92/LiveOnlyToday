@@ -53,7 +53,7 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	
 %>
 </head>
-<body>
+<body body style="    background-color: #fdde60;">
 	<h1> 댄스게시판 </h1>
 	<hr>
 	<table >

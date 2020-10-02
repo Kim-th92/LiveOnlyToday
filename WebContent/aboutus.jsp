@@ -28,6 +28,8 @@ background-clip: text;
   -webkit-text-fill-color: transparent;
 
 }
+body{ min-height: 100%;
+   margin: 0 auto -155px;}
 </style>
 
 </head>
@@ -91,6 +93,7 @@ var infowindow = new kakao.maps.InfoWindow({
 infowindow.open(map, marker); 
 </script>
 
-<%@include file="./format/footer.jsp"%>
+
 </body>
+<%@include file="./format/footer.jsp"%>
 </html>
