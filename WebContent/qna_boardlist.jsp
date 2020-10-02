@@ -35,7 +35,7 @@ table.qna thead th {
     font-weight: bold;
 }
 table.qna tbody th {
-    
+    width: 150px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -43,7 +43,7 @@ table.qna tbody th {
     background: #fcf1f4;
 }
 table.qna td {
-    
+    width: 350px;
     padding: 10px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;

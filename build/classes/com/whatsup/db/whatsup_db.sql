@@ -21,11 +21,8 @@ DROP TABLE DANCE_BOARD;
 DROP TABLE SONG_BOARD;
 DROP TABLE FREE_BOARD;
 DROP TABLE COMMENT_TABLE;
-<<<<<<< HEAD
-=======
 DROP TABLE QNA_COMMENT_TABLE
 
->>>>>>> cbb3f8ad6e35d858bc1cf90403c898e2ab9ebb55
 DROP TABLE MUSICLIST_TABLE;
 DROP TABLE CHATINGIST_TABLE;
 DROP TABLE DANCEADMIN_TABLE;
@@ -47,6 +44,7 @@ CREATE SEQUENCE CHATINGLIST_SEQ;
 CREATE SEQUENCE QNA_COMMENT_SEQ;
 
 SELECT COUNT(SONG_NO) FROM SONG_BOARD;
+select * from qna_board order by qna_no desc;
 select * from member_board;
 select pw from member_board where name = '최서원' and email = 'tlwj321@naver.com';
 update member_board set pw =1234 where name='최서원'and email='tlwj321@naver.com'
