@@ -87,8 +87,6 @@ if(member_dto == null){
 <% 		
 			}
 %>
-		
-
 
 
 
