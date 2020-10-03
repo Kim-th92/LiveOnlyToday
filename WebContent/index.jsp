@@ -161,20 +161,14 @@ background-clip: text;
 				</ul>
 			</li>
 			<li><a href="move.do?command=musicselect">노래</a>
-				<ul>
-
-					<li><a href="#">혼자 부르기 </a></li>
-
-					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
-
-				</ul></li>
-
+			<ul>
 					<li><a href="move.do?command=musicselect">혼자 부르기 </a></li>
 
 
 					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
 				</ul>
-				<ul>
+			</li>
+				
 			<li><a href="dancemain.jsp">춤</a></li>
 
 			<li><a href="move.do?command=mainboardpage">게시판</a>
