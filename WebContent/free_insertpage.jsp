@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
 </head>
 <%
 	Member_BoardDto member_dto = new Member_BoardDto();	
@@ -20,8 +21,7 @@
 	 member_dto=(Member_BoardDto)session.getAttribute("login");
 %>
 	<body>
-<%@ include file="./format/header.jsp" %>
-	<form action="board.do" method="post">
+	<form action="board.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="free_insert"/>
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>"/>
 		<table border="1">
@@ -35,7 +35,14 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="free_content"></textarea></td>
+				<td><textarea rows="10" cols="60" name="free_content" id="free_content"></textarea></td>
+				<script>
+                        CKEDITOR.replace( 'free_content' );
+                </script>
+			</tr>
+			<tr>
+				<th>파일 업로드</th>
+				<td><input type="file" name="free_file"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
@@ -45,7 +52,6 @@
 			</tr>
 		</table>
 	</form>
-<%@ include file="./format/footer.jsp" %>
 </body>
 </html>
 <%		 

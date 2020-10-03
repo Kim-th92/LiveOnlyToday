@@ -24,7 +24,7 @@
 
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background-color: #fdde60">
 <%
 Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
 if(member_dto == null){
@@ -39,16 +39,16 @@ DanceAdminDto danceadmin_dto = (DanceAdminDto)request.getAttribute("dto");
 
 	<div id="container">
 
-		<iframe src="<%=danceadmin_dto.getDanceadminsrc() %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe src="<%=danceadmin_dto.getDanceadminsrc() %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen width="1280px" height="720px"></iframe>
 		<video id="gum" playsinline autoplay muted></video>
 	<!--<video id="recorded" playsinline loop></video>  -->	
 	
-		<div id="buttonContainer">
-			<button class="grad" id="start">Start camera</button>
+		<div id="buttonContainer" style="text-align: center;">
+			<button class="grad" id="start">카메라 켜기</button>
 			<button class="grad" id="record" disabled>Start Recording</button>
-			<button class="grad" id="play" disabled>Play</button>
-			<button  class="grad" id="download" disabled>Download</button>
-			<button class="grad" id="upload" disabled >Upload</button>
+			<button class="grad" id="play" disabled>재생</button>
+			<button  class="grad" id="download" disabled>다운로드</button>
+			<button class="grad" id="upload" disabled onclick="location.href='move.do?command=dancefollowboard'">게시판에 올리기</button>
 		</div>
 
 		<div>

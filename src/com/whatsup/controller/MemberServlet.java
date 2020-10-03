@@ -64,15 +64,57 @@ public class MemberServlet extends HttpServlet {
 			Member_BoardDto dto =  dao.check(myid);
 			boolean notUsed = true;
 			
-			if(dto == null){
-				
-	 			notUsed =true;
-	 		}else {
-	 			notUsed=false;
-	 		}
-			response.sendRedirect("idchk.jsp?notUsed="+notUsed);
+			if (dto==null) {
+				notUsed = true;
+			}else {
+				notUsed=false;
+			}
 			
-		}else if(command.equals("registeres")) {
+			JSONObject obj = new JSONObject();
+			obj.put("notUsed", notUsed);
+			
+			PrintWriter out = response.getWriter();
+			out.println(obj.toJSONString());
+			
+		}else if("nickchk".equals(command)) {
+			String nickname = request.getParameter("nickname");
+			Member_BoardDto dto =dao.check(nickname);
+			boolean notUsed = true;
+			
+			if (dto==null) {
+				notUsed = true;
+			}else {
+				notUsed=false;
+			}
+			
+			JSONObject obj = new JSONObject();
+			obj.put("notUsed", notUsed);
+			
+			PrintWriter out = response.getWriter();
+			out.println(obj.toJSONString());
+			
+		}else if (command.equals("viewProfile")){
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			Member_BoardDto memberdto = dao.selectOne(seq);
+			request.setAttribute("memberdto", memberdto);
+			dispatch("viewprofile.jsp", request, response);
+			
+		}else if(command.equals("profilelogin")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			Member_BoardDto loginDto = (Member_BoardDto)session.getAttribute("login");
+			Member_BoardDto dto = dao.login(id, pw);
+			
+			if(loginDto.getPw().equals(dto.getPw())) {
+				response.sendRedirect("profileupdate.jsp");
+			}else {
+				jsResponse("비밀번호가 일치하지 않습니다.", "profilelogin.jsp", response);
+			}
+		}			
+		else if(command.equals("registeres")) {
+			
+		
+		
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			String nickname = request.getParameter("nickname");
@@ -176,6 +218,7 @@ public class MemberServlet extends HttpServlet {
 		        	
 		        	dto  =  dao.sns(id);
 		        	session.setAttribute("login",dto);
+		        	System.out.println(dto);
 			 		session.setMaxInactiveInterval(-1);
 			 		response.sendRedirect("index.jsp");
 			 		

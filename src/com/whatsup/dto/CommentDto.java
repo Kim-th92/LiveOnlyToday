@@ -60,6 +60,7 @@ public class CommentDto {
 	public void setSong_no(int song_no) {
 		this.song_no = song_no;
 	}
+
 	public String getNickname() {
 		return nickname;
 	}

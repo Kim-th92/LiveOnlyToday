@@ -20,13 +20,95 @@
 
    
 <style>
-.login { width : 300px ; height : 60px;}
-input {width : 270px; height :40px;}
-.loginbtn {width:300px ; height:60px;}
-.idkchk{width:100px; height:40px;}
-#input{left :50%}
-.g-signin2 {display : inline-block; width : 300px;}
-b {font-size: 20pt;color:red;}
+*{
+	margin : 0;
+	padding : 0;
+	text-decoration: none;
+	font-family: montserrat;
+	box-sizing :border-box;
+	
+}
+
+body {
+	min-height: 100vh;
+	background-image: linear-gradient(45deg,#e66465,yellow);
+}
+
+form{
+	width : 360px;
+	background:  #f1f1f1;
+	height: 580px;
+	padding :80px 40px;
+	border-radius: 10px;
+	position : absolute;
+	text-align:center;
+	left:50%;
+	top:50%;
+	transform :translate(-50%,-50%); 
+}
+
+form  h1{
+text-align : center;
+margin-bottom :30px;
+}
+.textb{
+  border-bottom: 2px solid #adadad;
+  position: relative;
+  margin: 30px 0;
+}
+
+
+.textb input{
+  font-size: 15px;
+  color: #333;
+  border: none;
+  width: 100%;
+  outline: none;
+  background: none;
+  padding: 0 5px;
+  height: 40px;
+}
+
+.textb span::before{
+  content: attr(data-placeholder);
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  z-index: -1;
+  transition: .5s;
+}
+
+
+td.snsbtn {
+	margin : 40px 0px;
+}
+.focus+span::before{
+  top: -5px;
+}
+.focus+span::after{
+  width: 100%;
+}
+
+.logbtn{
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  background: linear-gradient(120deg,green,yellow,red);
+  background-size: 200%;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.logbtn:hover{
+  background-position: right;
+}
+b{color:red;}
+
 </style>
 
 </head>
@@ -45,59 +127,73 @@ b {font-size: 20pt;color:red;}
  %>
  
  
-
-<h1>로그인</h1>
 <div id="input">
+
+
 <form action="member.do" method="post">
-	
+	<a href="index.jsp"><img alt="로고" src="resources/logo.png" style="width:200px; height:40px;"></a>
+	<h1>로그인</h1>
 		<input type="hidden" name="command" value="login"/>
-	<table >
+	
 	
 
+		
+		<div class="textb">
+          <input type="text" name="id">
+          <span data-placeholder="아이디"></span>
+        </div>
+
+        <div class="textb">
+          <input type="password" name="pw">
+          <span data-placeholder="비밀번호"></span>
+        </div>
+        <table >
 		<tr>
-			<th>id</th>
-			<td><input type="text" name="id"></td>
 			
-		</tr>
-		<tr>
-			<th>PW</th>
-			<td> <input type="password" name="pw"></td>
-			
-		</tr>
-		<tr>
-			
-			<td colspan="2" class="err"> </td>
+			<td colspan="2" class="err" style="padding:10px 0px;"> </td>
 		</tr>
 		
 		<tr>
-			<td colspan="2"><button type="submit" class="loginbtn" >로그인</button></td>
+			<td colspan="2"><button type="submit" class="logbtn" >로그인</button></td>
 			
 		</tr>
 		<tr>
-		<td colspan="2"><div id="my-signin2"></div></td>
+		
+ 			<td colspan="2" class="snsbtn"><a href="<%=apiURL%>"><img height="50" width="300" src="resources/naver.png"/></a></td>
+		</tr>
+		<tr>
+		<td colspan="2"  class="snsbtn"><div id="my-signin2"></div></td>
  			
 		</tr>
-		<tr>
 		
- 			<td colspan="2"><a href="<%=apiURL%>"><img height="50" width="300" src="resources/naver.png"/></a></td>
-		</tr>
 		
 		
 		<tr>
 			
-			<td colspan="2" style="text-align:center;"> <a href="findidpw.jsp">id pw 찾기</a> | <a href="register.jsp">회원가입</a></td>
+			<td colspan="2" style="text-align:center; margin-top:10px;"> <a href="findidpw.jsp">아이디 패스워드 찾기</a> | <a href="register.jsp">회원가입</a></td>
 		</tr>
 		
 	</table>
 </form>
 </div>
 <script>
+      $(".textb input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".textb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+
+</script>
+<script>
 function onSuccess(googleUser) {
 
 	
 
 	var id_token = googleUser.getAuthResponse().id_token;
-    
+   
 	var redirectUrl = 'member.do?command=googlelogin';
 
     //using jquery to post data dynamically
@@ -107,6 +203,7 @@ function onSuccess(googleUser) {
                                                            '</form>');
     $('body').append(form);
     form.submit();
+    console.log(form);
   }
   function onFailure(error) {
     console.log(error);

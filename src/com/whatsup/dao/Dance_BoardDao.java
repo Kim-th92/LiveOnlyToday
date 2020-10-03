@@ -1,6 +1,7 @@
 package com.whatsup.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,11 +11,16 @@ import com.whatsup.dto.Dance_BoardDto;
 public class Dance_BoardDao extends SqlMapConfig{
 private String namespace="Dance_Boardmapper.";
 	
-	public List<Dance_BoardDto> selectList(){
+	public List<Dance_BoardDto> selectList(int startWrite,int endWrite){
 		SqlSession session=null;
 		List<Dance_BoardDto> list=new ArrayList<Dance_BoardDto>();
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("startWrite",startWrite);
+		params.put("endWrite",endWrite);
+		
 		session=getSqlSessionFactory().openSession();
-		list=session.selectList(namespace+"selectList");
+		list=session.selectList(namespace+"selectListPage",params);
 		session.close();
 		return list;
 		
@@ -41,6 +47,7 @@ private String namespace="Dance_Boardmapper.";
 		
 		return res;
 	}
+	//파일 첨부가 없는 글 수정
 	public int update(Dance_BoardDto dto) {
 		SqlSession session=null;
 		
@@ -50,6 +57,17 @@ private String namespace="Dance_Boardmapper.";
 		session.commit();
 		session.close();
 		
+		
+		return res;
+		
+	}
+	//파일 첨부가 있는 글 수정
+	public int fileupdate(Dance_BoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		session= getSqlSessionFactory().openSession(true);
+		res = session.update(namespace+"updatefile",dto);
+		session.close();
 		
 		return res;
 		
@@ -78,5 +96,36 @@ private String namespace="Dance_Boardmapper.";
 		session.close();
 		
 		return res;
+	}
+	
+	//같은이름의 파일이 있는지 확인하기 위한 메서드
+	public Dance_BoardDto selectFile(String filename) {
+		SqlSession session = null;
+		session=getSqlSessionFactory().openSession();
+		Dance_BoardDto dto = session.selectOne(namespace+"selectFile",filename);
+		session.close();
+		
+		return dto;
+	}
+	
+	//파일이 첨부한 글 업로드
+	public int insertFile(Dance_BoardDto dto) {
+		SqlSession session =null;
+		session = getSqlSessionFactory().openSession(true);
+		int res = session.insert(namespace+"insertFile", dto);
+		System.out.println(dto);
+		session.close();
+		
+		return res;
+	}
+	
+	public int totalCount() {
+		SqlSession session = null;
+		int totalcount = 0;
+		
+		session = getSqlSessionFactory().openSession();
+		totalcount = session.selectOne(namespace+"totalcount");
+		
+		return totalcount;
 	}
 }

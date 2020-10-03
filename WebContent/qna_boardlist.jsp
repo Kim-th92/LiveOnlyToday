@@ -11,6 +11,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+body {
+    background-color: #fdde60;
+}
+
+table.qna {
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    margin-left: 300px;
+    margin-top:150px;
+}
+table.qna thead {
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    background:  #79d279;
+}
+table.qna thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    font-color : black;
+    font-weight: bold;
+}
+table.qna tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #fcf1f4;
+}
+table.qna td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+
+}
+
+</style>
 <%
 	QNA_BoardDao dao = new QNA_BoardDao();
 	List<QNA_BoardDto> list = dao.selectList();
@@ -19,20 +78,17 @@
 	Timestamp ts = new Timestamp(new Date().getTime());
 	
 	String nickname = (String)session.getAttribute("nickname");
-	
-
-
-
 %>
 </head>
 <body>
 <%@ include file="./format/header.jsp" %>
 
-	<table border="1">
-		<col width="50px" />
-		<col width="100px" />
+	<table class="qna" border="1">
+		<col width="80px" />
+		<col width="150px" />
 		<col width="300px" />
 		<col width="100px" />
+		<thead>
 		<tr>
 			<th>번호</th>
 			<th>이름</th>
@@ -40,6 +96,7 @@
 			<th>날짜</th>
 			<th>답변여부</th>
 		</tr>
+		</thead>
 <%
 	if(list.size()==0){
 %>
@@ -57,26 +114,24 @@
 		
 		for (int i = 0; i < list.size(); i++) {		
 %>
-		<tr>
-			<td><%=list.get(i).getQna_no() %></td>
-			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectpage&qna_no=<%=list.get(i).getQna_no() %>"><%=list.get(i).getQna_title() %></a></td>			
-			<td><a><%=hms.format(list.get(i).getQna_regdate()) %></a></td>
-			<td align="center"><a><%=list.get(i).getQna_answer() %></a></td>
-<% 				
-
-
-%>
-		    
-		</tr>
-<%
+		<tbody>
+			<tr>
+				<td><%=list.get(i).getQna_no()%></td>
+				<td><%=list.get(i).getNickname()%></td>
+				<td><a
+					href="move.do?command=selectpage&qna_no=<%=list.get(i).getQna_no()%>"><%=list.get(i).getQna_title()%></a></td>
+				<td><a><%=hms.format(list.get(i).getQna_regdate())%></a></td>
+				<td align="center"><a><%=list.get(i).getQna_answer()%></a></td>
+			</tr>
+		
+		<%
 		}
 	}
 %>
+	    </tbody>
 		<tr>
 			<td colspan="5" align="right">
 				<input type="button" value="글작성" onclick="location.href='move.do?command=qnainsertpage'" />
-				<input type="button" value="답변달기" onclick="location.href='move.do?command=qnaonsertpage'" />
 			</td>
 		</tr>
 	</table>

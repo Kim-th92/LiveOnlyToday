@@ -10,13 +10,16 @@
 <%
 	QNA_BoardDto qna_dto=(QNA_BoardDto)request.getAttribute("dto");
     Member_BoardDto member_dto = (Member_BoardDto)session.getAttribute("login");
+    if(member_dto==null){
+		member_dto=new Member_BoardDto();
+	}
 %>
 </head>
 <body>
 	<table border="1">
 		<tr>
 			<th>이름</th>
-			<td><input type="text" name="myname" value="<%=qna_dto.getNickname() %>" readonly="readonly" /></td>
+			<td><input type="text" name="myname" value="<%=qna_dto.getNickname()%>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -28,7 +31,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea rows="10" cols="60" name="mycontent" readonly="readonly"><%=qna_dto.getQna_content() %></textarea></td>
+			<td><%=qna_dto.getQna_content() %></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
@@ -40,18 +43,26 @@
 			<%		
 				}
 			%>
-			<%
-			    if(qna_dto.getNickname() == "관리자"){
-			%>
-			    <input type="button" value="답변하기" onclick="location.href='move.do?command=qnaanswer&qna_no<%=qna_dto.getQna_no()%>'"/>
-			<%
-			    }
-			%>
-				
 				<input type="button" value="목록" onclick="location.href='move.do?command=qnaboard'"/>
 			</td>
-		</tr>
+		</tr>	
 	</table>
+	
+	<form action="board.do" method="post">
+		<input type="hidden" name="command" value="qnacommentinsert"/>
+		<input type="hidden" name="admin" value="ADMIN">
+		<input type="hidden" name="qna_no" value="<%=qna_dto.getQna_no() %>">
+		
+		<%
+			   if (member_dto.getMember_seq() == 1) {
+		%>
+		<input type="text" name="qna_comment_content"/>
+		<input type="submit" value="댓글 작성" onclick="location.href='move.do?command=qnaboard">
+		<%
+			   }
+		%>
+	</form>
+	
 <%@ include file="./format/footer.jsp" %>	
 </body>
 </html>

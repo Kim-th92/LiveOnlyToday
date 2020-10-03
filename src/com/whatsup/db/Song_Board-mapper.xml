@@ -21,4 +21,18 @@
 	<update id="view" parameterType="int">
 		UPDATE SONG_BOARD SET SONG_CNT=SONG_CNT+1 WHERE SONG_NO=#{song_no}
 	</update>
+	<select id="totalcount" resultType="int">
+		SELECT COUNT(SONG_NO) FROM SONG_BOARD
+	</select>
+	<select id="selectListPage" resultType="song_BoardDto" parameterType="hashmap">
+		<![CDATA[
+		SELECT SONG_NO, SONG_TITLE, NICKNAME, SONG_REGDATE, SONG_CNT 
+		FROM
+			(SELECT ROW_NUMBER() OVER(ORDER BY SONG_NO DESC) AS NUM, SONG_NO, SONG_TITLE, NICKNAME, SONG_REGDATE, SONG_CNT 
+			FROM SONG_BOARD SONG INNER JOIN MEMBER_BOARD MEMBER 
+			ON SONG.MEMBER_SEQ=MEMBER.MEMBER_SEQ)
+		WHERE NUM >= #{startWrite} AND NUM < #{endWrite}
+		ORDER BY NUM
+		]]>
+	</select>
 </mapper>

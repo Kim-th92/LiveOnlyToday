@@ -40,6 +40,13 @@ public class Member_BoardDto {
 		this.membership = membership;
 		this.delflag = delflag;
 	}
+	
+	public Member_BoardDto(int member_seq, String membership) {
+		this.member_seq = member_seq;
+		this.membership = membership;
+	}
+	
+	
 	public int getMember_seq() {
 		return member_seq;
 	}
