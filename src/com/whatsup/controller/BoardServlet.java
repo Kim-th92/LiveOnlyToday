@@ -362,52 +362,7 @@ public class BoardServlet extends HttpServlet {
 					jsResponse("댓글 작성 실패", "move.do?command=songselectpage&song_no="+song_no, response);
 				}
 					
-				}
-
-				//댓글작성
-			}else if(command.equals("free_comment_insert")) {
-				int free_no=Integer.parseInt(request.getParameter("free_no"));
-				int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-				String comment_content=request.getParameter("comment_content");
-				CommentDto dto=new CommentDto();
-				dto.setComment_content(comment_content);
-				dto.setFree_no(free_no);
-				dto.setMember_seq(member_seq);
-				int res=comment_dao.insertFree(dto);
-				if(res>0) {
-					jsResponse("댓글 작성", "move.do?command=freeselectpage&free_no="+free_no, response);
-				}else {
-					jsResponse("댓글 작성 실패", "move.do?command=streaminsertpage", response);
-				}
-			}else if(command.equals("dance_comment_insert")) {
-				int dance_no=Integer.parseInt(request.getParameter("dance_no"));
-				int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-				String comment_content=request.getParameter("comment_content");
-				
-				CommentDto dto=new CommentDto();
-				dto.setComment_content(comment_content);
-				dto.setDance_no(dance_no);
-				dto.setMember_seq(member_seq);
-				int res=comment_dao.insertDance(dto);
-				if(res>0) {
-					jsResponse("댓글 작성", "move.do?command=danceselectpage&dance_no="+dance_no, response);
-				}else {
-					jsResponse("댓글 작성 실패", "move.do?command=streaminsertpage", response);
-				}
-			}else if(command.equals("song_comment_insert")) {
-				int song_no=Integer.parseInt(request.getParameter("song_no"));
-				int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-				String comment_content=request.getParameter("comment_content");
-				CommentDto dto=new CommentDto();
-				dto.setComment_content(comment_content);
-				dto.setSong_no(song_no);
-				dto.setMember_seq(member_seq);
-				int res=comment_dao.insertSong(dto);
-				if(res>0) {
-					jsResponse("댓글 작성", "move.do?command=songselectpage&song_no="+song_no, response);
-				}else {
-					jsResponse("댓글 작성 실패", "move.do?command=streaminsertpage", response);
-				}
+		
 			//댓글 삭제
 			}else if(command.equals("dance_comment_delete")) {
 				int comment_no=Integer.parseInt(request.getParameter("comment_no"));

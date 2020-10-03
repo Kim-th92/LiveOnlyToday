@@ -59,13 +59,12 @@
 			<%
 				if(song_dto.getMember_seq()==member_dto.getMember_seq()){
 			%>		
-<<<<<<< HEAD
+
 				<input type="button" value="수정" onclick="location.href='move.do?command=songupdatepage&song_no=<%=song_dto.getSong_no()%>'"/>
 				<input type="button" value="삭제" onclick="location.href='move.do?command=songdelete&song_no=<%=song_dto.getSong_no()%>'"/>
-=======
-				<input class="btn btn-warning" type="button" value="수정" onclick="location.href='move.do?command=updatepage&song_no=<%=song_dto.getSong_no()%>'"/>
+		<input class="btn btn-warning" type="button" value="수정" onclick="location.href='move.do?command=updatepage&song_no=<%=song_dto.getSong_no()%>'"/>
 				<input class="btn btn-warning"class="btn btn-warning" type="button" value="삭제" onclick="location.href='move.do?command=delete&song_no=<%=song_dto.getSong_no()%>'"/>
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
+
 			<%		
 				}
 			%>

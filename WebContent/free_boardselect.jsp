@@ -61,13 +61,13 @@ table {width:80%;    line-height: 50px; margin : 50px 0px 50px 50px;}
 			<%
 				if(free_dto.getMember_seq()==member_dto.getMember_seq()){
 			%>		
-<<<<<<< HEAD
+
 				<input type="button" value="수정" onclick="location.href='move.do?command=freeupdatepage&free_no=<%=free_dto.getFree_no()%>'"/>
 				<input type="button" value="삭제" onclick="location.href='move.do?command=freedelete&free_no=<%=free_dto.getFree_no()%>'"/>
-=======
+
 				<input class="btn btn-warning" type="button" value="수정" onclick="location.href='move.do?command=updatepage&free_no=<%=free_dto.getFree_no()%>'"/>
 				<input class="btn btn-warning" type="button" value="삭제" onclick="location.href='move.do?command=delete&free_no=<%=free_dto.getFree_no()%>'"/>
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
+
 			<%		
 				}else{
 			%>

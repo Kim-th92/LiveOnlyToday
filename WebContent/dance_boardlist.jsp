@@ -107,11 +107,8 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 		<tr>
 			<td><%=list.get(i).getDance_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-<<<<<<< HEAD
-			<td><a href="move.do?command=danceselectpage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>			
-=======
 			<td><a href="move.do?command=selectdancepage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>			
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
+
 			<td><a><%=hms.format(list.get(i).getDance_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getDance_cnt() %></a></td>
 <% 				

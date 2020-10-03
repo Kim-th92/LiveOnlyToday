@@ -92,13 +92,13 @@
 				if(dance_dto.getMember_seq()==member_dto.getMember_seq()){
 				 System.out.println(dance_dto.getMember_seq() + " " + member_dto.getMember_seq());
 			%>		
-<<<<<<< HEAD
+
 				<input type="button" value="수정" onclick="location.href='move.do?command=danceupdatepage&dance_no=<%=dance_dto.getDance_no()%>'"/>
 				<input type="button" value="삭제" onclick="location.href='move.do?command=dancedelete&dance_no=<%=dance_dto.getDance_no()%>'"/>
-=======
+
 				<input type="button" class="btn btn-warning" value="수정" onclick="location.href='move.do?command=danceupdatepage&dance_no=<%=dance_dto.getDance_no()%>'"/>
 				<input type="button"  class="btn btn-warning" value="삭제" onclick="location.href='move.do?command=dancedelete&dance_no=<%=dance_dto.getDance_no()%>'"/>
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
+
 			<%		
 				}
 			%>
@@ -106,7 +106,7 @@
 				<input type="button" class="btn btn-warning" value="목록" onclick="location.href='move.do?command=danceboard&currentPage=1'"/>
 			</td>
 		</tr>
-<<<<<<< HEAD
+
 		<tr>
 			<td colspan="2" align="center">
 				--------------댓글--------------
@@ -155,7 +155,7 @@
 		<input type="text" name="comment_content"/>
 		<input type="submit" value="댓글작성" onclick="commentinsert()"/>
 	</form>
-=======
+
 		
 	</table>
 	<form action="board.do" method="post">
@@ -167,7 +167,5 @@
 	</form>
 			
 
-
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
 </body>
 </html>

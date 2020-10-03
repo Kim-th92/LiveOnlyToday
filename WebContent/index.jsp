@@ -162,19 +162,19 @@ background-clip: text;
 			</li>
 			<li><a href="move.do?command=musicselect">노래</a>
 				<ul>
-<<<<<<< HEAD
+
 					<li><a href="#">혼자 부르기 </a></li>
 
 					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
 
 				</ul></li>
-=======
+
 					<li><a href="move.do?command=musicselect">혼자 부르기 </a></li>
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
+
 
 					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
 				</ul>
-			</li>
+				<ul>
 			<li><a href="dancemain.jsp">춤</a></li>
 
 			<li><a href="move.do?command=mainboardpage">게시판</a>
@@ -198,7 +198,7 @@ background-clip: text;
 			<button class="login" onclick="location.href='./register.jsp'">
 				회원가입</button>
 		</div>
-<<<<<<< HEAD
+
 	 	<%		
 	 		}else{
 	 	%>		
@@ -227,43 +227,6 @@ background-clip: text;
 	 	<% 		
 	 		}
 		%>
-		
-		
-=======
-<%
-			} else {
-%>
-		<div id="login">
-			<span><%=dto.getNickname()%>님 반갑습니다.
-<%
-			if (dto.getGrade().equals("USER")) {
-%> 
-			<a href="mypage.jsp">마이페이지</a>
-<%
- 			} else {
- %> 
- 			<a href="admin.jsp">관리자페이지</a>
-<%
-			}
- 			if (dto.getAddr().equals("google")) {
- %>
-				<button class="login" onclick="signOut()">로그아웃</button> </span>
-<%
-			} else {
-%>
-			<button class="login"
-				onclick="location.href='member.do?command=logout'">로그아웃</button>
-			</span>
-<%
-			}
-%>
-		</div>
-<%
-		}
-%>
-
-
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
 
 	</header>
 	<section>
@@ -316,8 +279,6 @@ background-clip: text;
       });
     }
   
-<<<<<<< HEAD
-=======
   function openPopup() {
 		
 		
@@ -330,11 +291,6 @@ background-clip: text;
   	
 			
 		
-		
-		
-	
-  
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
 </script>
 	<%@include file="./format/footer.jsp"%>
 </body>

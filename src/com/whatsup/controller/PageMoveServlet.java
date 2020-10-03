@@ -154,20 +154,12 @@ public class PageMoveServlet extends HttpServlet {
          }else {
             response.sendRedirect("free_insertpage.jsp");
       }
-<<<<<<< HEAD
       //5-2.자유게시판 글 자세히 보기 페이지&댓글보여주기
-=======
-      //5-2.자유게시판 글 자세히 보기 페이지
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
       }else if(command.equals("freeselectpage")) {
          int free_no=Integer.parseInt(request.getParameter("free_no"));
          int res=free_dao.freeview(free_no);
          List<CommentDto> comment_list=comment_dao.selectFreeList(free_no);
          Free_BoardDto dto=free_dao.selectOne(free_no);
-<<<<<<< HEAD
-=======
-         List<CommentDto> comment_list=comment_dao.selectFreeList(free_no);
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
          request.setAttribute("comment_list", comment_list);
          //int res=dao.freeview(free_no);
          request.setAttribute("dto", dto);
@@ -244,25 +236,21 @@ public class PageMoveServlet extends HttpServlet {
            }
       
       //5-8.댄스게시판 글 자세히 보기 페이지
-<<<<<<< HEAD
+
       }else if(command.equals("danceselectpage")) {
-    	  System.out.println("서블릿까지옴");
-=======
-      }else if(command.equals("selectdancepage")) {
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
-         int dance_no=Integer.parseInt(request.getParameter("dance_no"));
-         
-         int res=dance_dao.danceview(dance_no);
-         Dance_BoardDto dto=dance_dao.selectOne(dance_no);
-         request.setAttribute("dto", dto);
-         dispatch("dance_boardselect.jsp", request, response);   
-      //5-9.댄스게시판 수정페이지 이동
+    	  int dance_no=Integer.parseInt(request.getParameter("dance_no"));
+          int res=dance_dao.danceview(dance_no);
+          List<CommentDto> comment_list=comment_dao.selectDanceList(dance_no);
+          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
+          request.setAttribute("comment_list", comment_list);
+          //int res=dao.danceview(dance_no);
+          request.setAttribute("dto", dto);
+
       }else if(command.equals("danceupdatepage")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
          request.setAttribute("dto", dto);
          dispatch("dance_update.jsp", request, response);
-<<<<<<< HEAD
       //5-10.댄스게시판 수정
       }else if(command.equals("danceupdateres")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
@@ -272,9 +260,7 @@ public class PageMoveServlet extends HttpServlet {
          dto.setDance_no(dance_no);
          request.setAttribute("dto", dto);
          dispatch("board.do?command=dance_update", request, response);
-=======
      //댄스게시판 수정은 boardservlet에서
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
       //5-11.댄스 게시판 삭제
       }else if(command.equals("dancedelete")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
@@ -325,11 +311,13 @@ public class PageMoveServlet extends HttpServlet {
       }
       //5-14.노래게시판 글 자세히 보기 페이지
       }else if(command.equals("songselectpage")) {
-         int song_no=Integer.parseInt(request.getParameter("song_no"));
-         int res=song_dao.songview(song_no);
-         Song_BoardDto dto=song_dao.selectOne(song_no);
-         request.setAttribute("dto", dto);
-         dispatch("song_boardselect.jsp", request, response);   
+    	  int song_no=Integer.parseInt(request.getParameter("song_no"));
+          int res=song_dao.songview(song_no);
+          List<CommentDto> comment_list=comment_dao.selectSongList(song_no);
+          Song_BoardDto dto=song_dao.selectOne(song_no);
+          request.setAttribute("comment_list", comment_list);
+          //int res=dao.songview(song_no);
+          request.setAttribute("dto", dto);
       //5-15.노래게시판 수정페이지 이동
       }else if(command.equals("songupdatepage")) {
          int song_no=Integer.parseInt(request.getParameter("song_no"));
