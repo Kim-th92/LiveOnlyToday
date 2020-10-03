@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-select{width:150px; padding:5px; border:1px solid #dedede} 
+select{width:150px; padding:5px; border:1px solid #dedede;padding:7px; vertical-align:middle;} 
 input:read-only{background-color:#dedede} /* read-only style */
-select{padding:7px; vertical-align:middle}
+select{padding:7px; vertical-align:middle;}
 th{text-align: left;}
 *{
 	margin : 0;
