@@ -392,6 +392,7 @@ public class BoardServlet extends HttpServlet {
 					jsResponse("댓글 삭제 실패", "move.do?command=songselectpage&song_no="+song_no, response);
 				}
 			}
+			}
 	
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
 		String result = "<script> alert(\"" + msg + "\"); location.href=\""+url+"\"; </script> ";

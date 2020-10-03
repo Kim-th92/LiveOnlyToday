@@ -20,11 +20,10 @@ import com.whatsup.dao.MusicListDao;
 import com.whatsup.dao.QNA_BoardDao;
 import com.whatsup.dao.QNA_CommentDao;
 import com.whatsup.dao.Song_BoardDao;
-<<<<<<< HEAD
+
 import com.whatsup.dao.Stream_BoardDao;
 import com.whatsup.dto.ChatingListDto;
-=======
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
+
 import com.whatsup.dto.CommentDto;
 import com.whatsup.dto.Dance_BoardDto;
 import com.whatsup.dto.Free_BoardDto;

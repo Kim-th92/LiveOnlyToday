@@ -75,9 +75,6 @@ public class KakaopayServlet extends HttpServlet {
 		       */
 					
 			}	
-<<<<<<< HEAD
-=======
-
 
 			
 		}else if("kakaopaysong".equals(command)) {
@@ -137,7 +134,6 @@ public class KakaopayServlet extends HttpServlet {
 			}
 			
 
->>>>>>> c01da516f5df146767fbb084dd4008048e677f93
 		}
 
 	}
