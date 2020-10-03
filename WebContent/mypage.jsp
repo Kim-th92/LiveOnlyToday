@@ -43,7 +43,7 @@ $(document).ready(function(){
 	
 body {
 	background-color: #fdde60;
-	font-family: 'Do Hyeon', sans-serif;
+	
 }
 
 h1 {
@@ -55,7 +55,7 @@ h1 {
 	top: 150px;
 	left: 15%;
 }
-
+#section{font-family: 'Do Hyeon', sans-serif;}
 
 #modifyprofile{
 	position: absolute;

@@ -47,6 +47,16 @@ public class Member_BoardDao extends SqlMapConfig {
 		return dto;
 	}
 	
+	//업데이트
+	public int profileupdate(Member_BoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		session = getSqlSessionFactory().openSession(true);
+		res = session.update(namespace+"profileupdate",dto);
+		session.close();
+		
+		return res;
+	}
 	
 	//로그인
 	public Member_BoardDto login(String id,String pw) {

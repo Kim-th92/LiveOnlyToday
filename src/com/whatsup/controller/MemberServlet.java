@@ -245,8 +245,42 @@ public class MemberServlet extends HttpServlet {
 	        }
 	    
 				
+		}	
+		
+		//프로필 업데이트
+		else if("profileupdate".equals(command)) {
+			int member_seq = Integer.parseInt(request.getParameter("seq"));
+			String nickname = request.getParameter("nickname");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String addr = request.getParameter("addr");
+			String birthyear = request.getParameter("birthyear");
+			String birthmonth = request.getParameter("birthmonth");
+			String birthdate = request.getParameter("birthdate");
+			String birthday = birthyear+"-"+birthmonth+"-"+birthdate;
+			String email1 = request.getParameter("email11");
+			String email2 = request.getParameter("email22");
+			System.out.println(email2);
+			String email = email1+"@"+email2;
 			
-		}else if("naverlogin".equals(command)) {
+			Member_BoardDto dto = new Member_BoardDto();
+			dto.setMember_seq(member_seq);
+			dto.setNickname(nickname);
+			dto.setName(name);
+			dto.setPhone(phone);
+			dto.setAddr(addr);
+			dto.setBirthday(birthday);
+			dto.setEmail(email);
+			System.out.println(dto);
+			int res  = dao.profileupdate(dto);
+			if(res>0) {
+				jsResponse("프로필 수정 성공","veiwprofile.jsp", response);
+			}else {
+				jsResponse("프로필수정 실패","profileupdate.jsp", response);
+			}
+		}
+		//네이버 로그인
+		else if("naverlogin".equals(command)) {
 			String clientId = "bGlgaATXhrDCX6ib_fDu";//애플리케이션 클라이언트 아이디값";
 		    String clientSecret = "bTuB3yx5Mn";//애플리케이션 클라이언트 시크릿값";
 		    String code = request.getParameter("code");
