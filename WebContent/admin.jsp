@@ -20,20 +20,23 @@ h1 {
 	position: absolute;
 	left: 45%;
 }
-.csmain{
+.admin{
     width: 90%;
-    margin: 10px auto;
+    
 }
 
-.cs {
-    float: left;
+#adminview {
+    
     width: 50%;
-    margin: 10px;
+    margin-bottom: 8000px;
+    margin-left: 100px;
+    margin-right: 20px;
     }
 
-.adminchat {
-    float: right;
-    width: 50%;
+#qnaboard {
+    margin-top: 90px;
+    margin-left:100px;
+    width: 20%;
       
 }
 
@@ -45,18 +48,16 @@ h1 {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 16px; 
   transition-duration: 0.4s;
   cursor: pointer;
- 
+  
 }
 
 .button1 {
   border-radius: 12px;
   color: black; 
   font-family: 'Do Hyeon', sans-serif;
- 
 }
 
 .button1:hover {
@@ -102,7 +103,7 @@ if (member_dto == null) {
 
 				<button onclick="location.href='move.do?command=adminview'"
 					class="button button1"><br/>
-					회원 전체 조회<br/><i class="fas fa-address-book fa-7x"></i>
+					회원 전체 조회<br/><i class="fas fa-address-book fa-8x"></i>
 				</button>
 			</h2>
 		</div>
@@ -112,7 +113,7 @@ if (member_dto == null) {
 
 				<button onclick="location.href='move.do?command=qnaboard'"
 					class="button button2"><br/>
-					문의내역 전체 보기<br/><i class="far fa-question-circle fa-7x"></i>
+					문의내역 전체 보기<br/><i class="far fa-question-circle fa-8x"></i>
 				</button>
 			</h2>
 		</div>

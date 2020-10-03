@@ -25,8 +25,6 @@ DROP TABLE QNA_COMMENT_TABLE
 
 DROP TABLE MUSICLIST_TABLE;
 DROP TABLE CHATINGIST_TABLE;
-
-
 DROP TABLE DANCEADMIN_TABLE;
 DROP TABLE MUSICLIST_TABLE;
 DROP TABLE CHATINGIST_TABLE;
@@ -46,6 +44,7 @@ CREATE SEQUENCE CHATINGLIST_SEQ;
 CREATE SEQUENCE QNA_COMMENT_SEQ;
 
 SELECT COUNT(SONG_NO) FROM SONG_BOARD;
+select * from qna_board order by qna_no desc;
 select * from member_board;
 select pw from member_board where name = '최서원' and email = 'tlwj321@naver.com';
 update member_board set pw =1234 where name='최서원'and email='tlwj321@naver.com'
@@ -210,7 +209,10 @@ SELECT MUSIC_NO,MUSIC_NAME,MUSIC_ARTIST FROM MUSICLIST_TABLE
 
 SELECT * FROM STREAM_BOARD
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> cbb3f8ad6e35d858bc1cf90403c898e2ab9ebb55
 INSERT INTO STREAM_BOARD VALUES(STREAM_SEQ.NEXTVAL,'테스트 방송',3);
 
 select * from DANCE_BOARD;
