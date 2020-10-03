@@ -52,10 +52,6 @@ public class KakaopayServlet extends HttpServlet {
 		       out.println("</body></html>");
 					
 			}	
-		
-		
-		}else if() {
-			
 		}
 
 	}

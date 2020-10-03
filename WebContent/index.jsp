@@ -75,11 +75,9 @@ footer{}
 			<li><a href="move.do?command=musicselect">노래</a>
 				<ul>
 					<li><a href="#">혼자 부르기 </a></li>
-<<<<<<< HEAD
+
 					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
-=======
-					<li><a href="#">ON-AIR </a></li>
->>>>>>> b8c7acaea8cdc9ce742cd1fe107f9fe4a0f54ce7
+
 				</ul></li>
 
 			<li><a href="dancemain.jsp">춤</a></li>
@@ -135,9 +133,7 @@ footer{}
 	 		<button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button> </span>
 	 		<% 	
 	 		}
-	 		%>
-	 		
-	 		
+	 		%>	
 	 	</div>
 	 	<% 		
 	 		}
@@ -190,15 +186,6 @@ footer{}
         gapi.auth2.init();
       });
     }
-  
-  
-
-  		  
-  
-  
-
-  
-  
   
 </script>
 <%@include file="./format/footer.jsp" %> 
