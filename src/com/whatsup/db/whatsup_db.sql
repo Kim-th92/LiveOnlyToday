@@ -213,7 +213,7 @@ SELECT * FROM STREAM_BOARD
 
 INSERT INTO STREAM_BOARD VALUES(STREAM_SEQ.NEXTVAL,'테스트 방송',3);
 
-
+select * from DANCE_BOARD;
 SELECT * FROM MEMBER_BOARD;
 
 update member_board set delflag ='N' where member_seq =32;

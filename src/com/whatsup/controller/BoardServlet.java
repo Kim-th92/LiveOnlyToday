@@ -72,14 +72,13 @@ public class BoardServlet extends HttpServlet {
 		ServletContext context = getServletContext();
 		
 		String uploadPath = context.getRealPath(fileSavePath);
-		System.out.println(uploadPath);
 		  File isDir = new File(uploadPath);
 
 		    
 
 		    if(!isDir.isDirectory()){
 
-		    	System.out.println("디렉토리가 없습니다. 디렉토리를 새로 생성합니다.");
+		 
 
 		    	isDir.mkdir();
 
@@ -232,17 +231,30 @@ public class BoardServlet extends HttpServlet {
 					
 			
 		
-		
 	
-		}else if(command.equals("dance_update")) {
-			Dance_BoardDto dto=(Dance_BoardDto)request.getAttribute("dto");
+	
+		} //5-10.댄스게시판 수정
+		else if(command.equals("danceupdateres")) {
+			int dance_no=Integer.parseInt(request.getParameter("dance_no"));
+			String dance_title=request.getParameter("dance_title");
+			String dance_content=request.getParameter("dance_content");
+			Dance_BoardDto dto=new Dance_BoardDto(dance_title, dance_content);
+			dto.setDance_no(dance_no);
 			
-			int res=dance_dao.update(dto);
+			int res = dance_dao.update(dto);
 			if(res>0) {
 				jsResponse("수정 성공", "move.do?command=danceselectpage&dance_no="+dto.getDance_no(), response);
 			}else {
 				jsResponse("수정 실패", "move.do?command=danceupdatepage&dance_no="+dto.getDance_no(), response);
 			}
+			
+			//dispatch("board.do?command=dance_update", request, response);
+		//댄스 게시판 수정 파일 업로드 없이.
+    	}else if(command.equals("dance_update")) {
+			Dance_BoardDto dto=(Dance_BoardDto)request.getAttribute("dto");
+			
+			
+			
 		}else if(command.equals("dance_delete")) {
 			int dance_no=Integer.parseInt(request.getParameter("dance_no"));
 			int res=dance_dao.delete(dance_no);

@@ -25,13 +25,15 @@ div.wrapper{
 }
 button {
 	
-}
-
+}h4>a{
+translate : .5s;}
 h4>a:hover {
 	color:darkorange;
+	
 }
 h4>a:hover i{
 	margin-left:30px;
+	translate : 0.5s;
 }
 .dance-card {
 	font-size:16pt;

@@ -241,15 +241,7 @@ public class PageMoveServlet extends HttpServlet {
          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
          request.setAttribute("dto", dto);
          dispatch("dance_update.jsp", request, response);
-      //5-10.댄스게시판 수정
-      }else if(command.equals("danceupdateres")) {
-         int dance_no=Integer.parseInt(request.getParameter("dance_no"));
-         String dance_title=request.getParameter("dance_title");
-         String dance_content=request.getParameter("dance_content");
-         Dance_BoardDto dto=new Dance_BoardDto(dance_title, dance_content);
-         dto.setDance_no(dance_no);
-         request.setAttribute("dto", dto);
-         dispatch("board.do?command=dance_update", request, response);
+     //댄스게시판 수정은 boardservlet에서
       //5-11.댄스 게시판 삭제
       }else if(command.equals("dancedelete")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));

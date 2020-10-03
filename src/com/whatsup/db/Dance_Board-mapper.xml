@@ -21,6 +21,10 @@
 	<update id="update" parameterType="dance_BoardDto">
 		UPDATE DANCE_BOARD SET DANCE_TITLE=#{dance_title},DANCE_CONTENT=#{dance_content} WHERE DANCE_NO=#{dance_no}
 	</update>
+	<update id ="updatefile" parameterType="dance_BoardDto">
+		 UPDATE DANCE_BOARD SET DANCE_TITLE=#{dance_title},DANCE_CONTENT=#{dance_content},DANCEFNAME=#{dancefname},DANCEREALFNAME=#{dancerealfname},DANCEREALPATH=#{dancerealpath}  WHERE DANCE_NO=#{dance_no} 
+		
+	</update>
 	<delete id="delete" parameterType="int">
 		DELETE FROM DANCE_BOARD WHERE DANCE_NO=#{dance_no}
 	</delete>

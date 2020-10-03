@@ -185,7 +185,7 @@
 	function closeWin() {
 		
 		document.getElementById("musicview").style.display = "none";
-		document.body.style.background = "white";
+		document.body.style.background = "#fdde60";
 		player.pause();
 		$("#subtitleview").html("");
 	}

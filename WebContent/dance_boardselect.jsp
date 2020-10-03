@@ -77,7 +77,9 @@
 		<tr>
 			<td colspan="2" align="right">
 			<%
+			 System.out.println(dance_dto.getMember_seq() + " " + member_dto.getMember_seq());
 				if(dance_dto.getMember_seq()==member_dto.getMember_seq()){
+				 System.out.println(dance_dto.getMember_seq() + " " + member_dto.getMember_seq());
 			%>		
 				<input type="button" class="btn btn-warning" value="수정" onclick="location.href='move.do?command=danceupdatepage&dance_no=<%=dance_dto.getDance_no()%>'"/>
 				<input type="button"  class="btn btn-warning" value="삭제" onclick="location.href='move.do?command=dancedelete&dance_no=<%=dance_dto.getDance_no()%>'"/>

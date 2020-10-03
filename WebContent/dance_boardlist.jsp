@@ -96,9 +96,7 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 			<td colspan="5" align="center">
 				<a>작성된 글이 없습니다</a>
 			</td>
-		</tr>	
-		
-		
+		</tr>		
 <%
 	}
 
