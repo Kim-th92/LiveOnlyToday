@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Song_Boardmapper">
+	<select id="selectList" resultType="song_BoardDto">
+		SELECT SONG.SONG_NO,SONG.SONG_TITLE,MEMBER.NICKNAME,SONG.SONG_REGDATE,SONG_CNT FROM SONG_BOARD SONG INNER JOIN MEMBER_BOARD MEMBER ON SONG.MEMBER_SEQ=MEMBER.MEMBER_SEQ
+	</select>
+	<select id="selectOne" resultType="song_BoardDto" parameterType="int">
+		SELECT SONG.SONG_NO ,SONG.SONG_TITLE,SONG.SONG_CONTENT,MEMBER.NICKNAME,SONG.SONG_REGDATE,SONG_CNT FROM SONG_BOARD SONG INNER JOIN MEMBER_BOARD MEMBER ON SONG.MEMBER_SEQ=MEMBER.MEMBER_SEQ WHERE SONG_NO=#{song_no}
+	</select>
+	<insert id="insert" parameterType="song_BoardDto">
+		INSERT INTO SONG_BOARD VALUES(SONG_SEQ.NEXTVAL,#{song_title},#{song_content},SYSDATE,0,#{member_seq})
+	</insert>
+	<update id="update" parameterType="song_BoardDto">
+		UPDATE SONG_BOARD SET SONG_TITLE=#{song_title},SONG_CONTENT=#{song_content} WHERE SONG_NO=#{song_no}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM SONG_BOARD WHERE SONG_NO=#{song_no}
+	</delete>
+	<update id="view" parameterType="int">
+		UPDATE SONG_BOARD SET SONG_CNT=SONG_CNT+1 WHERE SONG_NO=#{song_no}
+	</update>
+	<select id="totalcount" resultType="int">
+		SELECT COUNT(SONG_NO) FROM SONG_BOARD
+	</select>
+	<select id="selectListPage" resultType="song_BoardDto" parameterType="hashmap">
+		<![CDATA[
+		SELECT SONG_NO, SONG_TITLE, NICKNAME, SONG_REGDATE, SONG_CNT 
+		FROM
+			(SELECT ROW_NUMBER() OVER(ORDER BY SONG_NO DESC) AS NUM, SONG_NO, SONG_TITLE, NICKNAME, SONG_REGDATE, SONG_CNT 
+			FROM SONG_BOARD SONG INNER JOIN MEMBER_BOARD MEMBER 
+			ON SONG.MEMBER_SEQ=MEMBER.MEMBER_SEQ)
+		WHERE NUM >= #{startWrite} AND NUM < #{endWrite}
+		ORDER BY NUM
+		]]>
+	</select>
+</mapper>
