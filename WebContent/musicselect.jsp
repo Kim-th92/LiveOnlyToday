@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/musicselect.css">
 <title>Insert title here</title>
 <%
 	List<MusicListDto> musiclist=(List<MusicListDto>)request.getAttribute("musiclist");
@@ -37,41 +38,55 @@
 </head>
 <body>
 <%@ include file="./format/header.jsp" %>
+	<div class="musicimg">
+	  
+	<img style="float: left; height: 400px; position: absolute; top: 330px; left: 30px;" class="big" alt="" src="resources/img/music01.png"/>
+	<img style="position: absolute; height: 150px; top:600px; left:220px; transform:rotate(20deg)" class="small" alt="" src="resources/img/music02.png"/> 
+	<img style="position: absolute; height: 150px; widows: 250px; transform:rotate(-20deg); bottom: 120px; left: 1520px; padding: 0px; margin: 0px;' " src="resources/img/music03.png">
+	
+	</div>
 	<h1>노래방</h1><h3>하고 싶은 노래 선택해 주세요~</h3>
-	<table  border="1">
+	<table class="table" border="1">
 		<col width="50"/>
 		<col width="300"/>
 		<col width="200"/>
+		<thead>
 		<tr>
-			<th>번호</th>
+			<th class="number">번호</th>
 			<th>노래 제목</th>
 			<th>가수</th>
 			
 		</tr>
+		</thead>
+		<tbody>
 	<%
 		for(int i=0;i<musiclist.size();i++){
 	%>		
 			<tr>
-				<td><%=musiclist.get(i).getMusic_no() %></td>
+				<td class="number"><%=musiclist.get(i).getMusic_no() %></td>
 				
-				<td><a class="musicname"><%=musiclist.get(i).getMusic_name() %></a></td>
-				<td><%=musiclist.get(i).getMusic_artist() %></td>
+				<td class="td01"><a class="musicname"><%=musiclist.get(i).getMusic_name() %></a></td>
+				<td class="td01"><%=musiclist.get(i).getMusic_artist() %></td>
 			</tr>
 			
 	<%		
 		}
 	%>
-		<tr>
-			<td colspan="3">
-				<input type="button" onclick="location.href='move.do?command=musicinsert'" value="노래생성">
-			</td>
-		</tr>
-	</table>
-	<form action="move.do" method="post">
+		</tbody>
+		</table><br/>
+			
+				<button class="musicinsert" onclick="location.href='move.do?command=musicinsert'" >노래생성</button>
+		
+		
+		
+	
+	<form action="move.do" method="post" class="search">
 		<input type="hidden" name="command" value="musicsearch"/>
 		<input type="text" name="music_name"/>
 		<input type="submit" value="검색">
 	</form>
+	
+	
 	<div id="musicview">
 		<audio controls="controls" id="player">
 			<track src="" kind="attribute" srclang="kr" label="기본한국어" default id="subtitle"/>
