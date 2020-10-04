@@ -77,7 +77,7 @@ if(member_dto == null){
 		</p>
 	</div>
 		
-
+	<iframe src="resources/img/danceModel/DanceMonkey01.gif" frameborder="0" scrolling="no" width="1000px" height="1000px" style="zoom: 100%"></iframe>
 <% 			
 		if(member_dto.getGrade() == null || member_dto == null){
 %>

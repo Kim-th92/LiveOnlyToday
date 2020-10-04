@@ -23,7 +23,7 @@ table.qna {
     text-align: center;
     line-height: 1.5;
     border: 1px solid #ccc;
-    margin-left: 300px;
+    margin-left: 1.5%;
     margin-top:150px;
 }
 table.qna thead {
@@ -177,6 +177,6 @@ input[type="button"]{
 			</td>
 		</tr>
 	</table>
-<%-- <%@ include file="./format/footer.jsp" %>	 --%>
+<%@ include file="./format/footer.jsp" %>	
 </body>
 </html>
