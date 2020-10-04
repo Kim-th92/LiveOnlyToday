@@ -133,7 +133,7 @@ public class BoardServlet extends HttpServlet {
 				jsResponse("수정 실패", "move.do?command=freeupdatepage&free_no=" + dto.getFree_no(), response);
 			}
 		} else if (command.equals("free_delete")) {
-			int free_no = Integer.parseInt(request.getParameter("free_no"));
+			int free_no = Integer.parseInt(multi.getParameter("free_no"));
 			int res = free_dao.delete(free_no);
 			if (res > 0) {
 				jsResponse("삭제 성공", "move.do?command=freeboard&currentPage=1", response);
@@ -181,7 +181,7 @@ public class BoardServlet extends HttpServlet {
 				jsResponse("수정 실패", "move.do?command=songupdatepage&song_no=" + dto.getSong_no(), response);
 			}
 		} else if (command.equals("song_delete")) {
-			int song_no = Integer.parseInt(request.getParameter("song_no"));
+			int song_no = Integer.parseInt(multi.getParameter("song_no"));
 			int res = song_dao.delete(song_no);
 			if (res > 0) {
 				jsResponse("삭제 성공", "move.do?command=songboard&currentPage=1", response);
@@ -326,7 +326,7 @@ public class BoardServlet extends HttpServlet {
 			}
 			
 		} else if (command.equals("dance_delete")) {
-			int dance_no = Integer.parseInt(request.getParameter("dance_no"));
+			int dance_no = Integer.parseInt(multi.getParameter("dance_no"));
 			int res = dance_dao.delete(dance_no);
 			if (res > 0) {
 				jsResponse("삭제 성공", "move.do?command=danceboard&currentPage=1", response);
@@ -456,77 +456,15 @@ public class BoardServlet extends HttpServlet {
 			} else {
 				jsResponse("댓글 작성 실패", "move.do?command=songselectpage&song_no="+song_no, response);
 			}
-
-		}
-		//댓글 삭제
-		else if(command.equals("dance_comment_delete")) {
-			int comment_no=Integer.parseInt(multi.getParameter("comment_no"));
-			int res=comment_dao.delete(comment_no);
-			int dance_no=Integer.parseInt(multi.getParameter("dance_no"));
-			if(res>0) {
-				jsResponse("댓글 삭제", "move.do?command=danceselectpage&dance_no="+dance_no, response);
-			}else {
-				jsResponse("댓글 삭제 실패", "move.do?command=danceselectpage&dance_no="+dance_no, response);
-			}
-				}
-				else if(command.equals("dancecommentinsert")) {
-					String comment_content=request.getParameter("comment_content");
-					int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-					int dance_no=Integer.parseInt(request.getParameter("dance_no"));
-					CommentDto comment_dto=new CommentDto();
-					comment_dto.setMember_seq(member_seq);
-					comment_dto.setComment_content(comment_content);
-					comment_dto.setDance_no(dance_no);
-					int res=comment_dao.insertDance(comment_dto);
-					if(res>0) {
-						jsResponse("댓글 작성 성공", "move.do?command=danceselectpage&dance_no="+dance_no, response);
-					}else {
-						jsResponse("댓글 작성 실패", "move.do?command=danceselectpage&dance_no="+dance_no, response);
-					}
-					
-				}else if(command.equals("songcommentinsert")) {
-					String comment_content=request.getParameter("comment_content");
-					int member_seq=Integer.parseInt(request.getParameter("member_seq"));
-					int song_no=Integer.parseInt(request.getParameter("song_no"));
-					CommentDto comment_dto=new CommentDto();
-					comment_dto.setMember_seq(member_seq);
-					comment_dto.setComment_content(comment_content);
-					comment_dto.setSong_no(song_no);
-					int res=comment_dao.insertSong(comment_dto);
-				if(res>0) {
-					jsResponse("댓글 작성 성공", "move.do?command=songselectpage&song_no="+song_no, response);
-				}else {
-					jsResponse("댓글 작성 실패", "move.do?command=songselectpage&song_no="+song_no, response);
-				}
-					
-		
 			//댓글 삭제
 			}else if(command.equals("dance_comment_delete")) {
-				int comment_no=Integer.parseInt(request.getParameter("comment_no"));
+				int comment_no=Integer.parseInt(multi.getParameter("comment_no"));
 				int res=comment_dao.delete(comment_no);
-				int dance_no=Integer.parseInt(request.getParameter("dance_no"));
+				int dance_no=Integer.parseInt(multi.getParameter("dance_no"));
 				if(res>0) {
 					jsResponse("댓글 삭제", "move.do?command=danceselectpage&dance_no="+dance_no, response);
 				}else {
 					jsResponse("댓글 삭제 실패", "move.do?command=danceselectpage&dance_no="+dance_no, response);
-				}
-			}else if(command.equals("free_comment_delete")) {
-				int comment_no=Integer.parseInt(request.getParameter("comment_no"));
-				int res=comment_dao.delete(comment_no);
-				int free_no=Integer.parseInt(request.getParameter("free_no"));
-				if(res>0) {
-					jsResponse("댓글 삭제", "move.do?command=freeselectpage&free_no="+free_no, response);
-				}else {
-					jsResponse("댓글 삭제 실패", "move.do?command=freeselectpage&free_no="+free_no, response);
-				}
-			}else if(command.equals("song_comment_delete")) {
-				int comment_no=Integer.parseInt(request.getParameter("comment_no"));
-				int res=comment_dao.delete(comment_no);
-				int song_no=Integer.parseInt(request.getParameter("song_no"));
-				if(res>0) {
-					jsResponse("댓글 삭제", "move.do?command=songselectpage&song_no="+song_no, response);
-				}else {
-					jsResponse("댓글 삭제 실패", "move.do?command=songselectpage&song_no="+song_no, response);
 				}
 			}else if(command.equals("free_comment_delete")) {
 				int comment_no=Integer.parseInt(multi.getParameter("comment_no"));

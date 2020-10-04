@@ -13,8 +13,8 @@
 		top: 20%;
 		left: 50%;
 	}
-	#a{margin-left: -600px;}
-	#label-container{margin-left: 200%;}
+	#a{margin-left: -500px;}
+	#label-container{margin-top: -3%;}
 </style>
 </head>
 <body>
@@ -74,9 +74,9 @@
         const prediction = await model.predict(posenetOutput);
 		
         if(prediction[0].className == "Up" && prediction[0].probability.toFixed(2) == 1.00 ) {
-        	labelContainer.childNodes[0].innerHTML = "<img art='feee' src='./resources/img/danceModel/monkeyStep01.png'/>"
+        	labelContainer.childNodes[0].innerHTML = "<img alt='feee' src='./resources/img/danceModel/monkeyStep01.png'/>"
 		} else if(prediction[1].className == "Down" && prediction[1].probability.toFixed(2) == 1.00 ) {
-			labelContainer.childNodes[0].innerHTML = "<img art='fdsf' src='./resources/img/danceModel/monkeyStep01_01.png'/>"
+			labelContainer.childNodes[0].innerHTML = "<img alt='fdsf' src='./resources/img/danceModel/monkeyStep01_01.png'/>"
 		}
 
         // finally draw the poses
