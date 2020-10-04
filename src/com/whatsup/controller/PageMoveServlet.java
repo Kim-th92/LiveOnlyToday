@@ -33,8 +33,8 @@ import com.whatsup.util.PageNavigator;
 @WebServlet("/move.do")
 public class PageMoveServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
-   int countPerPage = 5;
-   int pagePerGroup = 4;    
+   int countPerPage = 10;
+   int pagePerGroup = 5;    
     
    public PageMoveServlet() {
 
@@ -61,7 +61,7 @@ public class PageMoveServlet extends HttpServlet {
       Member_BoardDao dao=new Member_BoardDao();
       CommentDao comment_dao=new CommentDao();
       QNA_CommentDao qna_comment_dao = new QNA_CommentDao();
-
+     
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -155,7 +155,6 @@ public class PageMoveServlet extends HttpServlet {
          Free_BoardDto dto=free_dao.selectOne(free_no);
          List<CommentDto> comment_list=comment_dao.selectFreeList(free_no);
          request.setAttribute("comment_list", comment_list);
-         //int res=dao.freeview(free_no);
          request.setAttribute("dto", dto);
          dispatch("free_boardselect.jsp", request, response);   
       //5-3.자유게시판 수정페이지 이동
@@ -226,6 +225,8 @@ public class PageMoveServlet extends HttpServlet {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          int res=dance_dao.danceview(dance_no);
          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
+         List<CommentDto> comment_list = comment_dao.selectDanceList(dance_no);
+         request.setAttribute("comment_list", comment_list);
          request.setAttribute("dto", dto);
          dispatch("dance_boardselect.jsp", request, response);   
       //5-9.댄스게시판 수정페이지 이동
@@ -234,7 +235,7 @@ public class PageMoveServlet extends HttpServlet {
          Dance_BoardDto dto=dance_dao.selectOne(dance_no);
          request.setAttribute("dto", dto);
          dispatch("dance_update.jsp", request, response);
-      //5-10.댄스게시판 수정
+      //5-10.댄스게시판 수정(dance_update.jsp에서 board.do로 바로 이동)
       }else if(command.equals("danceupdateres")) {
          int dance_no=Integer.parseInt(request.getParameter("dance_no"));
          String dance_title=request.getParameter("dance_title");
@@ -296,7 +297,9 @@ public class PageMoveServlet extends HttpServlet {
          int song_no=Integer.parseInt(request.getParameter("song_no"));
          int res=song_dao.songview(song_no);
          Song_BoardDto dto=song_dao.selectOne(song_no);
+         List<CommentDto> comment_list=comment_dao.selectSongList(song_no);
          request.setAttribute("dto", dto);
+         request.setAttribute("comment_list", comment_list);
          dispatch("song_boardselect.jsp", request, response);   
       //5-15.노래게시판 수정페이지 이동
       }else if(command.equals("songupdatepage")) {
@@ -304,7 +307,7 @@ public class PageMoveServlet extends HttpServlet {
          Song_BoardDto dto=song_dao.selectOne(song_no);
          request.setAttribute("dto", dto);
          dispatch("song_update.jsp", request, response);
-      //5-16.노래게시판 수정
+      //5-16.노래게시판 수정 board.do로 바로이동
       }else if(command.equals("songupdateres")) {
          int song_no=Integer.parseInt(request.getParameter("song_no"));
          String song_title=request.getParameter("song_title");
@@ -321,12 +324,42 @@ public class PageMoveServlet extends HttpServlet {
 
      	//6.문의게시판 보기
 		}else if(command.equals("qnaboard")) {
-			response.sendRedirect("qna_boardlist.jsp");
+			int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	    	  PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, currentPage, song_dao.totalCount());
+	    	 
+	    	  if(currentPage < 1) {
+	    		  currentPage = 1;
+	    	  }
+	    	  int currentGroup = (currentPage - 1) / pagePerGroup;
+	    	  int startPageGroup = currentGroup * pagePerGroup + 1;
+	    	  if(startPageGroup < 1) {
+	    		  startPageGroup = 1;
+	    	  } 
+	    	  int endPageGroup = startPageGroup + pagePerGroup - 1;
+	    	  int totalPageCount = (qna_dao.totalCount() + countPerPage - 1) / countPerPage;
+	    	  
+	    	  if(endPageGroup >= totalPageCount) {
+	    		  endPageGroup = totalPageCount;
+	    	  } 
+	    	  
+	    	  int startWrite = (countPerPage*(currentPage-1)) + 1;
+	    	  int endWrite = startWrite + countPerPage;
+	    	  
+	    	  request.setAttribute("navi", navi);
+	    	  request.setAttribute("startPage", startPageGroup);
+	    	  request.setAttribute("endPage", endPageGroup);
+	    	  request.setAttribute("totalPageCount", totalPageCount);
+	    	  
+	    	  request.setAttribute("startWrite", startWrite);
+	    	  request.setAttribute("endWrite", endWrite);
+	    	  
+	    	  dispatch("qna_boardlist.jsp", request, response);
+//			response.sendRedirect("qna_boardlist.jsp");
 
 		// 6-1. 문의게시판 글쓰기
 		} else if (command.equals("qnainsertpage")) {
 			if (session.getAttribute("login") == null) {
-				jsResponse("먼저 로그인을 해 주세요", "move.do?command=qnaboard", response);
+				jsResponse("먼저 로그인을 해 주세요", "move.do?command=qnaboard&currentPage=1", response);
 			} else {
 				response.sendRedirect("qna_insertpage.jsp");
 			}
@@ -344,7 +377,7 @@ public class PageMoveServlet extends HttpServlet {
 			QNA_BoardDto dto = qna_dao.selectOne(qna_no);
 			request.setAttribute("dto", dto);
 			dispatch("qna_update.jsp", request, response);
-		// 6-4.문의게시판 수정
+		// 6-4.문의게시판 수정  board.do로 이동  updateres로 안옴
 		} else if (command.equals("updateres")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 			String qna_title = request.getParameter("qna_title");
@@ -415,13 +448,15 @@ public class PageMoveServlet extends HttpServlet {
           request.setAttribute("member_list", member_list);
           dispatch("adminview.jsp", request, response);
       //13-2.문의게시판
-      }else if(command.equals("qnaboard")) {
-    	  response.sendRedirect("qna_boardlist.jsp");
-      } else if (command.equals("selectpage")) {
+//      }else if(command.equals("qnaboard")) {
+//    	  response.sendRedirect("qna_boardlist.jsp");
+      } else if (command.equals("selectpageBasics")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 			int res = qna_dao.qnaview(qna_no);
 			QNA_BoardDto dto = qna_dao.selectOne(qna_no);
+			List<QNA_CommentDto> qna_comment_list = qna_comment_dao.selectFreeList(qna_no);
 			request.setAttribute("dto", dto);
+			request.setAttribute("qna_comment_list", qna_comment_list);
 			dispatch("qna_boardselect.jsp", request, response);
     	//13-3.결제내역 확인  
           

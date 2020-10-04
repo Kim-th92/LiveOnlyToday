@@ -13,8 +13,8 @@
 <%@include file="./format/header.jsp"%>
 
 <body>
-	<form action="move.do" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="command" value="danceupdateres">
+	<form action="board.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="command" value="dance_update">
 		<input type="hidden" name="dance_no" value="<%=dance_dto.getDance_no()%>" />
 		<table border="1">
 			<tr>
@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="취소" onclick="location.href='move.do?command=selectpage&dance_no=<%=dance_dto.getDance_no()%>'"/>
+					<input type="button" value="취소" onclick="location.href='move.do?command=selectdancepage&dance_no=<%=dance_dto.getDance_no()%>'"/>
 					<input type="submit" value="수정" />
 				</td>
 			</tr>

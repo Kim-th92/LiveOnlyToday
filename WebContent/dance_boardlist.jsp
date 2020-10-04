@@ -89,7 +89,18 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 		<tr>
 			<td><%=list.get(i).getDance_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectdancepage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>			
+			<td>
+<% 
+			if(session.getAttribute("login") ==null){
+%>			
+			<a href="#"><%=list.get(i).getDance_title() %></a></td>			
+<%	
+			}else{
+%>			
+			<a href="move.do?command=selectdancepage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>
+<%
+			}
+%>			
 			<td><a><%=hms.format(list.get(i).getDance_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getDance_cnt() %></a></td>
 <% 				
@@ -126,7 +137,7 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	}
 	if(list.size() != 0){
 %>
-	<a href="move.do?command=danceboard&currentPage=<%=startPageGroup + 5%>">&gt;</a> &nbsp;
+	<a href="move.do?command=danceboard&currentPage=<%=(startPageGroup + 5 < totalPageCount)? (startPageGroup + 5):totalPageCount%>">&gt;</a> &nbsp;
 	<a href="move.do?command=danceboard&currentPage=${totalPageCount}">&gt;&gt;</a>
 <%
 	}

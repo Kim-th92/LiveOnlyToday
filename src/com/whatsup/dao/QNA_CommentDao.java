@@ -25,7 +25,7 @@ public class QNA_CommentDao extends SqlMapConfig {
 		SqlSession session=null;
 		
 		int res=0;
-		session=getSqlSessionFactory().openSession();
+		session=getSqlSessionFactory().openSession(true);
 		res=session.insert(namespace+"qna_comment_insert",qna_comment_dto);
 		session.commit();
 		session.close();
@@ -49,12 +49,12 @@ public class QNA_CommentDao extends SqlMapConfig {
 		
 	}
 	
-	public int delete(int qna_comment_no) {
+	public int delete(int qna_no) {
 		SqlSession session=null;
 		
 		int res=0;
 		session=getSqlSessionFactory().openSession();
-		res=session.delete(namespace+"delete",qna_comment_no);
+		res=session.delete(namespace+"delete",qna_no);
 		session.commit();
 		session.close();
 		

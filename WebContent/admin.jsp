@@ -38,7 +38,7 @@ if (member_dto == null) {
 	<div id="qnaboard">
 		<h2>
 			문의게시판 관리<br />
-			<button onclick="location.href='move.do?command=qnaboard'" class="button02">문의내역 전체 보기</button>
+			<button onclick="location.href='move.do?command=qnaboard&currentPage=1'" class="button02">문의내역 전체 보기</button>
 		</h2>
 	</div>
 
