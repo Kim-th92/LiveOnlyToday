@@ -36,6 +36,18 @@ public class Member_BoardDao extends SqlMapConfig {
 				
 		return res;
 	}
+	//비밀번호 수정
+	public int changePw(Member_BoardDto dto) {
+		SqlSession session =null;
+		int res = 0;
+		//세션
+		session = getSqlSessionFactory().openSession(true);
+		res = session.insert(namespace + "changePw",dto);
+		session.close();
+				
+		return res;
+	}
+	
 	//SNS로그인
 	public Member_BoardDto sns(String id) {
 		SqlSession session = null;
@@ -73,6 +85,7 @@ public class Member_BoardDao extends SqlMapConfig {
 		return dto;
 	}
 	
+
 	
 	//아이디 중복확인	
 	
