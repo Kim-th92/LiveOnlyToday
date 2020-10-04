@@ -11,7 +11,7 @@ form h1{ text-align: center;}
 #form {
 	width : 800px;
 	background:  #f1f1f1;
-	height: 400px;
+	height: 500px;
 	padding :80px  40px 150px 40px;
 	border-radius: 10px;
 	position : absolute;
@@ -39,6 +39,7 @@ table {
   margin-top: 30px;
 }
 .regbtn:hover{ background-color: red;}
+
 </style>
 </head>
 <body style="background-color: #fdde60">
@@ -51,11 +52,7 @@ table {
 <table>
  	<col width="150px">
  	<col width="600px">
- 	<tr style="text-align:-webkit-center;">
- 		<td colspan="2">
- 		<input type= "button" class = "regbtn" onclick="openChange();" value="비밀번호 수정">
- 		</td>
- 	</tr>
+ 	
  	<tr>
  		<th>아 이 디</th>
  		<td><%=dto.getId() %></td>
@@ -106,12 +103,17 @@ table {
  	<tr style="text-align:-webkit-center;">
  		<td colspan="2" > <button class = "regbtn" onclick="location.href='profileupdate.jsp'">프로필 수정</button></td>
  	</tr>
+ 	<tr style="text-align:-webkit-center;">
+ 		<td colspan="2">
+ 		<input type= "button" class = "regbtn" style ="background-color: green;margin-top: 3px;"onclick="openChange();" value="비밀번호 수정">
+ 		</td>
+ 	</tr>
  </table>
  </div>
 <script type="text/javascript">
 	function openChange(){
-		var url = 'member.do?command=changepw&memberseq=<%=dto.getMember_seq()%>';
-		var prop = 
+
+		window.open("member.do?command=changepw&memberseq=<%=dto.getMember_seq()%>","왜안돼..","top=200,left=600,width=600,height=300");
 		
 	}
 </script>

@@ -278,7 +278,7 @@ background-clip: text;
 		
 			var url = "KakaopayController?command=checklogin"; //url이란 변수에 html을 넣어주자. 
 			var title = "";	
-			var prop = "top=200px,left=600px,width=500px,height=500px";
+			var prop = "top=200px,left=600px,width=500px,height=500px,fullscreen=no";
 			window.open(url, title, prop); 
   }
  

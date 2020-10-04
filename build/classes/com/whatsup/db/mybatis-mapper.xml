@@ -31,7 +31,9 @@
 	<select id="sns" resultType="Member_BoardDto" parameterType="String">
 		SELECT  MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD WHERE ID = #{id} AND DELFLAG='N'
 	</select>
-	
+	<select id="selectOne" parameterType="int" resultType="Member_BoardDto">
+	 SELECT * FROM MEMBER_BOARD WHERE MEMBER_SEQ = #{member_seq}
+	</select>
 	<select id="login" resultType="Member_BoardDto" parameterType ="String">
 		SELECT MEMBER_SEQ,ID,PW,NAME,NICKNAME,GRADE,EMAIL,BIRTHDAY,PHONE,ADDR,MEMBERSHIP,DELFLAG,REGDATE FROM MEMBER_BOARD
 		WHERE ID=#{id} AND PW=#{pw} AND DELFLAG='N' 
@@ -58,7 +60,9 @@
 	<update id="deletemember" parameterType ="int">
 	    UPDATE MEMBER_BOARD SET DELFLAG='Y' WHERE MEMBER_SEQ=#{member_seq}
 	</update>
-
+	<update id="changePw" parameterType = "Member_BoardDto">
+		UPDATE MEMBER_BOARD SET PW=#{pw} WHERE MEMBER_SEQ = #{member_seq}
+	</update>
 
 	<update id="kakaopaysong01" parameterType="int">
 		UPDATE MEMBER_BOARD SET MEMBERSHIP='ONE' WHERE MEMBER_SEQ=#{member_seq} 	

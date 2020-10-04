@@ -122,7 +122,7 @@ input:focus ,textarea:focus{
  			birthDate ="";
  		}else {
  			birthYear = dto.getBirthday().substring(0, 4);
- 			birthMonth =dto.getBirthday().substring(dto.getBirthday().indexOf("-")+1,dto.getBirthday().lastIndexOf("-")-1); 
+ 			birthMonth = dto.getBirthday().substring(dto.getBirthday().indexOf("-")+1,dto.getBirthday().lastIndexOf("-")-1); 
  			birthDate = dto.getBirthday().substring(dto.getBirthday().lastIndexOf("-")+1);
  		}
  	%>
@@ -145,11 +145,13 @@ input:focus ,textarea:focus{
  	</tr>
  	<tr>
  		<th>이메일</th>
- 		<td><input name="email11" type="text" style="width:30%;" value="<%=email%>"> @ 
- 		<input type="text" name="email22" id="str_email02" value="<%=emailAddr %>" style="width:30%;"> 
+ 		<td>
+ 		<input name="email11" type="text" style="width:30%;" value="<%=email%>"> @ 
+ 		<input  name="email12" type="text"  id="str_email02" disabled value="<%=emailAddr %>" style="width:30%;"> 
  		<select name="selectEmail" id="selectEmail"> 
  			<option value="1">직접입력</option> 
- 			<option value="naver.com" selected>naver.com</option> 
+ 			<option value ="<%=emailAddr %>" selected><%=emailAddr %></option>
+ 			<option value="naver.com">naver.com</option> 
  			<option value="hanmail.net">hanmail.net</option> 
  			<option value="hotmail.com">hotmail.com</option> 
  			<option value="nate.com">nate.com</option> 
@@ -228,7 +230,7 @@ $('#selectEmail').change(function(){
 			$('#str_email02').val(''); //값 초기화 
 			$('#str_email02').attr('disabled',false); //활성화 
 		}else{ 		//직접입력이 아닐경우 
-			$('#str_email02').val($(this).text()); //선택값 입력 
+			$('#str_email02').val($(this).val()); //선택값 입력 
 		
 			$('#str_email02').attr('disabled',true); //비활성화 
 			} 
