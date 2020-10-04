@@ -85,7 +85,7 @@ h1 {
 	<div class="csmain">
 		<div id="cs">
 		
-			<button onclick="location.href='move.do?command=qnaboard'" class="button button1">문의게시판<i class="far fa-question-circle fa-7x"></i></button>			
+			<button onclick="location.href='move.do?command=qnaboard&currentPage=1'" class="button button1">문의게시판<i class="far fa-question-circle fa-7x"></i></button>			
 		
 		</div>
 		

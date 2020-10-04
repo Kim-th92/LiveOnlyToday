@@ -119,6 +119,16 @@ private String namespace="Dance_Boardmapper.";
 		return res;
 	}
 	
+	public int updateFile(Dance_BoardDto dto) {
+		SqlSession session =null;
+		session = getSqlSessionFactory().openSession(true);
+		int res = session.insert(namespace+"updateFile", dto);
+		System.out.println(dto);
+		session.close();
+		
+		return res;
+	}
+	
 	public int totalCount() {
 		SqlSession session = null;
 		int totalcount = 0;

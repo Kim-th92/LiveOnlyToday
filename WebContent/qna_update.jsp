@@ -12,8 +12,8 @@
 %>
 <body>
 <%@ include file="./format/header.jsp" %>
-	<form action="move.do" method="post">
-		<input type="hidden" name="command" value="updateres">
+	<form action="board.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="command" value="qna_update">
 		<input type="hidden" name="qna_no" value="<%=qna_dto.getQna_no()%>" />
 		<table border="1">
 			<tr>
@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="취소" onclick="location.href='move.do?command=selectpage&qna_no=<%=qna_dto.getQna_no()%>'"/>
+					<input type="button" value="취소" onclick="location.href='move.do?command=selectpageBasics&qna_no=<%=qna_dto.getQna_no()%>'"/>
 					<input type="submit" value="수정" />
 				</td>
 			</tr>

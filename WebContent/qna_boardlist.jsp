@@ -1,3 +1,4 @@
+<%@page import="com.whatsup.util.PageNavigator"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -72,7 +73,16 @@ input[type="button"]{
 </style>
 <%
 	QNA_BoardDao dao = new QNA_BoardDao();
-	List<QNA_BoardDto> list = dao.selectList();
+
+	PageNavigator navi = (PageNavigator)request.getAttribute("navi");
+	int startPageGroup = (int)request.getAttribute("startPage");
+	int endPageGroup = (int)request.getAttribute("endPage");
+
+	int startWrite = (int)request.getAttribute("startWrite");
+	int endWrite = (int)request.getAttribute("endWrite");
+	int totalPageCount = (int)request.getAttribute("totalPageCount");
+
+	List<QNA_BoardDto> list = dao.selectList(startWrite,endWrite);
 	SimpleDateFormat ymd = new SimpleDateFormat("MM.dd");
 	SimpleDateFormat hms = new SimpleDateFormat("HH:mm");
 	Timestamp ts = new Timestamp(new Date().getTime());
@@ -88,7 +98,6 @@ input[type="button"]{
 		<col width="150px" />
 		<col width="300px" />
 		<col width="100px" />
-		<thead>
 		<tr>
 			<th>번호</th>
 			<th>이름</th>
@@ -96,7 +105,6 @@ input[type="button"]{
 			<th>날짜</th>
 			<th>답변여부</th>
 		</tr>
-		</thead>
 <%
 	if(list.size()==0){
 %>
@@ -106,7 +114,6 @@ input[type="button"]{
 			</td>
 		</tr>	
 		
-		
 <%
 	}
 
@@ -114,27 +121,62 @@ input[type="button"]{
 		
 		for (int i = 0; i < list.size(); i++) {		
 %>
-		<tbody>
-			<tr>
-				<td><%=list.get(i).getQna_no()%></td>
-				<td><%=list.get(i).getNickname()%></td>
-				<td><a
-					href="move.do?command=selectpage&qna_no=<%=list.get(i).getQna_no()%>"><%=list.get(i).getQna_title()%></a></td>
-				<td><a><%=hms.format(list.get(i).getQna_regdate())%></a></td>
-				<td align="center"><a><%=list.get(i).getQna_answer()%></a></td>
-			</tr>
-		
-		<%
+		<tr>
+			<td><%=list.get(i).getQna_no()%></td>
+			<td><%=list.get(i).getNickname()%></td>
+			<td>
+<% 
+			if(session.getAttribute("login") ==null){
+%>						
+			<a href="#"><%=list.get(i).getQna_title()%></a></td>
+<%	
+			}else{
+%>
+			<a href="move.do?command=selectpageBasics&qna_no=<%=list.get(i).getQna_no()%>"><%=list.get(i).getQna_title()%></a></td>
+<%
+			}
+%>
+			<td><a><%=hms.format(list.get(i).getQna_regdate())%></a></td>
+			<td align="center"><a><%=list.get(i).getQna_answer()%></a></td>
+		</tr>
+<%
 		}
 	}
 %>
-	    </tbody>
 		<tr>
 			<td colspan="5" align="right">
 				<input type="button" value="글작성" onclick="location.href='move.do?command=qnainsertpage'" />
 			</td>
 		</tr>
+		<tr>
+			<td colspan="5" align="center">
+<%
+	if(list.size() != 0){
+%>	
+	<a href="move.do?command=qnaboard&currentPage=1">&lt;&lt;</a> &nbsp;
+	<a href="move.do?command=qnaboard&currentPage=<%=(endPageGroup >startPageGroup)? 1:endPageGroup - startPageGroup%>">&lt;</a> &nbsp;
+<%
+	}
+	int[] end = new int[endPageGroup]; 
+	for(int j = 0; j<end.length; j++){
+		end[j] = j+1;
+	}
+	for(int i = startPageGroup - 1; i < end.length; i++ ){
+%>
+	<a href="move.do?command=qnaboard&currentPage=<%=end[i]%>"><%=end[i]%></a> &nbsp; 
+<%	
+	}
+	if(list.size() != 0){
+%>
+	<a href="move.do?command=qnaboard&currentPage=<%=(startPageGroup + 5 < totalPageCount)? (startPageGroup + 5):totalPageCount%>">&gt;</a> &nbsp;
+	<a href="move.do?command=qnaboard&currentPage=${totalPageCount}">&gt;&gt;</a>
+<%
+	}
+%>	
+	
+			</td>
+		</tr>
 	</table>
-<%@ include file="./format/footer.jsp" %>	
+<%-- <%@ include file="./format/footer.jsp" %>	 --%>
 </body>
 </html>

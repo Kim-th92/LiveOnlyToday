@@ -12,8 +12,8 @@
 	Free_BoardDto free_dto=(Free_BoardDto)request.getAttribute("dto");
 %>
 <body>
-	<form action="move.do" method="post">
-		<input type="hidden" name="command" value="updateres">
+	<form action="board.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="command" value="free_update">
 		<input type="hidden" name="free_no" value="<%=free_dto.getFree_no()%>" />
 		<table border="1">
 			<tr>
@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="취소" onclick="location.href='move.do?command=selectpage&free_no=<%=free_dto.getFree_no()%>'"/>
+					<input type="button" value="취소" onclick="location.href='move.do?command=freeselectpage&free_no=<%=free_dto.getFree_no()%>'"/>
 					<input type="submit" value="수정" />
 				</td>
 			</tr>

@@ -24,7 +24,7 @@ table {width:80%;    line-height: 50px; margin : 50px 0px 50px 50px;}
 
 <body style="background-color: #fdde60;">
 	<form action="board.do" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="command" value="danceupdateres">
+		<input type="hidden" name="command" value="dance_update">
 		<input type="hidden" name="dance_no" value="<%=dance_dto.getDance_no()%>" />
 		<table>
 			<tr>
@@ -49,8 +49,8 @@ table {width:80%;    line-height: 50px; margin : 50px 0px 50px 50px;}
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" class="btn btn-warning" value="취소" onclick="location.href='move.do?command=selectpage&dance_no=<%=dance_dto.getDance_no()%>'"/>
-					<input type="submit" class="btn btn-warning" value="수정" />
+					<input type="button" class="btn btn-warning"  value="취소" onclick="location.href='move.do?command=selectdancepage&dance_no=<%=dance_dto.getDance_no()%>'"/>
+					<input type="submit" class="btn btn-warning"  value="수정" />
 				</td>
 			</tr>
 		</table>

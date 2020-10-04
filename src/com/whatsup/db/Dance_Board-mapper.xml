@@ -45,4 +45,8 @@
 		ORDER BY NUM
 		]]>
 	</select>
+	<update id="updateFile" parameterType="dance_BoardDto">
+		UPDATE DANCE_BOARD SET DANCE_TITLE=#{dance_title},DANCE_CONTENT=#{dance_content},
+		DANCEFNAME=#{dancefname},DANCEREALFNAME=#{dancerealfname},DANCEREALPATH=#{dancerealpath} WHERE DANCE_NO=#{dance_no}
+	</update>
 </mapper>

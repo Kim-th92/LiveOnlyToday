@@ -56,7 +56,7 @@ public class CommentDao extends SqlMapConfig {
 		SqlSession session=null;
 		
 		int res=0;
-		session=getSqlSessionFactory().openSession();
+		session=getSqlSessionFactory().openSession(true);
 		
 		res=session.insert(namespace+"song_comment_insert",dto);
 		session.commit();

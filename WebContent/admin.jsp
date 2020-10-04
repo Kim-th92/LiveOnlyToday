@@ -96,6 +96,7 @@ if (member_dto == null) {
 
 </script>
 	<h1>관리자 페이지</h1>
+<<<<<<< HEAD
 	<article>
 	<div class=admin>
 		<div id="adminview">
@@ -117,6 +118,21 @@ if (member_dto == null) {
 				</button>
 			</h2>
 		</div>
+=======
+	
+	<div id="adminview">
+		<h2>
+			가입자 조회<br />
+			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회 </button>
+		</h2>
+	</div>
+
+	<div id="qnaboard">
+		<h2>
+			문의게시판 관리<br />
+			<button onclick="location.href='move.do?command=qnaboard&currentPage=1'" class="button02">문의내역 전체 보기</button>
+		</h2>
+>>>>>>> kth
 	</div>
 	</article>
 

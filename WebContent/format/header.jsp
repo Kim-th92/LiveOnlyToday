@@ -72,7 +72,7 @@ ul li:hover ul li {display:inline;transform:translate(-50px,35px);}
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 			<li><a href="csmain.jsp">고객센터</a>
 				<ul>
-					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
+					<li><a href="move.do?command=qnaboard&currentPage=1">문의게시판</a></li>
 					<li><a href="adminchat.jsp">1:1문의</a></li>
 				</ul>
 			</li>

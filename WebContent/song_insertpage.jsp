@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 </head>
 <%
 	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
 %>
 <body>
-	<form action="board.do" method="post">
-		<input type="hidden" name="command" value="song_insert" enctype="multipart/form-data"/>
+	<form action="board.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="command" value="song_insert"/>
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>"/>
 		<table border="1">
 			<tr>
