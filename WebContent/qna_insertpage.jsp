@@ -13,7 +13,7 @@
 %>
 <body>
 <%@ include file="./format/header.jsp" %>
-	<form action="board.do" method="post">
+	<form action="board.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="qna_insert"/>
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>"/>
 		<table border="1">
@@ -33,8 +33,12 @@
                 </script>
 			</tr>
 			<tr>
+				<th>파일 업로드</th>
+				<td><input type="file" name="qna_file"/></td>
+			</tr>
+			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="취소" onclick="location.href='move.do?command=mainboard'" />
+					<input type="button" value="취소" onclick="location.href='move.do?command=qnaboard&currentPage=1'" />
 					<input type="submit" value="작성" />
 				</td>
 			</tr>

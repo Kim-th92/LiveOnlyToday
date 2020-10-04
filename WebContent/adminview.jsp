@@ -9,6 +9,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+table.type06 {
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 10px;
+}
+table.type06 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    background-color:#f75e50;
+    text-align: center;
+}
+table.type06 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+}
+table.type06 .even {
+    background: #efefef;
+}
+</style>
 <%
 	Member_BoardDao dao = new Member_BoardDao();
 	List<Member_BoardDto> list = dao.selectList();
@@ -19,14 +46,14 @@
 <br>
 
 
-	<table border="1">
+	<table class="type06" border="1">
 		<col width="50px" />
 		<col width="100px" />
 		<col width="100px" />
 		<col width="100px" />
 		<col width="50px" />
 		<col width="300px" />
-		<col width="50px" />
+		<col width="100px" />
 		<col width="70px" />
 		<col width="300px" />
 		<col width="100px" />
@@ -54,7 +81,6 @@
 		
 <%
 	}
-
 	else{
 		
 		for (int i = 0; i < list.size(); i++) {		
@@ -74,8 +100,6 @@
 		
 			
 <% 				
-
-
 %>
 		</tr>
 <%

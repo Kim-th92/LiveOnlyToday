@@ -1,3 +1,4 @@
+<%@page import="com.whatsup.dto.Member_BoardDto"%>
 <%@page import="com.whatsup.util.PageNavigator"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -27,6 +28,23 @@
 		width:100%;
 		
 	}
+	input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+
+}
 	#bor{padding-bottom:20px;}
 	td:nth-child(1){text-align: center;}
 	td:nth-child(4){text-align : center;}
@@ -49,10 +67,16 @@
 	SimpleDateFormat hms = new SimpleDateFormat("HH:mm");
 	Timestamp ts = new Timestamp(new Date().getTime());
 	
-
-	
+	Member_BoardDto member_dto = new Member_BoardDto();
 %>
-
+<script type="text/javascript">
+	function commentinsert(){
+		if(<%=member_dto.getNickname()==null%>){
+			alert("먼저 로그인을 해주세요.");
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 	<h1> 자유게시판 </h1>
@@ -90,7 +114,18 @@
 		<tr>
 			<td><%=list.get(i).getFree_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=freeselectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>			
+			<td>
+<% 
+			if(session.getAttribute("login") ==null){
+%>
+				<a href="#"><%=list.get(i).getFree_title() %></a></td>	
+<%	
+			}else{
+%>				
+				<a href="move.do?command=freeselectpage&free_no=<%=list.get(i).getFree_no() %>"><%=list.get(i).getFree_title() %></a></td>	
+<%
+			}
+%>			
 			<td><a><%=hms.format(list.get(i).getFree_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getFree_cnt() %></a></td>
 <% 				
@@ -128,7 +163,7 @@
 	}
 	if(list.size() != 0){
 %>
-	<a href="move.do?command=freeboard&currentPage=<%=startPageGroup + 5%>">&gt;</a> &nbsp;
+	<a href="move.do?command=freeboard&currentPage=<%=(startPageGroup + 5 < totalPageCount)? (startPageGroup + 5):totalPageCount%>">&gt;</a> &nbsp;
 	<a href="move.do?command=freeboard&currentPage=${totalPageCount}">&gt;&gt;</a>
 <%
 	}

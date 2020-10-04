@@ -24,6 +24,7 @@
 	}
 	p>a:hover {
 		color: darkorange;
+		font-weight: bold;
 	}
 	#boardview{
 		widows: 1000px;
@@ -31,16 +32,16 @@
 	}
 	#myframe{
 		width: 1000px;
-		height: 800px;	
+		height: 100%;	
+		padding: 0px 0px 300px 0px;
 	}
 	table {
 	line-height: 40px;
 }
 	#bor{border-bottom: 2px solid red;}
-	
 </style>
 </head>
-<body>
+<body style="    background-color: #fdde60;">
 <!-- header -->
 <%@ include file="./format/header.jsp" %>
 <!-- 좌측 메뉴(페이지 이동) -->

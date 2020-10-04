@@ -67,5 +67,10 @@
 	<update id="kakaopayall01" parameterType="int">
 		UPDATE MEMBER_BOARD SET MEMBERSHIP='ALL' WHERE MEMBER_SEQ=#{member_seq}
 	</update>
+	
+	<update id = "profileupdate" parameterType ="Member_BoardDto">
+		UPDATE MEMBER_BOARD SET NICKNAME =#{nickname} ,NAME=#{name}, EMAIL =#{email} , 
+		ADDR =#{addr},PHONE = #{phone},BIRTHDAY =#{birthday} WHERE MEMBER_SEQ=#{member_seq} 
+	</update>
 
 </mapper>

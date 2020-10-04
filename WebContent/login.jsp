@@ -193,7 +193,7 @@ function onSuccess(googleUser) {
 	
 
 	var id_token = googleUser.getAuthResponse().id_token;
-    
+   
 	var redirectUrl = 'member.do?command=googlelogin';
 
     //using jquery to post data dynamically
@@ -203,6 +203,7 @@ function onSuccess(googleUser) {
                                                            '</form>');
     $('body').append(form);
     form.submit();
+    console.log(form);
   }
   function onFailure(error) {
     console.log(error);

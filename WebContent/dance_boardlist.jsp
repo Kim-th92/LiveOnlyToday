@@ -10,6 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous">
+
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
@@ -32,6 +34,24 @@
 	td:nth-child(4){text-align : center;}
 	td:nth-child(3){ font-weight:bold;}
 td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
+	input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+
+}
+
 </style>
 <%
 	Dance_BoardDao dao = new Dance_BoardDao();
@@ -53,7 +73,7 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	
 %>
 </head>
-<body>
+<body body style="    background-color: #fdde60;">
 	<h1> 댄스게시판 </h1>
 	<hr>
 	<table >
@@ -76,9 +96,7 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 			<td colspan="5" align="center">
 				<a>작성된 글이 없습니다</a>
 			</td>
-		</tr>	
-		
-		
+		</tr>		
 <%
 	}
 
@@ -89,7 +107,18 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 		<tr>
 			<td><%=list.get(i).getDance_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=selectdancepage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>			
+			<td>
+<% 
+			if(session.getAttribute("login") ==null){
+%>			
+			<a href="#"><%=list.get(i).getDance_title() %></a></td>			
+<%	
+			}else{
+%>			
+			<a href="move.do?command=selectdancepage&dance_no=<%=list.get(i).getDance_no() %>"><%=list.get(i).getDance_title() %></a></td>
+<%
+			}
+%>			
 			<td><a><%=hms.format(list.get(i).getDance_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getDance_cnt() %></a></td>
 <% 				
@@ -111,8 +140,8 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	<%
 	if(list.size() != 0){
 %>	
-	<a href="move.do?command=danceboard&currentPage=1">&lt;&lt;</a> &nbsp;
-	<a href="move.do?command=danceboard&currentPage=<%=(endPageGroup > startPageGroup)? 1:endPageGroup - startPageGroup%>">&lt;</a> &nbsp;
+	<a href="move.do?command=danceboard&currentPage=1"><i class="fas fa-angle-double-left"></i></a> &nbsp;
+	<a href="move.do?command=danceboard&currentPage=<%=(endPageGroup > startPageGroup)? 1:endPageGroup - startPageGroup%>"><i class="fas fa-angle-left"></i></a> &nbsp;
 <%
 	}
 	int[] end = new int[endPageGroup]; 
@@ -126,8 +155,8 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	}
 	if(list.size() != 0){
 %>
-	<a href="move.do?command=danceboard&currentPage=<%=startPageGroup + 5%>">&gt;</a> &nbsp;
-	<a href="move.do?command=danceboard&currentPage=${totalPageCount}">&gt;&gt;</a>
+	<a href="move.do?command=danceboard&currentPage=<%=(startPageGroup + 5 < totalPageCount)? (startPageGroup + 5):totalPageCount%>"><i class="fas fa-angle-right"></a> &nbsp;
+	<a href="move.do?command=danceboard&currentPage=${totalPageCount}"><i class="fas fa-angle-double-right"></a>
 <%
 	}
 %>	

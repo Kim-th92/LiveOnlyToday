@@ -39,7 +39,7 @@ header>div {
 	display: inline-block;
 }
 section {
-	padding:50px 0px 0px 40px;
+	padding:50px 0px 0px 0px;
 	height:600px;
 }
 section+div.col{
@@ -138,9 +138,7 @@ background-clip: text;
   font-family: 'Do Hyeon', sans-serif;
 }
 .shortcut:hover {opacity: 1}
-footer {
-	
-}
+
 </style>
 </head>
 <body>
@@ -163,18 +161,20 @@ footer {
 				</ul>
 			</li>
 			<li><a href="move.do?command=musicselect">노래</a>
-				<ul>
+			<ul>
 					<li><a href="move.do?command=musicselect">혼자 부르기 </a></li>
+
 
 					<li><a href="move.do?command=streamboard">ON-AIR </a></li>
 				</ul>
 			</li>
+				
 			<li><a href="dancemain.jsp">춤</a></li>
 
 			<li><a href="move.do?command=mainboardpage">게시판</a>
 			<li><a href="csmain.jsp">고객센터</a>
 				<ul>
-					<li><a href="move.do?command=qnaboard">문의게시판</a></li>
+					<li><a href="move.do?command=qnaboard&currentPage=1">문의게시판</a></li>
 					<li><a href="adminchat.jsp">1:1문의</a></li>
 				</ul>
 			</li>
@@ -192,39 +192,35 @@ footer {
 			<button class="login" onclick="location.href='./register.jsp'">
 				회원가입</button>
 		</div>
-<%
-			} else {
-%>
-		<div id="login">
-			<span><%=dto.getNickname()%>님 반갑습니다.
-<%
-			if (dto.getGrade().equals("USER")) {
-%> 
-			<a href="mypage.jsp">마이페이지</a>
-<%
- 			} else {
- %> 
- 			<a href="admin.jsp">관리자페이지</a>
-<%
-			}
- 			if (dto.getAddr().equals("google")) {
- %>
-				<button class="login" onclick="signOut()">로그아웃</button> </span>
-<%
-			} else {
-%>
-			<button class="login"
-				onclick="location.href='member.do?command=logout'">로그아웃</button>
-			</span>
-<%
-			}
-%>
-		</div>
-<%
-		}
-%>
 
-
+	 	<%		
+	 		}else{
+	 	%>		
+	 	<div id="login">
+	 		<span><%=dto.getNickname() %>님 반갑습니다. 
+	 		<%if(dto.getGrade().equals("USER")) {
+	 		%>
+	 		<a href="mypage.jsp">마이페이지</a>
+	 		<% 
+	 		}else{
+	 		%>	
+	 		<a href="admin.jsp">관리자페이지</a>
+	 		<% 	
+	 		}
+	 		if(dto.getAddr().equals("google")){
+	 		%>
+	 		<button class="login" onclick="signOut()">로그아웃</button> </span>
+	 		<%	
+	 		}else{
+	 		%>
+	 		<button class="login" onclick="location.href='member.do?command=logout'">로그아웃</button> </span>
+	 		<% 	
+	 		}
+	 		%>	
+	 	</div>
+	 	<% 		
+	 		}
+		%>
 
 	</header>
 	<section>
@@ -238,7 +234,7 @@ footer {
 			<button class="shortcut left"
 				onclick="location.href='move.do?command=musicselect'">
 				노래부르러 가기</button>
-			<button class="shortcut right" onclick="dancemain.jsp">춤 추러 가기</button>
+			<button class="shortcut right" onclick="location.href='dancemain.jsp'">춤 추러 가기</button>
 		</div>
 
 		<div id="img" class="col">
@@ -246,7 +242,7 @@ footer {
 		</div>
 	</section>
 	<%
-		String success = (String) request.getAttribute("successs");
+		String success = (String)request.getAttribute("success");
 	if (success != null) {
 	%>
 	<script type="text/javascript"> 
@@ -289,10 +285,6 @@ footer {
   	
 			
 		
-		
-		
-	
-  
 </script>
 	<%@include file="./format/footer.jsp"%>
 </body>

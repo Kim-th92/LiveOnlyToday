@@ -5,86 +5,13 @@ body {
 	background-color: #fdde60;
 }
 
-h1, h3{
-	text-align: center;
-	
-}
-
-.table {
-	background-color: white;
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
-	margin: auto;
-}
-
-
-
-.table thead th {
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    color: black;
-    border-bottom: 3px solid gray;
-	text-align: center;
-}
-
-
-.table tbody th {
-    width: 150px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    border-bottom: 1px solid black;
-    background: #f3f6f7;
-}
 
 
 
 
-.table .td01 {
-    width: 500px;
-    padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid black;
-}
 
 
-.number {
-	width: 50px;
-	text-align: center;
-}
 
-
-.search{
-	
-	position: absolute;
-	right:400px;
-	
-}
-
-
-.musicinsert{
-	position: absolute;
-	left: 410px;
-	background-color: red;
-	border: none;
-	color: white;
-	padding: 5px 10px;
-	text-align: center;
-	font-size: 15px;
-	opacity: 0.6;
-	transition: 0.3s;
-	display: inline-block;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius: 15px;
-	font-family: 'Do Hyeon', sans-serif;
-}
-
-.musicinsert:hover{
-	opacity: 1;
-}
 
 
 

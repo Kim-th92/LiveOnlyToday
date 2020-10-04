@@ -26,6 +26,23 @@
 		width:100%;
 		
 	}
+	input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+
+}
 	#bor{padding-bottom:20px;}
 	td:nth-child(1){text-align: center;}
 	td:nth-child(4){text-align : center;}
@@ -88,7 +105,18 @@
 		<tr>
 			<td><%=list.get(i).getSong_no() %></td>
 			<td><%=list.get(i).getNickname() %></td>
-			<td><a href="move.do?command=songselectpage&song_no=<%=list.get(i).getSong_no() %>"><%=list.get(i).getSong_title() %></a></td>			
+			<td>
+<% 
+			if(session.getAttribute("login") ==null){
+%>
+			<a href="#"><%=list.get(i).getSong_title() %></a></td>			
+<%	
+			}else{
+%>			
+			<a href="move.do?command=songselectpage&song_no=<%=list.get(i).getSong_no() %>"><%=list.get(i).getSong_title() %></a></td>		
+<%
+			}
+%>			
 			<td><a><%=hms.format(list.get(i).getSong_regdate()) %></a></td>
 			<td align="center"><a><%=list.get(i).getSong_cnt() %></a></td>
 <% 				
@@ -125,7 +153,7 @@
 	}
 	if(list.size() != 0){
 %>
-	<a href="move.do?command=songboard&currentPage=<%=startPageGroup + 5%>">&gt;</a> &nbsp;
+	<a href="move.do?command=songboard&currentPage=<%=(startPageGroup + 5 < totalPageCount)? (startPageGroup + 5):totalPageCount%>">&gt;</a> &nbsp;
 	<a href="move.do?command=songboard&currentPage=${totalPageCount}">&gt;&gt;</a>
 <%
 	}

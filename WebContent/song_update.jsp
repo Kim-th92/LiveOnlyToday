@@ -11,8 +11,8 @@
 	Song_BoardDto song_dto=(Song_BoardDto)request.getAttribute("dto");
 %>
 <body>
-	<form action="move.do" method="post">
-		<input type="hidden" name="command" value="updateres">
+	<form action="board.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="command" value="song_update">
 		<input type="hidden" name="song_no" value="<%=song_dto.getSong_no()%>" />
 		<table border="1">
 			<tr>
@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="취소" onclick="location.href='move.do?command=selectpage&song_no=<%=song_dto.getSong_no()%>'"/>
+					<input type="button" value="취소" onclick="location.href='move.do?command=songselectpage&song_no=<%=song_dto.getSong_no()%>'"/>
 					<input type="submit" value="수정" />
 				</td>
 			</tr>

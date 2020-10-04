@@ -47,6 +47,7 @@ private String namespace="Dance_Boardmapper.";
 		
 		return res;
 	}
+	//파일 첨부가 없는 글 수정
 	public int update(Dance_BoardDto dto) {
 		SqlSession session=null;
 		
@@ -56,6 +57,17 @@ private String namespace="Dance_Boardmapper.";
 		session.commit();
 		session.close();
 		
+		
+		return res;
+		
+	}
+	//파일 첨부가 있는 글 수정
+	public int fileupdate(Dance_BoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		session= getSqlSessionFactory().openSession(true);
+		res = session.update(namespace+"updatefile",dto);
+		session.close();
 		
 		return res;
 		
@@ -101,6 +113,16 @@ private String namespace="Dance_Boardmapper.";
 		SqlSession session =null;
 		session = getSqlSessionFactory().openSession(true);
 		int res = session.insert(namespace+"insertFile", dto);
+		System.out.println(dto);
+		session.close();
+		
+		return res;
+	}
+	
+	public int updateFile(Dance_BoardDto dto) {
+		SqlSession session =null;
+		session = getSqlSessionFactory().openSession(true);
+		int res = session.insert(namespace+"updateFile", dto);
 		System.out.println(dto);
 		session.close();
 		

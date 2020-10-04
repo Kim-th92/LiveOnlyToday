@@ -1,5 +1,7 @@
 package com.whatsup.dto;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 
 public class Dance_BoardDto {
@@ -20,12 +22,18 @@ public class Dance_BoardDto {
 	}
 	public void setDancefname(String dancefname) {
 		this.dancefname = dancefname;
+		
+			
+		
+
 	}
 	public String getDancerealfname() {
 		return dancerealfname;
 	}
 	public void setDancerealfname(String dancerealfname) {
 		this.dancerealfname = dancerealfname;
+	
+			
 	}
 	public String getDancerealpath() {
 		return dancerealpath;

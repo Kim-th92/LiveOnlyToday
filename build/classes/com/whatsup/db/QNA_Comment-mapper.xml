@@ -10,13 +10,13 @@
 	</select>
 	
 	<insert id="qna_comment_insert" parameterType="qna_commentDto">
-		INSERT INTO QNA_COMMENT_TABLE VALUES(QNA_COMMENT_SEQ.NEXTVAL,SYSDATE,#{qna_comment_content},#{member_seq},#{qna_no})
+		INSERT INTO QNA_COMMENT_TABLE VALUES(QNA_COMMENT_SEQ.NEXTVAL,SYSDATE,#{qna_comment_content},#{qna_no},#{member_seq})
 	</insert>
 	<update id="update" parameterType="qna_commentDto">
 		UPDATE QNA_COMMENT_TABLE SET QNA_COMMENT_CONTENT=#{qna_comment_content} WHERE COMMENT_NO=#{qna_comment_no}
 	</update>
 	<delete id="delete" parameterType="int">
-		DELETE FROM QNA_COMMENT_TABLE WHERE QNA_COMMENT_NO=#{qna_comment_no}
+		DELETE FROM QNA_COMMENT_TABLE WHERE QNA_NO=#{qna_no}
 	</delete>
 
 </mapper>

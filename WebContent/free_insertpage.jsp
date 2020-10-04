@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 </head>
 <%
 	Member_BoardDto member_dto = new Member_BoardDto();	
@@ -21,7 +21,7 @@
 	 member_dto=(Member_BoardDto)session.getAttribute("login");
 %>
 	<body>
-	<form action="board.do" method="post">
+	<form action="board.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="free_insert"/>
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>"/>
 		<table border="1">
@@ -39,6 +39,10 @@
 				<script>
                         CKEDITOR.replace( 'free_content' );
                 </script>
+			</tr>
+			<tr>
+				<th>파일 업로드</th>
+				<td><input type="file" name="free_file"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

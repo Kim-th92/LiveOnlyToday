@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.whatsup.dto.MusicListDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,108 +9,169 @@
 <link rel="stylesheet" href="css/musicselect.css">
 <title>Insert title here</title>
 <%
-	List<MusicListDto> musiclist=(List<MusicListDto>)request.getAttribute("musiclist");
+	List<MusicListDto> musiclist = (List<MusicListDto>) request.getAttribute("musiclist");
 %>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.0/css/all.css"
+	integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q"
+	crossorigin="anonymous">
+
 
 <style type="text/css">
-	#musicview {
-		border: 1px solid black;
-		position: absolute;
-		top: 200px;
-		left: 500px;
-		display: none;
-		width: 500px;
-		background-color:black;
-		color: white;
-	}
-	#music{
-		width: 490px;
-	}
-	#subtitle{
-		
-		height: 20px;
-		
-	}
-	#subtitleview{
-		font-size: 20px;
-	}
+#musicview {
+	border: 1px solid black;
+	position: absolute;
+	top: 200px;
+	left: 500px;
+	display: none;
+	width: 500px;
+	background-color: black;
+	color: white;
+}
+
+#music {
+	width: 490px;
+}
+
+#subtitle {
+	height: 20px;
+}
+
+#subtitleview {
+	font-size: 20pt;
+}
+
+#karaoke {
+	width: 800px;
+	height: 400px;
+	padding: 80px 40px 150px 40px;
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	line-height: 40px;
+}
+
+table {
+	position: relative;
+	left: 10%;
+}
+
+#firstrow {
+	border-bottom: 1px solid black;
+}
+
+input[type="button"], #submitbtn {
+	background-color: red;
+	border: none;
+	color: white;
+	padding: 6px 10px;
+	text-align: center;
+	font-size: 14px;
+	margin: 4px 50px;
+	opacity: 0.6;
+	transition: 0.3s;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+	border-radius: 10px;
+}
 </style>
 </head>
-<body>
-<%@ include file="./format/header.jsp" %>
+<body style="background-color: #fdde60;">
+	<%@ include file="./format/header.jsp"%>
+
 	<div class="musicimg">
-	  
-	<img style="float: left; height: 400px; position: absolute; top: 330px; left: 30px;" class="big" alt="" src="resources/img/music01.png"/>
-	<img style="position: absolute; height: 150px; top:600px; left:220px; transform:rotate(20deg)" class="small" alt="" src="resources/img/music02.png"/> 
-	<img style="position: absolute; height: 150px; widows: 250px; transform:rotate(-20deg); bottom: 120px; left: 1520px; padding: 0px; margin: 0px;' " src="resources/img/music03.png">
-	
+
+		<img
+			style="float: left; height: 400px; position: absolute; top: 330px; left: 30px;"
+			class="big" alt="" src="resources/img/music01.png" /> <img
+			style="position: absolute; height: 150px; top: 600px; left: 220px; transform: rotate(20deg)"
+			class="small" alt="" src="resources/img/music02.png" /> <img
+			style="position: absolute; height: 150px; widows: 250px; transform: rotate(-20deg); bottom: 120px; left: 1520px; padding: 0px; margin: 0px;' "
+			src="resources/img/music03.png">
+
 	</div>
-	<h1>노래방</h1><h3>하고 싶은 노래 선택해 주세요~</h3>
-	<table class="table" border="1">
-		<col width="50"/>
-		<col width="300"/>
-		<col width="200"/>
-		<thead>
-		<tr>
-			<th class="number">번호</th>
-			<th>노래 제목</th>
-			<th>가수</th>
-			
-		</tr>
-		</thead>
-		<tbody>
-	<%
-		for(int i=0;i<musiclist.size();i++){
-	%>		
-			<tr>
-				<td class="number"><%=musiclist.get(i).getMusic_no() %></td>
-				
-				<td class="td01"><a class="musicname"><%=musiclist.get(i).getMusic_name() %></a></td>
-				<td class="td01"><%=musiclist.get(i).getMusic_artist() %></td>
+
+	<div id="karaoke" style="border: 1px solid black;">
+		<h1>
+			<i class="fas fa-music"></i>노래방<i class="fas fa-music"></i>
+		</h1>
+		<h3>하고 싶은 노래 선택해 주세요~</h3>
+
+		<table>
+			<col width="70" />
+			<col width="400" />
+			<col width="300" />
+			<tr id="firstrow">
+				<th class="number">번호</th> 
+				<th>노래 제목</th>
+				<th>가수</th>
+
 			</tr>
 			
-	<%		
-		}
-	%>
-		</tbody>
-		</table><br/>
 			
-				<button class="musicinsert" onclick="location.href='move.do?command=musicinsert'" >노래생성</button>
-		
-		
-		
+				<%
+					for (int i = 0; i < musiclist.size(); i++) {
+				%>
+				<tr>
+					<td class="number"><%=musiclist.get(i).getMusic_no()%></td>
+
+					<td class="td01"><a class="musicname"><%=musiclist.get(i).getMusic_name()%></a></td>
+					<td class="td01"><%=musiclist.get(i).getMusic_artist()%></td>
+				</tr>
+
+				<%
+					}
+				%>
+				
+			<tr>
+				<td colspan="3" align="right"><input type="button"
+					onclick="location.href='move.do?command=musicinsert'" value="노래생성">
+				</td>
+			</tr>
+			</table>
+
+			<form action="move.do" method="post">
+				<input type="hidden" name="command" value="musicsearch" /> 
+				<input type="text" name="music_name" /> 
+				<input id="submitbtn" type="submit" value="검색">
+			</form>
+			
+	</div>
 	
-	<form action="move.do" method="post" class="search">
-		<input type="hidden" name="command" value="musicsearch"/>
-		<input type="text" name="music_name"/>
-		<input type="submit" value="검색">
-	</form>
-	
-	
+
+
 	<div id="musicview">
 		<audio controls="controls" id="player">
-			<track src="" kind="attribute" srclang="kr" label="기본한국어" default id="subtitle"/>
+			<track src="" kind="attribute" srclang="kr" label="기본한국어" default
+				id="subtitle" />
 		</audio>
-		<p id="subtitleview"></p><br/>
+		<p id="subtitleview"></p>
+		<br />
 		<button id="repeat">구간반복 OFF</button>
 		<button id="start">시작</button>
 		<button id="end">끝</button>
-		<pre id="debug"></pre><br/>
+		<pre id="debug"></pre>
+		<br />
 		<button id="speeddown">속도감소</button>
 		<button id="speednormal">정상속도</button>
 		<button id="speedup">속도증가</button>
-		
-		<input type=checkbox id="chk-hear-mic"><label for="chk-hear-mic">마이크 소리 듣기</label>
-    	<button id="record">녹음</button>
-    	<button id="stop">정지</button>
-    	<div id="sound-clips"></div>
-    	
+
+		<input type=checkbox id="chk-hear-mic"><label
+			for="chk-hear-mic">마이크 소리 듣기</label>
+		<button id="record">녹음</button>
+		<button id="stop">정지</button>
+		<div id="sound-clips"></div>
+
 		<button onclick="closeWin()">노래 종료</button>
 	</div>
-	
-<%@ include file="./format/footer.jsp" %>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
-<script type="text/javascript">
+
+	<%@ include file="./format/footer.jsp"%>
+	<script type="text/javascript"
+		src="http://code.jquery.com/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
 	
 	var player=document.getElementById("player");
 	//설정 변수
@@ -155,7 +216,7 @@
 	function closeWin() {
 		
 		document.getElementById("musicview").style.display = "none";
-		document.body.style.background = "white";
+		document.body.style.background = "#fdde60";
 		player.pause();
 		$("#subtitleview").html("");
 	}

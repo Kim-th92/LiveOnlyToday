@@ -41,12 +41,12 @@
 <%
 			if(stream_list.get(i).getMember_seq()==member_dto.getMember_seq()){
 %>
-				<td><a href="http://localhost:3000/index.html?stream_no=<%=stream_list.get(i).getStream_no()%>&member_seq=<%=member_dto.getMember_seq()%>"><%=stream_list.get(i).getStream_title() %></a></td>
+				<td><a href="https://192.168.219.107:3000//index.html"><%=stream_list.get(i).getStream_title() %></a></td>
 <%
 			}else{
 %>				
 				
-				<td><a href="http://localhost:3000/index.html?stream_no=<%=stream_list.get(i).getStream_no()%>&member_seq=<%=member_dto.getMember_seq()%>"><%=stream_list.get(i).getStream_title() %></a></td>			
+				<td><a href="streampage.jsp"><%=stream_list.get(i).getStream_title() %></a></td>			
 <%				
 			}
 %>			

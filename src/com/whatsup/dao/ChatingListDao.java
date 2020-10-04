@@ -25,7 +25,6 @@ public class ChatingListDao extends SqlMapConfig {
 		
 		int res=0;
 		session=getSqlSessionFactory().openSession();
-		System.out.println("dao는 정상적으로 도착");
 		res=session.insert(namespace+"insert",dto);
 		session.commit();
 		session.close();

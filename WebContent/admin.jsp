@@ -5,8 +5,77 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="css/admin.css" rel="stylesheet" type="text/css"/>
 <title>Insert title here</title>
+<link href="css/admin.css" rel="stylesheet" type="text/css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<style type="text/css">
+
+body {
+	background-color: #fdde60;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+h1 {
+	position: absolute;
+	left: 45%;
+}
+.admin{
+    width: 90%;
+    
+}
+
+#adminview {
+    
+    width: 50%;
+    margin-bottom: 8000px;
+    margin-left: 100px;
+    margin-right: 20px;
+    }
+
+#qnaboard {
+    margin-top: 90px;
+    margin-left:100px;
+    width: 20%;
+      
+}
+
+.button {
+  background-color: #fdde60; 
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+}
+
+.button1 {
+  border-radius: 12px;
+  color: black; 
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+.button1:hover {
+  color: white;
+}
+
+.button2 {
+  border-radius: 12px;
+  color: black; 
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+.button2:hover {
+  color: white;
+}
+
+
+</style>
 <%
 	Member_BoardDto member_dto = (Member_BoardDto) session.getAttribute("login");
 if (member_dto == null) {
@@ -27,29 +96,50 @@ if (member_dto == null) {
 
 </script>
 	<h1>관리자 페이지</h1>
-	<div id="adminview">
-	<div id="viewmember">
+<<<<<<< HEAD
+	<article>
+	<div class=admin>
+		<div id="adminview">
+			<h2>
 
+				<button onclick="location.href='move.do?command=adminview'"
+					class="button button1"><br/>
+					회원 전체 조회<br/><i class="fas fa-address-book fa-8x"></i>
+				</button>
+			</h2>
+		</div>
+
+		<div id="qnaboard">
+			<h2>
+
+				<button onclick="location.href='move.do?command=qnaboard'"
+					class="button button2"><br/>
+					문의내역 전체 보기<br/><i class="far fa-question-circle fa-8x"></i>
+				</button>
+			</h2>
+		</div>
+=======
+	
+	<div id="adminview">
 		<h2>
 			가입자 조회<br />
-			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회</button>
+			<button onclick="location.href='move.do?command=adminview'" class="button01">회원 전체 조회 </button>
 		</h2>
 	</div>
 
 	<div id="qnaboard">
 		<h2>
 			문의게시판 관리<br />
-			<button onclick="location.href='move.do?command=qnaboard'" class="button02">문의내역 전체 보기</button>
+			<button onclick="location.href='move.do?command=qnaboard&currentPage=1'" class="button02">문의내역 전체 보기</button>
 		</h2>
+>>>>>>> kth
 	</div>
+	</article>
 
 
-	<div id="img">
-		<img id="dance" alt="춤그림" src="resources/dance.png">
-	</div>
 
 
-	</div>
+
 
 
 

@@ -15,8 +15,8 @@
 		if(num < 1){
 			num = 2;
 		}
-		document.getElementById("gallery").src="resources/danceStudyImg/img0" + num + ".png";
-		
+		document.getElementById("gallery").src="resources/img/danceStudyCssImg/img0" + num + ".png";
+		document.getElementById("gallery").href="danceStudySelect"+ num + ".jsp";
 		// 이벤트 전파 막기(jQuery에서 자세히 배움)
 		return false;
 	}
@@ -26,8 +26,8 @@
 		if(num > 2){
 			num = 1;
 		}
-		document.getElementById("gallery").src="resources/danceStudyImg/img0" + num + ".png";
-		
+		document.getElementById("gallery").src="resources/img/danceStudyCssImg/img0" + num + ".png";
+		document.getElementById("gallery").href="danceStudySelect"+ num + ".jsp";
 		// 이벤트 전파 막기(jQuery에서 자세히 배움)
 		return false;
 
@@ -66,13 +66,13 @@ if(member_dto == null){
 	<div id="gallerywrap">
 		<p>
 			<a onclick="return prevGallery();">
-				<img alt="이전 그림" src="resources/danceStudyImg/arrowleft.png" width="50px" height="50px"/>
+				<img alt="이전 그림" src="resources/img/danceStudyCssImg/arrowleft.png" width="50px" height="50px"/>
 			</a>
-			<a href="#">
-			<img alt="갤러리 그림" src="resources/danceStudyImg/img01.png" id="gallery"/>
+			<a href="danceStudySelect1.jsp">
+			<img alt="갤러리 그림" src="resources/img/danceStudyCssImg/img01.png" id="gallery"/>
 			</a>
 			<a onclick="return nextGallery();">
-				<img alt="다음 그림" src="resources/danceStudyImg/arrowright.png" width="50px" height="50px"/>
+				<img alt="다음 그림" src="resources/img/danceStudyCssImg/arrowright.png" width="50px" height="50px"/>
 			</a>
 		</p>
 	</div>
@@ -87,8 +87,6 @@ if(member_dto == null){
 <% 		
 			}
 %>
-		
-
 
 
 

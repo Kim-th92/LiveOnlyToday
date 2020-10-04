@@ -7,7 +7,7 @@
 		SELECT DANCE.DANCE_NO,DANCE.DANCE_TITLE,MEMBER.NICKNAME,DANCE.DANCE_REGDATE,DANCE_CNT FROM DANCE_BOARD DANCE INNER JOIN MEMBER_BOARD MEMBER ON DANCE.MEMBER_SEQ=MEMBER.MEMBER_SEQ
 	</select>
 	<select id="selectOne" resultType="dance_BoardDto" parameterType="int">
-		SELECT DANCE.DANCE_NO ,DANCE.DANCE_TITLE,DANCE.DANCE_CONTENT,MEMBER.NICKNAME,DANCE.DANCE_REGDATE,DANCE_CNT FROM DANCE_BOARD DANCE INNER JOIN MEMBER_BOARD MEMBER ON DANCE.MEMBER_SEQ=MEMBER.MEMBER_SEQ WHERE DANCE_NO=#{dance_no}
+		SELECT DANCE.DANCE_NO ,DANCE.DANCE_TITLE,DANCE.DANCE_CONTENT,MEMBER.NICKNAME,DANCE.DANCEREALFNAME,DANCE.DANCEFNAME,DANCE.DANCEREALPATH,DANCE.DANCE_REGDATE,DANCE_CNT FROM DANCE_BOARD DANCE INNER JOIN MEMBER_BOARD MEMBER ON DANCE.MEMBER_SEQ=MEMBER.MEMBER_SEQ WHERE DANCE_NO=#{dance_no}
 	</select>
 	<insert id="insert" parameterType="dance_BoardDto">
 		INSERT INTO DANCE_BOARD VALUES(DANCE_SEQ.NEXTVAL,#{dance_title},#{dance_content},SYSDATE,0,#{member_seq},NULL,NULL,NULL)
@@ -20,6 +20,10 @@
 	</select>
 	<update id="update" parameterType="dance_BoardDto">
 		UPDATE DANCE_BOARD SET DANCE_TITLE=#{dance_title},DANCE_CONTENT=#{dance_content} WHERE DANCE_NO=#{dance_no}
+	</update>
+	<update id ="updatefile" parameterType="dance_BoardDto">
+		 UPDATE DANCE_BOARD SET DANCE_TITLE=#{dance_title},DANCE_CONTENT=#{dance_content},DANCEFNAME=#{dancefname},DANCEREALFNAME=#{dancerealfname},DANCEREALPATH=#{dancerealpath}  WHERE DANCE_NO=#{dance_no} 
+		
 	</update>
 	<delete id="delete" parameterType="int">
 		DELETE FROM DANCE_BOARD WHERE DANCE_NO=#{dance_no}
@@ -41,4 +45,8 @@
 		ORDER BY NUM
 		]]>
 	</select>
+	<update id="updateFile" parameterType="dance_BoardDto">
+		UPDATE DANCE_BOARD SET DANCE_TITLE=#{dance_title},DANCE_CONTENT=#{dance_content},
+		DANCEFNAME=#{dancefname},DANCEREALFNAME=#{dancerealfname},DANCEREALPATH=#{dancerealpath} WHERE DANCE_NO=#{dance_no}
+	</update>
 </mapper>
