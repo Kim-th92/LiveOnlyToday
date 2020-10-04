@@ -12,10 +12,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous">
 <style>
-	table {width:80%;    line-height: 50px; margin : 50px 0px 50px 50px;}
-#content{    padding: 30px 20px 100px;
-    background-color: #e9ecef;
-   }
+	table {width:80%; line-height: 50px; margin : 50px 0px 50px 50px;}
+	#content{padding: 30px 20px 100px; background-color: #e9ecef;}
+	.line{display: inline-block;}
   
 </style>
 <%
@@ -60,7 +59,12 @@
 			if(member_dto.getNickname().equals(song_dto.getNickname())&& member_dto.getNickname()!=null){
 			%>		
 				<input class="btn btn-warning"  type="button" value="수정" onclick="location.href='move.do?command=songupdatepage&song_no=<%=song_dto.getSong_no()%>'"/>
-				<input class="btn btn-warning" type="button" value="삭제" onclick="location.href='move.do?command=delete&song_no=<%=song_dto.getSong_no()%>'"/>
+				
+				<form class="line" action="board.do" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="command" value="song_delete"/>
+					<input type="hidden" name="song_no" value="<%=song_dto.getSong_no()%>">
+					<input class="btn btn-warning"  type="submit" value="삭제"/>
+				</form>
 			<%		
 				}
 			%>
@@ -88,7 +92,12 @@
 <%
 			if(member_dto.getNickname().equals(song_dto.getNickname())&& member_dto.getNickname()!=null){
 %>	
-				<input type="button" value="삭제" onclick="location.href='board.do?command=song_comment_delete&comment_no=<%=comment_list.get(i).getComment_no()%>&song_no=<%=song_dto.getSong_no()%>'"/>	
+				<form class="line" action="board.do" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="command" value="song_comment_delete"/>
+					<input type="hidden" name="song_no" value="<%=song_dto.getSong_no()%>">
+					<input type="hidden" name="comment_no" value="<%=comment_list.get(i).getComment_no()%>">
+					<input type="submit" value="삭제"/>
+				</form>
 <%	
 			}
 %>
