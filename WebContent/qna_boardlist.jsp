@@ -23,8 +23,7 @@ table.qna {
     text-align: center;
     line-height: 1.5;
     border: 1px solid #ccc;
-    margin-left: 300px;
-    margin-top:150px;
+   margin : 150px 50px;
 }
 table.qna thead {
     border-right: 1px solid #ccc;

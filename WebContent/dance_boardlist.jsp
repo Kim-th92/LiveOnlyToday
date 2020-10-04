@@ -155,8 +155,8 @@ td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	}
 	if(list.size() != 0){
 %>
-	<a href="move.do?command=danceboard&currentPage=<%=(startPageGroup + 5 < totalPageCount)? (startPageGroup + 5):totalPageCount%>">&gt;</a> &nbsp;
-	<a href="move.do?command=danceboard&currentPage=${totalPageCount}">&gt;&gt;</a>
+	<a href="move.do?command=danceboard&currentPage=<%=(startPageGroup + 5 < totalPageCount)? (startPageGroup + 5):totalPageCount%>"><i class="fas fa-angle-right"></a> &nbsp;
+	<a href="move.do?command=danceboard&currentPage=${totalPageCount}"><i class="fas fa-angle-double-right"></a>
 <%
 	}
 %>	
