@@ -118,7 +118,7 @@ List<DanceAdminDto> list = dao.selectList();
 			
 %>
 			<div id="button">
-				<button  class ="btn" onclick="dancemain.jsp"><span>돌아가기<i class="fas fa-arrow-right"></i></span></button>
+				<button  class ="btn" onclick="location.href='dancemain.jsp'"><span>돌아가기<i class="fas fa-arrow-right"></i></span></button>
 				
 			</div>
 <% 		

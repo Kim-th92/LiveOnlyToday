@@ -51,6 +51,11 @@ table {
 <table>
  	<col width="150px">
  	<col width="600px">
+ 	<tr style="text-align:-webkit-center;">
+ 		<td colspan="2">
+ 		<input type= "button" class = "regbtn" onclick="openChange();" value="비밀번호 수정">
+ 		</td>
+ 	</tr>
  	<tr>
  		<th>아 이 디</th>
  		<td><%=dto.getId() %></td>
@@ -103,7 +108,13 @@ table {
  	</tr>
  </table>
  </div>
-
+<script type="text/javascript">
+	function openChange(){
+		var url = 'member.do?command=changepw&memberseq=<%=dto.getMember_seq()%>';
+		var prop = 
+		
+	}
+</script>
  
  <%@include file="./format/footer.jsp"%>
 </body>

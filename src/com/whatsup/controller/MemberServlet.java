@@ -387,7 +387,7 @@ public class MemberServlet extends HttpServlet {
 				dispatch("index.jsp",request,response);
 				
 			}else {
-				String err = "회원탈퇴 실패 다시 시도해 주세ㅇㅅㅇ";
+				String err = "회원탈퇴 실패 다시 시도해 주세요!";
 				request.setAttribute("err",err);
 				dispatch("mypage.jsp", request, response);
 			}

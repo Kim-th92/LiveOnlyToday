@@ -242,7 +242,7 @@ background-clip: text;
 		</div>
 	</section>
 	<%
-		String success = (String) request.getAttribute("successs");
+		String success = (String)request.getAttribute("success");
 	if (success != null) {
 	%>
 	<script type="text/javascript"> 

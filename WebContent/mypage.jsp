@@ -22,22 +22,9 @@
 <% 		
 		response.sendRedirect("index.jsp");
 	}
-	int seq=(memberdto!=null)?memberdto.getMember_seq():0;
+	int seq =(memberdto!=null)?memberdto.getMember_seq():0;
 %>
-<script type="text/javascript">
 
-$(document).ready(function(){
-    $("#btnDelete").click(function(){
-    	var res  = confirm("삭제하시겠습니까?");
-        if(res){
-            document.deleteform.action = "member.do?command=deletemember&seq=<%=seq%>";
-            document.deleteform.submit();
-        }
-    });
-});
-
-
-</script>
 
 <style>
 	
@@ -172,10 +159,26 @@ h1 {
 
 <%@include file="./format/footer.jsp"%>
 
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("#btnDelete").click(function(){
+    	var res  = window.confirm("정말로 탈퇴하시겠습니까?");
+        if(res){
+            document.deleteform.action = 'member.do?command=deletemember&seq=<%=seq%>';
+            document.deleteform.submit();
+        }
+    });
+});
+
+</script>
 <!-- 회원 탈퇴 시 alert 띄어줄 부분 -->
 <% String err = (String)request.getAttribute("err"); 
 	if(err!=null){
 %>
+
 
 	 <script type="text/javascript">
 	 	alert('<%=err%>');
@@ -183,6 +186,8 @@ h1 {
 <% 		
 	}
 %>
+
+
 
 </body>
 </html>
