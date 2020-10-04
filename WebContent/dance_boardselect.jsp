@@ -36,6 +36,9 @@
 		}
 	}
 </script>
+<style type="text/css">
+	.line{display: inline-block;}
+</style>
 </head>
 
 <body   style="    background-color: #fdde60;">
@@ -91,12 +94,14 @@
 				if(member_dto.getNickname().equals(dance_dto.getNickname())&& member_dto.getNickname()!=null){
 			%>		
 				<input type="button" class="btn btn-warning" value="수정" onclick="location.href='move.do?command=danceupdatepage&dance_no=<%=dance_dto.getDance_no()%>'"/>
-				<input type="button"  class="btn btn-warning" value="삭제" onclick="location.href='move.do?command=dancedelete&dance_no=<%=dance_dto.getDance_no()%>'"/>
-
+				<form class="line" action="board.do" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="command" value="dance_delete"/>
+					<input type="hidden" name="dance_no" value="<%=dance_dto.getDance_no()%>">
+					<input type="submit"  class="btn btn-warning" value="삭제"/>
+				</form>
 			<%		
 				}
 			%>
-				
 				<input type="button" class="btn btn-warning" value="목록" onclick="location.href='move.do?command=danceboard&currentPage=1'"/>
 			</td>
 		</tr>
@@ -127,7 +132,12 @@
 			<%
 			if(member_dto.getNickname().equals(dance_dto.getNickname())&& member_dto.getNickname()!=null){
 			%>	
-				<input type="button" value="삭제" onclick="location.href='board.do?command=dance_comment_delete&comment_no=<%=comment_list.get(i).getComment_no()%>&dance_no=<%=dance_dto.getDance_no()%>'"/>	
+				<form class="line" action="board.do" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="command" value="dance_comment_delete"/>
+					<input type="hidden" name="dance_no" value="<%=dance_dto.getDance_no()%>">
+					<input type="hidden" name="comment_no" value="<%=comment_list.get(i).getComment_no()%>">
+					<input type="submit" value="삭제"/>
+				</form>
 			<%	
 			}
 			%>

@@ -17,6 +17,9 @@
 		member_dto=new Member_BoardDto();
 	}
 %>
+<style type="text/css">
+	.line{display: inline-block;}
+</style>
 </head>
 <body>
 	<table border="1">
@@ -42,7 +45,11 @@
 			if(member_dto.getNickname().equals(qna_dto.getNickname())&& member_dto.getNickname()!=null){
 			%>		
 				<input type="button" value="수정" onclick="location.href='move.do?command=updatepage&qna_no=<%=qna_dto.getQna_no()%>'"/>
-				<input type="button" value="삭제" onclick="location.href='move.do?command=delete&qna_no=<%=qna_dto.getQna_no()%>'"/>
+				<form class="line" action="board.do" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="command" value="qna_delete"/>
+					<input type="hidden" name="qna_no" value="<%=qna_dto.getQna_no()%>">
+					<input type="submit" value="삭제"/>
+				</form>
 			<%		
 				}
 			%>
@@ -51,11 +58,8 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-		--------------댓글--------------
+		--------------답글--------------
 			</td>
-		</tr>
-		<tr>
-			<td>답글</td>
 		</tr>
 		<%
 		if(qna_comment_list.size()==0){

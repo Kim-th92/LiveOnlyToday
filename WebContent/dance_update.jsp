@@ -20,8 +20,6 @@ table {width:80%;    line-height: 50px; margin : 50px 0px 50px 50px;}
 <%
 	Dance_BoardDto dance_dto=(Dance_BoardDto)request.getAttribute("dto");
 %>
-<%@include file="./format/header.jsp"%>
-
 <body style="background-color: #fdde60;">
 	<form action="board.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="dance_update">
@@ -55,6 +53,5 @@ table {width:80%;    line-height: 50px; margin : 50px 0px 50px 50px;}
 			</tr>
 		</table>
 	</form>
-<%@include file="./format/footer.jsp"%>
 </body>
 </html>
