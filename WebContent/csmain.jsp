@@ -91,12 +91,26 @@ h1 {
 		
 		<div id="adminchat">
 		
-				<button onclick="location.href='move.do?command=adminchat'" class="button button2">1:1 관리자 문의<i class="far fa-comments fa-7x"></i></button>
+				<button onclick="openChat()" class="button button2">1:1 관리자 문의<i class="far fa-comments fa-7x"></i></button>
 		
 		</div>
 	</div>
 
+<script type="text/javascript">
+function openChat(){
+	<%
+		int memberseq =  0;
+		if(dto==null){
+		memberseq =0;
+		}else {
+			memberseq = dto.getMember_seq();
+		}
 
+	%>
+			window.open("member.do?command=adminchat&memberseq=<%=memberseq%>","관리자 채팅","top=200px,left=600px,width=500,height=500");
+			
+		}
+</script>
 	<%@include file="./format/footer.jsp"%>
 </body>
 </html>

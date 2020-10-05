@@ -47,7 +47,7 @@
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 </style>
 </head>
-<body>
+<body style="background-color: #fdde60;" >
 
 <%@include file="./format/header.jsp"%>
 
