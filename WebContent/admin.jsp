@@ -28,6 +28,7 @@ h1 {
 #adminview {
     
     width: 50%;
+    margin-top:60px;
     margin-bottom: 80px;
     margin-left: 100px;
     margin-right: 20px;

@@ -114,7 +114,7 @@ List<DanceAdminDto> list = dao.selectList();
 %>
 	</div>
 <% 
-	if(member_dto.getGrade()==null ||member_dto == null){
+	if(member_dto.getGrade()==null ||member_dto == null||member_dto.getGrade().equals("USER")){
 			
 %>
 			<div id="button">

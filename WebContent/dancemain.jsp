@@ -38,6 +38,8 @@
 		  border-radius: 50%;
 }
 body{background-color: #fdde60; }
+b{font-family: 'Do Hyeon', sans-serif; font-size :15pt;}
+.card:hover  b {color:darkorange;}
 #wrapper {text-align:center; border-radius: 50%;}
 </style>
 <body>
