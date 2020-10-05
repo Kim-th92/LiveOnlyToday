@@ -176,6 +176,6 @@ input[type="button"]{
 			</td>
 		</tr>
 	</table>
-<%-- <%@ include file="./format/footer.jsp" %>	 --%>
+<%@ include file="./format/footer.jsp" %>	
 </body>
 </html>

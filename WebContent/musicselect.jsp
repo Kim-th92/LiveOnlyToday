@@ -126,11 +126,7 @@ input[type="button"], #submitbtn {
 					}
 				%>
 				
-			<tr>
-				<td colspan="3" align="right"><input type="button"
-					onclick="location.href='move.do?command=musicinsert'" value="노래생성">
-				</td>
-			</tr>
+		
 			</table>
 
 			<form action="move.do" method="post">

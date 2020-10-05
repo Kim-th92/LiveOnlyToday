@@ -125,8 +125,8 @@ public class MemberServlet extends HttpServlet {
 			String birthmonth = request.getParameter("birthmonth");
 			String birthdate = request.getParameter("birthdate");
 			String birthday = birthyear+"-"+birthmonth+"-"+birthdate;
-			String email1 = request.getParameter("email1");
-			String email2 = request.getParameter("email2");
+			String email1 = request.getParameter("email11");
+			String email2 = request.getParameter("email12");
 			String email = email1+"@"+email2;
 			
 			Member_BoardDto dto = new Member_BoardDto();
@@ -259,7 +259,7 @@ public class MemberServlet extends HttpServlet {
 			String birthdate = request.getParameter("birthdate");
 			String birthday = birthyear+"-"+birthmonth+"-"+birthdate;
 			String email1 = request.getParameter("email11");
-			String email2 = request.getParameter("email22");
+			String email2 = request.getParameter("email12");
 			System.out.println(email2);
 			String email = email1+"@"+email2;
 			
@@ -277,6 +277,55 @@ public class MemberServlet extends HttpServlet {
 				jsResponse("프로필 수정 성공","veiwprofile.jsp", response);
 			}else {
 				jsResponse("프로필수정 실패","profileupdate.jsp", response);
+			}
+		}else if("changepw".equals(command)) {
+			int seq = Integer.parseInt(request.getParameter("memberseq"));
+			Member_BoardDto dto   = dao.selectOne(seq);
+			request.setAttribute("dto", dto);
+			dispatch("changepw.jsp", request, response);
+			
+		}else if("checkPw".equals(command)) {
+			String id = request.getParameter("id");
+			String currentPw =  request.getParameter("currentPw");
+			String changePw = request.getParameter("changePw");
+			String msg = "";
+			boolean check = false;
+			
+			Member_BoardDto dto = dao.login(id, currentPw);
+			if(dto != null) {
+				dto.setPw(changePw);
+				System.out.println(dto);
+				int res = dao.changePw(dto);
+				
+				if(res>0) {
+					
+					msg = "비밀번호 변경 성공";
+					check= true;
+					JSONObject obj = new JSONObject();
+					obj.put("msg", msg);
+					obj.put("check", check);
+					System.out.println("문제해결 ");
+					PrintWriter out = response.getWriter();
+					out.println(obj.toJSONString());
+				}else {
+					msg = "비밀번호 변경 실패..비밀번호를 다시 확인해주세요.!";
+					check=false;
+					JSONObject obj = new JSONObject();
+					obj.put("msg", msg);
+					obj.put("check", check);
+					System.out.println("dhldkseho");
+					PrintWriter out = response.getWriter();
+					out.println(obj.toJSONString());
+				}
+			}else {
+				msg = "비밀번호 변경 실패..비밀번호를 다시 확인해주세요.!";
+				check=false;
+				JSONObject obj = new JSONObject();
+				obj.put("msg", msg);
+				obj.put("check", check);
+				System.out.println("여기서 문제면 안되ㅡㄴㄴ");
+				PrintWriter out = response.getWriter();
+				out.println(obj.toJSONString());
 			}
 		}
 		//네이버 로그인
@@ -392,6 +441,17 @@ public class MemberServlet extends HttpServlet {
 				dispatch("mypage.jsp", request, response);
 			}
 		
+		}else if("adminchat".equals(command)) {
+			int seq = Integer.parseInt(request.getParameter("memberseq"));
+			Member_BoardDto dto = dao.selectOne(seq);
+			if(dto == null) {
+				jsResponse("로그인을 먼저 해주세요!", "index.jsp", response);
+			}else {
+				request.setAttribute("dto", dto);
+				dispatch("adminchat.jsp", request, response);
+				
+			}
+			
 		}
 		
 	}

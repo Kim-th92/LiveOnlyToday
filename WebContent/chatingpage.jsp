@@ -12,6 +12,34 @@
 		member_dto=new Member_BoardDto();
 	}
 %>
+<style>
+	#messageWindow {
+		width: 200px;
+		height: 300px;
+		padding:10px; 
+		overflow: auto; 
+	}
+	
+	#chatroom {
+		width: 30%;
+		border: 1px solid #ddd;
+	}
+	
+	
+	
+	#mymsg {
+		flaot: right;
+	}
+		
+	.whisper {
+		background-color: red;
+		color: white;
+	}
+	
+	#inputMesaage {
+		width: 100%;
+	}
+</style>
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	var textarea=document.getElementById("messageWindow");
@@ -52,6 +80,8 @@
                 }
             }
         }
+        
+		
     }
     function onOpen(event) {
         $("#messageWindow").html("<p class='chat_content'>채팅에 참여하였습니다.</p>");
@@ -65,7 +95,7 @@
         if (inputMessage.value == "") {
         } else {
             $("#messageWindow").html($("#messageWindow").html()
-                + "<p class='chat_content' id='mymsg'><%=member_dto.getNickname()%> : " + inputMessage.value + "</p>");
+                + "<p class='chat_content2' id='mymsg'><%=member_dto.getNickname()%> : " + inputMessage.value + "</p>");
         }
         webSocket.send($("#chat_id").val() + "|" + inputMessage.value);
         inputMessage.value = "";
@@ -84,20 +114,15 @@
 	
 	
 </script>
-<style type="text/css">
-	#mymsg{
-		color: blue;
-	}
-	p{
-	}
+
 </style>
 </head>
 <body>
 	<input type="hidden" value='<%=member_dto.getNickname()%>' id='chat_id' />
 	<div id="_chatbox">
-		<fieldset>
+		<fieldset id="chatroom">
 			<div id="messageWindow"></div><br/>
-			<input id="inputMessage" type="text" onkeyup="enterkey()" value=""/>
+			<input id="inputMessage" type="text" onkeyup="enterkey()" value="" width="100%"/>
 			<input type="submit" value="send" onclick="send()"/>
 		</fieldset>
 	</div>

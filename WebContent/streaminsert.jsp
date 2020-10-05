@@ -12,11 +12,49 @@
 		member_dto=new Member_BoardDto();
 	}
 %>
+<style type="text/css">
+	body{
+		background-color: #fdde60;
+		margin : 30px 50px;
+	}
+	h1{
+		margin : 30px 20px;
+	}
+	table {
+		margin-top : 30px;
+		
+		line-height: 30px;
+		width:400px;
+		
+	}
+	input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+
+}
+	#bor{padding-bottom:20px;}
+	td:nth-child(1){text-align: center;}
+	td:nth-child(4){text-align : center;}
+	td:nth-child(3){ font-weight:bold;}
+	td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
+</style>
 </head>
 <body>
 <%@ include file="./format/header.jsp" %>
-	<form action="board.do" method="post">
-		<input type="hidden" name="command" value="streaminsert">
+	<form action="move.do" method="post">
+		<input type="hidden" name="command" value="streaming_start">
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>">
 		
 		<table border="1">

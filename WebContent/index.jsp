@@ -175,10 +175,10 @@ background-clip: text;
 			<li><a href="csmain.jsp">고객센터</a>
 				<ul>
 					<li><a href="move.do?command=qnaboard&currentPage=1">문의게시판</a></li>
-					<li><a href="adminchat.jsp">1:1문의</a></li>
+					<li><a href= "#" onclick="openChat()">1:1문의</a></li>
 				</ul>
 			</li>
-			<li><a href="KakaopayController?command=checklogin" onclick="openPopup()">결제하기</a></li>
+			<li><a href="#" onclick="openPopup()">결제하기</a></li>
 		</ul>
 
 		</div>
@@ -278,11 +278,23 @@ background-clip: text;
 		
 			var url = "KakaopayController?command=checklogin"; //url이란 변수에 html을 넣어주자. 
 			var title = "";	
-			var prop = "top=200px,left=600px,width=500px,height=500px";
+			var prop = "top=200px,left=600px,width=500px,height=500px,fullscreen=no";
 			window.open(url, title, prop); 
   }
  
-  	
+  function openChat(){
+<%
+	int memberseq =  0;
+	if(dto==null){
+	memberseq =0;
+	}else {
+		memberseq = dto.getMember_seq();
+	}
+
+%>
+		window.open("member.do?command=adminchat&memberseq=<%=memberseq%>","관리자 채팅","top=200px,left=600px,width=500,height=500");
+		
+	}
 			
 		
 </script>

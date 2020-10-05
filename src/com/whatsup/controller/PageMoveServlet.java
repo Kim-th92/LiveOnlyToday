@@ -32,6 +32,7 @@ import com.whatsup.dto.MusicListDto;
 import com.whatsup.dto.QNA_BoardDto;
 import com.whatsup.dto.QNA_CommentDto;
 import com.whatsup.dto.Song_BoardDto;
+import com.whatsup.dto.Stream_BoardDto;
 import com.whatsup.util.PageNavigator;
 
 
@@ -66,7 +67,7 @@ public class PageMoveServlet extends HttpServlet {
       Member_BoardDao dao=new Member_BoardDao();
       CommentDao comment_dao=new CommentDao();
       QNA_CommentDao qna_comment_dao = new QNA_CommentDao();
-     
+     Stream_BoardDao stream_dao=new Stream_BoardDao();
       //1.메인페이지
       if(command.equals("main")) {
          response.sendRedirect("index.jsp");
@@ -474,9 +475,36 @@ public class PageMoveServlet extends HttpServlet {
     	//13-3.결제내역 확인  
           
          
-      //14.댓글 입력
-      }else if(command.equals("")) {
-         
+      //14.스트리밍 페이지
+      }else if(command.equals("streamboard")) {
+    	 List<Stream_BoardDto> stream_list=stream_dao.selectList();
+    	 request.setAttribute("stream_list", stream_list);
+         dispatch("streamboard.jsp", request, response);
+    	//14-1.방송시작 
+      }else if(command.equals("streaming_insertpage")) {
+    	  response.sendRedirect("streaminsert.jsp");
+      }else if(command.equals("streaming_start")) {
+    	  int member_seq=Integer.parseInt(request.getParameter("member_seq"));
+    	  String stream_title=request.getParameter("stream_title");
+    	  Stream_BoardDto stream_dto=new Stream_BoardDto();
+    	  stream_dto.setMember_seq(member_seq);
+    	  stream_dto.setStream_title(stream_title);
+    	  int res=stream_dao.insert(stream_dto);
+    	  if(res>0) {
+    		 jsResponse("방송생성", "https://192.168.0.18:3000//index.html?member_seq="+member_seq, response); 
+    	  }else{
+    		  jsResponse("방송 생성 실패", "move.do?command=streaming_insertpage", response);
+    	  }
+    	//14-2.방송 입장.
+      }else if(command.equals("streaming_join")) {
+    	  dispatch("streampage.jsp", request, response);
+    	  
+    	  //14-3.방송종료
+      }else if(command.equals("streaming_distroy")) {
+    	  int member_seq=Integer.parseInt(request.getParameter("member_seq"));
+    	  int res=stream_dao.delete(member_seq);
+    	  jsResponse("방송이 종료되었습니다.", "move.do?command=main", response);
+
       }
       
       
