@@ -121,8 +121,8 @@ input:focus ,textarea:focus{
  			birthMonth ="";
  			birthDate ="";
  		}else {
- 			birthYear = dto.getBirthday().substring(0, 4);
- 			birthMonth = dto.getBirthday().substring(dto.getBirthday().indexOf("-")+1,dto.getBirthday().lastIndexOf("-")-1); 
+ 			birthYear = dto.getBirthday().substring(0,dto.getBirthday().indexOf("-"));
+ 			birthMonth = dto.getBirthday().substring(dto.getBirthday().indexOf("-")+1,dto.getBirthday().lastIndexOf("-")); 
  			birthDate = dto.getBirthday().substring(dto.getBirthday().lastIndexOf("-")+1);
  		}
  	%>

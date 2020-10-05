@@ -126,7 +126,7 @@ public class MemberServlet extends HttpServlet {
 			String birthdate = request.getParameter("birthdate");
 			String birthday = birthyear+"-"+birthmonth+"-"+birthdate;
 			String email1 = request.getParameter("email11");
-			String email2 = request.getParameter("email2");
+			String email2 = request.getParameter("email12");
 			String email = email1+"@"+email2;
 			
 			Member_BoardDto dto = new Member_BoardDto();
