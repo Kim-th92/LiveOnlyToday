@@ -15,25 +15,80 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	position: absolute;
-	left: 7px;
+	left: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 	
 }
 
 p {
 	
-	background-color: #fdde60;
-	width: 298px;
-
-	bottom: 16px;
+	
+	width: 595px;
+	bottom: 24px;
 	border: 0;
 	position: relative;
-	line-height: 150px;
-  	height: 150px;
-	
+	line-height: 160px;
+  	height: 190px;
+	padding: 70px 0;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 25px;
+	background: radial-gradient(#FDEBC8, #FFC31E) fixed;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 #payment{
 	
 
 	border: 0;
+	margin: 77px;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 20px;
+	
 }
+
+
+
+
+input[type=checkbox]{
+	display: none;
+	
+	}
+input[type=checkbox] + label{
+	cursor: pointer;
+	padding: 20px;
+}
+
+input[type=checkbox] + label:before{
+	content: "";
+    width: 21px;
+    height: 21px;
+    position: absolute;
+
+    background-color: #f7f7f7;
+    border-radius: 2px;
+    box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+	left: 80px;
+	
+
+}
+
+#payment{
+	position: relative;
+}
+
+input[type=checkbox]:checked + label:before{
+    content: "\2714";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 18px; 
+    font-weight:600; 
+    color: #fff;  
+    background:#2f87c1;
+    
+}
+
+
+

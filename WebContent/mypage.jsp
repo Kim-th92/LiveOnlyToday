@@ -1,6 +1,6 @@
 <%@page import="com.whatsup.dao.Member_BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,56 +10,80 @@
 </head>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <body>
-<%@include file="./format/header.jsp"%>
-<% Member_BoardDto memberdto = (Member_BoardDto)session.getAttribute("login"); 
-	if(memberdto ==null){
-%>
+	<%@include file="./format/header.jsp"%>
+	<%
+		Member_BoardDto memberdto = (Member_BoardDto) session.getAttribute("login");
+	if (memberdto == null) {
+	%>
 
 	<script type="text/javascript">
 		alert("로그인을 먼저해주세용~");
 		
 	</script>
-<% 		
+	<%
 		response.sendRedirect("index.jsp");
 	}
-	int seq =(memberdto!=null)?memberdto.getMember_seq():0;
-%>
+	int seq = (memberdto != null) ? memberdto.getMember_seq() : 0;
+	%>
 
 
-<style>
-	
+	<style>
 body {
 	background-color: #fdde60;
-	
 }
 
 h1 {
 	position: absolute;
 	left: 45%;
 }
-.layer{
+
+.layer {
 	position: relative;
 	top: 150px;
 	left: 15%;
 }
-#section{font-family: 'Do Hyeon', sans-serif;}
 
-#modifyprofile{
-	position: absolute;
-	left: 5%;
-
+#section {
+	font-family: 'Do Hyeon', sans-serif;
 }
 
-#songlist{
+#modifyprofile {
+	border: none;
+	padding: 16px 32px;
+	display: inline-block;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	border-radius: 12px;
 	position: absolute;
-	left: 30%;
+	left: 50px;
+	top: 50px;
 }
 
-
-#qna{
+#songlist {
+	border: none;
+	padding: 16px 32px;
+	display: inline-block;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	border-radius: 12px;
 	position: absolute;
-	left: 50%;
-	
+	left: 500px;
+	top: 50px;
+}
+
+#qna {
+	border: none;
+	padding: 16px 32px;
+	display: inline-block;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	border-radius: 12px;
+	position: absolute;
+	left: 900px;
+	top: 50px;
 }
 
 #picture {
@@ -67,47 +91,29 @@ h1 {
 	height: auto;
 	max-width: 200px;
 	max-height: 200px;
-
-}
-#modifyprofile:hover{
-	border: 2px solid gray;
-	background-color: darkorange;
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
 }
 
-#songlist:hover{
-	border: 2px solid gray;
-	background-color: darkorange;
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
+#modifyprofile:hover {
+	background-color: #4CAF50;
 }
 
-#qna:hover{
-	border: 2px solid gray;
-	background-color: darkorange;
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	
+#songlist:hover {
+	background-color: #FF5A5A;
 }
 
-#delete{
-	
+#qna:hover {
+	background-color: #dc50dc;
+}
+
+#delete {
 	position: absolute;
 	top: 80%;
 	left: 95%;
 }
 
-#btnDelete{
-	
+#btnDelete {
 	border: 1px solid black;
-	background-color: rgba(0,0,0,0);
+	background-color: rgba(0, 0, 0, 0);
 	color: black;
 	padding: 5px;
 	border-top-left-radius: 5px;
@@ -116,52 +122,55 @@ h1 {
 	border-bottom-right-radius: 5px;
 }
 
-#btnDelete:hover{
+#btnDelete:hover {
 	color: white;
 	background-color: gray;
 	
 }
 </style>
 
-<div id="section">
-		<h1> 마이페이지</h1>
-		
-		
+	<div id="section">
+		<h1>마이페이지</h1>
+
+
 		<div class="layer">
-		
-		<div id = "modifyprofile">
-			<a title="프로필 보기" href="veiwprofile.jsp"><img id="picture" alt="" src="resources/img/profile.png"></a>
-			
+
+			<div id="modifyprofile">
+				<a title="프로필 보기" href="veiwprofile.jsp"><img id="picture"
+					alt="" src="resources/img/profile.png"></a>
+
+			</div>
+			<div id="songlist">
+				<a title="노래 전체 보기" href="#"> <img id="picture" alt=""
+					src="resources/img/mic.png"></a>
+			</div>
+
+			<div id="qna">
+				<a title="내가한 질문 전체 보기" href="#"><img id="picture" alt=""
+					src="resources/img/Q.png"> </a>
+			</div>
 		</div>
-		<div id = "songlist">
-			<a title="노래 전체 보기" href="#"> <img id="picture" alt="" src="resources/img/mic.png"></a>
-		</div>
-		 
-		<div id = "qna">
-			<a title="내가한 질문 전체 보기" href="#"><img  id="picture" alt="" src="resources/img/Q.png"> </a>
-		</div>
-		</div>
-		
-		
-		
-		<div id = "delete">
-			
+
+
+
+		<div id="delete">
+
 			<form name="deleteform" method="post">
-				<input type="button" value="회원탈퇴" id="btnDelete"/>
+				<input type="button" value="회원탈퇴" id="btnDelete" />
 			</form>
 		</div>
-		
-		
-</div>
+
+
+	</div>
 
 
 
 
-<%@include file="./format/footer.jsp"%>
+	<%@include file="./format/footer.jsp"%>
 
 
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
 $(document).ready(function(){
     $("#btnDelete").click(function(){
@@ -174,18 +183,20 @@ $(document).ready(function(){
 });
 
 </script>
-<!-- 회원 탈퇴 시 alert 띄어줄 부분 -->
-<% String err = (String)request.getAttribute("err"); 
-	if(err!=null){
-%>
+	<!-- 회원 탈퇴 시 alert 띄어줄 부분 -->
+	<%
+		String err = (String) request.getAttribute("err");
+	if (err != null) {
+	%>
 
 
-	 <script type="text/javascript">
-	 	alert('<%=err%>');
-	 </script>
-<% 		
-	}
-%>
+	<script type="text/javascript">
+	 	alert('<%=err%>
+		');
+	</script>
+	<%
+		}
+	%>
 
 
 

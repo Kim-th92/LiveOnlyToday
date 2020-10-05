@@ -72,17 +72,20 @@
 <body>
 
 	<!-- #fdde60 -->
-	<p>정회원이 되고 더 많은 혜택을 누리자!!</p>
-
+	<h1><p>정회원이 되고 더 많은 혜택을 누리자!!</p></h1>
+	
 	<form action="KakaopayController" method="post" id = payment>
 		<input type="hidden" name="command" value="Kakaopay" />
-		 <input type="checkbox" class="ch" id="ch01" name="planA" value="plana" onclick="Checkbox(this);" />PLAN A (노래방)<br/> 
-		 <br/> 
-		 <input type="checkbox" class="ch" id="ch01" name="planB" value="planb" onclick="Checkbox(this);" />PLAN B(노래방 & 춤)<br/> 
-		 <br/> 
-		 <input type="submit" value="" onclick="check01" id="confirm" style="background-image: url('resources/img/payment_icon_yellow_small.png'); border: 0px; width: 61px; height: 25px; background-color: white; outline: 0;" />
+		 <input type="checkbox" class="ch" id="ch01" name="planA" value="PLAN A (노래방)" onclick="Checkbox(this); " />
+		 <label for="ch01" id="plana">PLAN A (노래방)</label>
+		 <br/> <br/> 
+		 <input type="checkbox" class="ch" id="ch02" name="planB" value="PLAN B(노래방 & 춤)" onclick="Checkbox(this);" />
+		 <label for="ch02" id="planb">PLAN B(노래방 & 춤)</label>
+		 <br/> <br/> 
+		 <input type="submit" value="" onclick="check01" id="confirm" style="background-image: url('resources/img/payment_icon_yellow_medium.png'); border: 0px; width: 120px; height: 50px; background-color: white; outline: 0; cursor: pointer; position: absolute; top:100px; left: 150px;" />
 	
 	</form>
+	
 <!-- border: 1px solid black;
 	box-sizing: border-box;
 	width: 300px;
