@@ -76,7 +76,7 @@ ul li:hover ul li {display:inline;transform:translate(-50px,35px);}
 					<li><a onclick="openChat()">1:1문의</a></li>
 				</ul>
 			</li>
-			<li><a href="KakaopayController?command=checklogin" onclick="openPopup()">결제하기</a></li>
+			<li><a href="#" onclick="openPopup()">결제하기</a></li>
 		</ul>
 
 		</div>
