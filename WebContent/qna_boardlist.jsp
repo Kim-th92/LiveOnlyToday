@@ -13,44 +13,39 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
-body {
-    background-color: #fdde60;
+body{
+	background-color: #fdde60;
 }
 
-table.qna {
-    border-collapse: collapse;
-    text-align: center;
-    line-height: 1.5;
-    border: 1px solid #ccc;
-   margin : 150px 50px;
+#karaoke {
+	width: 800px;
+	height: 400px;
+	padding: 80px 40px 150px 40px;
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	line-height: 40px;
 }
-table.qna thead {
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    background:  #79d279;
+
+h1{
+	position:absolute;
+	top:20px;
+	left: 40%;
+	margin: 10px;
 }
-table.qna thead th {
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    font-color : black;
-    font-weight: bold;
+table {
+	position: relative;
+	left: 5%;
+	top: 10%;
 }
-table.qna tbody th {
-    width: 150px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    background: #fcf1f4;
+
+#firstrow {
+	border-bottom: 1px solid black;
 }
-table.qna td {
-    width: 350px;
-    padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-}
+
+
 input[type="button"]{
 	
   background-color: red;
@@ -67,6 +62,20 @@ input[type="button"]{
   cursor: pointer;
   border-radius:10px;
 
+}
+
+#insert{
+	
+	position: absolute;
+	left: 90%;
+	top: 104%;
+}
+
+#page{
+	position: absolute;
+	left: 40%;
+	top: 104%;
+	
 }
 
 </style>
@@ -92,12 +101,14 @@ input[type="button"]{
 <body>
 <%@ include file="./format/header.jsp" %>
 
-	<table class="qna" border="1">
+	<div id="karaoke" style="border: 1px solid black;">
+	<h1 id="qna">문의게시판</h1>
+	<table class="qna">
 		<col width="80px" />
 		<col width="150px" />
 		<col width="300px" />
 		<col width="100px" />
-		<tr>
+		<tr id="firstrow">
 			<th>번호</th>
 			<th>이름</th>
 			<th>제목</th>
@@ -143,12 +154,12 @@ input[type="button"]{
 	}
 %>
 		<tr>
-			<td colspan="5" align="right">
+			<td colspan="5" align="right" id="insert">
 				<input type="button" value="글작성" onclick="location.href='move.do?command=qnainsertpage'" />
 			</td>
 		</tr>
 		<tr>
-			<td colspan="5" align="center">
+			<td colspan="5" align="center" id="page">
 <%
 	if(list.size() != 0){
 %>	
@@ -176,6 +187,7 @@ input[type="button"]{
 			</td>
 		</tr>
 	</table>
+	</div>
 <%@ include file="./format/footer.jsp" %>	
 </body>
 </html>

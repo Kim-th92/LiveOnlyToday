@@ -33,7 +33,7 @@
 	td:nth-child(1){text-align: center;}
 	td:nth-child(4){text-align : center;}
 	td:nth-child(3){ font-weight:bold;}
-td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
+	td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
 	input[type="button"]{
 	
   background-color: red;
