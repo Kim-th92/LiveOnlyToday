@@ -10,6 +10,6 @@
 		INSERT INTO STREAM_BOARD VALUES(STREAM_SEQ.NEXTVAL,#{stream_title},#{member_seq})
 	</insert>
 	<delete id="delete" parameterType="int">
-		DELETE FROM STREAM_BOARD WHERE STREAM_NO=#{stream_no}
+		DELETE FROM STREAM_BOARD WHERE MEMBER_SEQ=#{member_seq}
 	</delete>
 </mapper>
