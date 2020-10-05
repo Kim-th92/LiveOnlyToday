@@ -149,10 +149,19 @@ ul li:hover ul li {display:inline;transform:translate(-50px,35px);}
 		window.open(url, title, prop); 
 }
   function openChat(){
+	  <%
+	  	int memberseq =  0;
+	  	if(dto==null){
+	  	memberseq =0;
+	  	}else {
+	  		memberseq = dto.getMember_seq();
+	  	}
 
-		window.open("member.do?command=adminchat&memberseq=<%=dto.getMember_seq()%>","관리자 채팅","top=200px,left=600px,width=500px,height=500px");
-		
-	}
+	  %>
+	  		window.open("member.do?command=adminchat&memberseq=<%=memberseq%>","관리자 채팅","top=200px,left=600px,width=500,height=500");
+	  		
+	  	}
+	  			
   </script>
 	</header>
 </body>
