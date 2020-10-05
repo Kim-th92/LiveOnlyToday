@@ -6,7 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	div{
+	body {
+    background-color: #fdde60;
+	}
+	#a, #b{
 		width: 600px;
 		height: 600px;
 		position: absolute;
@@ -14,7 +17,7 @@
 		left: 50%;
 	}
 	#a{margin-left: -500px;}
-	#label-container{margin-top: -3%;}
+	#b{margin-left: 100px;}
 </style>
 </head>
 <body>
@@ -22,6 +25,7 @@
 <button type="button" onclick="init()">Start</button>
 <div id="a"><canvas id="canvas"></canvas></div>
 <div id="label-container"></div>
+<script type="text/javascript" src="./js/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
 <script type="text/javascript">
@@ -29,7 +33,7 @@
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
     // the link to your model provided by Teachable Machine export panel
-    const URL = "./resources/dance_model/monkey_model/";
+    const URL = "./resources/dance_model/diet_model/";
     let model, webcam, ctx, labelContainer, maxPredictions;
 
     async function init() {
@@ -69,14 +73,21 @@
     async function predict() {
         // Prediction #1: run input through posenet
         // estimatePose can take in an image, video or canvas html element
-        const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+        const { pose, posenetOutput} = await model.estimatePose(webcam.canvas);
         // Prediction 2: run input through teachable machine classification model
         const prediction = await model.predict(posenetOutput);
 
-        if(prediction[0].probability.toFixed(2) == 1.00 ) {
-        	labelContainer.childNodes[0].innerHTML = "<img src='./resources/img/danceModel/dietWorking.png' width='250px' heigth='400px'/>"
-		} else if(prediction[1].probability.toFixed(2) == 1.00 ) {
-			labelContainer.childNodes[0].innerHTML = "<img src='./resources/img/danceModel/dietSiedStepFly.png' width='300px' heigth='350px'/>"
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+        
+        if(prediction[0].probability.toFixed(2) > 0.70 ) {
+        	$("#img01").attr("src", "./resources/img/danceModel/dietSiedStepFly.png");
+		} else if(prediction[1].probability.toFixed(2) > 0.70 ) {
+			$("#img01").attr("src", "./resources/img/danceModel/dietWorking.png");
+			
 		}
 
         // finally draw the poses
@@ -95,6 +106,6 @@
         }
     }
 </script>
-
+<div id="b"><img id="img01" src="./resources/img/danceModel/dietWorking.png" width="300px" height="550px"/></div>
 </body>
 </html>
