@@ -99,15 +99,15 @@ h1 {
 <script type="text/javascript">
 function openChat(){
 	<%
-		int memberseq =  0;
+		int seq =  0;
 		if(dto==null){
-		memberseq =0;
+		seq =0;
 		}else {
-			memberseq = dto.getMember_seq();
+			seq = dto.getMember_seq();
 		}
 
 	%>
-			window.open("member.do?command=adminchat&memberseq=<%=memberseq%>","관리자 채팅","top=200px,left=600px,width=500,height=500");
+			window.open("member.do?command=adminchat&memberseq=<%=seq%>","관리자 채팅","top=200px,left=600px,width=500,height=500");
 			
 		}
 </script>
