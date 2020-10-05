@@ -15,8 +15,8 @@
 </head>
 <body>
 <%@ include file="./format/header.jsp" %>
-	<form action="board.do" method="post">
-		<input type="hidden" name="command" value="streaminsert">
+	<form action="move.do" method="post">
+		<input type="hidden" name="command" value="streaming_start">
 		<input type="hidden" name="member_seq" value="<%=member_dto.getMember_seq()%>">
 		
 		<table border="1">

@@ -58,7 +58,7 @@
 %>
 		<tr>
 			<td colspan="2" align="right">
-				<input type="button" value="방송하기" onclick="location.href='move.do?command=streaminsertpage'"/>
+				<input type="button" value="방송하기" onclick="location.href='move.do?command=streaming_insertpage'"/>
 			</td>
 		</tr>
 	</table>

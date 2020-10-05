@@ -6,51 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-
-	var num = 1;
-	
-	function prevGallery(){
-		num--;
-		if(num < 1){
-			num = 2;
-		}
-		document.getElementById("gallery").src="resources/img/danceStudyCssImg/img0" + num + ".png";
-		document.getElementById("gallery").href="danceStudySelect"+ num + ".jsp";
-		// 이벤트 전파 막기(jQuery에서 자세히 배움)
-		return false;
-	}
-	
-	function nextGallery(){
-		num++;
-		if(num > 2){
-			num = 1;
-		}
-		document.getElementById("gallery").src="resources/img/danceStudyCssImg/img0" + num + ".png";
-		document.getElementById("gallery").href="danceStudySelect"+ num + ".jsp";
-		// 이벤트 전파 막기(jQuery에서 자세히 배움)
-		return false;
-
-	}
-</script>
-
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/dance_study_list.js"></script>
 <style type="text/css">
-	a > img{
-		width: 50px; height: 50px;
-	}
-	#gallery{
-		width: 200px; height: 200px;
-	}
-	p {
-		width: 350px; height: 250px;
-	}
-	img{
-		vertical-align: middle;
-	}
-	a{
-		text-decoration: none;
-	}
-
+	body {background-color: #fdde60;}
+	table {
+        width: 100%;
+      }
+      td {
+      	text-align: center;
+        padding: 10px;
+        font-size: 15pt;
+        font-weight: bold;
+      }
 </style>
 </head>
 <body>
@@ -61,32 +29,24 @@ if(member_dto == null){
 }
 %>
 <%@ include file="./format/header.jsp" %>
-	<h1>동작을 따라해 봐</h1>
+	<h1>움직이는 이미지의 제목을 선택하세요</h1>
+	<h4>이미지에 마우스를 올려보세요</h4>
+	<table>
+		<tr>
+			<td><img id="img01" src="resources/img/danceModel/danceMonkey01-static.png" width="450px" height="240px" /></td>
+			<td><img id="img02" src="resources/img/danceModel/danceMonkey02-static.png" width="450px" height="240px" /></td>
+			<td><img id="img03" src="resources/img/danceModel/diet01-static.png" width="450px" height="240px" /></td>
+		</tr>
+		<tr>
+			<td><a href="danceStep01.jsp">anceMonkey01</a></td>
+			<td><a href="#">준비중 입니다.</a></td>
+			<td><a href="danceStep02.jsp">diteDance</a></td>
+		</tr>
 	
-	<div id="gallerywrap">
-		<p>
-			<a onclick="return prevGallery();">
-				<img alt="이전 그림" src="resources/img/danceStudyCssImg/arrowleft.png" width="50px" height="50px"/>
-			</a>
-			<a href="danceStudySelect1.jsp">
-			<img alt="갤러리 그림" src="resources/img/danceStudyCssImg/img01.png" id="gallery"/>
-			</a>
-			<a onclick="return nextGallery();">
-				<img alt="다음 그림" src="resources/img/danceStudyCssImg/arrowright.png" width="50px" height="50px"/>
-			</a>
-		</p>
-	</div>
-		
-	<iframe src="resources/img/danceModel/DanceMonkey01.gif" frameborder="0" scrolling="no" width="1000px" height="1000px" style="zoom: 100%"></iframe>
-<% 			
-		if(member_dto.getGrade() == null || member_dto == null){
-%>
-			<div>
-				<span><a href ="dancemain.jsp">돌아가기</a></span>
-			</div>
-<% 		
-			}
-%>
+
+	</table>
+
+
 
 
 
