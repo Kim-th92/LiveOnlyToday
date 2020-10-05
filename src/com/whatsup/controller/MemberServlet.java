@@ -441,6 +441,17 @@ public class MemberServlet extends HttpServlet {
 				dispatch("mypage.jsp", request, response);
 			}
 		
+		}else if("adminchat".equals(command)) {
+			int seq = Integer.parseInt(request.getParameter("memberseq"));
+			Member_BoardDto dto = dao.selectOne(seq);
+			if(dto == null) {
+				jsResponse("로그인을 먼저 해주세요!", "index.jsp", response);
+			}else {
+				request.setAttribute("dto", dto);
+				dispatch("adminchat.jsp", request, response);
+				
+			}
+			
 		}
 		
 	}

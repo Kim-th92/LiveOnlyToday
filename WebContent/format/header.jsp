@@ -73,7 +73,7 @@ ul li:hover ul li {display:inline;transform:translate(-50px,35px);}
 			<li><a href="csmain.jsp">고객센터</a>
 				<ul>
 					<li><a href="move.do?command=qnaboard&currentPage=1">문의게시판</a></li>
-					<li><a href="adminchat.jsp">1:1문의</a></li>
+					<li><a onclick="openChat()">1:1문의</a></li>
 				</ul>
 			</li>
 			<li><a href="KakaopayController?command=checklogin" onclick="openPopup()">결제하기</a></li>
@@ -148,6 +148,11 @@ ul li:hover ul li {display:inline;transform:translate(-50px,35px);}
 		var prop = "top=200px,left=600px,width=500px,height=500px";
 		window.open(url, title, prop); 
 }
+  function openChat(){
+
+		window.open("member.do?command=adminchat&memberseq=<%=dto.getMember_seq()%>","관리자 채팅","top=200px,left=600px,width=500px,height=500px");
+		
+	}
   </script>
 	</header>
 </body>

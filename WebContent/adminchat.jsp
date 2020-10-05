@@ -23,14 +23,22 @@
 </style>
 <title>Web Socket Example</title>
 <%
-	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
-	if(member_dto==null){
-		member_dto=new Member_BoardDto();
+	Member_BoardDto dto=(Member_BoardDto)request.getAttribute("dto");
+	if(dto==null){
+%>
+	<script type="text/javascript">
+		alert('로그인을 해주세요..');
+		self.close();
+	</script>
+
+<%
 	}
 %>
 </head>
 <body>
-	<%@include file="./format/header.jsp"%>
+
+	<
+	
 	<h1>관리자와 1:1 채팅하기</h1>
 	
 	<!-- 서버와 메시지를 주고 받는 콘솔 텍스트 영역 -->
@@ -42,6 +50,7 @@
 		<input id="textMessage" type="text" onkeydown="return enter()">
 		<!-- 서버로 메시지를 전송하는 버튼 -->
 		<input onclick="sendMessage()" value="Send" type="button">
+		<input type="hidden" value="<%=dto.getId()%>" id="chat_id" />
 	</form>
 	
 	<script type="text/javascript">
@@ -73,12 +82,15 @@
 			// 텍스트 박스의 객체를 가져옴
 			let message = document.getElementById("textMessage");
 			// 콘솔에 메세지를 남긴다.
-			messageTextArea.value += "(me) => " + message.value + "\n";
+			messageTextArea.value += "나 : " + message.value + "\n";
 			// 소켓으로 보낸다.
-			webSocket.send(message.value);
+			let chatid = document.getElementById("chat_id");
+			let chat_id = chatid.value;
+			webSocket.send(chat_id+ "|" + message.value);
 			// 텍스트 박스 추기화
 			message.value = "";
 		}
+
 		// 텍스트 박스에서 엔터를 누르면
 		function enter() {
 			// keyCode 13은 엔터이다.
@@ -91,6 +103,7 @@
 			return true;
 		}
 	</script>
-	<%@include file="./format/footer.jsp"%>
+
+
 </body>
 </html>
