@@ -14,6 +14,44 @@
 		member_dto=new Member_BoardDto();
 	}
 %>
+<style type="text/css">
+	body{
+		background-color: #fdde60;
+		margin : 30px 50px;
+	}
+	h1{
+		margin : 30px 20px;
+	}
+	table {
+		margin-top : 30px;
+		
+		line-height: 30px;
+		width:100%;
+		
+	}
+	input[type="button"]{
+	
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 50px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius:10px;
+
+}
+	#bor{padding-bottom:20px;}
+	td:nth-child(1){text-align: center;}
+	td:nth-child(4){text-align : center;}
+	td:nth-child(3){ font-weight:bold;}
+	td:nth-child(3)>a{font-weight:bold; text-decoration: none; color:black;}
+</style>
 </head>
 <body>
 <%@ include file="./format/header.jsp" %>
@@ -41,7 +79,7 @@
 <%
 			if(stream_list.get(i).getMember_seq()==member_dto.getMember_seq()){
 %>
-				<td><a href="https://192.168.219.107:3000//index.html"><%=stream_list.get(i).getStream_title() %></a></td>
+				<td><a href="https://192.168.0.18:3000//index.html"><%=stream_list.get(i).getStream_title() %></a></td>
 <%
 			}else{
 %>				

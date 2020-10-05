@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%
+	Member_BoardDto member_dto=(Member_BoardDto)session.getAttribute("login");
+%>
 <script type="text/javascript">
 window.onload=function(){
-	var url = "https://192.168.219.107:3000//client.html";
+	var url = "https://192.168.0.18:3000//client.html?member_seq="+<%=member_dto.getMember_seq()%>;
 	var title = "myframe";
 	var prop = "";
 	window.open(url, title, prop);
@@ -15,11 +18,11 @@ window.onload=function(){
 </script>
 <style type="text/css">
 #boardview{
-		widows: 1000px;
+		width:100%;
 		height: 800px;
 	}
 	#myframe{
-		width: 1000px;
+		width: 100%;
 		height: 800px;	
 	}
 </style>

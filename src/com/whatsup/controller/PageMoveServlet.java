@@ -491,7 +491,7 @@ public class PageMoveServlet extends HttpServlet {
     	  stream_dto.setStream_title(stream_title);
     	  int res=stream_dao.insert(stream_dto);
     	  if(res>0) {
-    		 jsResponse("방송생성", "https://192.168.219.107:3000//index.html?member_seq="+member_seq, response); 
+    		 jsResponse("방송생성", "https://192.168.0.18:3000//index.html?member_seq="+member_seq, response); 
     	  }else{
     		  jsResponse("방송 생성 실패", "move.do?command=streaming_insertpage", response);
     	  }
